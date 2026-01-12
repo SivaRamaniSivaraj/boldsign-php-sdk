@@ -1,6 +1,6 @@
 <?php
 /**
- * Font
+ * GroupSigner
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \BoldSign\ObjectSerializer;
 
 /**
- * Font Class Doc Comment
+ * GroupSigner Class Doc Comment
  *
  * @category Class
  * @package  BoldSign
@@ -40,7 +40,7 @@ use \BoldSign\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Font implements ModelInterface, ArrayAccess, \JsonSerializable
+class GroupSigner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Font';
+    protected static $openAPIModelName = 'GroupSigner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'color' => 'string',
-        'size' => 'float',
-        'style' => 'string',
-        'line_height' => 'int',
-        'is_bold_font' => 'bool',
-        'is_italic_font' => 'bool',
-        'is_under_line_font' => 'bool'
+        'id' => 'string',
+        'signer_email' => 'string',
+        'signer_name' => 'string',
+        'status' => 'string',
+        'is_viewed' => 'bool',
+        'is_delivery_failed' => 'bool',
+        'is_authentication_failed' => 'bool'
     ];
 
     /**
@@ -75,14 +74,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'color' => null,
-        'size' => 'float',
-        'style' => null,
-        'line_height' => 'int32',
-        'is_bold_font' => null,
-        'is_italic_font' => null,
-        'is_under_line_font' => null
+        'id' => null,
+        'signer_email' => null,
+        'signer_name' => null,
+        'status' => null,
+        'is_viewed' => null,
+        'is_delivery_failed' => null,
+        'is_authentication_failed' => null
     ];
 
     /**
@@ -91,14 +89,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
-        'color' => true,
-        'size' => true,
-        'style' => true,
-        'line_height' => true,
-        'is_bold_font' => false,
-        'is_italic_font' => false,
-        'is_under_line_font' => false
+        'id' => true,
+        'signer_email' => true,
+        'signer_name' => true,
+        'status' => false,
+        'is_viewed' => false,
+        'is_delivery_failed' => false,
+        'is_authentication_failed' => true
     ];
 
     /**
@@ -187,14 +184,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'color' => 'color',
-        'size' => 'size',
-        'style' => 'style',
-        'line_height' => 'lineHeight',
-        'is_bold_font' => 'isBoldFont',
-        'is_italic_font' => 'isItalicFont',
-        'is_under_line_font' => 'isUnderLineFont'
+        'id' => 'id',
+        'signer_email' => 'signerEmail',
+        'signer_name' => 'signerName',
+        'status' => 'status',
+        'is_viewed' => 'isViewed',
+        'is_delivery_failed' => 'isDeliveryFailed',
+        'is_authentication_failed' => 'isAuthenticationFailed'
     ];
 
     /**
@@ -203,14 +199,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'color' => 'setColor',
-        'size' => 'setSize',
-        'style' => 'setStyle',
-        'line_height' => 'setLineHeight',
-        'is_bold_font' => 'setIsBoldFont',
-        'is_italic_font' => 'setIsItalicFont',
-        'is_under_line_font' => 'setIsUnderLineFont'
+        'id' => 'setId',
+        'signer_email' => 'setSignerEmail',
+        'signer_name' => 'setSignerName',
+        'status' => 'setStatus',
+        'is_viewed' => 'setIsViewed',
+        'is_delivery_failed' => 'setIsDeliveryFailed',
+        'is_authentication_failed' => 'setIsAuthenticationFailed'
     ];
 
     /**
@@ -219,14 +214,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'color' => 'getColor',
-        'size' => 'getSize',
-        'style' => 'getStyle',
-        'line_height' => 'getLineHeight',
-        'is_bold_font' => 'getIsBoldFont',
-        'is_italic_font' => 'getIsItalicFont',
-        'is_under_line_font' => 'getIsUnderLineFont'
+        'id' => 'getId',
+        'signer_email' => 'getSignerEmail',
+        'signer_name' => 'getSignerName',
+        'status' => 'getStatus',
+        'is_viewed' => 'getIsViewed',
+        'is_delivery_failed' => 'getIsDeliveryFailed',
+        'is_authentication_failed' => 'getIsAuthenticationFailed'
     ];
 
     /**
@@ -270,44 +264,27 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_HELVETICA = 'Helvetica';
-    public const NAME_COURIER = 'Courier';
-    public const NAME_TIMES_ROMAN = 'TimesRoman';
-    public const NAME_NOTO_SANS = 'NotoSans';
-    public const NAME_CARLITO = 'Carlito';
-    public const STYLE_REGULAR = 'Regular';
-    public const STYLE_BOLD = 'Bold';
-    public const STYLE_ITALIC = 'Italic';
-    public const STYLE_UNDERLINE = 'Underline';
+    public const STATUS_NONE = 'None';
+    public const STATUS_NOT_COMPLETED = 'NotCompleted';
+    public const STATUS_COMPLETED = 'Completed';
+    public const STATUS_DECLINED = 'Declined';
+    public const STATUS_REVOKED = 'Revoked';
+    public const STATUS_EXPIRED = 'Expired';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getNameAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::NAME_HELVETICA,
-            self::NAME_COURIER,
-            self::NAME_TIMES_ROMAN,
-            self::NAME_NOTO_SANS,
-            self::NAME_CARLITO,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStyleAllowableValues()
-    {
-        return [
-            self::STYLE_REGULAR,
-            self::STYLE_BOLD,
-            self::STYLE_ITALIC,
-            self::STYLE_UNDERLINE,
+            self::STATUS_NONE,
+            self::STATUS_NOT_COMPLETED,
+            self::STATUS_COMPLETED,
+            self::STATUS_DECLINED,
+            self::STATUS_REVOKED,
+            self::STATUS_EXPIRED,
         ];
     }
 
@@ -326,14 +303,13 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('color', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('style', $data ?? [], null);
-        $this->setIfExists('line_height', $data ?? [], null);
-        $this->setIfExists('is_bold_font', $data ?? [], null);
-        $this->setIfExists('is_italic_font', $data ?? [], null);
-        $this->setIfExists('is_under_line_font', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('signer_email', $data ?? [], null);
+        $this->setIfExists('signer_name', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('is_viewed', $data ?? [], null);
+        $this->setIfExists('is_delivery_failed', $data ?? [], null);
+        $this->setIfExists('is_authentication_failed', $data ?? [], null);
     }
 
     /**
@@ -363,20 +339,11 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getStyleAllowableValues();
-        if (!is_null($this->container['style']) && !in_array($this->container['style'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'style', must be one of '%s'",
-                $this->container['style'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -397,274 +364,228 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets id
      *
      * @return string|null
      */
-    public function getName()
+    public function getId()
     {
-        return $this->container['name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets name
+     * Sets id
      *
-     * @param string|null $name name
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setName($name)
+    public function setId($id)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($name) && !in_array($name, $allowedValues, true)) {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets signer_email
+     *
+     * @return string|null
+     */
+    public function getSignerEmail()
+    {
+        return $this->container['signer_email'];
+    }
+
+    /**
+     * Sets signer_email
+     *
+     * @param string|null $signer_email signer_email
+     *
+     * @return self
+     */
+    public function setSignerEmail($signer_email)
+    {
+        if (is_null($signer_email)) {
+            array_push($this->openAPINullablesSetToNull, 'signer_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('signer_email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['signer_email'] = $signer_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets signer_name
+     *
+     * @return string|null
+     */
+    public function getSignerName()
+    {
+        return $this->container['signer_name'];
+    }
+
+    /**
+     * Sets signer_name
+     *
+     * @param string|null $signer_name signer_name
+     *
+     * @return self
+     */
+    public function setSignerName($signer_name)
+    {
+        if (is_null($signer_name)) {
+            array_push($this->openAPINullablesSetToNull, 'signer_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('signer_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['signer_name'] = $signer_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['name'] = $name;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets color
-     *
-     * @return string|null
-     */
-    public function getColor()
-    {
-        return $this->container['color'];
-    }
-
-    /**
-     * Sets color
-     *
-     * @param string|null $color color
-     *
-     * @return self
-     */
-    public function setColor($color)
-    {
-        if (is_null($color)) {
-            array_push($this->openAPINullablesSetToNull, 'color');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('color', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['color'] = $color;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return float|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param float|null $size size
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            array_push($this->openAPINullablesSetToNull, 'size');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('size', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets style
-     *
-     * @return string|null
-     * @deprecated
-     */
-    public function getStyle()
-    {
-        return $this->container['style'];
-    }
-
-    /**
-     * Sets style
-     *
-     * @param string|null $style style
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setStyle($style)
-    {
-        if (is_null($style)) {
-            array_push($this->openAPINullablesSetToNull, 'style');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('style', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getStyleAllowableValues();
-        if (!is_null($style) && !in_array($style, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'style', must be one of '%s'",
-                    $style,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['style'] = $style;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_height
-     *
-     * @return int|null
-     */
-    public function getLineHeight()
-    {
-        return $this->container['line_height'];
-    }
-
-    /**
-     * Sets line_height
-     *
-     * @param int|null $line_height line_height
-     *
-     * @return self
-     */
-    public function setLineHeight($line_height)
-    {
-        if (is_null($line_height)) {
-            array_push($this->openAPINullablesSetToNull, 'line_height');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('line_height', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['line_height'] = $line_height;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_bold_font
+     * Gets is_viewed
      *
      * @return bool|null
      */
-    public function getIsBoldFont()
+    public function getIsViewed()
     {
-        return $this->container['is_bold_font'];
+        return $this->container['is_viewed'];
     }
 
     /**
-     * Sets is_bold_font
+     * Sets is_viewed
      *
-     * @param bool|null $is_bold_font is_bold_font
+     * @param bool|null $is_viewed is_viewed
      *
      * @return self
      */
-    public function setIsBoldFont($is_bold_font)
+    public function setIsViewed($is_viewed)
     {
-        if (is_null($is_bold_font)) {
-            throw new \InvalidArgumentException('non-nullable is_bold_font cannot be null');
+        if (is_null($is_viewed)) {
+            throw new \InvalidArgumentException('non-nullable is_viewed cannot be null');
         }
-        $this->container['is_bold_font'] = $is_bold_font;
+        $this->container['is_viewed'] = $is_viewed;
 
         return $this;
     }
 
     /**
-     * Gets is_italic_font
+     * Gets is_delivery_failed
      *
      * @return bool|null
      */
-    public function getIsItalicFont()
+    public function getIsDeliveryFailed()
     {
-        return $this->container['is_italic_font'];
+        return $this->container['is_delivery_failed'];
     }
 
     /**
-     * Sets is_italic_font
+     * Sets is_delivery_failed
      *
-     * @param bool|null $is_italic_font is_italic_font
+     * @param bool|null $is_delivery_failed is_delivery_failed
      *
      * @return self
      */
-    public function setIsItalicFont($is_italic_font)
+    public function setIsDeliveryFailed($is_delivery_failed)
     {
-        if (is_null($is_italic_font)) {
-            throw new \InvalidArgumentException('non-nullable is_italic_font cannot be null');
+        if (is_null($is_delivery_failed)) {
+            throw new \InvalidArgumentException('non-nullable is_delivery_failed cannot be null');
         }
-        $this->container['is_italic_font'] = $is_italic_font;
+        $this->container['is_delivery_failed'] = $is_delivery_failed;
 
         return $this;
     }
 
     /**
-     * Gets is_under_line_font
+     * Gets is_authentication_failed
      *
      * @return bool|null
      */
-    public function getIsUnderLineFont()
+    public function getIsAuthenticationFailed()
     {
-        return $this->container['is_under_line_font'];
+        return $this->container['is_authentication_failed'];
     }
 
     /**
-     * Sets is_under_line_font
+     * Sets is_authentication_failed
      *
-     * @param bool|null $is_under_line_font is_under_line_font
+     * @param bool|null $is_authentication_failed is_authentication_failed
      *
      * @return self
      */
-    public function setIsUnderLineFont($is_under_line_font)
+    public function setIsAuthenticationFailed($is_authentication_failed)
     {
-        if (is_null($is_under_line_font)) {
-            throw new \InvalidArgumentException('non-nullable is_under_line_font cannot be null');
+        if (is_null($is_authentication_failed)) {
+            array_push($this->openAPINullablesSetToNull, 'is_authentication_failed');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_authentication_failed', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['is_under_line_font'] = $is_under_line_font;
+        $this->container['is_authentication_failed'] = $is_authentication_failed;
 
         return $this;
     }

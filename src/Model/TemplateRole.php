@@ -66,6 +66,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => 'string',
         'language' => 'int',
         'locale' => 'string',
+        'sign_type' => 'string',
+        'default_group_id' => 'string',
         'impose_authentication' => 'string',
         'phone_number' => '\BoldSign\Model\PhoneNumber',
         'delivery_mode' => 'string',
@@ -94,6 +96,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => null,
         'language' => 'int32',
         'locale' => null,
+        'sign_type' => null,
+        'default_group_id' => null,
         'impose_authentication' => null,
         'phone_number' => null,
         'delivery_mode' => null,
@@ -120,6 +124,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => true,
         'language' => false,
         'locale' => false,
+        'sign_type' => false,
+        'default_group_id' => true,
         'impose_authentication' => false,
         'phone_number' => false,
         'delivery_mode' => false,
@@ -226,6 +232,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => 'hostEmail',
         'language' => 'language',
         'locale' => 'locale',
+        'sign_type' => 'signType',
+        'default_group_id' => 'defaultGroupId',
         'impose_authentication' => 'imposeAuthentication',
         'phone_number' => 'phoneNumber',
         'delivery_mode' => 'deliveryMode',
@@ -252,6 +260,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => 'setHostEmail',
         'language' => 'setLanguage',
         'locale' => 'setLocale',
+        'sign_type' => 'setSignType',
+        'default_group_id' => 'setDefaultGroupId',
         'impose_authentication' => 'setImposeAuthentication',
         'phone_number' => 'setPhoneNumber',
         'delivery_mode' => 'setDeliveryMode',
@@ -278,6 +288,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => 'getHostEmail',
         'language' => 'getLanguage',
         'locale' => 'getLocale',
+        'sign_type' => 'getSignType',
+        'default_group_id' => 'getDefaultGroupId',
         'impose_authentication' => 'getImposeAuthentication',
         'phone_number' => 'getPhoneNumber',
         'delivery_mode' => 'getDeliveryMode',
@@ -375,6 +387,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
     public const LOCALE_KO = 'KO';
+    public const SIGN_TYPE_SINGLE = 'Single';
+    public const SIGN_TYPE_GROUP = 'Group';
     public const IMPOSE_AUTHENTICATION_NONE = 'None';
     public const IMPOSE_AUTHENTICATION_EMAIL_OTP = 'EmailOTP';
     public const IMPOSE_AUTHENTICATION_ACCESS_CODE = 'AccessCode';
@@ -468,6 +482,19 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
+    public function getSignTypeAllowableValues()
+    {
+        return [
+            self::SIGN_TYPE_SINGLE,
+            self::SIGN_TYPE_GROUP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getImposeAuthenticationAllowableValues()
     {
         return [
@@ -518,6 +545,8 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('host_email', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('default_group_id', $data ?? [], null);
         $this->setIfExists('impose_authentication', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('delivery_mode', $data ?? [], null);
@@ -614,6 +643,15 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'locale', must be one of '%s'",
                 $this->container['locale'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!is_null($this->container['sign_type']) && !in_array($this->container['sign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sign_type', must be one of '%s'",
+                $this->container['sign_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -977,6 +1015,77 @@ class TemplateRole implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['locale'] = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            throw new \InvalidArgumentException('non-nullable sign_type cannot be null');
+        }
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!in_array($sign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sign_type', must be one of '%s'",
+                    $sign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_group_id
+     *
+     * @return string|null
+     */
+    public function getDefaultGroupId()
+    {
+        return $this->container['default_group_id'];
+    }
+
+    /**
+     * Sets default_group_id
+     *
+     * @param string|null $default_group_id default_group_id
+     *
+     * @return self
+     */
+    public function setDefaultGroupId($default_group_id)
+    {
+        if (is_null($default_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'default_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('default_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['default_group_id'] = $default_group_id;
 
         return $this;
     }

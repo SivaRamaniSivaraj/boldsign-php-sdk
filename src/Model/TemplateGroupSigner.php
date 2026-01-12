@@ -1,6 +1,6 @@
 <?php
 /**
- * AttachmentInfo
+ * TemplateGroupSigner
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \BoldSign\ObjectSerializer;
 
 /**
- * AttachmentInfo Class Doc Comment
+ * TemplateGroupSigner Class Doc Comment
  *
  * @category Class
  * @package  BoldSign
@@ -40,7 +40,7 @@ use \BoldSign\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class TemplateGroupSigner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AttachmentInfo';
+    protected static $openAPIModelName = 'TemplateGroupSigner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'accepted_file_types' => 'string[]',
-        'description' => 'string',
-        'allowed_file_types' => 'string'
+        'signer_email' => 'string',
+        'signer_name' => 'string'
     ];
 
     /**
@@ -71,10 +69,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'accepted_file_types' => null,
-        'description' => null,
-        'allowed_file_types' => null
+        'signer_email' => null,
+        'signer_name' => null
     ];
 
     /**
@@ -83,10 +79,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'title' => true,
-        'accepted_file_types' => true,
-        'description' => true,
-        'allowed_file_types' => true
+        'signer_email' => true,
+        'signer_name' => true
     ];
 
     /**
@@ -175,10 +169,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'accepted_file_types' => 'acceptedFileTypes',
-        'description' => 'description',
-        'allowed_file_types' => 'allowedFileTypes'
+        'signer_email' => 'signerEmail',
+        'signer_name' => 'signerName'
     ];
 
     /**
@@ -187,10 +179,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'accepted_file_types' => 'setAcceptedFileTypes',
-        'description' => 'setDescription',
-        'allowed_file_types' => 'setAllowedFileTypes'
+        'signer_email' => 'setSignerEmail',
+        'signer_name' => 'setSignerName'
     ];
 
     /**
@@ -199,10 +189,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'accepted_file_types' => 'getAcceptedFileTypes',
-        'description' => 'getDescription',
-        'allowed_file_types' => 'getAllowedFileTypes'
+        'signer_email' => 'getSignerEmail',
+        'signer_name' => 'getSignerName'
     ];
 
     /**
@@ -262,10 +250,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('accepted_file_types', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('allowed_file_types', $data ?? [], null);
+        $this->setIfExists('signer_email', $data ?? [], null);
+        $this->setIfExists('signer_name', $data ?? [], null);
     }
 
     /**
@@ -295,12 +281,6 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['accepted_file_types'] === null) {
-            $invalidProperties[] = "'accepted_file_types' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -317,139 +297,69 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted_file_types
-     *
-     * @return string[]
-     */
-    public function getAcceptedFileTypes()
-    {
-        return $this->container['accepted_file_types'];
-    }
-
-    /**
-     * Sets accepted_file_types
-     *
-     * @param string[] $accepted_file_types accepted_file_types
-     *
-     * @return self
-     */
-    public function setAcceptedFileTypes($accepted_file_types)
-    {
-        if (is_null($accepted_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'accepted_file_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accepted_file_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accepted_file_types'] = $accepted_file_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets signer_email
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getSignerEmail()
     {
-        return $this->container['description'];
+        return $this->container['signer_email'];
     }
 
     /**
-     * Sets description
+     * Sets signer_email
      *
-     * @param string|null $description description
+     * @param string|null $signer_email signer_email
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setSignerEmail($signer_email)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($signer_email)) {
+            array_push($this->openAPINullablesSetToNull, 'signer_email');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('signer_email', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
+        $this->container['signer_email'] = $signer_email;
 
         return $this;
     }
 
     /**
-     * Gets allowed_file_types
+     * Gets signer_name
      *
      * @return string|null
-     * @deprecated
      */
-    public function getAllowedFileTypes()
+    public function getSignerName()
     {
-        return $this->container['allowed_file_types'];
+        return $this->container['signer_name'];
     }
 
     /**
-     * Sets allowed_file_types
+     * Sets signer_name
      *
-     * @param string|null $allowed_file_types allowed_file_types
+     * @param string|null $signer_name signer_name
      *
      * @return self
-     * @deprecated
      */
-    public function setAllowedFileTypes($allowed_file_types)
+    public function setSignerName($signer_name)
     {
-        if (is_null($allowed_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'allowed_file_types');
+        if (is_null($signer_name)) {
+            array_push($this->openAPINullablesSetToNull, 'signer_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('allowed_file_types', $nullablesSetToNull);
+            $index = array_search('signer_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['allowed_file_types'] = $allowed_file_types;
+        $this->container['signer_name'] = $signer_name;
 
         return $this;
     }

@@ -68,6 +68,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => 'string',
         'language' => 'int',
         'locale' => 'string',
+        'sign_type' => 'string',
+        'default_group_id' => 'string',
         'allow_role_edit' => 'bool',
         'allow_role_delete' => 'bool',
         'enable_access_code' => 'bool',
@@ -79,7 +81,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => 'bool',
         'enable_delete_recipients' => 'bool',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
-        'enable_qes' => 'bool'
+        'enable_qes' => 'bool',
+        'group_signers' => '\BoldSign\Model\TemplateGroupSigner[]'
     ];
 
     /**
@@ -101,6 +104,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => null,
         'language' => 'int32',
         'locale' => null,
+        'sign_type' => null,
+        'default_group_id' => null,
         'allow_role_edit' => null,
         'allow_role_delete' => null,
         'enable_access_code' => null,
@@ -112,7 +117,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => null,
         'enable_delete_recipients' => null,
         'recipient_notification_settings' => null,
-        'enable_qes' => null
+        'enable_qes' => null,
+        'group_signers' => null
     ];
 
     /**
@@ -132,6 +138,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => true,
         'language' => false,
         'locale' => false,
+        'sign_type' => false,
+        'default_group_id' => true,
         'allow_role_edit' => false,
         'allow_role_delete' => false,
         'enable_access_code' => false,
@@ -143,7 +151,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => false,
         'enable_delete_recipients' => false,
         'recipient_notification_settings' => false,
-        'enable_qes' => false
+        'enable_qes' => false,
+        'group_signers' => true
     ];
 
     /**
@@ -243,6 +252,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => 'hostName',
         'language' => 'language',
         'locale' => 'locale',
+        'sign_type' => 'signType',
+        'default_group_id' => 'defaultGroupId',
         'allow_role_edit' => 'allowRoleEdit',
         'allow_role_delete' => 'allowRoleDelete',
         'enable_access_code' => 'enableAccessCode',
@@ -254,7 +265,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => 'enableEditRecipients',
         'enable_delete_recipients' => 'enableDeleteRecipients',
         'recipient_notification_settings' => 'recipientNotificationSettings',
-        'enable_qes' => 'enableQes'
+        'enable_qes' => 'enableQes',
+        'group_signers' => 'groupSigners'
     ];
 
     /**
@@ -274,6 +286,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => 'setHostName',
         'language' => 'setLanguage',
         'locale' => 'setLocale',
+        'sign_type' => 'setSignType',
+        'default_group_id' => 'setDefaultGroupId',
         'allow_role_edit' => 'setAllowRoleEdit',
         'allow_role_delete' => 'setAllowRoleDelete',
         'enable_access_code' => 'setEnableAccessCode',
@@ -285,7 +299,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => 'setEnableEditRecipients',
         'enable_delete_recipients' => 'setEnableDeleteRecipients',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
-        'enable_qes' => 'setEnableQes'
+        'enable_qes' => 'setEnableQes',
+        'group_signers' => 'setGroupSigners'
     ];
 
     /**
@@ -305,6 +320,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_name' => 'getHostName',
         'language' => 'getLanguage',
         'locale' => 'getLocale',
+        'sign_type' => 'getSignType',
+        'default_group_id' => 'getDefaultGroupId',
         'allow_role_edit' => 'getAllowRoleEdit',
         'allow_role_delete' => 'getAllowRoleDelete',
         'enable_access_code' => 'getEnableAccessCode',
@@ -316,7 +333,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         'enable_edit_recipients' => 'getEnableEditRecipients',
         'enable_delete_recipients' => 'getEnableDeleteRecipients',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
-        'enable_qes' => 'getEnableQes'
+        'enable_qes' => 'getEnableQes',
+        'group_signers' => 'getGroupSigners'
     ];
 
     /**
@@ -405,6 +423,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
     public const LOCALE_KO = 'KO';
+    public const SIGN_TYPE_SINGLE = 'Single';
+    public const SIGN_TYPE_GROUP = 'Group';
     public const IMPOSE_AUTHENTICATION_NONE = 'None';
     public const IMPOSE_AUTHENTICATION_EMAIL_OTP = 'EmailOTP';
     public const IMPOSE_AUTHENTICATION_ACCESS_CODE = 'AccessCode';
@@ -498,6 +518,19 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
+    public function getSignTypeAllowableValues()
+    {
+        return [
+            self::SIGN_TYPE_SINGLE,
+            self::SIGN_TYPE_GROUP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getImposeAuthenticationAllowableValues()
     {
         return [
@@ -550,6 +583,8 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('host_name', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('default_group_id', $data ?? [], null);
         $this->setIfExists('allow_role_edit', $data ?? [], null);
         $this->setIfExists('allow_role_delete', $data ?? [], null);
         $this->setIfExists('enable_access_code', $data ?? [], null);
@@ -562,6 +597,7 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('enable_delete_recipients', $data ?? [], null);
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('enable_qes', $data ?? [], null);
+        $this->setIfExists('group_signers', $data ?? [], null);
     }
 
     /**
@@ -614,6 +650,15 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'locale', must be one of '%s'",
                 $this->container['locale'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!is_null($this->container['sign_type']) && !in_array($this->container['sign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sign_type', must be one of '%s'",
+                $this->container['sign_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1014,6 +1059,77 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            throw new \InvalidArgumentException('non-nullable sign_type cannot be null');
+        }
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!in_array($sign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sign_type', must be one of '%s'",
+                    $sign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_group_id
+     *
+     * @return string|null
+     */
+    public function getDefaultGroupId()
+    {
+        return $this->container['default_group_id'];
+    }
+
+    /**
+     * Sets default_group_id
+     *
+     * @param string|null $default_group_id default_group_id
+     *
+     * @return self
+     */
+    public function setDefaultGroupId($default_group_id)
+    {
+        if (is_null($default_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'default_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('default_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['default_group_id'] = $default_group_id;
+
+        return $this;
+    }
+
+    /**
      * Gets allow_role_edit
      *
      * @return bool|null
@@ -1360,6 +1476,40 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable enable_qes cannot be null');
         }
         $this->container['enable_qes'] = $enable_qes;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signers
+     *
+     * @return \BoldSign\Model\TemplateGroupSigner[]|null
+     */
+    public function getGroupSigners()
+    {
+        return $this->container['group_signers'];
+    }
+
+    /**
+     * Sets group_signers
+     *
+     * @param \BoldSign\Model\TemplateGroupSigner[]|null $group_signers group_signers
+     *
+     * @return self
+     */
+    public function setGroupSigners($group_signers)
+    {
+        if (is_null($group_signers)) {
+            array_push($this->openAPINullablesSetToNull, 'group_signers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_signers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_signers'] = $group_signers;
 
         return $this;
     }

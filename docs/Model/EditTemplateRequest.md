@@ -25,5 +25,6 @@ Name | Type | Description | Notes
 **recipient_notification_settings** | [**\BoldSign\Model\RecipientNotificationSettings**](RecipientNotificationSettings.md) |  | [optional]
 **allowed_signature_types** | **string[]** |  | [optional]
 **form_field_permission** | [**\BoldSign\Model\FormFieldPermission**](FormFieldPermission.md) |  | [optional]
+**group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

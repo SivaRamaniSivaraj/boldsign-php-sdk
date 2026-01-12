@@ -76,6 +76,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => '\BoldSign\Model\IdentityVerificationSettings',
         'language' => 'int',
         'locale' => 'string',
+        'sign_type' => 'string',
+        'group_id' => 'string',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'authentication_retry_count' => 'int',
         'enable_qes' => 'bool',
@@ -109,6 +111,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => null,
         'language' => 'int32',
         'locale' => null,
+        'sign_type' => null,
+        'group_id' => null,
         'recipient_notification_settings' => null,
         'authentication_retry_count' => 'int32',
         'enable_qes' => null,
@@ -140,6 +144,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => false,
         'language' => false,
         'locale' => false,
+        'sign_type' => true,
+        'group_id' => true,
         'recipient_notification_settings' => false,
         'authentication_retry_count' => true,
         'enable_qes' => true,
@@ -251,6 +257,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => 'identityVerificationSettings',
         'language' => 'language',
         'locale' => 'locale',
+        'sign_type' => 'signType',
+        'group_id' => 'groupId',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'authentication_retry_count' => 'authenticationRetryCount',
         'enable_qes' => 'enableQes',
@@ -282,6 +290,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => 'setIdentityVerificationSettings',
         'language' => 'setLanguage',
         'locale' => 'setLocale',
+        'sign_type' => 'setSignType',
+        'group_id' => 'setGroupId',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'authentication_retry_count' => 'setAuthenticationRetryCount',
         'enable_qes' => 'setEnableQes',
@@ -313,6 +323,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'identity_verification_settings' => 'getIdentityVerificationSettings',
         'language' => 'getLanguage',
         'locale' => 'getLocale',
+        'sign_type' => 'getSignType',
+        'group_id' => 'getGroupId',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'authentication_retry_count' => 'getAuthenticationRetryCount',
         'enable_qes' => 'getEnableQes',
@@ -414,6 +426,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
     public const LOCALE_KO = 'KO';
+    public const SIGN_TYPE_SINGLE = 'Single';
+    public const SIGN_TYPE_GROUP = 'Group';
 
     /**
      * Gets allowable values of the enum
@@ -525,6 +539,19 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSignTypeAllowableValues()
+    {
+        return [
+            self::SIGN_TYPE_SINGLE,
+            self::SIGN_TYPE_GROUP,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -558,6 +585,8 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('identity_verification_settings', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('group_id', $data ?? [], null);
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('authentication_retry_count', $data ?? [], null);
         $this->setIfExists('enable_qes', $data ?? [], null);
@@ -648,6 +677,15 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'locale', must be one of '%s'",
                 $this->container['locale'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!is_null($this->container['sign_type']) && !in_array($this->container['sign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sign_type', must be one of '%s'",
+                $this->container['sign_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1327,6 +1365,84 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['locale'] = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            array_push($this->openAPINullablesSetToNull, 'sign_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sign_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!is_null($sign_type) && !in_array($sign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sign_type', must be one of '%s'",
+                    $sign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id group_id
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        if (is_null($group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_id'] = $group_id;
 
         return $this;
     }

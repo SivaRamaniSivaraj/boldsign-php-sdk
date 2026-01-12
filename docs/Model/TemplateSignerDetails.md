@@ -21,5 +21,7 @@ Name | Type | Description | Notes
 **host_name** | **string** |  | [optional]
 **host_user_id** | **string** |  | [optional]
 **sign_type** | **string** |  | [optional]
+**group_id** | **string** |  | [optional]
+**group_signers** | [**\BoldSign\Model\TemplateGroupSigner[]**](TemplateGroupSigner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

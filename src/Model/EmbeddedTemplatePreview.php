@@ -1,6 +1,6 @@
 <?php
 /**
- * AttachmentInfo
+ * EmbeddedTemplatePreview
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \BoldSign\ObjectSerializer;
 
 /**
- * AttachmentInfo Class Doc Comment
+ * EmbeddedTemplatePreview Class Doc Comment
  *
  * @category Class
  * @package  BoldSign
@@ -40,7 +40,7 @@ use \BoldSign\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class EmbeddedTemplatePreview implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AttachmentInfo';
+    protected static $openAPIModelName = 'EmbeddedTemplatePreview';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'accepted_file_types' => 'string[]',
-        'description' => 'string',
-        'allowed_file_types' => 'string'
+        'template_url' => 'string'
     ];
 
     /**
@@ -71,10 +68,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'accepted_file_types' => null,
-        'description' => null,
-        'allowed_file_types' => null
+        'template_url' => 'uri'
     ];
 
     /**
@@ -83,10 +77,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'title' => true,
-        'accepted_file_types' => true,
-        'description' => true,
-        'allowed_file_types' => true
+        'template_url' => true
     ];
 
     /**
@@ -175,10 +166,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'accepted_file_types' => 'acceptedFileTypes',
-        'description' => 'description',
-        'allowed_file_types' => 'allowedFileTypes'
+        'template_url' => 'templateUrl'
     ];
 
     /**
@@ -187,10 +175,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'accepted_file_types' => 'setAcceptedFileTypes',
-        'description' => 'setDescription',
-        'allowed_file_types' => 'setAllowedFileTypes'
+        'template_url' => 'setTemplateUrl'
     ];
 
     /**
@@ -199,10 +184,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'accepted_file_types' => 'getAcceptedFileTypes',
-        'description' => 'getDescription',
-        'allowed_file_types' => 'getAllowedFileTypes'
+        'template_url' => 'getTemplateUrl'
     ];
 
     /**
@@ -262,10 +244,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('accepted_file_types', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('allowed_file_types', $data ?? [], null);
+        $this->setIfExists('template_url', $data ?? [], null);
     }
 
     /**
@@ -295,12 +274,6 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['accepted_file_types'] === null) {
-            $invalidProperties[] = "'accepted_file_types' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -317,139 +290,35 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted_file_types
-     *
-     * @return string[]
-     */
-    public function getAcceptedFileTypes()
-    {
-        return $this->container['accepted_file_types'];
-    }
-
-    /**
-     * Sets accepted_file_types
-     *
-     * @param string[] $accepted_file_types accepted_file_types
-     *
-     * @return self
-     */
-    public function setAcceptedFileTypes($accepted_file_types)
-    {
-        if (is_null($accepted_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'accepted_file_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accepted_file_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accepted_file_types'] = $accepted_file_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets template_url
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getTemplateUrl()
     {
-        return $this->container['description'];
+        return $this->container['template_url'];
     }
 
     /**
-     * Sets description
+     * Sets template_url
      *
-     * @param string|null $description description
+     * @param string|null $template_url template_url
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setTemplateUrl($template_url)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($template_url)) {
+            array_push($this->openAPINullablesSetToNull, 'template_url');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('template_url', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets allowed_file_types
-     *
-     * @return string|null
-     * @deprecated
-     */
-    public function getAllowedFileTypes()
-    {
-        return $this->container['allowed_file_types'];
-    }
-
-    /**
-     * Sets allowed_file_types
-     *
-     * @param string|null $allowed_file_types allowed_file_types
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setAllowedFileTypes($allowed_file_types)
-    {
-        if (is_null($allowed_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'allowed_file_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('allowed_file_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['allowed_file_types'] = $allowed_file_types;
+        $this->container['template_url'] = $template_url;
 
         return $this;
     }

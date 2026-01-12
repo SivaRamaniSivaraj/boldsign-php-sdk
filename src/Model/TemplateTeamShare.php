@@ -1,6 +1,6 @@
 <?php
 /**
- * AttachmentInfo
+ * TemplateTeamShare
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \BoldSign\ObjectSerializer;
 
 /**
- * AttachmentInfo Class Doc Comment
+ * TemplateTeamShare Class Doc Comment
  *
  * @category Class
  * @package  BoldSign
@@ -40,7 +40,7 @@ use \BoldSign\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class TemplateTeamShare implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AttachmentInfo';
+    protected static $openAPIModelName = 'TemplateTeamShare';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'accepted_file_types' => 'string[]',
-        'description' => 'string',
-        'allowed_file_types' => 'string'
+        'team_id' => 'string',
+        'access_type' => 'string'
     ];
 
     /**
@@ -71,10 +69,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'accepted_file_types' => null,
-        'description' => null,
-        'allowed_file_types' => null
+        'team_id' => null,
+        'access_type' => null
     ];
 
     /**
@@ -83,10 +79,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'title' => true,
-        'accepted_file_types' => true,
-        'description' => true,
-        'allowed_file_types' => true
+        'team_id' => true,
+        'access_type' => false
     ];
 
     /**
@@ -175,10 +169,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'accepted_file_types' => 'acceptedFileTypes',
-        'description' => 'description',
-        'allowed_file_types' => 'allowedFileTypes'
+        'team_id' => 'teamId',
+        'access_type' => 'accessType'
     ];
 
     /**
@@ -187,10 +179,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'accepted_file_types' => 'setAcceptedFileTypes',
-        'description' => 'setDescription',
-        'allowed_file_types' => 'setAllowedFileTypes'
+        'team_id' => 'setTeamId',
+        'access_type' => 'setAccessType'
     ];
 
     /**
@@ -199,10 +189,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'accepted_file_types' => 'getAcceptedFileTypes',
-        'description' => 'getDescription',
-        'allowed_file_types' => 'getAllowedFileTypes'
+        'team_id' => 'getTeamId',
+        'access_type' => 'getAccessType'
     ];
 
     /**
@@ -246,6 +234,23 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const ACCESS_TYPE__USE = 'Use';
+    public const ACCESS_TYPE_EDIT = 'Edit';
+    public const ACCESS_TYPE_NONE = 'None';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAccessTypeAllowableValues()
+    {
+        return [
+            self::ACCESS_TYPE__USE,
+            self::ACCESS_TYPE_EDIT,
+            self::ACCESS_TYPE_NONE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -262,10 +267,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('accepted_file_types', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('allowed_file_types', $data ?? [], null);
+        $this->setIfExists('team_id', $data ?? [], null);
+        $this->setIfExists('access_type', $data ?? [], null);
     }
 
     /**
@@ -295,12 +298,15 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
+        $allowedValues = $this->getAccessTypeAllowableValues();
+        if (!is_null($this->container['access_type']) && !in_array($this->container['access_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'access_type', must be one of '%s'",
+                $this->container['access_type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['accepted_file_types'] === null) {
-            $invalidProperties[] = "'accepted_file_types' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -317,139 +323,72 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted_file_types
-     *
-     * @return string[]
-     */
-    public function getAcceptedFileTypes()
-    {
-        return $this->container['accepted_file_types'];
-    }
-
-    /**
-     * Sets accepted_file_types
-     *
-     * @param string[] $accepted_file_types accepted_file_types
-     *
-     * @return self
-     */
-    public function setAcceptedFileTypes($accepted_file_types)
-    {
-        if (is_null($accepted_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'accepted_file_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accepted_file_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accepted_file_types'] = $accepted_file_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets team_id
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getTeamId()
     {
-        return $this->container['description'];
+        return $this->container['team_id'];
     }
 
     /**
-     * Sets description
+     * Sets team_id
      *
-     * @param string|null $description description
+     * @param string|null $team_id team_id
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setTeamId($team_id)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($team_id)) {
+            array_push($this->openAPINullablesSetToNull, 'team_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('team_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
+        $this->container['team_id'] = $team_id;
 
         return $this;
     }
 
     /**
-     * Gets allowed_file_types
+     * Gets access_type
      *
      * @return string|null
-     * @deprecated
      */
-    public function getAllowedFileTypes()
+    public function getAccessType()
     {
-        return $this->container['allowed_file_types'];
+        return $this->container['access_type'];
     }
 
     /**
-     * Sets allowed_file_types
+     * Sets access_type
      *
-     * @param string|null $allowed_file_types allowed_file_types
+     * @param string|null $access_type access_type
      *
      * @return self
-     * @deprecated
      */
-    public function setAllowedFileTypes($allowed_file_types)
+    public function setAccessType($access_type)
     {
-        if (is_null($allowed_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'allowed_file_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('allowed_file_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($access_type)) {
+            throw new \InvalidArgumentException('non-nullable access_type cannot be null');
         }
-        $this->container['allowed_file_types'] = $allowed_file_types;
+        $allowedValues = $this->getAccessTypeAllowableValues();
+        if (!in_array($access_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'access_type', must be one of '%s'",
+                    $access_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['access_type'] = $access_type;
 
         return $this;
     }
