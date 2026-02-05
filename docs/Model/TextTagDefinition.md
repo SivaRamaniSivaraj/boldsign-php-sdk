@@ -35,5 +35,6 @@ Name | Type | Description | Notes
 **formula_field_settings** | [**\BoldSign\Model\FormulaFieldSettings**](FormulaFieldSettings.md) |  | [optional]
 **resize_option** | **string** |  | [optional]
 **collaboration_settings** | [**\BoldSign\Model\CollaborationSettings**](CollaborationSettings.md) |  | [optional]
+**is_masked** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

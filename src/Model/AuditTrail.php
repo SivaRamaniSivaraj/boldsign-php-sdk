@@ -60,8 +60,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'name' => 'string',
         'email' => 'string',
+        'from_name' => 'string',
+        'from_email' => 'string',
+        'from_phone_number' => 'string',
         'to_name' => 'string',
         'to_email' => 'string',
+        'to_phone_number' => 'string',
         'ipaddress' => 'string',
         'action' => 'string',
         'timestamp' => 'int',
@@ -81,8 +85,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'name' => null,
         'email' => null,
+        'from_name' => null,
+        'from_email' => null,
+        'from_phone_number' => null,
         'to_name' => null,
         'to_email' => null,
+        'to_phone_number' => null,
         'ipaddress' => null,
         'action' => null,
         'timestamp' => 'int64',
@@ -100,8 +108,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => true,
         'name' => true,
         'email' => true,
+        'from_name' => true,
+        'from_email' => true,
+        'from_phone_number' => true,
         'to_name' => true,
         'to_email' => true,
+        'to_phone_number' => true,
         'ipaddress' => true,
         'action' => false,
         'timestamp' => false,
@@ -199,8 +211,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'name' => 'name',
         'email' => 'email',
+        'from_name' => 'fromName',
+        'from_email' => 'fromEmail',
+        'from_phone_number' => 'fromPhoneNumber',
         'to_name' => 'toName',
         'to_email' => 'toEmail',
+        'to_phone_number' => 'toPhoneNumber',
         'ipaddress' => 'ipaddress',
         'action' => 'action',
         'timestamp' => 'timestamp',
@@ -218,8 +234,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'name' => 'setName',
         'email' => 'setEmail',
+        'from_name' => 'setFromName',
+        'from_email' => 'setFromEmail',
+        'from_phone_number' => 'setFromPhoneNumber',
         'to_name' => 'setToName',
         'to_email' => 'setToEmail',
+        'to_phone_number' => 'setToPhoneNumber',
         'ipaddress' => 'setIpaddress',
         'action' => 'setAction',
         'timestamp' => 'setTimestamp',
@@ -237,8 +257,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'name' => 'getName',
         'email' => 'getEmail',
+        'from_name' => 'getFromName',
+        'from_email' => 'getFromEmail',
+        'from_phone_number' => 'getFromPhoneNumber',
         'to_name' => 'getToName',
         'to_email' => 'getToEmail',
+        'to_phone_number' => 'getToPhoneNumber',
         'ipaddress' => 'getIpaddress',
         'action' => 'getAction',
         'timestamp' => 'getTimestamp',
@@ -478,8 +502,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('from_name', $data ?? [], null);
+        $this->setIfExists('from_email', $data ?? [], null);
+        $this->setIfExists('from_phone_number', $data ?? [], null);
         $this->setIfExists('to_name', $data ?? [], null);
         $this->setIfExists('to_email', $data ?? [], null);
+        $this->setIfExists('to_phone_number', $data ?? [], null);
         $this->setIfExists('ipaddress', $data ?? [], null);
         $this->setIfExists('action', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
@@ -642,6 +670,108 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets from_name
+     *
+     * @return string|null
+     */
+    public function getFromName()
+    {
+        return $this->container['from_name'];
+    }
+
+    /**
+     * Sets from_name
+     *
+     * @param string|null $from_name from_name
+     *
+     * @return self
+     */
+    public function setFromName($from_name)
+    {
+        if (is_null($from_name)) {
+            array_push($this->openAPINullablesSetToNull, 'from_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_name'] = $from_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_email
+     *
+     * @return string|null
+     */
+    public function getFromEmail()
+    {
+        return $this->container['from_email'];
+    }
+
+    /**
+     * Sets from_email
+     *
+     * @param string|null $from_email from_email
+     *
+     * @return self
+     */
+    public function setFromEmail($from_email)
+    {
+        if (is_null($from_email)) {
+            array_push($this->openAPINullablesSetToNull, 'from_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_email'] = $from_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_phone_number
+     *
+     * @return string|null
+     */
+    public function getFromPhoneNumber()
+    {
+        return $this->container['from_phone_number'];
+    }
+
+    /**
+     * Sets from_phone_number
+     *
+     * @param string|null $from_phone_number from_phone_number
+     *
+     * @return self
+     */
+    public function setFromPhoneNumber($from_phone_number)
+    {
+        if (is_null($from_phone_number)) {
+            array_push($this->openAPINullablesSetToNull, 'from_phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_phone_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_phone_number'] = $from_phone_number;
+
+        return $this;
+    }
+
+    /**
      * Gets to_name
      *
      * @return string|null
@@ -705,6 +835,40 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['to_email'] = $to_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_phone_number
+     *
+     * @return string|null
+     */
+    public function getToPhoneNumber()
+    {
+        return $this->container['to_phone_number'];
+    }
+
+    /**
+     * Sets to_phone_number
+     *
+     * @param string|null $to_phone_number to_phone_number
+     *
+     * @return self
+     */
+    public function setToPhoneNumber($to_phone_number)
+    {
+        if (is_null($to_phone_number)) {
+            array_push($this->openAPINullablesSetToNull, 'to_phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('to_phone_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['to_phone_number'] = $to_phone_number;
 
         return $this;
     }

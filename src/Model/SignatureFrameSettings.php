@@ -1,6 +1,6 @@
 <?php
 /**
- * EditableDateFieldSettings
+ * SignatureFrameSettings
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \BoldSign\ObjectSerializer;
 
 /**
- * EditableDateFieldSettings Class Doc Comment
+ * SignatureFrameSettings Class Doc Comment
  *
  * @category Class
  * @package  BoldSign
@@ -40,7 +40,7 @@ use \BoldSign\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSerializable
+class SignatureFrameSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EditableDateFieldSettings';
+    protected static $openAPIModelName = 'SignatureFrameSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date_format' => 'string',
-        'min_date' => '\DateTime',
-        'max_date' => '\DateTime',
-        'time_format' => 'string'
+        'enable_signature_frame' => 'bool',
+        'show_recipient_name' => 'bool',
+        'show_recipient_email' => 'bool',
+        'show_time_stamp' => 'bool'
     ];
 
     /**
@@ -71,10 +71,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date_format' => null,
-        'min_date' => 'date-time',
-        'max_date' => 'date-time',
-        'time_format' => null
+        'enable_signature_frame' => null,
+        'show_recipient_name' => null,
+        'show_recipient_email' => null,
+        'show_time_stamp' => null
     ];
 
     /**
@@ -83,10 +83,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date_format' => true,
-        'min_date' => true,
-        'max_date' => true,
-        'time_format' => true
+        'enable_signature_frame' => false,
+        'show_recipient_name' => false,
+        'show_recipient_email' => false,
+        'show_time_stamp' => false
     ];
 
     /**
@@ -175,10 +175,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'date_format' => 'dateFormat',
-        'min_date' => 'minDate',
-        'max_date' => 'maxDate',
-        'time_format' => 'timeFormat'
+        'enable_signature_frame' => 'enableSignatureFrame',
+        'show_recipient_name' => 'showRecipientName',
+        'show_recipient_email' => 'showRecipientEmail',
+        'show_time_stamp' => 'showTimeStamp'
     ];
 
     /**
@@ -187,10 +187,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'date_format' => 'setDateFormat',
-        'min_date' => 'setMinDate',
-        'max_date' => 'setMaxDate',
-        'time_format' => 'setTimeFormat'
+        'enable_signature_frame' => 'setEnableSignatureFrame',
+        'show_recipient_name' => 'setShowRecipientName',
+        'show_recipient_email' => 'setShowRecipientEmail',
+        'show_time_stamp' => 'setShowTimeStamp'
     ];
 
     /**
@@ -199,10 +199,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'date_format' => 'getDateFormat',
-        'min_date' => 'getMinDate',
-        'max_date' => 'getMaxDate',
-        'time_format' => 'getTimeFormat'
+        'enable_signature_frame' => 'getEnableSignatureFrame',
+        'show_recipient_name' => 'getShowRecipientName',
+        'show_recipient_email' => 'getShowRecipientEmail',
+        'show_time_stamp' => 'getShowTimeStamp'
     ];
 
     /**
@@ -262,10 +262,10 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('date_format', $data ?? [], null);
-        $this->setIfExists('min_date', $data ?? [], null);
-        $this->setIfExists('max_date', $data ?? [], null);
-        $this->setIfExists('time_format', $data ?? [], null);
+        $this->setIfExists('enable_signature_frame', $data ?? [], false);
+        $this->setIfExists('show_recipient_name', $data ?? [], false);
+        $this->setIfExists('show_recipient_email', $data ?? [], false);
+        $this->setIfExists('show_time_stamp', $data ?? [], false);
     }
 
     /**
@@ -295,9 +295,6 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['date_format'] === null) {
-            $invalidProperties[] = "'date_format' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -314,137 +311,109 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets date_format
+     * Gets enable_signature_frame
      *
-     * @return string
+     * @return bool|null
      */
-    public function getDateFormat()
+    public function getEnableSignatureFrame()
     {
-        return $this->container['date_format'];
+        return $this->container['enable_signature_frame'];
     }
 
     /**
-     * Sets date_format
+     * Sets enable_signature_frame
      *
-     * @param string $date_format date_format
+     * @param bool|null $enable_signature_frame enable_signature_frame
      *
      * @return self
      */
-    public function setDateFormat($date_format)
+    public function setEnableSignatureFrame($enable_signature_frame)
     {
-        if (is_null($date_format)) {
-            array_push($this->openAPINullablesSetToNull, 'date_format');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date_format', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($enable_signature_frame)) {
+            throw new \InvalidArgumentException('non-nullable enable_signature_frame cannot be null');
         }
-        $this->container['date_format'] = $date_format;
+        $this->container['enable_signature_frame'] = $enable_signature_frame;
 
         return $this;
     }
 
     /**
-     * Gets min_date
+     * Gets show_recipient_name
      *
-     * @return \DateTime|null
+     * @return bool|null
      */
-    public function getMinDate()
+    public function getShowRecipientName()
     {
-        return $this->container['min_date'];
+        return $this->container['show_recipient_name'];
     }
 
     /**
-     * Sets min_date
+     * Sets show_recipient_name
      *
-     * @param \DateTime|null $min_date min_date
+     * @param bool|null $show_recipient_name show_recipient_name
      *
      * @return self
      */
-    public function setMinDate($min_date)
+    public function setShowRecipientName($show_recipient_name)
     {
-        if (is_null($min_date)) {
-            array_push($this->openAPINullablesSetToNull, 'min_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('min_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($show_recipient_name)) {
+            throw new \InvalidArgumentException('non-nullable show_recipient_name cannot be null');
         }
-        $this->container['min_date'] = $min_date;
+        $this->container['show_recipient_name'] = $show_recipient_name;
 
         return $this;
     }
 
     /**
-     * Gets max_date
+     * Gets show_recipient_email
      *
-     * @return \DateTime|null
+     * @return bool|null
      */
-    public function getMaxDate()
+    public function getShowRecipientEmail()
     {
-        return $this->container['max_date'];
+        return $this->container['show_recipient_email'];
     }
 
     /**
-     * Sets max_date
+     * Sets show_recipient_email
      *
-     * @param \DateTime|null $max_date max_date
+     * @param bool|null $show_recipient_email show_recipient_email
      *
      * @return self
      */
-    public function setMaxDate($max_date)
+    public function setShowRecipientEmail($show_recipient_email)
     {
-        if (is_null($max_date)) {
-            array_push($this->openAPINullablesSetToNull, 'max_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($show_recipient_email)) {
+            throw new \InvalidArgumentException('non-nullable show_recipient_email cannot be null');
         }
-        $this->container['max_date'] = $max_date;
+        $this->container['show_recipient_email'] = $show_recipient_email;
 
         return $this;
     }
 
     /**
-     * Gets time_format
+     * Gets show_time_stamp
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getTimeFormat()
+    public function getShowTimeStamp()
     {
-        return $this->container['time_format'];
+        return $this->container['show_time_stamp'];
     }
 
     /**
-     * Sets time_format
+     * Sets show_time_stamp
      *
-     * @param string|null $time_format time_format
+     * @param bool|null $show_time_stamp show_time_stamp
      *
      * @return self
      */
-    public function setTimeFormat($time_format)
+    public function setShowTimeStamp($show_time_stamp)
     {
-        if (is_null($time_format)) {
-            array_push($this->openAPINullablesSetToNull, 'time_format');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('time_format', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($show_time_stamp)) {
+            throw new \InvalidArgumentException('non-nullable show_time_stamp cannot be null');
         }
-        $this->container['time_format'] = $time_format;
+        $this->container['show_time_stamp'] = $show_time_stamp;
 
         return $this;
     }

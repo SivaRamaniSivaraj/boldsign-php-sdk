@@ -20,5 +20,7 @@ Name | Type | Description | Notes
 **cursor** | **int** |  | [optional]
 **brand_id** | **string** |  | [optional]
 **scheduled_send_time** | **int** |  | [optional]
+**in_editing_mode** | **bool** |  | [optional]
+**display_status** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

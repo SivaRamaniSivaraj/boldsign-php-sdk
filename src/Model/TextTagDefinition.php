@@ -87,7 +87,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => 'int',
         'formula_field_settings' => '\BoldSign\Model\FormulaFieldSettings',
         'resize_option' => 'string',
-        'collaboration_settings' => '\BoldSign\Model\CollaborationSettings'
+        'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
+        'is_masked' => 'bool'
     ];
 
     /**
@@ -128,7 +129,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => 'int32',
         'formula_field_settings' => null,
         'resize_option' => null,
-        'collaboration_settings' => null
+        'collaboration_settings' => null,
+        'is_masked' => null
     ];
 
     /**
@@ -167,7 +169,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => false,
         'formula_field_settings' => false,
         'resize_option' => true,
-        'collaboration_settings' => false
+        'collaboration_settings' => false,
+        'is_masked' => true
     ];
 
     /**
@@ -286,7 +289,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => 'characterLimit',
         'formula_field_settings' => 'formulaFieldSettings',
         'resize_option' => 'resizeOption',
-        'collaboration_settings' => 'collaborationSettings'
+        'collaboration_settings' => 'collaborationSettings',
+        'is_masked' => 'isMasked'
     ];
 
     /**
@@ -325,7 +329,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => 'setCharacterLimit',
         'formula_field_settings' => 'setFormulaFieldSettings',
         'resize_option' => 'setResizeOption',
-        'collaboration_settings' => 'setCollaborationSettings'
+        'collaboration_settings' => 'setCollaborationSettings',
+        'is_masked' => 'setIsMasked'
     ];
 
     /**
@@ -364,7 +369,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'character_limit' => 'getCharacterLimit',
         'formula_field_settings' => 'getFormulaFieldSettings',
         'resize_option' => 'getResizeOption',
-        'collaboration_settings' => 'getCollaborationSettings'
+        'collaboration_settings' => 'getCollaborationSettings',
+        'is_masked' => 'getIsMasked'
     ];
 
     /**
@@ -549,6 +555,7 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('formula_field_settings', $data ?? [], null);
         $this->setIfExists('resize_option', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
+        $this->setIfExists('is_masked', $data ?? [], false);
     }
 
     /**
@@ -1666,6 +1673,40 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable collaboration_settings cannot be null');
         }
         $this->container['collaboration_settings'] = $collaboration_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_masked
+     *
+     * @return bool|null
+     */
+    public function getIsMasked()
+    {
+        return $this->container['is_masked'];
+    }
+
+    /**
+     * Sets is_masked
+     *
+     * @param bool|null $is_masked is_masked
+     *
+     * @return self
+     */
+    public function setIsMasked($is_masked)
+    {
+        if (is_null($is_masked)) {
+            array_push($this->openAPINullablesSetToNull, 'is_masked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_masked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_masked'] = $is_masked;
 
         return $this;
     }
