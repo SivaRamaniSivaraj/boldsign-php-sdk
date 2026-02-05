@@ -98,7 +98,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'bool',
         'allow_delete_form_field' => 'bool',
         'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'is_masked' => 'bool'
     ];
 
     /**
@@ -150,7 +151,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => null,
         'allow_delete_form_field' => null,
         'collaboration_settings' => null,
-        'hidden' => null
+        'hidden' => null,
+        'is_masked' => null
     ];
 
     /**
@@ -200,7 +202,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => false,
         'allow_delete_form_field' => false,
         'collaboration_settings' => false,
-        'hidden' => false
+        'hidden' => false,
+        'is_masked' => false
     ];
 
     /**
@@ -330,7 +333,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'allowEditFormField',
         'allow_delete_form_field' => 'allowDeleteFormField',
         'collaboration_settings' => 'collaborationSettings',
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'is_masked' => 'isMasked'
     ];
 
     /**
@@ -380,7 +384,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'setAllowEditFormField',
         'allow_delete_form_field' => 'setAllowDeleteFormField',
         'collaboration_settings' => 'setCollaborationSettings',
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'is_masked' => 'setIsMasked'
     ];
 
     /**
@@ -430,7 +435,8 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'getAllowEditFormField',
         'allow_delete_form_field' => 'getAllowDeleteFormField',
         'collaboration_settings' => 'getCollaborationSettings',
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'is_masked' => 'getIsMasked'
     ];
 
     /**
@@ -606,6 +612,7 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('allow_delete_form_field', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
         $this->setIfExists('hidden', $data ?? [], null);
+        $this->setIfExists('is_masked', $data ?? [], false);
     }
 
     /**
@@ -1989,6 +1996,33 @@ class DocumentFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable hidden cannot be null');
         }
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_masked
+     *
+     * @return bool|null
+     */
+    public function getIsMasked()
+    {
+        return $this->container['is_masked'];
+    }
+
+    /**
+     * Sets is_masked
+     *
+     * @param bool|null $is_masked is_masked
+     *
+     * @return self
+     */
+    public function setIsMasked($is_masked)
+    {
+        if (is_null($is_masked)) {
+            throw new \InvalidArgumentException('non-nullable is_masked cannot be null');
+        }
+        $this->container['is_masked'] = $is_masked;
 
         return $this;
     }

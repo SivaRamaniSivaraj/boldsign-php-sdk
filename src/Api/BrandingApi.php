@@ -551,15 +551,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \BoldSign\Model\BrandCreated|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
      */
-    public function createBrand($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['createBrand'][0])
+    public function createBrand($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['createBrand'][0])
     {
-        list($response) = $this->createBrandWithHttpInfo($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        list($response) = $this->createBrandWithHttpInfo($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
         return $response;
     }
 
@@ -597,15 +601,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \BoldSign\Model\BrandCreated|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBrandWithHttpInfo($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['createBrand'][0])
+    public function createBrandWithHttpInfo($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['createBrand'][0])
     {
-        $request = $this->createBrandRequest($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        $request = $this->createBrandRequest($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -854,14 +862,18 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBrandAsync($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['createBrand'][0])
+    public function createBrandAsync($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['createBrand'][0])
     {
-        return $this->createBrandAsyncWithHttpInfo($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType)
+        return $this->createBrandAsyncWithHttpInfo($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -903,15 +915,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBrandAsyncWithHttpInfo($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['createBrand'][0])
+    public function createBrandAsyncWithHttpInfo($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['createBrand'][0])
     {
         $returnType = '\BoldSign\Model\BrandCreated';
-        $request = $this->createBrandRequest($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        $request = $this->createBrandRequest($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -981,12 +997,16 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createBrandRequest($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['createBrand'][0])
+    public function createBrandRequest($brand_name, $brand_logo, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['createBrand'][0])
     {
 
         // verify the required parameter 'brand_name' is set
@@ -1033,6 +1053,10 @@ class BrandingApi
             throw new \InvalidArgumentException('invalid value for "$document_expiry_settings_reminder_days" when calling BrandingApi.createBrand, must be bigger than or equal to 1.');
         }
         
+
+
+
+
 
 
 
@@ -1170,6 +1194,22 @@ class BrandingApi
         // form params
         if ($custom_domain_settings_from_name !== null) {
             $formParams['CustomDomainSettings.FromName'] = ObjectSerializer::toFormValue($custom_domain_settings_from_name);
+        }
+        // form params
+        if ($signature_frame_settings_enable_signature_frame !== null) {
+            $formParams['SignatureFrameSettings.EnableSignatureFrame'] = ObjectSerializer::toFormValue($signature_frame_settings_enable_signature_frame);
+        }
+        // form params
+        if ($signature_frame_settings_show_recipient_name !== null) {
+            $formParams['SignatureFrameSettings.ShowRecipientName'] = ObjectSerializer::toFormValue($signature_frame_settings_show_recipient_name);
+        }
+        // form params
+        if ($signature_frame_settings_show_recipient_email !== null) {
+            $formParams['SignatureFrameSettings.ShowRecipientEmail'] = ObjectSerializer::toFormValue($signature_frame_settings_show_recipient_email);
+        }
+        // form params
+        if ($signature_frame_settings_show_time_stamp !== null) {
+            $formParams['SignatureFrameSettings.ShowTimeStamp'] = ObjectSerializer::toFormValue($signature_frame_settings_show_time_stamp);
         }
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1684,15 +1724,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \BoldSign\Model\BrandCreated|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
      */
-    public function editBrand($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['editBrand'][0])
+    public function editBrand($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['editBrand'][0])
     {
-        list($response) = $this->editBrandWithHttpInfo($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        list($response) = $this->editBrandWithHttpInfo($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
         return $response;
     }
 
@@ -1731,15 +1775,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \BoldSign\Model\BrandCreated|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editBrandWithHttpInfo($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['editBrand'][0])
+    public function editBrandWithHttpInfo($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['editBrand'][0])
     {
-        $request = $this->editBrandRequest($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        $request = $this->editBrandRequest($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1989,14 +2037,18 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editBrandAsync($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['editBrand'][0])
+    public function editBrandAsync($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['editBrand'][0])
     {
-        return $this->editBrandAsyncWithHttpInfo($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType)
+        return $this->editBrandAsyncWithHttpInfo($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2039,15 +2091,19 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editBrandAsyncWithHttpInfo($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['editBrand'][0])
+    public function editBrandAsyncWithHttpInfo($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['editBrand'][0])
     {
         $returnType = '\BoldSign\Model\BrandCreated';
-        $request = $this->editBrandRequest($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $contentType);
+        $request = $this->editBrandRequest($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2118,12 +2174,16 @@ class BrandingApi
      * @param  int $document_expiry_settings_reminder_count (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
+     * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_name (optional, default to false)
+     * @param  bool $signature_frame_settings_show_recipient_email (optional, default to false)
+     * @param  bool $signature_frame_settings_show_time_stamp (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function editBrandRequest($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, string $contentType = self::contentTypes['editBrand'][0])
+    public function editBrandRequest($brand_id, $brand_name = null, $brand_logo = null, $background_color = null, $button_color = null, $button_text_color = null, $email_display_name = null, $disclaimer_description = null, $disclaimer_title = null, $redirect_url = null, $is_default = false, $can_hide_tag_line = false, $combine_audit_trail = false, $combine_attachments = false, $exclude_audit_trail_from_email = false, $email_signed_document = 'Attachment', $document_time_zone = null, $show_built_in_form_fields = true, $allow_custom_field_creation = false, $show_shared_custom_fields = false, $hide_decline = null, $hide_save = null, $document_expiry_settings_expiry_date_type = null, $document_expiry_settings_expiry_value = null, $document_expiry_settings_enable_default_expiry_alert = null, $document_expiry_settings_enable_auto_reminder = null, $document_expiry_settings_reminder_days = null, $document_expiry_settings_reminder_count = null, $custom_domain_settings_domain_name = null, $custom_domain_settings_from_name = null, $signature_frame_settings_enable_signature_frame = false, $signature_frame_settings_show_recipient_name = false, $signature_frame_settings_show_recipient_email = false, $signature_frame_settings_show_time_stamp = false, string $contentType = self::contentTypes['editBrand'][0])
     {
 
         // verify the required parameter 'brand_id' is set
@@ -2165,6 +2225,10 @@ class BrandingApi
             throw new \InvalidArgumentException('invalid value for "$document_expiry_settings_reminder_days" when calling BrandingApi.editBrand, must be bigger than or equal to 1.');
         }
         
+
+
+
+
 
 
 
@@ -2311,6 +2375,22 @@ class BrandingApi
         // form params
         if ($custom_domain_settings_from_name !== null) {
             $formParams['CustomDomainSettings.FromName'] = ObjectSerializer::toFormValue($custom_domain_settings_from_name);
+        }
+        // form params
+        if ($signature_frame_settings_enable_signature_frame !== null) {
+            $formParams['SignatureFrameSettings.EnableSignatureFrame'] = ObjectSerializer::toFormValue($signature_frame_settings_enable_signature_frame);
+        }
+        // form params
+        if ($signature_frame_settings_show_recipient_name !== null) {
+            $formParams['SignatureFrameSettings.ShowRecipientName'] = ObjectSerializer::toFormValue($signature_frame_settings_show_recipient_name);
+        }
+        // form params
+        if ($signature_frame_settings_show_recipient_email !== null) {
+            $formParams['SignatureFrameSettings.ShowRecipientEmail'] = ObjectSerializer::toFormValue($signature_frame_settings_show_recipient_email);
+        }
+        // form params
+        if ($signature_frame_settings_show_time_stamp !== null) {
+            $formParams['SignatureFrameSettings.ShowTimeStamp'] = ObjectSerializer::toFormValue($signature_frame_settings_show_time_stamp);
         }
 
         $headers = $this->headerSelector->selectHeaders(

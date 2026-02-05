@@ -81,7 +81,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => 'bool',
         'document_expiry_settings' => '\BoldSign\Model\DocumentExpirySettings',
         'custom_domain_settings' => '\BoldSign\Model\CustomDomainSettings',
-        'is_domain_verified' => 'bool'
+        'is_domain_verified' => 'bool',
+        'signature_frame_settings' => '\BoldSign\Model\SignatureFrameSettings'
     ];
 
     /**
@@ -116,7 +117,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => null,
         'document_expiry_settings' => null,
         'custom_domain_settings' => null,
-        'is_domain_verified' => null
+        'is_domain_verified' => null,
+        'signature_frame_settings' => null
     ];
 
     /**
@@ -149,7 +151,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => false,
         'document_expiry_settings' => false,
         'custom_domain_settings' => false,
-        'is_domain_verified' => false
+        'is_domain_verified' => false,
+        'signature_frame_settings' => false
     ];
 
     /**
@@ -262,7 +265,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => 'hideSave',
         'document_expiry_settings' => 'documentExpirySettings',
         'custom_domain_settings' => 'customDomainSettings',
-        'is_domain_verified' => 'isDomainVerified'
+        'is_domain_verified' => 'isDomainVerified',
+        'signature_frame_settings' => 'signatureFrameSettings'
     ];
 
     /**
@@ -295,7 +299,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => 'setHideSave',
         'document_expiry_settings' => 'setDocumentExpirySettings',
         'custom_domain_settings' => 'setCustomDomainSettings',
-        'is_domain_verified' => 'setIsDomainVerified'
+        'is_domain_verified' => 'setIsDomainVerified',
+        'signature_frame_settings' => 'setSignatureFrameSettings'
     ];
 
     /**
@@ -328,7 +333,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_save' => 'getHideSave',
         'document_expiry_settings' => 'getDocumentExpirySettings',
         'custom_domain_settings' => 'getCustomDomainSettings',
-        'is_domain_verified' => 'getIsDomainVerified'
+        'is_domain_verified' => 'getIsDomainVerified',
+        'signature_frame_settings' => 'getSignatureFrameSettings'
     ];
 
     /**
@@ -428,6 +434,7 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('document_expiry_settings', $data ?? [], null);
         $this->setIfExists('custom_domain_settings', $data ?? [], null);
         $this->setIfExists('is_domain_verified', $data ?? [], null);
+        $this->setIfExists('signature_frame_settings', $data ?? [], null);
     }
 
     /**
@@ -1239,6 +1246,33 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_domain_verified cannot be null');
         }
         $this->container['is_domain_verified'] = $is_domain_verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets signature_frame_settings
+     *
+     * @return \BoldSign\Model\SignatureFrameSettings|null
+     */
+    public function getSignatureFrameSettings()
+    {
+        return $this->container['signature_frame_settings'];
+    }
+
+    /**
+     * Sets signature_frame_settings
+     *
+     * @param \BoldSign\Model\SignatureFrameSettings|null $signature_frame_settings signature_frame_settings
+     *
+     * @return self
+     */
+    public function setSignatureFrameSettings($signature_frame_settings)
+    {
+        if (is_null($signature_frame_settings)) {
+            throw new \InvalidArgumentException('non-nullable signature_frame_settings cannot be null');
+        }
+        $this->container['signature_frame_settings'] = $signature_frame_settings;
 
         return $this;
     }

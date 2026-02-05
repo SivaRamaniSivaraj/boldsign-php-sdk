@@ -96,7 +96,6 @@ docs/Model/GroupSigner.md
 docs/Model/GroupSignerSettings.md
 docs/Model/IdDocument.md
 docs/Model/IdReport.md
-docs/Model/IdVerification.md
 docs/Model/IdVerificationDetails.md
 docs/Model/IdentityVerificationSettings.md
 docs/Model/ImageInfo.md
@@ -122,6 +121,7 @@ docs/Model/SendForSignFromTemplateForm.md
 docs/Model/SenderIdentityCreated.md
 docs/Model/SenderIdentityList.md
 docs/Model/SenderIdentityViewModel.md
+docs/Model/SignatureFrameSettings.md
 docs/Model/SignerAuthenticationSettings.md
 docs/Model/Size.md
 docs/Model/TeamCreated.md
@@ -258,7 +258,6 @@ src/Model/GroupSigner.php
 src/Model/GroupSignerSettings.php
 src/Model/IdDocument.php
 src/Model/IdReport.php
-src/Model/IdVerification.php
 src/Model/IdVerificationDetails.php
 src/Model/IdentityVerificationSettings.php
 src/Model/ImageInfo.php
@@ -285,6 +284,7 @@ src/Model/SendForSignFromTemplateForm.php
 src/Model/SenderIdentityCreated.php
 src/Model/SenderIdentityList.php
 src/Model/SenderIdentityViewModel.php
+src/Model/SignatureFrameSettings.php
 src/Model/SignerAuthenticationSettings.php
 src/Model/Size.php
 src/Model/TeamCreated.php

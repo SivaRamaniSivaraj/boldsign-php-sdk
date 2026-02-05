@@ -97,7 +97,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => 'string',
         'allow_edit_form_field' => 'bool',
         'allow_delete_form_field' => 'bool',
-        'collaboration_settings' => '\BoldSign\Model\CollaborationSettings'
+        'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
+        'is_masked' => 'bool'
     ];
 
     /**
@@ -148,7 +149,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => null,
         'allow_edit_form_field' => null,
         'allow_delete_form_field' => null,
-        'collaboration_settings' => null
+        'collaboration_settings' => null,
+        'is_masked' => null
     ];
 
     /**
@@ -197,7 +199,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => true,
         'allow_edit_form_field' => true,
         'allow_delete_form_field' => true,
-        'collaboration_settings' => false
+        'collaboration_settings' => false,
+        'is_masked' => true
     ];
 
     /**
@@ -326,7 +329,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => 'resizeOption',
         'allow_edit_form_field' => 'allowEditFormField',
         'allow_delete_form_field' => 'allowDeleteFormField',
-        'collaboration_settings' => 'collaborationSettings'
+        'collaboration_settings' => 'collaborationSettings',
+        'is_masked' => 'isMasked'
     ];
 
     /**
@@ -375,7 +379,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => 'setResizeOption',
         'allow_edit_form_field' => 'setAllowEditFormField',
         'allow_delete_form_field' => 'setAllowDeleteFormField',
-        'collaboration_settings' => 'setCollaborationSettings'
+        'collaboration_settings' => 'setCollaborationSettings',
+        'is_masked' => 'setIsMasked'
     ];
 
     /**
@@ -424,7 +429,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'resize_option' => 'getResizeOption',
         'allow_edit_form_field' => 'getAllowEditFormField',
         'allow_delete_form_field' => 'getAllowDeleteFormField',
-        'collaboration_settings' => 'getCollaborationSettings'
+        'collaboration_settings' => 'getCollaborationSettings',
+        'is_masked' => 'getIsMasked'
     ];
 
     /**
@@ -661,6 +667,7 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('allow_edit_form_field', $data ?? [], null);
         $this->setIfExists('allow_delete_form_field', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
+        $this->setIfExists('is_masked', $data ?? [], false);
     }
 
     /**
@@ -2128,6 +2135,40 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable collaboration_settings cannot be null');
         }
         $this->container['collaboration_settings'] = $collaboration_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_masked
+     *
+     * @return bool|null
+     */
+    public function getIsMasked()
+    {
+        return $this->container['is_masked'];
+    }
+
+    /**
+     * Sets is_masked
+     *
+     * @param bool|null $is_masked is_masked
+     *
+     * @return self
+     */
+    public function setIsMasked($is_masked)
+    {
+        if (is_null($is_masked)) {
+            array_push($this->openAPINullablesSetToNull, 'is_masked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_masked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_masked'] = $is_masked;
 
         return $this;
     }

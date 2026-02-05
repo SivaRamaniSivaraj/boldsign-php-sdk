@@ -73,7 +73,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => 'string[]',
         'cursor' => 'int',
         'brand_id' => 'string',
-        'scheduled_send_time' => 'int'
+        'scheduled_send_time' => 'int',
+        'in_editing_mode' => 'bool',
+        'display_status' => 'string'
     ];
 
     /**
@@ -100,7 +102,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => null,
         'cursor' => 'int64',
         'brand_id' => null,
-        'scheduled_send_time' => 'int64'
+        'scheduled_send_time' => 'int64',
+        'in_editing_mode' => null,
+        'display_status' => null
     ];
 
     /**
@@ -125,7 +129,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => true,
         'cursor' => false,
         'brand_id' => true,
-        'scheduled_send_time' => true
+        'scheduled_send_time' => true,
+        'in_editing_mode' => false,
+        'display_status' => true
     ];
 
     /**
@@ -230,7 +236,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => 'labels',
         'cursor' => 'cursor',
         'brand_id' => 'brandId',
-        'scheduled_send_time' => 'scheduledSendTime'
+        'scheduled_send_time' => 'scheduledSendTime',
+        'in_editing_mode' => 'inEditingMode',
+        'display_status' => 'displayStatus'
     ];
 
     /**
@@ -255,7 +263,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => 'setLabels',
         'cursor' => 'setCursor',
         'brand_id' => 'setBrandId',
-        'scheduled_send_time' => 'setScheduledSendTime'
+        'scheduled_send_time' => 'setScheduledSendTime',
+        'in_editing_mode' => 'setInEditingMode',
+        'display_status' => 'setDisplayStatus'
     ];
 
     /**
@@ -280,7 +290,9 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => 'getLabels',
         'cursor' => 'getCursor',
         'brand_id' => 'getBrandId',
-        'scheduled_send_time' => 'getScheduledSendTime'
+        'scheduled_send_time' => 'getScheduledSendTime',
+        'in_editing_mode' => 'getInEditingMode',
+        'display_status' => 'getDisplayStatus'
     ];
 
     /**
@@ -382,6 +394,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cursor', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
+        $this->setIfExists('in_editing_mode', $data ?? [], null);
+        $this->setIfExists('display_status', $data ?? [], null);
     }
 
     /**
@@ -956,6 +970,67 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['scheduled_send_time'] = $scheduled_send_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets in_editing_mode
+     *
+     * @return bool|null
+     */
+    public function getInEditingMode()
+    {
+        return $this->container['in_editing_mode'];
+    }
+
+    /**
+     * Sets in_editing_mode
+     *
+     * @param bool|null $in_editing_mode in_editing_mode
+     *
+     * @return self
+     */
+    public function setInEditingMode($in_editing_mode)
+    {
+        if (is_null($in_editing_mode)) {
+            throw new \InvalidArgumentException('non-nullable in_editing_mode cannot be null');
+        }
+        $this->container['in_editing_mode'] = $in_editing_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_status
+     *
+     * @return string|null
+     */
+    public function getDisplayStatus()
+    {
+        return $this->container['display_status'];
+    }
+
+    /**
+     * Sets display_status
+     *
+     * @param string|null $display_status display_status
+     *
+     * @return self
+     */
+    public function setDisplayStatus($display_status)
+    {
+        if (is_null($display_status)) {
+            array_push($this->openAPINullablesSetToNull, 'display_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['display_status'] = $display_status;
 
         return $this;
     }
