@@ -25,5 +25,8 @@ Name | Type | Description | Notes
 **on_behalf_of** | **string** |  | [optional]
 **labels** | **string[]** |  | [optional]
 **template_labels** | **string[]** |  | [optional]
+**form_field_permission** | [**\BoldSign\Model\FormFieldPermissionWebhookModel**](FormFieldPermissionWebhookModel.md) |  | [optional]
+**group_signer_settings** | [**\BoldSign\Model\GroupSignerSettingsWebhookModel**](GroupSignerSettingsWebhookModel.md) |  | [optional]
+**behalf_of** | [**\BoldSign\Model\BehalfOfWebhookModel**](BehalfOfWebhookModel.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

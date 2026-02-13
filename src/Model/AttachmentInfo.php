@@ -58,9 +58,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'title' => 'string',
-        'allowed_file_types' => 'string',
+        'accepted_file_types' => 'string[]',
         'description' => 'string',
-        'accepted_file_types' => 'string[]'
+        'allowed_file_types' => 'string'
     ];
 
     /**
@@ -72,9 +72,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'title' => null,
-        'allowed_file_types' => null,
+        'accepted_file_types' => null,
         'description' => null,
-        'accepted_file_types' => null
+        'allowed_file_types' => null
     ];
 
     /**
@@ -84,9 +84,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'title' => true,
-        'allowed_file_types' => true,
+        'accepted_file_types' => true,
         'description' => true,
-        'accepted_file_types' => true
+        'allowed_file_types' => true
     ];
 
     /**
@@ -176,9 +176,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'title' => 'title',
-        'allowed_file_types' => 'allowedFileTypes',
+        'accepted_file_types' => 'acceptedFileTypes',
         'description' => 'description',
-        'accepted_file_types' => 'acceptedFileTypes'
+        'allowed_file_types' => 'allowedFileTypes'
     ];
 
     /**
@@ -188,9 +188,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'title' => 'setTitle',
-        'allowed_file_types' => 'setAllowedFileTypes',
+        'accepted_file_types' => 'setAcceptedFileTypes',
         'description' => 'setDescription',
-        'accepted_file_types' => 'setAcceptedFileTypes'
+        'allowed_file_types' => 'setAllowedFileTypes'
     ];
 
     /**
@@ -200,9 +200,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'title' => 'getTitle',
-        'allowed_file_types' => 'getAllowedFileTypes',
+        'accepted_file_types' => 'getAcceptedFileTypes',
         'description' => 'getDescription',
-        'accepted_file_types' => 'getAcceptedFileTypes'
+        'allowed_file_types' => 'getAllowedFileTypes'
     ];
 
     /**
@@ -263,9 +263,9 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('allowed_file_types', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('accepted_file_types', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('allowed_file_types', $data ?? [], null);
     }
 
     /**
@@ -298,8 +298,8 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['allowed_file_types'] === null) {
-            $invalidProperties[] = "'allowed_file_types' can't be null";
+        if ($this->container['accepted_file_types'] === null) {
+            $invalidProperties[] = "'accepted_file_types' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,37 +351,35 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowed_file_types
+     * Gets accepted_file_types
      *
-     * @return string
-     * @deprecated
+     * @return string[]
      */
-    public function getAllowedFileTypes()
+    public function getAcceptedFileTypes()
     {
-        return $this->container['allowed_file_types'];
+        return $this->container['accepted_file_types'];
     }
 
     /**
-     * Sets allowed_file_types
+     * Sets accepted_file_types
      *
-     * @param string $allowed_file_types allowed_file_types
+     * @param string[] $accepted_file_types accepted_file_types
      *
      * @return self
-     * @deprecated
      */
-    public function setAllowedFileTypes($allowed_file_types)
+    public function setAcceptedFileTypes($accepted_file_types)
     {
-        if (is_null($allowed_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'allowed_file_types');
+        if (is_null($accepted_file_types)) {
+            array_push($this->openAPINullablesSetToNull, 'accepted_file_types');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('allowed_file_types', $nullablesSetToNull);
+            $index = array_search('accepted_file_types', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['allowed_file_types'] = $allowed_file_types;
+        $this->container['accepted_file_types'] = $accepted_file_types;
 
         return $this;
     }
@@ -421,35 +419,37 @@ class AttachmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets accepted_file_types
+     * Gets allowed_file_types
      *
-     * @return string[]|null
+     * @return string|null
+     * @deprecated
      */
-    public function getAcceptedFileTypes()
+    public function getAllowedFileTypes()
     {
-        return $this->container['accepted_file_types'];
+        return $this->container['allowed_file_types'];
     }
 
     /**
-     * Sets accepted_file_types
+     * Sets allowed_file_types
      *
-     * @param string[]|null $accepted_file_types accepted_file_types
+     * @param string|null $allowed_file_types allowed_file_types
      *
      * @return self
+     * @deprecated
      */
-    public function setAcceptedFileTypes($accepted_file_types)
+    public function setAllowedFileTypes($allowed_file_types)
     {
-        if (is_null($accepted_file_types)) {
-            array_push($this->openAPINullablesSetToNull, 'accepted_file_types');
+        if (is_null($allowed_file_types)) {
+            array_push($this->openAPINullablesSetToNull, 'allowed_file_types');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accepted_file_types', $nullablesSetToNull);
+            $index = array_search('allowed_file_types', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['accepted_file_types'] = $accepted_file_types;
+        $this->container['allowed_file_types'] = $allowed_file_types;
 
         return $this;
     }

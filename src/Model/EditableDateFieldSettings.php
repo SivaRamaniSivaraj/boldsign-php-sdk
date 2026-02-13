@@ -59,7 +59,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'date_format' => 'string',
         'min_date' => '\DateTime',
-        'max_date' => '\DateTime'
+        'max_date' => '\DateTime',
+        'time_format' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'date_format' => null,
         'min_date' => 'date-time',
-        'max_date' => 'date-time'
+        'max_date' => 'date-time',
+        'time_format' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'date_format' => true,
         'min_date' => true,
-        'max_date' => true
+        'max_date' => true,
+        'time_format' => true
     ];
 
     /**
@@ -174,7 +177,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'date_format' => 'dateFormat',
         'min_date' => 'minDate',
-        'max_date' => 'maxDate'
+        'max_date' => 'maxDate',
+        'time_format' => 'timeFormat'
     ];
 
     /**
@@ -185,7 +189,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'date_format' => 'setDateFormat',
         'min_date' => 'setMinDate',
-        'max_date' => 'setMaxDate'
+        'max_date' => 'setMaxDate',
+        'time_format' => 'setTimeFormat'
     ];
 
     /**
@@ -196,7 +201,8 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'date_format' => 'getDateFormat',
         'min_date' => 'getMinDate',
-        'max_date' => 'getMaxDate'
+        'max_date' => 'getMaxDate',
+        'time_format' => 'getTimeFormat'
     ];
 
     /**
@@ -259,6 +265,7 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('date_format', $data ?? [], null);
         $this->setIfExists('min_date', $data ?? [], null);
         $this->setIfExists('max_date', $data ?? [], null);
+        $this->setIfExists('time_format', $data ?? [], null);
     }
 
     /**
@@ -404,6 +411,40 @@ class EditableDateFieldSettings implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['max_date'] = $max_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_format
+     *
+     * @return string|null
+     */
+    public function getTimeFormat()
+    {
+        return $this->container['time_format'];
+    }
+
+    /**
+     * Sets time_format
+     *
+     * @param string|null $time_format time_format
+     *
+     * @return self
+     */
+    public function setTimeFormat($time_format)
+    {
+        if (is_null($time_format)) {
+            array_push($this->openAPINullablesSetToNull, 'time_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('time_format', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['time_format'] = $time_format;
 
         return $this;
     }

@@ -26,6 +26,9 @@ Name | Type | Description | Notes
 **document_download_option** | **string** |  | [optional]
 **meta_data** | **array<string,string>** |  | [optional]
 **failed_delivery_mode** | **string** |  | [optional]
+**behalf_of** | [**\BoldSign\Model\BehalfOfWebhookModel**](BehalfOfWebhookModel.md) |  | [optional]
+**allowed_signature_types** | **string[]** |  | [optional]
+**group_signer_settings** | [**\BoldSign\Model\GroupSignerSettingsWebhookModel**](GroupSignerSettingsWebhookModel.md) |  | [optional]
 **template_id** | **string** |  | [optional]
 **allow_new_files** | **bool** |  | [optional]
 **allow_modify_files** | **bool** |  | [optional]
@@ -35,6 +38,7 @@ Name | Type | Description | Notes
 **template_description** | **string** |  | [optional]
 **is_template** | **bool** |  | [optional] [default to false]
 **template_labels** | **string[]** |  | [optional]
+**form_field_permission** | [**\BoldSign\Model\FormFieldPermissionWebhookModel**](FormFieldPermissionWebhookModel.md) |  | [optional]
 **id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **email** | **string** |  | [optional]
@@ -42,6 +46,7 @@ Name | Type | Description | Notes
 **approved_date_time** | **\DateTime** |  | [optional]
 **redirect_url** | **string** |  | [optional]
 **created_by** | [**\BoldSign\Model\SenderIdentityCreator**](SenderIdentityCreator.md) |  | [optional]
+**locale** | **string** |  | [optional]
 **signer_detail** | [**\BoldSign\Model\DocumentSignerWebhookModel**](DocumentSignerWebhookModel.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

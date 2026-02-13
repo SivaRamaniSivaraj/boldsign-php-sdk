@@ -7,8 +7,10 @@ All URIs are relative to https://api.boldsign.com, except if the operation defin
 | [**addAuthentication()**](DocumentApi.md#addAuthentication) | **PATCH** /v1/document/addAuthentication | The add authentication to recipient. |
 | [**addTag()**](DocumentApi.md#addTag) | **PATCH** /v1/document/addTags | Add the Tags in Documents. |
 | [**behalfDocuments()**](DocumentApi.md#behalfDocuments) | **GET** /v1/document/behalfList | Gets the behalf documents. |
+| [**cancelEditing()**](DocumentApi.md#cancelEditing) | **POST** /v1-beta/document/cancelEditing | Cancels editing for a document that is currently in edit-mode. |
 | [**changeAccessCode()**](DocumentApi.md#changeAccessCode) | **PATCH** /v1/document/changeAccessCode | Changes the access code for the given document signer. |
 | [**changeRecipient()**](DocumentApi.md#changeRecipient) | **PATCH** /v1/document/changeRecipient | Change recipient details of a document. |
+| [**createEmbeddedEditUrl()**](DocumentApi.md#createEmbeddedEditUrl) | **POST** /v1-beta/document/createEmbeddedEditUrl | Generates an embedded edit URL that allows the document editing process to be integrated into your application. |
 | [**createEmbeddedRequestUrlDocument()**](DocumentApi.md#createEmbeddedRequestUrlDocument) | **POST** /v1/document/createEmbeddedRequestUrl | Generates a send URL which embeds document sending process into your application. |
 | [**deleteDocument()**](DocumentApi.md#deleteDocument) | **DELETE** /v1/document/delete | Delete the document. |
 | [**deleteTag()**](DocumentApi.md#deleteTag) | **DELETE** /v1/document/deleteTags | Delete the Tags in Documents. |
@@ -204,6 +206,58 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `cancelEditing()`
+
+```php
+cancelEditing($document_id, $on_behalf_of)
+```
+
+Cancels editing for a document that is currently in edit-mode.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$config = new BoldSign\Configuration();
+$config->setApiKey('YOUR_API_KEY');
+
+$apiInstance = new BoldSign\Api\DocumentApi($config);
+$document_id = 'document_id_example'; // string | The document id.
+$on_behalf_of = 'on_behalf_of_example'; // string | The onbehalfof email id.
+
+try {
+    $apiInstance->cancelEditing($document_id, $on_behalf_of);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentApi->cancelEditing: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **document_id** | **string**| The document id. | |
+| **on_behalf_of** | **string**| The onbehalfof email id. | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[X-API-KEY](../../README.md#X-API-KEY), [Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `changeAccessCode()`
 
 ```php
@@ -307,6 +361,59 @@ void (empty response body)
 
 - **Content-Type**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/json-patch+json`, `text/json`, `application/*+json`
 - **Accept**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/octet-stream`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createEmbeddedEditUrl()`
+
+```php
+createEmbeddedEditUrl($document_id, $embedded_document_edit_json_request): \BoldSign\Model\EmbeddedDocumentEdited
+```
+
+Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$config = new BoldSign\Configuration();
+$config->setApiKey('YOUR_API_KEY');
+
+$apiInstance = new BoldSign\Api\DocumentApi($config);
+$document_id = 'document_id_example'; // string | The document id.
+$embedded_document_edit_json_request = new \BoldSign\Model\EmbeddedDocumentEditJsonRequest(); // \BoldSign\Model\EmbeddedDocumentEditJsonRequest | The embedded edit document request body.
+
+try {
+    $result = $apiInstance->createEmbeddedEditUrl($document_id, $embedded_document_edit_json_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentApi->createEmbeddedEditUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **document_id** | **string**| The document id. | |
+| **embedded_document_edit_json_request** | [**\BoldSign\Model\EmbeddedDocumentEditJsonRequest**](../Model/EmbeddedDocumentEditJsonRequest.md)| The embedded edit document request body. | [optional] |
+
+### Return type
+
+[**\BoldSign\Model\EmbeddedDocumentEdited**](../Model/EmbeddedDocumentEdited.md)
+
+### Authorization
+
+[X-API-KEY](../../README.md#X-API-KEY), [Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

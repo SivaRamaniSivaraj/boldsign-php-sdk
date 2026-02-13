@@ -85,7 +85,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => 'string',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
-        'allowed_signature_types' => 'string[]'
+        'allowed_signature_types' => 'string[]',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
+        'sharing' => '\BoldSign\Model\TemplateSharing'
     ];
 
     /**
@@ -124,7 +126,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => null,
         'recipient_notification_settings' => null,
         'form_field_permission' => null,
-        'allowed_signature_types' => null
+        'allowed_signature_types' => null,
+        'group_signer_settings' => null,
+        'sharing' => null
     ];
 
     /**
@@ -161,7 +165,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => false,
         'recipient_notification_settings' => false,
         'form_field_permission' => false,
-        'allowed_signature_types' => true
+        'allowed_signature_types' => true,
+        'group_signer_settings' => false,
+        'sharing' => false
     ];
 
     /**
@@ -278,7 +284,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => 'documentDownloadOption',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'form_field_permission' => 'formFieldPermission',
-        'allowed_signature_types' => 'allowedSignatureTypes'
+        'allowed_signature_types' => 'allowedSignatureTypes',
+        'group_signer_settings' => 'groupSignerSettings',
+        'sharing' => 'sharing'
     ];
 
     /**
@@ -315,7 +323,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => 'setDocumentDownloadOption',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'form_field_permission' => 'setFormFieldPermission',
-        'allowed_signature_types' => 'setAllowedSignatureTypes'
+        'allowed_signature_types' => 'setAllowedSignatureTypes',
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'sharing' => 'setSharing'
     ];
 
     /**
@@ -352,7 +362,9 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'document_download_option' => 'getDocumentDownloadOption',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'form_field_permission' => 'getFormFieldPermission',
-        'allowed_signature_types' => 'getAllowedSignatureTypes'
+        'allowed_signature_types' => 'getAllowedSignatureTypes',
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'sharing' => 'getSharing'
     ];
 
     /**
@@ -473,6 +485,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('form_field_permission', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('sharing', $data ?? [], null);
     }
 
     /**
@@ -1147,6 +1161,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
      * Gets shared_template_detail
      *
      * @return \BoldSign\Model\TemplateSharedTemplateDetail[]|null
+     * @deprecated
      */
     public function getSharedTemplateDetail()
     {
@@ -1159,6 +1174,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param \BoldSign\Model\TemplateSharedTemplateDetail[]|null $shared_template_detail shared_template_detail
      *
      * @return self
+     * @deprecated
      */
     public function setSharedTemplateDetail($shared_template_detail)
     {
@@ -1436,6 +1452,60 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['allowed_signature_types'] = $allowed_signature_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettings|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettings|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets sharing
+     *
+     * @return \BoldSign\Model\TemplateSharing|null
+     */
+    public function getSharing()
+    {
+        return $this->container['sharing'];
+    }
+
+    /**
+     * Sets sharing
+     *
+     * @param \BoldSign\Model\TemplateSharing|null $sharing sharing
+     *
+     * @return self
+     */
+    public function setSharing($sharing)
+    {
+        if (is_null($sharing)) {
+            throw new \InvalidArgumentException('non-nullable sharing cannot be null');
+        }
+        $this->container['sharing'] = $sharing;
 
         return $this;
     }

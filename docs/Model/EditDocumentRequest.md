@@ -32,5 +32,7 @@ Name | Type | Description | Notes
 **form_groups** | [**\BoldSign\Model\FormGroup[]**](FormGroup.md) |  | [optional]
 **download_file_name** | **string** |  | [optional]
 **scheduled_send_time** | **int** |  | [optional]
+**allowed_signature_types** | **string[]** |  | [optional]
+**group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -26,5 +26,8 @@ Name | Type | Description | Notes
 **document_download_option** | **string** |  | [optional]
 **meta_data** | **array<string,string>** |  | [optional]
 **failed_delivery_mode** | **string** |  | [optional]
+**behalf_of** | [**\BoldSign\Model\BehalfOfWebhookModel**](BehalfOfWebhookModel.md) |  | [optional]
+**allowed_signature_types** | **string[]** |  | [optional]
+**group_signer_settings** | [**\BoldSign\Model\GroupSignerSettingsWebhookModel**](GroupSignerSettingsWebhookModel.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

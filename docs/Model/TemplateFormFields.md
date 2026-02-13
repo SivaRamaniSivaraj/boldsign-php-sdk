@@ -45,5 +45,6 @@ Name | Type | Description | Notes
 **allow_edit_form_field** | **bool** |  | [optional]
 **allow_delete_form_field** | **bool** |  | [optional]
 **collaboration_settings** | [**\BoldSign\Model\CollaborationSettings**](CollaborationSettings.md) |  | [optional]
+**is_masked** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

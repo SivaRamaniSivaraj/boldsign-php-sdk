@@ -68,7 +68,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => 'string',
         'redirect_url' => 'string',
         'meta_data' => 'array<string,string>',
-        'created_by' => '\BoldSign\Model\SenderIdentityCreator'
+        'created_by' => '\BoldSign\Model\SenderIdentityCreator',
+        'locale' => 'string'
     ];
 
     /**
@@ -90,7 +91,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => null,
         'redirect_url' => null,
         'meta_data' => null,
-        'created_by' => null
+        'created_by' => null,
+        'locale' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => true,
         'redirect_url' => true,
         'meta_data' => true,
-        'created_by' => false
+        'created_by' => false,
+        'locale' => true
     ];
 
     /**
@@ -210,7 +213,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => 'brandId',
         'redirect_url' => 'redirectUrl',
         'meta_data' => 'metaData',
-        'created_by' => 'createdBy'
+        'created_by' => 'createdBy',
+        'locale' => 'locale'
     ];
 
     /**
@@ -230,7 +234,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => 'setBrandId',
         'redirect_url' => 'setRedirectUrl',
         'meta_data' => 'setMetaData',
-        'created_by' => 'setCreatedBy'
+        'created_by' => 'setCreatedBy',
+        'locale' => 'setLocale'
     ];
 
     /**
@@ -250,7 +255,8 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'brand_id' => 'getBrandId',
         'redirect_url' => 'getRedirectUrl',
         'meta_data' => 'getMetaData',
-        'created_by' => 'getCreatedBy'
+        'created_by' => 'getCreatedBy',
+        'locale' => 'getLocale'
     ];
 
     /**
@@ -322,6 +328,7 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('redirect_url', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
         $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('locale', $data ?? [], null);
     }
 
     /**
@@ -756,6 +763,40 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable created_by cannot be null');
         }
         $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets locale
+     *
+     * @return string|null
+     */
+    public function getLocale()
+    {
+        return $this->container['locale'];
+    }
+
+    /**
+     * Sets locale
+     *
+     * @param string|null $locale locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        if (is_null($locale)) {
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['locale'] = $locale;
 
         return $this;
     }

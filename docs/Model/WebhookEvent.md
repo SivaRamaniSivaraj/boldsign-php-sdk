@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event** | [**\BoldSign\Model\WebhookEventMetadata**](WebhookEventMetadata.md) |  | [optional]
+**context** | [**\BoldSign\Model\WebhookContext**](WebhookContext.md) |  | [optional]
 **data** | [**\BoldSign\Model\WebhookEventData**](WebhookEventData.md) |  | [optional]
 **document** | [**\BoldSign\Model\DocumentEvent**](DocumentEvent.md) |  | [optional]
 

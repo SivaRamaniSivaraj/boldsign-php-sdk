@@ -37,5 +37,6 @@ Name | Type | Description | Notes
 **restrict_id_prefix_change** | **bool** |  | [optional] [default to false]
 **background_hex_color** | **string** |  | [optional]
 **resize_option** | **string** |  | [optional]
+**is_masked** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

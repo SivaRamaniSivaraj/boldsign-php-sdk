@@ -89,7 +89,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => 'string',
         'restrict_id_prefix_change' => 'bool',
         'background_hex_color' => 'string',
-        'resize_option' => 'string'
+        'resize_option' => 'string',
+        'is_masked' => 'bool'
     ];
 
     /**
@@ -132,7 +133,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => null,
         'restrict_id_prefix_change' => null,
         'background_hex_color' => null,
-        'resize_option' => null
+        'resize_option' => null,
+        'is_masked' => null
     ];
 
     /**
@@ -173,7 +175,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => true,
         'restrict_id_prefix_change' => false,
         'background_hex_color' => true,
-        'resize_option' => true
+        'resize_option' => true,
+        'is_masked' => true
     ];
 
     /**
@@ -294,7 +297,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => 'idPrefix',
         'restrict_id_prefix_change' => 'restrictIdPrefixChange',
         'background_hex_color' => 'backgroundHexColor',
-        'resize_option' => 'resizeOption'
+        'resize_option' => 'resizeOption',
+        'is_masked' => 'isMasked'
     ];
 
     /**
@@ -335,7 +339,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => 'setIdPrefix',
         'restrict_id_prefix_change' => 'setRestrictIdPrefixChange',
         'background_hex_color' => 'setBackgroundHexColor',
-        'resize_option' => 'setResizeOption'
+        'resize_option' => 'setResizeOption',
+        'is_masked' => 'setIsMasked'
     ];
 
     /**
@@ -376,7 +381,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'id_prefix' => 'getIdPrefix',
         'restrict_id_prefix_change' => 'getRestrictIdPrefixChange',
         'background_hex_color' => 'getBackgroundHexColor',
-        'resize_option' => 'getResizeOption'
+        'resize_option' => 'getResizeOption',
+        'is_masked' => 'getIsMasked'
     ];
 
     /**
@@ -605,6 +611,7 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('restrict_id_prefix_change', $data ?? [], false);
         $this->setIfExists('background_hex_color', $data ?? [], null);
         $this->setIfExists('resize_option', $data ?? [], null);
+        $this->setIfExists('is_masked', $data ?? [], false);
     }
 
     /**
@@ -1785,6 +1792,40 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['resize_option'] = $resize_option;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_masked
+     *
+     * @return bool|null
+     */
+    public function getIsMasked()
+    {
+        return $this->container['is_masked'];
+    }
+
+    /**
+     * Sets is_masked
+     *
+     * @param bool|null $is_masked is_masked
+     *
+     * @return self
+     */
+    public function setIsMasked($is_masked)
+    {
+        if (is_null($is_masked)) {
+            array_push($this->openAPINullablesSetToNull, 'is_masked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_masked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_masked'] = $is_masked;
 
         return $this;
     }

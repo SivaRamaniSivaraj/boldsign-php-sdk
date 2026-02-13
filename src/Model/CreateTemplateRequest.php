@@ -83,7 +83,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => '\BoldSign\Model\FormGroup[]',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'allowed_signature_types' => 'string[]',
-        'form_field_permission' => '\BoldSign\Model\FormFieldPermission'
+        'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
     ];
 
     /**
@@ -120,7 +121,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => null,
         'recipient_notification_settings' => null,
         'allowed_signature_types' => null,
-        'form_field_permission' => null
+        'form_field_permission' => null,
+        'group_signer_settings' => null
     ];
 
     /**
@@ -155,7 +157,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => true,
         'recipient_notification_settings' => false,
         'allowed_signature_types' => true,
-        'form_field_permission' => false
+        'form_field_permission' => false,
+        'group_signer_settings' => false
     ];
 
     /**
@@ -270,7 +273,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => 'formGroups',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'allowed_signature_types' => 'allowedSignatureTypes',
-        'form_field_permission' => 'formFieldPermission'
+        'form_field_permission' => 'formFieldPermission',
+        'group_signer_settings' => 'groupSignerSettings'
     ];
 
     /**
@@ -305,7 +309,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => 'setFormGroups',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
-        'form_field_permission' => 'setFormFieldPermission'
+        'form_field_permission' => 'setFormFieldPermission',
+        'group_signer_settings' => 'setGroupSignerSettings'
     ];
 
     /**
@@ -340,7 +345,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'form_groups' => 'getFormGroups',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
-        'form_field_permission' => 'getFormFieldPermission'
+        'form_field_permission' => 'getFormFieldPermission',
+        'group_signer_settings' => 'getGroupSignerSettings'
     ];
 
     /**
@@ -444,6 +450,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('form_field_permission', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
     }
 
     /**
@@ -1390,6 +1397,33 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable form_field_permission cannot be null');
         }
         $this->container['form_field_permission'] = $form_field_permission;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettings|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettings|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
 
         return $this;
     }

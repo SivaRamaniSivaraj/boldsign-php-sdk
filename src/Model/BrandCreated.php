@@ -57,7 +57,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'brand_id' => 'string'
+        'brand_id' => 'string',
+        'email' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'brand_id' => null
+        'brand_id' => null,
+        'email' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'brand_id' => true
+        'brand_id' => true,
+        'email' => true
     ];
 
     /**
@@ -166,7 +169,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'brand_id' => 'brandId'
+        'brand_id' => 'brandId',
+        'email' => 'email'
     ];
 
     /**
@@ -175,7 +179,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'brand_id' => 'setBrandId'
+        'brand_id' => 'setBrandId',
+        'email' => 'setEmail'
     ];
 
     /**
@@ -184,7 +189,8 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'brand_id' => 'getBrandId'
+        'brand_id' => 'getBrandId',
+        'email' => 'getEmail'
     ];
 
     /**
@@ -245,6 +251,7 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
     }
 
     /**
@@ -319,6 +326,40 @@ class BrandCreated implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email email
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        if (is_null($email)) {
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['email'] = $email;
 
         return $this;
     }

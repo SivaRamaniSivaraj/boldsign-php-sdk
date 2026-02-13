@@ -62,7 +62,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => '\BoldSign\Model\NotificationSettings',
         'brand_id' => 'string',
         'redirect_url' => 'string',
-        'meta_data' => 'array<string,string>'
+        'meta_data' => 'array<string,string>',
+        'locale' => 'string'
     ];
 
     /**
@@ -78,7 +79,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => null,
         'brand_id' => null,
         'redirect_url' => 'uri',
-        'meta_data' => null
+        'meta_data' => null,
+        'locale' => null
     ];
 
     /**
@@ -92,7 +94,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => false,
         'brand_id' => true,
         'redirect_url' => true,
-        'meta_data' => true
+        'meta_data' => true,
+        'locale' => false
     ];
 
     /**
@@ -186,7 +189,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => 'notificationSettings',
         'brand_id' => 'brandId',
         'redirect_url' => 'redirectUrl',
-        'meta_data' => 'metaData'
+        'meta_data' => 'metaData',
+        'locale' => 'locale'
     ];
 
     /**
@@ -200,7 +204,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => 'setNotificationSettings',
         'brand_id' => 'setBrandId',
         'redirect_url' => 'setRedirectUrl',
-        'meta_data' => 'setMetaData'
+        'meta_data' => 'setMetaData',
+        'locale' => 'setLocale'
     ];
 
     /**
@@ -214,7 +219,8 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         'notification_settings' => 'getNotificationSettings',
         'brand_id' => 'getBrandId',
         'redirect_url' => 'getRedirectUrl',
-        'meta_data' => 'getMetaData'
+        'meta_data' => 'getMetaData',
+        'locale' => 'getLocale'
     ];
 
     /**
@@ -258,6 +264,59 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const LOCALE_EN = 'EN';
+    public const LOCALE_NO = 'NO';
+    public const LOCALE_FR = 'FR';
+    public const LOCALE_DE = 'DE';
+    public const LOCALE_ES = 'ES';
+    public const LOCALE_BG = 'BG';
+    public const LOCALE_CS = 'CS';
+    public const LOCALE_DA = 'DA';
+    public const LOCALE_IT = 'IT';
+    public const LOCALE_NL = 'NL';
+    public const LOCALE_PL = 'PL';
+    public const LOCALE_PT = 'PT';
+    public const LOCALE_RO = 'RO';
+    public const LOCALE_RU = 'RU';
+    public const LOCALE_SV = 'SV';
+    public const LOCALE__DEFAULT = 'Default';
+    public const LOCALE_JA = 'JA';
+    public const LOCALE_TH = 'TH';
+    public const LOCALE_ZH_CN = 'ZH_CN';
+    public const LOCALE_ZH_TW = 'ZH_TW';
+    public const LOCALE_KO = 'KO';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLocaleAllowableValues()
+    {
+        return [
+            self::LOCALE_EN,
+            self::LOCALE_NO,
+            self::LOCALE_FR,
+            self::LOCALE_DE,
+            self::LOCALE_ES,
+            self::LOCALE_BG,
+            self::LOCALE_CS,
+            self::LOCALE_DA,
+            self::LOCALE_IT,
+            self::LOCALE_NL,
+            self::LOCALE_PL,
+            self::LOCALE_PT,
+            self::LOCALE_RO,
+            self::LOCALE_RU,
+            self::LOCALE_SV,
+            self::LOCALE__DEFAULT,
+            self::LOCALE_JA,
+            self::LOCALE_TH,
+            self::LOCALE_ZH_CN,
+            self::LOCALE_ZH_TW,
+            self::LOCALE_KO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -280,6 +339,7 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('locale', $data ?? [], null);
     }
 
     /**
@@ -326,6 +386,15 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
 
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getLocaleAllowableValues();
+        if (!is_null($this->container['locale']) && !in_array($this->container['locale'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'locale', must be one of '%s'",
+                $this->container['locale'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -545,6 +614,43 @@ class CreateSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonS
 
 
         $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets locale
+     *
+     * @return string|null
+     */
+    public function getLocale()
+    {
+        return $this->container['locale'];
+    }
+
+    /**
+     * Sets locale
+     *
+     * @param string|null $locale locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        if (is_null($locale)) {
+            throw new \InvalidArgumentException('non-nullable locale cannot be null');
+        }
+        $allowedValues = $this->getLocaleAllowableValues();
+        if (!in_array($locale, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'locale', must be one of '%s'",
+                    $locale,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['locale'] = $locale;
 
         return $this;
     }

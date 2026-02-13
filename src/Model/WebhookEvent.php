@@ -58,6 +58,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'event' => '\BoldSign\Model\WebhookEventMetadata',
+        'context' => '\BoldSign\Model\WebhookContext',
         'data' => '\BoldSign\Model\WebhookEventData',
         'document' => '\BoldSign\Model\DocumentEvent'
     ];
@@ -71,6 +72,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'event' => null,
+        'context' => null,
         'data' => null,
         'document' => null
     ];
@@ -82,6 +84,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'event' => false,
+        'context' => false,
         'data' => false,
         'document' => false
     ];
@@ -173,6 +176,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'event' => 'event',
+        'context' => 'context',
         'data' => 'data',
         'document' => 'document'
     ];
@@ -184,6 +188,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'event' => 'setEvent',
+        'context' => 'setContext',
         'data' => 'setData',
         'document' => 'setDocument'
     ];
@@ -195,6 +200,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'event' => 'getEvent',
+        'context' => 'getContext',
         'data' => 'getData',
         'document' => 'getDocument'
     ];
@@ -257,6 +263,7 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('context', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('document', $data ?? [], null);
     }
@@ -326,6 +333,33 @@ class WebhookEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
         $this->container['event'] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return \BoldSign\Model\WebhookContext|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param \BoldSign\Model\WebhookContext|null $context context
+     *
+     * @return self
+     */
+    public function setContext($context)
+    {
+        if (is_null($context)) {
+            throw new \InvalidArgumentException('non-nullable context cannot be null');
+        }
+        $this->container['context'] = $context;
 
         return $this;
     }

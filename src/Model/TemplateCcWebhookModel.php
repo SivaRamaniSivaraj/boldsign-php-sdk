@@ -58,7 +58,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'email_address' => 'string',
-        'user_id' => 'string'
+        'user_id' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'email_address' => null,
-        'user_id' => null
+        'user_id' => null,
+        'id' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'email_address' => true,
-        'user_id' => true
+        'user_id' => true,
+        'id' => true
     ];
 
     /**
@@ -170,7 +173,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'email_address' => 'emailAddress',
-        'user_id' => 'userId'
+        'user_id' => 'userId',
+        'id' => 'id'
     ];
 
     /**
@@ -180,7 +184,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'email_address' => 'setEmailAddress',
-        'user_id' => 'setUserId'
+        'user_id' => 'setUserId',
+        'id' => 'setId'
     ];
 
     /**
@@ -190,7 +195,8 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'email_address' => 'getEmailAddress',
-        'user_id' => 'getUserId'
+        'user_id' => 'getUserId',
+        'id' => 'getId'
     ];
 
     /**
@@ -252,6 +258,7 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->setIfExists('email_address', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -360,6 +367,40 @@ class TemplateCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

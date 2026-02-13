@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **form_fields** | [**\BoldSign\Model\EditFormField[]**](EditFormField.md) |  | [optional]
 **language** | **int** |  | [optional]
 **locale** | **string** |  | [optional]
+**sign_type** | **string** |  | [optional]
+**group_id** | **string** |  | [optional]
 **recipient_notification_settings** | [**\BoldSign\Model\RecipientNotificationSettings**](RecipientNotificationSettings.md) |  | [optional]
 **authentication_retry_count** | **int** |  | [optional]
 **enable_qes** | **bool** |  | [optional]

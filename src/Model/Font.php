@@ -93,9 +93,9 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => true,
         'color' => true,
-        'size' => false,
+        'size' => true,
         'style' => true,
-        'line_height' => false,
+        'line_height' => true,
         'is_bold_font' => false,
         'is_italic_font' => false,
         'is_under_line_font' => false
@@ -494,7 +494,14 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSize($size)
     {
         if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('size', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['size'] = $size;
 
@@ -567,7 +574,14 @@ class Font implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLineHeight($line_height)
     {
         if (is_null($line_height)) {
-            throw new \InvalidArgumentException('non-nullable line_height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'line_height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_height', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['line_height'] = $line_height;
 

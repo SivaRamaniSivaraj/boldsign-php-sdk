@@ -60,6 +60,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => 'string',
         'signer_role' => 'string',
         'signer_email' => 'string',
+        'group_signers' => '\BoldSign\Model\TemplateGroupSignerWebhookModel[]',
         'phone_number' => '\BoldSign\Model\PhoneNumberWebhookModel',
         'enable_access_code' => 'bool',
         'enable_email_otp' => 'bool',
@@ -67,11 +68,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'string',
         'order' => 'int',
         'signer_type' => 'string',
+        'sign_type' => 'string',
+        'group_id' => 'string',
         'host_email' => 'string',
         'host_name' => 'string',
         'host_user_id' => 'string',
         'impose_authentication' => 'string',
-        'allow_field_configuration' => 'bool'
+        'allow_field_configuration' => 'bool',
+        'role_index' => 'int'
     ];
 
     /**
@@ -85,6 +89,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => null,
         'signer_role' => null,
         'signer_email' => null,
+        'group_signers' => null,
         'phone_number' => null,
         'enable_access_code' => null,
         'enable_email_otp' => null,
@@ -92,11 +97,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => null,
         'order' => 'int32',
         'signer_type' => null,
+        'sign_type' => null,
+        'group_id' => null,
         'host_email' => null,
         'host_name' => null,
         'host_user_id' => null,
         'impose_authentication' => null,
-        'allow_field_configuration' => null
+        'allow_field_configuration' => null,
+        'role_index' => 'int32'
     ];
 
     /**
@@ -108,6 +116,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => true,
         'signer_role' => true,
         'signer_email' => true,
+        'group_signers' => true,
         'phone_number' => false,
         'enable_access_code' => false,
         'enable_email_otp' => false,
@@ -115,11 +124,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => true,
         'order' => false,
         'signer_type' => true,
+        'sign_type' => true,
+        'group_id' => true,
         'host_email' => true,
         'host_name' => true,
         'host_user_id' => true,
         'impose_authentication' => true,
-        'allow_field_configuration' => false
+        'allow_field_configuration' => false,
+        'role_index' => false
     ];
 
     /**
@@ -211,6 +223,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => 'signerName',
         'signer_role' => 'signerRole',
         'signer_email' => 'signerEmail',
+        'group_signers' => 'groupSigners',
         'phone_number' => 'phoneNumber',
         'enable_access_code' => 'enableAccessCode',
         'enable_email_otp' => 'enableEmailOTP',
@@ -218,11 +231,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'userId',
         'order' => 'order',
         'signer_type' => 'signerType',
+        'sign_type' => 'signType',
+        'group_id' => 'groupId',
         'host_email' => 'hostEmail',
         'host_name' => 'hostName',
         'host_user_id' => 'hostUserId',
         'impose_authentication' => 'imposeAuthentication',
-        'allow_field_configuration' => 'allowFieldConfiguration'
+        'allow_field_configuration' => 'allowFieldConfiguration',
+        'role_index' => 'roleIndex'
     ];
 
     /**
@@ -234,6 +250,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => 'setSignerName',
         'signer_role' => 'setSignerRole',
         'signer_email' => 'setSignerEmail',
+        'group_signers' => 'setGroupSigners',
         'phone_number' => 'setPhoneNumber',
         'enable_access_code' => 'setEnableAccessCode',
         'enable_email_otp' => 'setEnableEmailOtp',
@@ -241,11 +258,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'setUserId',
         'order' => 'setOrder',
         'signer_type' => 'setSignerType',
+        'sign_type' => 'setSignType',
+        'group_id' => 'setGroupId',
         'host_email' => 'setHostEmail',
         'host_name' => 'setHostName',
         'host_user_id' => 'setHostUserId',
         'impose_authentication' => 'setImposeAuthentication',
-        'allow_field_configuration' => 'setAllowFieldConfiguration'
+        'allow_field_configuration' => 'setAllowFieldConfiguration',
+        'role_index' => 'setRoleIndex'
     ];
 
     /**
@@ -257,6 +277,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'signer_name' => 'getSignerName',
         'signer_role' => 'getSignerRole',
         'signer_email' => 'getSignerEmail',
+        'group_signers' => 'getGroupSigners',
         'phone_number' => 'getPhoneNumber',
         'enable_access_code' => 'getEnableAccessCode',
         'enable_email_otp' => 'getEnableEmailOtp',
@@ -264,11 +285,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'getUserId',
         'order' => 'getOrder',
         'signer_type' => 'getSignerType',
+        'sign_type' => 'getSignType',
+        'group_id' => 'getGroupId',
         'host_email' => 'getHostEmail',
         'host_name' => 'getHostName',
         'host_user_id' => 'getHostUserId',
         'impose_authentication' => 'getImposeAuthentication',
-        'allow_field_configuration' => 'getAllowFieldConfiguration'
+        'allow_field_configuration' => 'getAllowFieldConfiguration',
+        'role_index' => 'getRoleIndex'
     ];
 
     /**
@@ -354,6 +378,7 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('signer_name', $data ?? [], null);
         $this->setIfExists('signer_role', $data ?? [], null);
         $this->setIfExists('signer_email', $data ?? [], null);
+        $this->setIfExists('group_signers', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('enable_access_code', $data ?? [], null);
         $this->setIfExists('enable_email_otp', $data ?? [], null);
@@ -361,11 +386,14 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('signer_type', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('group_id', $data ?? [], null);
         $this->setIfExists('host_email', $data ?? [], null);
         $this->setIfExists('host_name', $data ?? [], null);
         $this->setIfExists('host_user_id', $data ?? [], null);
         $this->setIfExists('impose_authentication', $data ?? [], null);
         $this->setIfExists('allow_field_configuration', $data ?? [], null);
+        $this->setIfExists('role_index', $data ?? [], null);
     }
 
     /**
@@ -517,6 +545,40 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['signer_email'] = $signer_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signers
+     *
+     * @return \BoldSign\Model\TemplateGroupSignerWebhookModel[]|null
+     */
+    public function getGroupSigners()
+    {
+        return $this->container['group_signers'];
+    }
+
+    /**
+     * Sets group_signers
+     *
+     * @param \BoldSign\Model\TemplateGroupSignerWebhookModel[]|null $group_signers group_signers
+     *
+     * @return self
+     */
+    public function setGroupSigners($group_signers)
+    {
+        if (is_null($group_signers)) {
+            array_push($this->openAPINullablesSetToNull, 'group_signers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_signers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_signers'] = $group_signers;
 
         return $this;
     }
@@ -735,6 +797,74 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            array_push($this->openAPINullablesSetToNull, 'sign_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sign_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id group_id
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        if (is_null($group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_id'] = $group_id;
+
+        return $this;
+    }
+
+    /**
      * Gets host_email
      *
      * @return string|null
@@ -893,6 +1023,33 @@ class TemplateSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable allow_field_configuration cannot be null');
         }
         $this->container['allow_field_configuration'] = $allow_field_configuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets role_index
+     *
+     * @return int|null
+     */
+    public function getRoleIndex()
+    {
+        return $this->container['role_index'];
+    }
+
+    /**
+     * Sets role_index
+     *
+     * @param int|null $role_index role_index
+     *
+     * @return self
+     */
+    public function setRoleIndex($role_index)
+    {
+        if (is_null($role_index)) {
+            throw new \InvalidArgumentException('non-nullable role_index cannot be null');
+        }
+        $this->container['role_index'] = $role_index;
 
         return $this;
     }

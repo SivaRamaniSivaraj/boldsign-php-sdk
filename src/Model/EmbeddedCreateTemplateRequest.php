@@ -94,7 +94,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => '\BoldSign\Model\FormGroup[]',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'allowed_signature_types' => 'string[]',
-        'form_field_permission' => '\BoldSign\Model\FormFieldPermission'
+        'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
     ];
 
     /**
@@ -142,7 +143,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => null,
         'recipient_notification_settings' => null,
         'allowed_signature_types' => null,
-        'form_field_permission' => null
+        'form_field_permission' => null,
+        'group_signer_settings' => null
     ];
 
     /**
@@ -188,7 +190,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => true,
         'recipient_notification_settings' => false,
         'allowed_signature_types' => true,
-        'form_field_permission' => false
+        'form_field_permission' => false,
+        'group_signer_settings' => false
     ];
 
     /**
@@ -314,7 +317,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => 'formGroups',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'allowed_signature_types' => 'allowedSignatureTypes',
-        'form_field_permission' => 'formFieldPermission'
+        'form_field_permission' => 'formFieldPermission',
+        'group_signer_settings' => 'groupSignerSettings'
     ];
 
     /**
@@ -360,7 +364,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => 'setFormGroups',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
-        'form_field_permission' => 'setFormFieldPermission'
+        'form_field_permission' => 'setFormFieldPermission',
+        'group_signer_settings' => 'setGroupSignerSettings'
     ];
 
     /**
@@ -406,7 +411,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_groups' => 'getFormGroups',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
-        'form_field_permission' => 'getFormFieldPermission'
+        'form_field_permission' => 'getFormFieldPermission',
+        'group_signer_settings' => 'getGroupSignerSettings'
     ];
 
     /**
@@ -472,6 +478,7 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     public const LOCALE_TH = 'TH';
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
+    public const LOCALE_KO = 'KO';
     public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
     public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
     public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
@@ -517,6 +524,7 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
             self::LOCALE_TH,
             self::LOCALE_ZH_CN,
             self::LOCALE_ZH_TW,
+            self::LOCALE_KO,
         ];
     }
 
@@ -587,6 +595,7 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('form_field_permission', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
     }
 
     /**
@@ -1891,6 +1900,33 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable form_field_permission cannot be null');
         }
         $this->container['form_field_permission'] = $form_field_permission;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettings|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettings|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
 
         return $this;
     }

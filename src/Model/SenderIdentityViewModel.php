@@ -66,7 +66,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => '\BoldSign\Model\NotificationSettings',
         'brand_id' => 'string',
         'redirect_url' => 'string',
-        'meta_data' => 'array<string,string>'
+        'meta_data' => 'array<string,string>',
+        'locale' => 'string'
     ];
 
     /**
@@ -86,7 +87,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => null,
         'brand_id' => null,
         'redirect_url' => null,
-        'meta_data' => null
+        'meta_data' => null,
+        'locale' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => false,
         'brand_id' => true,
         'redirect_url' => true,
-        'meta_data' => true
+        'meta_data' => true,
+        'locale' => true
     ];
 
     /**
@@ -202,7 +205,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => 'notificationSettings',
         'brand_id' => 'brandId',
         'redirect_url' => 'redirectUrl',
-        'meta_data' => 'metaData'
+        'meta_data' => 'metaData',
+        'locale' => 'locale'
     ];
 
     /**
@@ -220,7 +224,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => 'setNotificationSettings',
         'brand_id' => 'setBrandId',
         'redirect_url' => 'setRedirectUrl',
-        'meta_data' => 'setMetaData'
+        'meta_data' => 'setMetaData',
+        'locale' => 'setLocale'
     ];
 
     /**
@@ -238,7 +243,8 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         'notification_settings' => 'getNotificationSettings',
         'brand_id' => 'getBrandId',
         'redirect_url' => 'getRedirectUrl',
-        'meta_data' => 'getMetaData'
+        'meta_data' => 'getMetaData',
+        'locale' => 'getLocale'
     ];
 
     /**
@@ -308,6 +314,7 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('locale', $data ?? [], null);
     }
 
     /**
@@ -681,6 +688,40 @@ class SenderIdentityViewModel implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets locale
+     *
+     * @return string|null
+     */
+    public function getLocale()
+    {
+        return $this->container['locale'];
+    }
+
+    /**
+     * Sets locale
+     *
+     * @param string|null $locale locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        if (is_null($locale)) {
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['locale'] = $locale;
 
         return $this;
     }

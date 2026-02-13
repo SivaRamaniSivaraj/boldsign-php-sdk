@@ -84,7 +84,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'form_groups' => '\BoldSign\Model\FormGroup[]',
         'download_file_name' => 'string',
-        'scheduled_send_time' => 'int'
+        'scheduled_send_time' => 'int',
+        'allowed_signature_types' => 'string[]',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
     ];
 
     /**
@@ -122,7 +124,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => null,
         'form_groups' => null,
         'download_file_name' => null,
-        'scheduled_send_time' => 'int64'
+        'scheduled_send_time' => 'int64',
+        'allowed_signature_types' => null,
+        'group_signer_settings' => null
     ];
 
     /**
@@ -158,7 +162,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => false,
         'form_groups' => true,
         'download_file_name' => true,
-        'scheduled_send_time' => true
+        'scheduled_send_time' => true,
+        'allowed_signature_types' => true,
+        'group_signer_settings' => false
     ];
 
     /**
@@ -274,7 +280,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'form_groups' => 'formGroups',
         'download_file_name' => 'downloadFileName',
-        'scheduled_send_time' => 'scheduledSendTime'
+        'scheduled_send_time' => 'scheduledSendTime',
+        'allowed_signature_types' => 'allowedSignatureTypes',
+        'group_signer_settings' => 'groupSignerSettings'
     ];
 
     /**
@@ -310,7 +318,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'form_groups' => 'setFormGroups',
         'download_file_name' => 'setDownloadFileName',
-        'scheduled_send_time' => 'setScheduledSendTime'
+        'scheduled_send_time' => 'setScheduledSendTime',
+        'allowed_signature_types' => 'setAllowedSignatureTypes',
+        'group_signer_settings' => 'setGroupSignerSettings'
     ];
 
     /**
@@ -346,7 +356,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'form_groups' => 'getFormGroups',
         'download_file_name' => 'getDownloadFileName',
-        'scheduled_send_time' => 'getScheduledSendTime'
+        'scheduled_send_time' => 'getScheduledSendTime',
+        'allowed_signature_types' => 'getAllowedSignatureTypes',
+        'group_signer_settings' => 'getGroupSignerSettings'
     ];
 
     /**
@@ -397,6 +409,9 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DOCUMENT_DOWNLOAD_OPTION_COMBINED = 'Combined';
     public const DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY = 'Individually';
     public const DOCUMENT_DOWNLOAD_OPTION_NULL = 'null';
+    public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
+    public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
+    public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
 
     /**
      * Gets allowable values of the enum
@@ -424,6 +439,20 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DOCUMENT_DOWNLOAD_OPTION_COMBINED,
             self::DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY,
             self::DOCUMENT_DOWNLOAD_OPTION_NULL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAllowedSignatureTypesAllowableValues()
+    {
+        return [
+            self::ALLOWED_SIGNATURE_TYPES_TEXT,
+            self::ALLOWED_SIGNATURE_TYPES_DRAW,
+            self::ALLOWED_SIGNATURE_TYPES_IMAGE,
         ];
     }
 
@@ -470,6 +499,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('form_groups', $data ?? [], null);
         $this->setIfExists('download_file_name', $data ?? [], null);
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
+        $this->setIfExists('allowed_signature_types', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
     }
 
     /**
@@ -1526,6 +1557,76 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['scheduled_send_time'] = $scheduled_send_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_signature_types
+     *
+     * @return string[]|null
+     */
+    public function getAllowedSignatureTypes()
+    {
+        return $this->container['allowed_signature_types'];
+    }
+
+    /**
+     * Sets allowed_signature_types
+     *
+     * @param string[]|null $allowed_signature_types allowed_signature_types
+     *
+     * @return self
+     */
+    public function setAllowedSignatureTypes($allowed_signature_types)
+    {
+        if (is_null($allowed_signature_types)) {
+            array_push($this->openAPINullablesSetToNull, 'allowed_signature_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allowed_signature_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getAllowedSignatureTypesAllowableValues();
+        if (!is_null($allowed_signature_types) && array_diff($allowed_signature_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'allowed_signature_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['allowed_signature_types'] = $allowed_signature_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettings|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettings|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
 
         return $this;
     }

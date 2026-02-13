@@ -57,8 +57,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'id' => 'string',
+        'name' => 'string',
         'email_address' => 'string',
         'private_message' => 'string',
         'authentication_type' => 'string',
@@ -75,6 +75,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => '\BoldSign\Model\FormField[]',
         'language' => 'int',
         'locale' => 'string',
+        'sign_type' => 'string',
+        'group_id' => 'string',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'authentication_retry_count' => 'int',
         'enable_qes' => 'bool',
@@ -89,8 +91,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'id' => null,
+        'name' => null,
         'email_address' => null,
         'private_message' => null,
         'authentication_type' => null,
@@ -107,6 +109,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => null,
         'language' => 'int32',
         'locale' => null,
+        'sign_type' => null,
+        'group_id' => null,
         'recipient_notification_settings' => null,
         'authentication_retry_count' => 'int32',
         'enable_qes' => null,
@@ -119,8 +123,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
         'id' => true,
+        'name' => true,
         'email_address' => true,
         'private_message' => true,
         'authentication_type' => false,
@@ -137,6 +141,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => true,
         'language' => false,
         'locale' => false,
+        'sign_type' => false,
+        'group_id' => true,
         'recipient_notification_settings' => false,
         'authentication_retry_count' => true,
         'enable_qes' => true,
@@ -229,8 +235,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'id' => 'id',
+        'name' => 'name',
         'email_address' => 'emailAddress',
         'private_message' => 'privateMessage',
         'authentication_type' => 'authenticationType',
@@ -247,6 +253,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'formFields',
         'language' => 'language',
         'locale' => 'locale',
+        'sign_type' => 'signType',
+        'group_id' => 'groupId',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'authentication_retry_count' => 'authenticationRetryCount',
         'enable_qes' => 'enableQes',
@@ -259,8 +267,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'id' => 'setId',
+        'name' => 'setName',
         'email_address' => 'setEmailAddress',
         'private_message' => 'setPrivateMessage',
         'authentication_type' => 'setAuthenticationType',
@@ -277,6 +285,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'setFormFields',
         'language' => 'setLanguage',
         'locale' => 'setLocale',
+        'sign_type' => 'setSignType',
+        'group_id' => 'setGroupId',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'authentication_retry_count' => 'setAuthenticationRetryCount',
         'enable_qes' => 'setEnableQes',
@@ -289,8 +299,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'id' => 'getId',
+        'name' => 'getName',
         'email_address' => 'getEmailAddress',
         'private_message' => 'getPrivateMessage',
         'authentication_type' => 'getAuthenticationType',
@@ -307,6 +317,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'getFormFields',
         'language' => 'getLanguage',
         'locale' => 'getLocale',
+        'sign_type' => 'getSignType',
+        'group_id' => 'getGroupId',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'authentication_retry_count' => 'getAuthenticationRetryCount',
         'enable_qes' => 'getEnableQes',
@@ -386,6 +398,7 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_17 = 17;
     public const LANGUAGE_18 = 18;
     public const LANGUAGE_19 = 19;
+    public const LANGUAGE_20 = 20;
     public const LOCALE_EN = 'EN';
     public const LOCALE_NO = 'NO';
     public const LOCALE_FR = 'FR';
@@ -406,6 +419,9 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOCALE_TH = 'TH';
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
+    public const LOCALE_KO = 'KO';
+    public const SIGN_TYPE_SINGLE = 'Single';
+    public const SIGN_TYPE_GROUP = 'Group';
 
     /**
      * Gets allowable values of the enum
@@ -480,6 +496,7 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_17,
             self::LANGUAGE_18,
             self::LANGUAGE_19,
+            self::LANGUAGE_20,
         ];
     }
 
@@ -511,6 +528,20 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LOCALE_TH,
             self::LOCALE_ZH_CN,
             self::LOCALE_ZH_TW,
+            self::LOCALE_KO,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSignTypeAllowableValues()
+    {
+        return [
+            self::SIGN_TYPE_SINGLE,
+            self::SIGN_TYPE_GROUP,
         ];
     }
 
@@ -529,8 +560,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email_address', $data ?? [], null);
         $this->setIfExists('private_message', $data ?? [], null);
         $this->setIfExists('authentication_type', $data ?? [], null);
@@ -547,6 +578,8 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('form_fields', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('group_id', $data ?? [], null);
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('authentication_retry_count', $data ?? [], null);
         $this->setIfExists('enable_qes', $data ?? [], null);
@@ -579,13 +612,6 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
 
         if (!is_null($this->container['private_message']) && (mb_strlen($this->container['private_message']) > 5000)) {
             $invalidProperties[] = "invalid value for 'private_message', the character length must be smaller than or equal to 5000.";
@@ -640,6 +666,15 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!is_null($this->container['sign_type']) && !in_array($this->container['sign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sign_type', must be one of '%s'",
+                $this->container['sign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['authentication_retry_count']) && ($this->container['authentication_retry_count'] > 10)) {
             $invalidProperties[] = "invalid value for 'authentication_retry_count', must be smaller than or equal to 10.";
         }
@@ -662,38 +697,6 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling DocumentSigner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -725,6 +728,40 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -1200,7 +1237,7 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param int|null $language <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li></ul>
+     * @param int|null $language <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
      *
      * @return self
      */
@@ -1257,6 +1294,77 @@ class DocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['locale'] = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            throw new \InvalidArgumentException('non-nullable sign_type cannot be null');
+        }
+        $allowedValues = $this->getSignTypeAllowableValues();
+        if (!in_array($sign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sign_type', must be one of '%s'",
+                    $sign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id group_id
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        if (is_null($group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_id'] = $group_id;
 
         return $this;
     }

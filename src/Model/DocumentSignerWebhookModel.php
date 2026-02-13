@@ -60,6 +60,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => 'string',
         'signer_role' => 'string',
         'signer_email' => 'string',
+        'id' => 'string',
+        'group_signers' => '\BoldSign\Model\DocumentGroupSignerWebhookModel[]',
         'phone_number' => '\BoldSign\Model\PhoneNumberWebhookModel',
         'status' => 'string',
         'enable_access_code' => 'bool',
@@ -69,16 +71,18 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => 'bool',
         'order' => 'int',
         'signer_type' => 'string',
+        'sign_type' => 'string',
+        'group_id' => 'string',
         'is_reassigned' => 'bool',
         'reassign_message' => 'string',
         'decline_message' => 'string',
         'last_activity_date' => '\DateTime',
         'authentication_type' => 'string',
-        'id_verification' => '\BoldSign\Model\IdVerification',
+        'id_verification' => '\BoldSign\Model\IdVerificationSignerWebhookModel',
         'allow_field_configuration' => 'bool',
         'last_reminder_sent_on' => '\DateTime',
         'authentication_retry_count' => 'int',
-        'authentication_settings' => '\BoldSign\Model\SignerAuthenticationSettings'
+        'authentication_settings' => '\BoldSign\Model\SignerAuthenticationWebhookModel'
     ];
 
     /**
@@ -92,6 +96,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => null,
         'signer_role' => null,
         'signer_email' => null,
+        'id' => null,
+        'group_signers' => null,
         'phone_number' => null,
         'status' => null,
         'enable_access_code' => null,
@@ -101,6 +107,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => null,
         'order' => 'int32',
         'signer_type' => null,
+        'sign_type' => null,
+        'group_id' => null,
         'is_reassigned' => null,
         'reassign_message' => null,
         'decline_message' => null,
@@ -122,6 +130,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => true,
         'signer_role' => true,
         'signer_email' => true,
+        'id' => true,
+        'group_signers' => true,
         'phone_number' => false,
         'status' => false,
         'enable_access_code' => false,
@@ -131,6 +141,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => false,
         'order' => false,
         'signer_type' => true,
+        'sign_type' => true,
+        'group_id' => true,
         'is_reassigned' => false,
         'reassign_message' => true,
         'decline_message' => true,
@@ -232,6 +244,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => 'signerName',
         'signer_role' => 'signerRole',
         'signer_email' => 'signerEmail',
+        'id' => 'id',
+        'group_signers' => 'groupSigners',
         'phone_number' => 'phoneNumber',
         'status' => 'status',
         'enable_access_code' => 'enableAccessCode',
@@ -241,6 +255,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => 'isViewed',
         'order' => 'order',
         'signer_type' => 'signerType',
+        'sign_type' => 'signType',
+        'group_id' => 'groupId',
         'is_reassigned' => 'isReassigned',
         'reassign_message' => 'reassignMessage',
         'decline_message' => 'declineMessage',
@@ -262,6 +278,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => 'setSignerName',
         'signer_role' => 'setSignerRole',
         'signer_email' => 'setSignerEmail',
+        'id' => 'setId',
+        'group_signers' => 'setGroupSigners',
         'phone_number' => 'setPhoneNumber',
         'status' => 'setStatus',
         'enable_access_code' => 'setEnableAccessCode',
@@ -271,6 +289,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => 'setIsViewed',
         'order' => 'setOrder',
         'signer_type' => 'setSignerType',
+        'sign_type' => 'setSignType',
+        'group_id' => 'setGroupId',
         'is_reassigned' => 'setIsReassigned',
         'reassign_message' => 'setReassignMessage',
         'decline_message' => 'setDeclineMessage',
@@ -292,6 +312,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'signer_name' => 'getSignerName',
         'signer_role' => 'getSignerRole',
         'signer_email' => 'getSignerEmail',
+        'id' => 'getId',
+        'group_signers' => 'getGroupSigners',
         'phone_number' => 'getPhoneNumber',
         'status' => 'getStatus',
         'enable_access_code' => 'getEnableAccessCode',
@@ -301,6 +323,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'is_viewed' => 'getIsViewed',
         'order' => 'getOrder',
         'signer_type' => 'getSignerType',
+        'sign_type' => 'getSignType',
+        'group_id' => 'getGroupId',
         'is_reassigned' => 'getIsReassigned',
         'reassign_message' => 'getReassignMessage',
         'decline_message' => 'getDeclineMessage',
@@ -396,6 +420,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('signer_name', $data ?? [], null);
         $this->setIfExists('signer_role', $data ?? [], null);
         $this->setIfExists('signer_email', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('group_signers', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('enable_access_code', $data ?? [], null);
@@ -405,6 +431,8 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('is_viewed', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('signer_type', $data ?? [], null);
+        $this->setIfExists('sign_type', $data ?? [], null);
+        $this->setIfExists('group_id', $data ?? [], null);
         $this->setIfExists('is_reassigned', $data ?? [], null);
         $this->setIfExists('reassign_message', $data ?? [], null);
         $this->setIfExists('decline_message', $data ?? [], null);
@@ -566,6 +594,74 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['signer_email'] = $signer_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signers
+     *
+     * @return \BoldSign\Model\DocumentGroupSignerWebhookModel[]|null
+     */
+    public function getGroupSigners()
+    {
+        return $this->container['group_signers'];
+    }
+
+    /**
+     * Sets group_signers
+     *
+     * @param \BoldSign\Model\DocumentGroupSignerWebhookModel[]|null $group_signers group_signers
+     *
+     * @return self
+     */
+    public function setGroupSigners($group_signers)
+    {
+        if (is_null($group_signers)) {
+            array_push($this->openAPINullablesSetToNull, 'group_signers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_signers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_signers'] = $group_signers;
 
         return $this;
     }
@@ -838,6 +934,74 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets sign_type
+     *
+     * @return string|null
+     */
+    public function getSignType()
+    {
+        return $this->container['sign_type'];
+    }
+
+    /**
+     * Sets sign_type
+     *
+     * @param string|null $sign_type sign_type
+     *
+     * @return self
+     */
+    public function setSignType($sign_type)
+    {
+        if (is_null($sign_type)) {
+            array_push($this->openAPINullablesSetToNull, 'sign_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sign_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sign_type'] = $sign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id group_id
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        if (is_null($group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_id'] = $group_id;
+
+        return $this;
+    }
+
+    /**
      * Gets is_reassigned
      *
      * @return bool|null
@@ -1003,7 +1167,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets id_verification
      *
-     * @return \BoldSign\Model\IdVerification|null
+     * @return \BoldSign\Model\IdVerificationSignerWebhookModel|null
      */
     public function getIdVerification()
     {
@@ -1013,7 +1177,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets id_verification
      *
-     * @param \BoldSign\Model\IdVerification|null $id_verification id_verification
+     * @param \BoldSign\Model\IdVerificationSignerWebhookModel|null $id_verification id_verification
      *
      * @return self
      */
@@ -1125,7 +1289,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets authentication_settings
      *
-     * @return \BoldSign\Model\SignerAuthenticationSettings|null
+     * @return \BoldSign\Model\SignerAuthenticationWebhookModel|null
      */
     public function getAuthenticationSettings()
     {
@@ -1135,7 +1299,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets authentication_settings
      *
-     * @param \BoldSign\Model\SignerAuthenticationSettings|null $authentication_settings authentication_settings
+     * @param \BoldSign\Model\SignerAuthenticationWebhookModel|null $authentication_settings authentication_settings
      *
      * @return self
      */

@@ -79,6 +79,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => 'string',
         'meta_data' => 'array<string,string>',
         'failed_delivery_mode' => 'string',
+        'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel',
+        'allowed_signature_types' => 'string[]',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettingsWebhookModel',
         'template_id' => 'string',
         'allow_new_files' => 'bool',
         'allow_modify_files' => 'bool',
@@ -88,6 +91,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => 'string',
         'is_template' => 'bool',
         'template_labels' => 'string[]',
+        'form_field_permission' => '\BoldSign\Model\FormFieldPermissionWebhookModel',
         'id' => 'string',
         'name' => 'string',
         'email' => 'string',
@@ -95,6 +99,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => '\DateTime',
         'redirect_url' => 'string',
         'created_by' => '\BoldSign\Model\SenderIdentityCreator',
+        'locale' => 'string',
         'signer_detail' => '\BoldSign\Model\DocumentSignerWebhookModel'
     ];
 
@@ -128,6 +133,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => null,
         'meta_data' => null,
         'failed_delivery_mode' => null,
+        'behalf_of' => null,
+        'allowed_signature_types' => null,
+        'group_signer_settings' => null,
         'template_id' => null,
         'allow_new_files' => null,
         'allow_modify_files' => null,
@@ -137,6 +145,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => null,
         'is_template' => null,
         'template_labels' => null,
+        'form_field_permission' => null,
         'id' => 'uuid',
         'name' => null,
         'email' => null,
@@ -144,6 +153,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => 'date-time',
         'redirect_url' => null,
         'created_by' => null,
+        'locale' => null,
         'signer_detail' => null
     ];
 
@@ -175,6 +185,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => true,
         'meta_data' => true,
         'failed_delivery_mode' => true,
+        'behalf_of' => false,
+        'allowed_signature_types' => true,
+        'group_signer_settings' => false,
         'template_id' => true,
         'allow_new_files' => true,
         'allow_modify_files' => true,
@@ -184,6 +197,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => true,
         'is_template' => false,
         'template_labels' => true,
+        'form_field_permission' => false,
         'id' => false,
         'name' => true,
         'email' => true,
@@ -191,6 +205,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => true,
         'redirect_url' => true,
         'created_by' => false,
+        'locale' => true,
         'signer_detail' => false
     ];
 
@@ -302,6 +317,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => 'documentDownloadOption',
         'meta_data' => 'metaData',
         'failed_delivery_mode' => 'failedDeliveryMode',
+        'behalf_of' => 'behalfOf',
+        'allowed_signature_types' => 'allowedSignatureTypes',
+        'group_signer_settings' => 'groupSignerSettings',
         'template_id' => 'templateId',
         'allow_new_files' => 'allowNewFiles',
         'allow_modify_files' => 'allowModifyFiles',
@@ -311,6 +329,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => 'templateDescription',
         'is_template' => 'isTemplate',
         'template_labels' => 'templateLabels',
+        'form_field_permission' => 'formFieldPermission',
         'id' => 'id',
         'name' => 'name',
         'email' => 'email',
@@ -318,6 +337,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => 'approvedDateTime',
         'redirect_url' => 'redirectUrl',
         'created_by' => 'createdBy',
+        'locale' => 'locale',
         'signer_detail' => 'signerDetail'
     ];
 
@@ -349,6 +369,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => 'setDocumentDownloadOption',
         'meta_data' => 'setMetaData',
         'failed_delivery_mode' => 'setFailedDeliveryMode',
+        'behalf_of' => 'setBehalfOf',
+        'allowed_signature_types' => 'setAllowedSignatureTypes',
+        'group_signer_settings' => 'setGroupSignerSettings',
         'template_id' => 'setTemplateId',
         'allow_new_files' => 'setAllowNewFiles',
         'allow_modify_files' => 'setAllowModifyFiles',
@@ -358,6 +381,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => 'setTemplateDescription',
         'is_template' => 'setIsTemplate',
         'template_labels' => 'setTemplateLabels',
+        'form_field_permission' => 'setFormFieldPermission',
         'id' => 'setId',
         'name' => 'setName',
         'email' => 'setEmail',
@@ -365,6 +389,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => 'setApprovedDateTime',
         'redirect_url' => 'setRedirectUrl',
         'created_by' => 'setCreatedBy',
+        'locale' => 'setLocale',
         'signer_detail' => 'setSignerDetail'
     ];
 
@@ -396,6 +421,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_download_option' => 'getDocumentDownloadOption',
         'meta_data' => 'getMetaData',
         'failed_delivery_mode' => 'getFailedDeliveryMode',
+        'behalf_of' => 'getBehalfOf',
+        'allowed_signature_types' => 'getAllowedSignatureTypes',
+        'group_signer_settings' => 'getGroupSignerSettings',
         'template_id' => 'getTemplateId',
         'allow_new_files' => 'getAllowNewFiles',
         'allow_modify_files' => 'getAllowModifyFiles',
@@ -405,6 +433,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_description' => 'getTemplateDescription',
         'is_template' => 'getIsTemplate',
         'template_labels' => 'getTemplateLabels',
+        'form_field_permission' => 'getFormFieldPermission',
         'id' => 'getId',
         'name' => 'getName',
         'email' => 'getEmail',
@@ -412,6 +441,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'approved_date_time' => 'getApprovedDateTime',
         'redirect_url' => 'getRedirectUrl',
         'created_by' => 'getCreatedBy',
+        'locale' => 'getLocale',
         'signer_detail' => 'getSignerDetail'
     ];
 
@@ -466,6 +496,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FAILED_DELIVERY_MODE_EMAIL = 'Email';
     public const FAILED_DELIVERY_MODE_SMS = 'SMS';
     public const FAILED_DELIVERY_MODE_WHATS_APP = 'WhatsApp';
+    public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
+    public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
+    public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
 
     /**
      * Gets allowable values of the enum
@@ -496,6 +529,20 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FAILED_DELIVERY_MODE_EMAIL,
             self::FAILED_DELIVERY_MODE_SMS,
             self::FAILED_DELIVERY_MODE_WHATS_APP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAllowedSignatureTypesAllowableValues()
+    {
+        return [
+            self::ALLOWED_SIGNATURE_TYPES_TEXT,
+            self::ALLOWED_SIGNATURE_TYPES_DRAW,
+            self::ALLOWED_SIGNATURE_TYPES_IMAGE,
         ];
     }
 
@@ -536,6 +583,9 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('document_download_option', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
         $this->setIfExists('failed_delivery_mode', $data ?? [], null);
+        $this->setIfExists('behalf_of', $data ?? [], null);
+        $this->setIfExists('allowed_signature_types', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
         $this->setIfExists('allow_new_files', $data ?? [], null);
         $this->setIfExists('allow_modify_files', $data ?? [], null);
@@ -545,6 +595,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('template_description', $data ?? [], null);
         $this->setIfExists('is_template', $data ?? [], false);
         $this->setIfExists('template_labels', $data ?? [], null);
+        $this->setIfExists('form_field_permission', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
@@ -552,6 +603,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('approved_date_time', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
         $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('locale', $data ?? [], null);
         $this->setIfExists('signer_detail', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
@@ -1345,6 +1397,103 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets behalf_of
+     *
+     * @return \BoldSign\Model\BehalfOfWebhookModel|null
+     */
+    public function getBehalfOf()
+    {
+        return $this->container['behalf_of'];
+    }
+
+    /**
+     * Sets behalf_of
+     *
+     * @param \BoldSign\Model\BehalfOfWebhookModel|null $behalf_of behalf_of
+     *
+     * @return self
+     */
+    public function setBehalfOf($behalf_of)
+    {
+        if (is_null($behalf_of)) {
+            throw new \InvalidArgumentException('non-nullable behalf_of cannot be null');
+        }
+        $this->container['behalf_of'] = $behalf_of;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_signature_types
+     *
+     * @return string[]|null
+     */
+    public function getAllowedSignatureTypes()
+    {
+        return $this->container['allowed_signature_types'];
+    }
+
+    /**
+     * Sets allowed_signature_types
+     *
+     * @param string[]|null $allowed_signature_types allowed_signature_types
+     *
+     * @return self
+     */
+    public function setAllowedSignatureTypes($allowed_signature_types)
+    {
+        if (is_null($allowed_signature_types)) {
+            array_push($this->openAPINullablesSetToNull, 'allowed_signature_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allowed_signature_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getAllowedSignatureTypesAllowableValues();
+        if (!is_null($allowed_signature_types) && array_diff($allowed_signature_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'allowed_signature_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['allowed_signature_types'] = $allowed_signature_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettingsWebhookModel|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettingsWebhookModel|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
      * Gets template_id
      *
      * @return string|null
@@ -1644,6 +1793,33 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets form_field_permission
+     *
+     * @return \BoldSign\Model\FormFieldPermissionWebhookModel|null
+     */
+    public function getFormFieldPermission()
+    {
+        return $this->container['form_field_permission'];
+    }
+
+    /**
+     * Sets form_field_permission
+     *
+     * @param \BoldSign\Model\FormFieldPermissionWebhookModel|null $form_field_permission form_field_permission
+     *
+     * @return self
+     */
+    public function setFormFieldPermission($form_field_permission)
+    {
+        if (is_null($form_field_permission)) {
+            throw new \InvalidArgumentException('non-nullable form_field_permission cannot be null');
+        }
+        $this->container['form_field_permission'] = $form_field_permission;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string|null
@@ -1863,6 +2039,40 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable created_by cannot be null');
         }
         $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets locale
+     *
+     * @return string|null
+     */
+    public function getLocale()
+    {
+        return $this->container['locale'];
+    }
+
+    /**
+     * Sets locale
+     *
+     * @param string|null $locale locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        if (is_null($locale)) {
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['locale'] = $locale;
 
         return $this;
     }

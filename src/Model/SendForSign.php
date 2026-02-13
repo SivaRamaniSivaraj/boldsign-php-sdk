@@ -92,7 +92,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => 'string',
         'scheduled_send_time' => 'int',
         'allow_scheduled_send' => 'bool',
-        'allowed_signature_types' => 'string[]'
+        'allowed_signature_types' => 'string[]',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
     ];
 
     /**
@@ -138,7 +139,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => null,
         'scheduled_send_time' => 'int64',
         'allow_scheduled_send' => null,
-        'allowed_signature_types' => null
+        'allowed_signature_types' => null,
+        'group_signer_settings' => null
     ];
 
     /**
@@ -182,7 +184,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => true,
         'scheduled_send_time' => true,
         'allow_scheduled_send' => false,
-        'allowed_signature_types' => true
+        'allowed_signature_types' => true,
+        'group_signer_settings' => false
     ];
 
     /**
@@ -306,7 +309,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => 'downloadFileName',
         'scheduled_send_time' => 'scheduledSendTime',
         'allow_scheduled_send' => 'allowScheduledSend',
-        'allowed_signature_types' => 'allowedSignatureTypes'
+        'allowed_signature_types' => 'allowedSignatureTypes',
+        'group_signer_settings' => 'groupSignerSettings'
     ];
 
     /**
@@ -350,7 +354,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => 'setDownloadFileName',
         'scheduled_send_time' => 'setScheduledSendTime',
         'allow_scheduled_send' => 'setAllowScheduledSend',
-        'allowed_signature_types' => 'setAllowedSignatureTypes'
+        'allowed_signature_types' => 'setAllowedSignatureTypes',
+        'group_signer_settings' => 'setGroupSignerSettings'
     ];
 
     /**
@@ -394,7 +399,8 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         'download_file_name' => 'getDownloadFileName',
         'scheduled_send_time' => 'getScheduledSendTime',
         'allow_scheduled_send' => 'getAllowScheduledSend',
-        'allowed_signature_types' => 'getAllowedSignatureTypes'
+        'allowed_signature_types' => 'getAllowedSignatureTypes',
+        'group_signer_settings' => 'getGroupSignerSettings'
     ];
 
     /**
@@ -539,6 +545,7 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
         $this->setIfExists('allow_scheduled_send', $data ?? [], false);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
     }
 
     /**
@@ -1810,6 +1817,33 @@ class SendForSign implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['allowed_signature_types'] = $allowed_signature_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettings|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettings|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
 
         return $this;
     }

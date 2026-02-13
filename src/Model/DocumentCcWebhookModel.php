@@ -57,7 +57,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'email_address' => 'string'
+        'email_address' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'email_address' => null
+        'email_address' => null,
+        'id' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'email_address' => true
+        'email_address' => true,
+        'id' => true
     ];
 
     /**
@@ -166,7 +169,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'email_address' => 'emailAddress'
+        'email_address' => 'emailAddress',
+        'id' => 'id'
     ];
 
     /**
@@ -175,7 +179,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'email_address' => 'setEmailAddress'
+        'email_address' => 'setEmailAddress',
+        'id' => 'setId'
     ];
 
     /**
@@ -184,7 +189,8 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'email_address' => 'getEmailAddress'
+        'email_address' => 'getEmailAddress',
+        'id' => 'getId'
     ];
 
     /**
@@ -245,6 +251,7 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->setIfExists('email_address', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -319,6 +326,40 @@ class DocumentCcWebhookModel implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

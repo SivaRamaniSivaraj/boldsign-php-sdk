@@ -77,7 +77,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'string',
         'on_behalf_of' => 'string',
         'labels' => 'string[]',
-        'template_labels' => 'string[]'
+        'template_labels' => 'string[]',
+        'form_field_permission' => '\BoldSign\Model\FormFieldPermissionWebhookModel',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettingsWebhookModel',
+        'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel'
     ];
 
     /**
@@ -108,7 +111,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => null,
         'on_behalf_of' => null,
         'labels' => null,
-        'template_labels' => null
+        'template_labels' => null,
+        'form_field_permission' => null,
+        'group_signer_settings' => null,
+        'behalf_of' => null
     ];
 
     /**
@@ -137,7 +143,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => true,
         'on_behalf_of' => true,
         'labels' => true,
-        'template_labels' => true
+        'template_labels' => true,
+        'form_field_permission' => false,
+        'group_signer_settings' => false,
+        'behalf_of' => false
     ];
 
     /**
@@ -246,7 +255,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'brandId',
         'on_behalf_of' => 'onBehalfOf',
         'labels' => 'labels',
-        'template_labels' => 'templateLabels'
+        'template_labels' => 'templateLabels',
+        'form_field_permission' => 'formFieldPermission',
+        'group_signer_settings' => 'groupSignerSettings',
+        'behalf_of' => 'behalfOf'
     ];
 
     /**
@@ -275,7 +287,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'setBrandId',
         'on_behalf_of' => 'setOnBehalfOf',
         'labels' => 'setLabels',
-        'template_labels' => 'setTemplateLabels'
+        'template_labels' => 'setTemplateLabels',
+        'form_field_permission' => 'setFormFieldPermission',
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'behalf_of' => 'setBehalfOf'
     ];
 
     /**
@@ -304,7 +319,10 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'getBrandId',
         'on_behalf_of' => 'getOnBehalfOf',
         'labels' => 'getLabels',
-        'template_labels' => 'getTemplateLabels'
+        'template_labels' => 'getTemplateLabels',
+        'form_field_permission' => 'getFormFieldPermission',
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'behalf_of' => 'getBehalfOf'
     ];
 
     /**
@@ -410,6 +428,9 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('on_behalf_of', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
         $this->setIfExists('template_labels', $data ?? [], null);
+        $this->setIfExists('form_field_permission', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('behalf_of', $data ?? [], null);
     }
 
     /**
@@ -1155,6 +1176,87 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['template_labels'] = $template_labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_field_permission
+     *
+     * @return \BoldSign\Model\FormFieldPermissionWebhookModel|null
+     */
+    public function getFormFieldPermission()
+    {
+        return $this->container['form_field_permission'];
+    }
+
+    /**
+     * Sets form_field_permission
+     *
+     * @param \BoldSign\Model\FormFieldPermissionWebhookModel|null $form_field_permission form_field_permission
+     *
+     * @return self
+     */
+    public function setFormFieldPermission($form_field_permission)
+    {
+        if (is_null($form_field_permission)) {
+            throw new \InvalidArgumentException('non-nullable form_field_permission cannot be null');
+        }
+        $this->container['form_field_permission'] = $form_field_permission;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettingsWebhookModel|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettingsWebhookModel|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets behalf_of
+     *
+     * @return \BoldSign\Model\BehalfOfWebhookModel|null
+     */
+    public function getBehalfOf()
+    {
+        return $this->container['behalf_of'];
+    }
+
+    /**
+     * Sets behalf_of
+     *
+     * @param \BoldSign\Model\BehalfOfWebhookModel|null $behalf_of behalf_of
+     *
+     * @return self
+     */
+    public function setBehalfOf($behalf_of)
+    {
+        if (is_null($behalf_of)) {
+            throw new \InvalidArgumentException('non-nullable behalf_of cannot be null');
+        }
+        $this->container['behalf_of'] = $behalf_of;
 
         return $this;
     }

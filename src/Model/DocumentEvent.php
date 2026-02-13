@@ -78,7 +78,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'string',
         'document_download_option' => 'string',
         'meta_data' => 'array<string,string>',
-        'failed_delivery_mode' => 'string'
+        'failed_delivery_mode' => 'string',
+        'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel',
+        'allowed_signature_types' => 'string[]',
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettingsWebhookModel'
     ];
 
     /**
@@ -110,7 +113,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => null,
         'document_download_option' => null,
         'meta_data' => null,
-        'failed_delivery_mode' => null
+        'failed_delivery_mode' => null,
+        'behalf_of' => null,
+        'allowed_signature_types' => null,
+        'group_signer_settings' => null
     ];
 
     /**
@@ -140,7 +146,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => true,
         'document_download_option' => true,
         'meta_data' => true,
-        'failed_delivery_mode' => true
+        'failed_delivery_mode' => true,
+        'behalf_of' => false,
+        'allowed_signature_types' => true,
+        'group_signer_settings' => false
     ];
 
     /**
@@ -250,7 +259,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'brandId',
         'document_download_option' => 'documentDownloadOption',
         'meta_data' => 'metaData',
-        'failed_delivery_mode' => 'failedDeliveryMode'
+        'failed_delivery_mode' => 'failedDeliveryMode',
+        'behalf_of' => 'behalfOf',
+        'allowed_signature_types' => 'allowedSignatureTypes',
+        'group_signer_settings' => 'groupSignerSettings'
     ];
 
     /**
@@ -280,7 +292,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'setBrandId',
         'document_download_option' => 'setDocumentDownloadOption',
         'meta_data' => 'setMetaData',
-        'failed_delivery_mode' => 'setFailedDeliveryMode'
+        'failed_delivery_mode' => 'setFailedDeliveryMode',
+        'behalf_of' => 'setBehalfOf',
+        'allowed_signature_types' => 'setAllowedSignatureTypes',
+        'group_signer_settings' => 'setGroupSignerSettings'
     ];
 
     /**
@@ -310,7 +325,10 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'getBrandId',
         'document_download_option' => 'getDocumentDownloadOption',
         'meta_data' => 'getMetaData',
-        'failed_delivery_mode' => 'getFailedDeliveryMode'
+        'failed_delivery_mode' => 'getFailedDeliveryMode',
+        'behalf_of' => 'getBehalfOf',
+        'allowed_signature_types' => 'getAllowedSignatureTypes',
+        'group_signer_settings' => 'getGroupSignerSettings'
     ];
 
     /**
@@ -364,6 +382,9 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FAILED_DELIVERY_MODE_EMAIL = 'Email';
     public const FAILED_DELIVERY_MODE_SMS = 'SMS';
     public const FAILED_DELIVERY_MODE_WHATS_APP = 'WhatsApp';
+    public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
+    public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
+    public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
 
     /**
      * Gets allowable values of the enum
@@ -394,6 +415,20 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FAILED_DELIVERY_MODE_EMAIL,
             self::FAILED_DELIVERY_MODE_SMS,
             self::FAILED_DELIVERY_MODE_WHATS_APP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAllowedSignatureTypesAllowableValues()
+    {
+        return [
+            self::ALLOWED_SIGNATURE_TYPES_TEXT,
+            self::ALLOWED_SIGNATURE_TYPES_DRAW,
+            self::ALLOWED_SIGNATURE_TYPES_IMAGE,
         ];
     }
 
@@ -434,6 +469,9 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('document_download_option', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
         $this->setIfExists('failed_delivery_mode', $data ?? [], null);
+        $this->setIfExists('behalf_of', $data ?? [], null);
+        $this->setIfExists('allowed_signature_types', $data ?? [], null);
+        $this->setIfExists('group_signer_settings', $data ?? [], null);
     }
 
     /**
@@ -1218,6 +1256,103 @@ class DocumentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['failed_delivery_mode'] = $failed_delivery_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets behalf_of
+     *
+     * @return \BoldSign\Model\BehalfOfWebhookModel|null
+     */
+    public function getBehalfOf()
+    {
+        return $this->container['behalf_of'];
+    }
+
+    /**
+     * Sets behalf_of
+     *
+     * @param \BoldSign\Model\BehalfOfWebhookModel|null $behalf_of behalf_of
+     *
+     * @return self
+     */
+    public function setBehalfOf($behalf_of)
+    {
+        if (is_null($behalf_of)) {
+            throw new \InvalidArgumentException('non-nullable behalf_of cannot be null');
+        }
+        $this->container['behalf_of'] = $behalf_of;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_signature_types
+     *
+     * @return string[]|null
+     */
+    public function getAllowedSignatureTypes()
+    {
+        return $this->container['allowed_signature_types'];
+    }
+
+    /**
+     * Sets allowed_signature_types
+     *
+     * @param string[]|null $allowed_signature_types allowed_signature_types
+     *
+     * @return self
+     */
+    public function setAllowedSignatureTypes($allowed_signature_types)
+    {
+        if (is_null($allowed_signature_types)) {
+            array_push($this->openAPINullablesSetToNull, 'allowed_signature_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allowed_signature_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getAllowedSignatureTypesAllowableValues();
+        if (!is_null($allowed_signature_types) && array_diff($allowed_signature_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'allowed_signature_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['allowed_signature_types'] = $allowed_signature_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signer_settings
+     *
+     * @return \BoldSign\Model\GroupSignerSettingsWebhookModel|null
+     */
+    public function getGroupSignerSettings()
+    {
+        return $this->container['group_signer_settings'];
+    }
+
+    /**
+     * Sets group_signer_settings
+     *
+     * @param \BoldSign\Model\GroupSignerSettingsWebhookModel|null $group_signer_settings group_signer_settings
+     *
+     * @return self
+     */
+    public function setGroupSignerSettings($group_signer_settings)
+    {
+        if (is_null($group_signer_settings)) {
+            throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
+        }
+        $this->container['group_signer_settings'] = $group_signer_settings;
 
         return $this;
     }

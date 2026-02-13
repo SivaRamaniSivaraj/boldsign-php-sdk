@@ -160,6 +160,9 @@ class DocumentApi
         'behalfDocuments' => [
             'application/json',
         ],
+        'cancelEditing' => [
+            'application/json',
+        ],
         'changeAccessCode' => [
             'application/json;odata.metadata=minimal;odata.streaming=true',
             'application/json;odata.metadata=minimal;odata.streaming=false',
@@ -245,6 +248,11 @@ class DocumentApi
             'application/json-patch+json',
             'text/json',
             'application/*+json',
+        ],
+        'createEmbeddedEditUrl' => [
+            'application/json',
+            'multipart/form-data',
+            'application/x-www-form-urlencoded',
         ],
         'createEmbeddedRequestUrlDocument' => [
             'application/json',
@@ -1736,6 +1744,290 @@ class DocumentApi
     }
 
     /**
+     * Operation cancelEditing
+     *
+     * Cancels editing for a document that is currently in edit-mode.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function cancelEditing($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['cancelEditing'][0])
+    {
+        $this->cancelEditingWithHttpInfo($document_id, $on_behalf_of, $contentType);
+    }
+
+    /**
+     * Operation cancelEditingWithHttpInfo
+     *
+     * Cancels editing for a document that is currently in edit-mode.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelEditingWithHttpInfo($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['cancelEditing'][0])
+    {
+        $request = $this->cancelEditingRequest($document_id, $on_behalf_of, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cancelEditingAsync
+     *
+     * Cancels editing for a document that is currently in edit-mode.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelEditingAsync($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['cancelEditing'][0])
+    {
+        return $this->cancelEditingAsyncWithHttpInfo($document_id, $on_behalf_of, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelEditingAsyncWithHttpInfo
+     *
+     * Cancels editing for a document that is currently in edit-mode.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelEditingAsyncWithHttpInfo($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['cancelEditing'][0])
+    {
+        $returnType = '';
+        $request = $this->cancelEditingRequest($document_id, $on_behalf_of, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelEditing'
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cancelEditingRequest($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['cancelEditing'][0])
+    {
+
+        // verify the required parameter 'document_id' is set
+        if ($document_id === null || (is_array($document_id) && count($document_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $document_id when calling cancelEditing'
+            );
+        }
+
+
+
+        $resourcePath = '/v1-beta/document/cancelEditing';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $document_id,
+            'documentId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $on_behalf_of,
+            'onBehalfOf', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            $multipart ? ['multipart/form-data'] : ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                if (!empty($body)) {
+                    $multipartContents[] = [
+                        'name'     => 'body',
+                        'contents' => $body,
+                        'headers'  => ['Content-Type' => 'application/json'],
+                    ];
+                }
+
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
+        if ($apiKey !== null) {
+            $headers['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation changeAccessCode
      *
      * Changes the access code for the given document signer.
@@ -2367,6 +2659,506 @@ class DocumentApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEmbeddedEditUrl
+     *
+     * Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedDocumentEditJsonRequest $embedded_document_edit_json_request The embedded edit document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedEditUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \BoldSign\Model\EmbeddedDocumentEdited|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
+     */
+    public function createEmbeddedEditUrl($document_id, $embedded_document_edit_json_request = null, string $contentType = self::contentTypes['createEmbeddedEditUrl'][0])
+    {
+        list($response) = $this->createEmbeddedEditUrlWithHttpInfo($document_id, $embedded_document_edit_json_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createEmbeddedEditUrlWithHttpInfo
+     *
+     * Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedDocumentEditJsonRequest $embedded_document_edit_json_request The embedded edit document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedEditUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \BoldSign\Model\EmbeddedDocumentEdited|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEmbeddedEditUrlWithHttpInfo($document_id, $embedded_document_edit_json_request = null, string $contentType = self::contentTypes['createEmbeddedEditUrl'][0])
+    {
+        $request = $this->createEmbeddedEditUrlRequest($document_id, $embedded_document_edit_json_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\BoldSign\Model\EmbeddedDocumentEdited' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\EmbeddedDocumentEdited' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\EmbeddedDocumentEdited', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\BoldSign\Model\EmbeddedDocumentEdited';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\EmbeddedDocumentEdited',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createEmbeddedEditUrlAsync
+     *
+     * Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedDocumentEditJsonRequest $embedded_document_edit_json_request The embedded edit document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedEditUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedEditUrlAsync($document_id, $embedded_document_edit_json_request = null, string $contentType = self::contentTypes['createEmbeddedEditUrl'][0])
+    {
+        return $this->createEmbeddedEditUrlAsyncWithHttpInfo($document_id, $embedded_document_edit_json_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEmbeddedEditUrlAsyncWithHttpInfo
+     *
+     * Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedDocumentEditJsonRequest $embedded_document_edit_json_request The embedded edit document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedEditUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedEditUrlAsyncWithHttpInfo($document_id, $embedded_document_edit_json_request = null, string $contentType = self::contentTypes['createEmbeddedEditUrl'][0])
+    {
+        $returnType = '\BoldSign\Model\EmbeddedDocumentEdited';
+        $request = $this->createEmbeddedEditUrlRequest($document_id, $embedded_document_edit_json_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEmbeddedEditUrl'
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedDocumentEditJsonRequest $embedded_document_edit_json_request The embedded edit document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedEditUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createEmbeddedEditUrlRequest($document_id, $embedded_document_edit_json_request = null, string $contentType = self::contentTypes['createEmbeddedEditUrl'][0])
+    {
+
+        // verify the required parameter 'document_id' is set
+        if ($document_id === null || (is_array($document_id) && count($document_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $document_id when calling createEmbeddedEditUrl'
+            );
+        }
+
+
+
+        $resourcePath = '/v1-beta/document/createEmbeddedEditUrl';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        if(!is_array($embedded_document_edit_json_request)) {
+            $formParams = ObjectSerializer::getFormParams(
+                $embedded_document_edit_json_request
+            );
+        }
+        else {
+            foreach($embedded_document_edit_json_request as $param){
+                $formParams = ObjectSerializer::getFormParams(
+                $param);
+            }
+        }
+
+        $multipart = !empty($formParams);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $document_id,
+            'documentId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            $multipart ? ['multipart/form-data'] : ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) === 0) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($embedded_document_edit_json_request));
+            } else {
+                $httpBody = $embedded_document_edit_json_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                if (!empty($body)) {
+                    $multipartContents[] = [
+                        'name'     => 'body',
+                        'contents' => $body,
+                        'headers'  => ['Content-Type' => 'application/json'],
+                    ];
+                }
+
+                if ($payloadHook = $this->config->getPayloadHook()) {
+                    $payloadHook('multipart', $multipartContents, $embedded_document_edit_json_request);
+                }
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
+        if ($apiKey !== null) {
+            $headers['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

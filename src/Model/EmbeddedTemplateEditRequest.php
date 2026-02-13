@@ -310,6 +310,7 @@ class EmbeddedTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     public const LOCALE_TH = 'TH';
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
+    public const LOCALE_KO = 'KO';
 
     /**
      * Gets allowable values of the enum
@@ -352,6 +353,7 @@ class EmbeddedTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
             self::LOCALE_TH,
             self::LOCALE_ZH_CN,
             self::LOCALE_ZH_TW,
+            self::LOCALE_KO,
         ];
     }
 

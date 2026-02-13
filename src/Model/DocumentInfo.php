@@ -266,6 +266,7 @@ class DocumentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOCALE_TH = 'TH';
     public const LOCALE_ZH_CN = 'ZH_CN';
     public const LOCALE_ZH_TW = 'ZH_TW';
+    public const LOCALE_KO = 'KO';
     public const LANGUAGE_0 = 0;
     public const LANGUAGE_1 = 1;
     public const LANGUAGE_2 = 2;
@@ -286,6 +287,7 @@ class DocumentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_17 = 17;
     public const LANGUAGE_18 = 18;
     public const LANGUAGE_19 = 19;
+    public const LANGUAGE_20 = 20;
 
     /**
      * Gets allowable values of the enum
@@ -315,6 +317,7 @@ class DocumentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LOCALE_TH,
             self::LOCALE_ZH_CN,
             self::LOCALE_ZH_TW,
+            self::LOCALE_KO,
         ];
     }
 
@@ -346,6 +349,7 @@ class DocumentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_17,
             self::LANGUAGE_18,
             self::LANGUAGE_19,
+            self::LANGUAGE_20,
         ];
     }
 
@@ -522,7 +526,7 @@ class DocumentInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param int|null $language <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li></ul>
+     * @param int|null $language <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
      *
      * @return self
      */
