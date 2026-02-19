@@ -31,6 +31,7 @@ namespace BoldSign;
 use GuzzleHttp\Psr7\Utils;
 use BoldSign\Model\ModelInterface;
 use GuzzleHttp;
+use BoldSign\Model\EditDocumentFile;
 
 /**
  * ObjectSerializer Class Doc Comment
@@ -669,6 +670,23 @@ class ObjectSerializer
 
                 continue;
             }
+
+            if (is_array($value) && isset($value[0]) && $value[0] instanceof EditDocumentFile) {
+                $hasFile = true;
+                foreach ($value as $index => $fileObject) {
+                    $formValues = ObjectSerializer::sanitizeForSerialization($fileObject);
+                    foreach ($formValues as $property => $formValue) {
+                        $paramKey = "Files[$index].$property";
+                        if ($property === 'file') {
+                            $formParams[$paramKey] = Utils::tryFopen($formValue, 'rb');
+                        } else {
+                            $formParams[$paramKey] = $formValue;
+                        }
+                    }
+                }
+                continue;
+            }
+            
             // Handle generic array cases
             if (strpos($apiTypes[$key], 'array') !== false || is_array($value)) {
                 if (!array_key_exists($key, $keyCount)) {

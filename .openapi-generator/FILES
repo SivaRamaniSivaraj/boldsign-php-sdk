@@ -53,6 +53,7 @@ docs/Model/Document.md
 docs/Model/DocumentCC.md
 docs/Model/DocumentCcDetails.md
 docs/Model/DocumentCreated.md
+docs/Model/DocumentEdited.md
 docs/Model/DocumentExpirySettings.md
 docs/Model/DocumentFiles.md
 docs/Model/DocumentFormFields.md
@@ -65,6 +66,10 @@ docs/Model/DocumentSigner.md
 docs/Model/DocumentSignerDetails.md
 docs/Model/DocumentTags.md
 docs/Model/DownloadImageRequest.md
+docs/Model/EditDocumentFile.md
+docs/Model/EditDocumentRequest.md
+docs/Model/EditDocumentSigner.md
+docs/Model/EditFormField.md
 docs/Model/EditSenderIdentityRequest.md
 docs/Model/EditTemplateRequest.md
 docs/Model/EditableDateFieldSettings.md
@@ -215,6 +220,7 @@ src/Model/Document.php
 src/Model/DocumentCC.php
 src/Model/DocumentCcDetails.php
 src/Model/DocumentCreated.php
+src/Model/DocumentEdited.php
 src/Model/DocumentExpirySettings.php
 src/Model/DocumentFiles.php
 src/Model/DocumentFormFields.php
@@ -227,6 +233,10 @@ src/Model/DocumentSigner.php
 src/Model/DocumentSignerDetails.php
 src/Model/DocumentTags.php
 src/Model/DownloadImageRequest.php
+src/Model/EditDocumentFile.php
+src/Model/EditDocumentRequest.php
+src/Model/EditDocumentSigner.php
+src/Model/EditFormField.php
 src/Model/EditSenderIdentityRequest.php
 src/Model/EditTemplateRequest.php
 src/Model/EditableDateFieldSettings.php
