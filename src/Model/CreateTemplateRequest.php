@@ -84,7 +84,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'allowed_signature_types' => 'string[]',
         'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
-        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'bool'
     ];
 
     /**
@@ -122,7 +123,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => null,
         'allowed_signature_types' => null,
         'form_field_permission' => null,
-        'group_signer_settings' => null
+        'group_signer_settings' => null,
+        'enable_allow_sign_everywhere' => null
     ];
 
     /**
@@ -158,7 +160,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => false,
         'allowed_signature_types' => true,
         'form_field_permission' => false,
-        'group_signer_settings' => false
+        'group_signer_settings' => false,
+        'enable_allow_sign_everywhere' => true
     ];
 
     /**
@@ -274,7 +277,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'allowed_signature_types' => 'allowedSignatureTypes',
         'form_field_permission' => 'formFieldPermission',
-        'group_signer_settings' => 'groupSignerSettings'
+        'group_signer_settings' => 'groupSignerSettings',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
     ];
 
     /**
@@ -310,7 +314,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'form_field_permission' => 'setFormFieldPermission',
-        'group_signer_settings' => 'setGroupSignerSettings'
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
     ];
 
     /**
@@ -346,7 +351,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'form_field_permission' => 'getFormFieldPermission',
-        'group_signer_settings' => 'getGroupSignerSettings'
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
     ];
 
     /**
@@ -451,6 +457,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('form_field_permission', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
     }
 
     /**
@@ -1424,6 +1431,40 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
         }
         $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_allow_sign_everywhere');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_allow_sign_everywhere', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }

@@ -98,7 +98,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => 'bool',
         'allow_delete_form_field' => 'bool',
         'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
-        'is_masked' => 'bool'
+        'is_masked' => 'bool',
+        'is_default_value_required' => 'bool'
     ];
 
     /**
@@ -150,7 +151,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => null,
         'allow_delete_form_field' => null,
         'collaboration_settings' => null,
-        'is_masked' => null
+        'is_masked' => null,
+        'is_default_value_required' => null
     ];
 
     /**
@@ -200,7 +202,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => true,
         'allow_delete_form_field' => true,
         'collaboration_settings' => false,
-        'is_masked' => true
+        'is_masked' => true,
+        'is_default_value_required' => true
     ];
 
     /**
@@ -330,7 +333,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => 'allowEditFormField',
         'allow_delete_form_field' => 'allowDeleteFormField',
         'collaboration_settings' => 'collaborationSettings',
-        'is_masked' => 'isMasked'
+        'is_masked' => 'isMasked',
+        'is_default_value_required' => 'isDefaultValueRequired'
     ];
 
     /**
@@ -380,7 +384,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => 'setAllowEditFormField',
         'allow_delete_form_field' => 'setAllowDeleteFormField',
         'collaboration_settings' => 'setCollaborationSettings',
-        'is_masked' => 'setIsMasked'
+        'is_masked' => 'setIsMasked',
+        'is_default_value_required' => 'setIsDefaultValueRequired'
     ];
 
     /**
@@ -430,7 +435,8 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'allow_edit_form_field' => 'getAllowEditFormField',
         'allow_delete_form_field' => 'getAllowDeleteFormField',
         'collaboration_settings' => 'getCollaborationSettings',
-        'is_masked' => 'getIsMasked'
+        'is_masked' => 'getIsMasked',
+        'is_default_value_required' => 'getIsDefaultValueRequired'
     ];
 
     /**
@@ -670,6 +676,7 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('allow_delete_form_field', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
         $this->setIfExists('is_masked', $data ?? [], false);
+        $this->setIfExists('is_default_value_required', $data ?? [], null);
     }
 
     /**
@@ -2171,6 +2178,40 @@ class FormField implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['is_masked'] = $is_masked;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_default_value_required
+     *
+     * @return bool|null
+     */
+    public function getIsDefaultValueRequired()
+    {
+        return $this->container['is_default_value_required'];
+    }
+
+    /**
+     * Sets is_default_value_required
+     *
+     * @param bool|null $is_default_value_required is_default_value_required
+     *
+     * @return self
+     */
+    public function setIsDefaultValueRequired($is_default_value_required)
+    {
+        if (is_null($is_default_value_required)) {
+            array_push($this->openAPINullablesSetToNull, 'is_default_value_required');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_default_value_required', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_default_value_required'] = $is_default_value_required;
 
         return $this;
     }
