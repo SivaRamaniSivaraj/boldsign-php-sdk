@@ -80,7 +80,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => 'string[]',
         'form_field_permission' => '\BoldSign\Model\FormFieldPermissionWebhookModel',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettingsWebhookModel',
-        'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel'
+        'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel',
+        'enable_allow_sign_everywhere' => 'bool'
     ];
 
     /**
@@ -114,7 +115,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => null,
         'form_field_permission' => null,
         'group_signer_settings' => null,
-        'behalf_of' => null
+        'behalf_of' => null,
+        'enable_allow_sign_everywhere' => null
     ];
 
     /**
@@ -146,7 +148,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => true,
         'form_field_permission' => false,
         'group_signer_settings' => false,
-        'behalf_of' => false
+        'behalf_of' => false,
+        'enable_allow_sign_everywhere' => true
     ];
 
     /**
@@ -258,7 +261,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => 'templateLabels',
         'form_field_permission' => 'formFieldPermission',
         'group_signer_settings' => 'groupSignerSettings',
-        'behalf_of' => 'behalfOf'
+        'behalf_of' => 'behalfOf',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
     ];
 
     /**
@@ -290,7 +294,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => 'setTemplateLabels',
         'form_field_permission' => 'setFormFieldPermission',
         'group_signer_settings' => 'setGroupSignerSettings',
-        'behalf_of' => 'setBehalfOf'
+        'behalf_of' => 'setBehalfOf',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
     ];
 
     /**
@@ -322,7 +327,8 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'template_labels' => 'getTemplateLabels',
         'form_field_permission' => 'getFormFieldPermission',
         'group_signer_settings' => 'getGroupSignerSettings',
-        'behalf_of' => 'getBehalfOf'
+        'behalf_of' => 'getBehalfOf',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
     ];
 
     /**
@@ -431,6 +437,7 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('form_field_permission', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('behalf_of', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
     }
 
     /**
@@ -1257,6 +1264,40 @@ class TemplateEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable behalf_of cannot be null');
         }
         $this->container['behalf_of'] = $behalf_of;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_allow_sign_everywhere');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_allow_sign_everywhere', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }

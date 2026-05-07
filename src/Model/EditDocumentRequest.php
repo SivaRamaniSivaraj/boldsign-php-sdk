@@ -86,7 +86,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => 'string',
         'scheduled_send_time' => 'int',
         'allowed_signature_types' => 'string[]',
-        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'bool'
     ];
 
     /**
@@ -126,7 +127,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => null,
         'scheduled_send_time' => 'int64',
         'allowed_signature_types' => null,
-        'group_signer_settings' => null
+        'group_signer_settings' => null,
+        'enable_allow_sign_everywhere' => null
     ];
 
     /**
@@ -164,7 +166,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => true,
         'scheduled_send_time' => true,
         'allowed_signature_types' => true,
-        'group_signer_settings' => false
+        'group_signer_settings' => false,
+        'enable_allow_sign_everywhere' => true
     ];
 
     /**
@@ -282,7 +285,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => 'downloadFileName',
         'scheduled_send_time' => 'scheduledSendTime',
         'allowed_signature_types' => 'allowedSignatureTypes',
-        'group_signer_settings' => 'groupSignerSettings'
+        'group_signer_settings' => 'groupSignerSettings',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
     ];
 
     /**
@@ -320,7 +324,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => 'setDownloadFileName',
         'scheduled_send_time' => 'setScheduledSendTime',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
-        'group_signer_settings' => 'setGroupSignerSettings'
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
     ];
 
     /**
@@ -358,7 +363,8 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'download_file_name' => 'getDownloadFileName',
         'scheduled_send_time' => 'getScheduledSendTime',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
-        'group_signer_settings' => 'getGroupSignerSettings'
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
     ];
 
     /**
@@ -501,6 +507,7 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
     }
 
     /**
@@ -1627,6 +1634,40 @@ class EditDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
         }
         $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_allow_sign_everywhere');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_allow_sign_everywhere', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }

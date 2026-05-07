@@ -498,7 +498,7 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FIELD_TYPE_TITLE = 'Title';
     public const FIELD_TYPE_COMPANY = 'Company';
     public const FIELD_TYPE_FORMULA = 'Formula';
-    public const FIELD_TYPE_NULL = 'null';
+    public const FIELD_TYPE_DRAWING = 'Drawing';
     public const FONT_HELVETICA = 'Helvetica';
     public const FONT_COURIER = 'Courier';
     public const FONT_TIMES_ROMAN = 'TimesRoman';
@@ -561,7 +561,7 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FIELD_TYPE_TITLE,
             self::FIELD_TYPE_COMPANY,
             self::FIELD_TYPE_FORMULA,
-            self::FIELD_TYPE_NULL,
+            self::FIELD_TYPE_DRAWING,
         ];
     }
 

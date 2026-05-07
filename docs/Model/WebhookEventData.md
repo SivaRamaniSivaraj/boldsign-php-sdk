@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **behalf_of** | [**\BoldSign\Model\BehalfOfWebhookModel**](BehalfOfWebhookModel.md) |  | [optional]
 **allowed_signature_types** | **string[]** |  | [optional]
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettingsWebhookModel**](GroupSignerSettingsWebhookModel.md) |  | [optional]
+**enable_allow_sign_everywhere** | **bool** |  | [optional]
 **template_id** | **string** |  | [optional]
 **allow_new_files** | **bool** |  | [optional]
 **allow_modify_files** | **bool** |  | [optional]

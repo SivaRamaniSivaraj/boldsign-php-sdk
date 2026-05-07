@@ -429,6 +429,7 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const TYPE_TITLE = 'Title';
     public const TYPE_COMPANY = 'Company';
     public const TYPE_FORMULA = 'Formula';
+    public const TYPE_DRAWING = 'Drawing';
     public const TEXT_ALIGN_LEFT = 'Left';
     public const TEXT_ALIGN_CENTER = 'Center';
     public const TEXT_ALIGN_RIGHT = 'Right';
@@ -463,6 +464,7 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::TYPE_TITLE,
             self::TYPE_COMPANY,
             self::TYPE_FORMULA,
+            self::TYPE_DRAWING,
         ];
     }
 

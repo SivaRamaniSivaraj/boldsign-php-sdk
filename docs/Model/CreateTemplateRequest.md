@@ -32,5 +32,6 @@ Name | Type | Description | Notes
 **allowed_signature_types** | **string[]** |  | [optional]
 **form_field_permission** | [**\BoldSign\Model\FormFieldPermission**](FormFieldPermission.md) |  | [optional]
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
+**enable_allow_sign_everywhere** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
