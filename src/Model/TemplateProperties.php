@@ -87,7 +87,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
-        'sharing' => '\BoldSign\Model\TemplateSharing'
+        'sharing' => '\BoldSign\Model\TemplateSharing',
+        'enable_allow_sign_everywhere' => 'bool'
     ];
 
     /**
@@ -128,7 +129,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => null,
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
-        'sharing' => null
+        'sharing' => null,
+        'enable_allow_sign_everywhere' => null
     ];
 
     /**
@@ -167,7 +169,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => false,
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
-        'sharing' => false
+        'sharing' => false,
+        'enable_allow_sign_everywhere' => false
     ];
 
     /**
@@ -286,7 +289,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => 'formFieldPermission',
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
-        'sharing' => 'sharing'
+        'sharing' => 'sharing',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
     ];
 
     /**
@@ -325,7 +329,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => 'setFormFieldPermission',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
-        'sharing' => 'setSharing'
+        'sharing' => 'setSharing',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
     ];
 
     /**
@@ -364,7 +369,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'form_field_permission' => 'getFormFieldPermission',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
-        'sharing' => 'getSharing'
+        'sharing' => 'getSharing',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
     ];
 
     /**
@@ -487,6 +493,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('sharing', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
     }
 
     /**
@@ -1506,6 +1513,33 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable sharing cannot be null');
         }
         $this->container['sharing'] = $sharing;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            throw new \InvalidArgumentException('non-nullable enable_allow_sign_everywhere cannot be null');
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }

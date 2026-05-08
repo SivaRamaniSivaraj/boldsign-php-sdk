@@ -82,6 +82,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => '\BoldSign\Model\BehalfOfWebhookModel',
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettingsWebhookModel',
+        'enable_allow_sign_everywhere' => 'bool',
         'template_id' => 'string',
         'allow_new_files' => 'bool',
         'allow_modify_files' => 'bool',
@@ -136,6 +137,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => null,
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
+        'enable_allow_sign_everywhere' => null,
         'template_id' => null,
         'allow_new_files' => null,
         'allow_modify_files' => null,
@@ -188,6 +190,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => false,
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
+        'enable_allow_sign_everywhere' => true,
         'template_id' => true,
         'allow_new_files' => true,
         'allow_modify_files' => true,
@@ -320,6 +323,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'behalfOf',
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
         'template_id' => 'templateId',
         'allow_new_files' => 'allowNewFiles',
         'allow_modify_files' => 'allowModifyFiles',
@@ -372,6 +376,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'setBehalfOf',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
         'template_id' => 'setTemplateId',
         'allow_new_files' => 'setAllowNewFiles',
         'allow_modify_files' => 'setAllowModifyFiles',
@@ -424,6 +429,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'getBehalfOf',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
         'template_id' => 'getTemplateId',
         'allow_new_files' => 'getAllowNewFiles',
         'allow_modify_files' => 'getAllowModifyFiles',
@@ -586,6 +592,7 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('behalf_of', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
         $this->setIfExists('allow_new_files', $data ?? [], null);
         $this->setIfExists('allow_modify_files', $data ?? [], null);
@@ -1489,6 +1496,40 @@ class WebhookEventData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
         }
         $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_allow_sign_everywhere');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_allow_sign_everywhere', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }

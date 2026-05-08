@@ -25,6 +25,7 @@ docs/Model/Base64File.md
 docs/Model/BehalfDocument.md
 docs/Model/BehalfDocumentRecords.md
 docs/Model/BehalfOf.md
+docs/Model/BehalfOfWebhookModel.md
 docs/Model/BillingViewModel.md
 docs/Model/BrandCreated.md
 docs/Model/BrandCustomFieldDetails.md
@@ -198,6 +199,7 @@ docs/Model/Validation.md
 docs/Model/VerificationDataRequest.md
 docs/Model/ViewBrandDetails.md
 docs/Model/ViewCustomFieldDetails.md
+docs/Model/WebhookActorDetails.md
 docs/Model/WebhookContext.md
 docs/Model/WebhookEvent.md
 docs/Model/WebhookEventData.md
@@ -229,6 +231,7 @@ src/Model/Base64File.php
 src/Model/BehalfDocument.php
 src/Model/BehalfDocumentRecords.php
 src/Model/BehalfOf.php
+src/Model/BehalfOfWebhookModel.php
 src/Model/BillingViewModel.php
 src/Model/BrandCreated.php
 src/Model/BrandCustomFieldDetails.php
@@ -403,6 +406,7 @@ src/Model/Validation.php
 src/Model/VerificationDataRequest.php
 src/Model/ViewBrandDetails.php
 src/Model/ViewCustomFieldDetails.php
+src/Model/WebhookActorDetails.php
 src/Model/WebhookContext.php
 src/Model/WebhookEvent.php
 src/Model/WebhookEventData.php

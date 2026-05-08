@@ -98,7 +98,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'bool',
         'allow_delete_form_field' => 'bool',
         'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
-        'is_masked' => 'bool'
+        'is_masked' => 'bool',
+        'is_default_value_required' => 'bool'
     ];
 
     /**
@@ -150,7 +151,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => null,
         'allow_delete_form_field' => null,
         'collaboration_settings' => null,
-        'is_masked' => null
+        'is_masked' => null,
+        'is_default_value_required' => null
     ];
 
     /**
@@ -200,7 +202,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => false,
         'allow_delete_form_field' => false,
         'collaboration_settings' => false,
-        'is_masked' => false
+        'is_masked' => false,
+        'is_default_value_required' => false
     ];
 
     /**
@@ -330,7 +333,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'allowEditFormField',
         'allow_delete_form_field' => 'allowDeleteFormField',
         'collaboration_settings' => 'collaborationSettings',
-        'is_masked' => 'isMasked'
+        'is_masked' => 'isMasked',
+        'is_default_value_required' => 'isDefaultValueRequired'
     ];
 
     /**
@@ -380,7 +384,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'setAllowEditFormField',
         'allow_delete_form_field' => 'setAllowDeleteFormField',
         'collaboration_settings' => 'setCollaborationSettings',
-        'is_masked' => 'setIsMasked'
+        'is_masked' => 'setIsMasked',
+        'is_default_value_required' => 'setIsDefaultValueRequired'
     ];
 
     /**
@@ -430,7 +435,8 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'allow_edit_form_field' => 'getAllowEditFormField',
         'allow_delete_form_field' => 'getAllowDeleteFormField',
         'collaboration_settings' => 'getCollaborationSettings',
-        'is_masked' => 'getIsMasked'
+        'is_masked' => 'getIsMasked',
+        'is_default_value_required' => 'getIsDefaultValueRequired'
     ];
 
     /**
@@ -606,6 +612,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('allow_delete_form_field', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
         $this->setIfExists('is_masked', $data ?? [], false);
+        $this->setIfExists('is_default_value_required', $data ?? [], null);
     }
 
     /**
@@ -1989,6 +1996,33 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable is_masked cannot be null');
         }
         $this->container['is_masked'] = $is_masked;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_default_value_required
+     *
+     * @return bool|null
+     */
+    public function getIsDefaultValueRequired()
+    {
+        return $this->container['is_default_value_required'];
+    }
+
+    /**
+     * Sets is_default_value_required
+     *
+     * @param bool|null $is_default_value_required is_default_value_required
+     *
+     * @return self
+     */
+    public function setIsDefaultValueRequired($is_default_value_required)
+    {
+        if (is_null($is_default_value_required)) {
+            throw new \InvalidArgumentException('non-nullable is_default_value_required cannot be null');
+        }
+        $this->container['is_default_value_required'] = $is_default_value_required;
 
         return $this;
     }

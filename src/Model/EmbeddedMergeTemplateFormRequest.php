@@ -104,7 +104,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => 'int',
         'allow_scheduled_send' => 'bool',
         'allowed_signature_types' => 'string[]',
-        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'bool'
     ];
 
     /**
@@ -162,7 +163,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => 'int64',
         'allow_scheduled_send' => null,
         'allowed_signature_types' => null,
-        'group_signer_settings' => null
+        'group_signer_settings' => null,
+        'enable_allow_sign_everywhere' => null
     ];
 
     /**
@@ -218,7 +220,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => true,
         'allow_scheduled_send' => false,
         'allowed_signature_types' => true,
-        'group_signer_settings' => false
+        'group_signer_settings' => false,
+        'enable_allow_sign_everywhere' => true
     ];
 
     /**
@@ -354,7 +357,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => 'scheduledSendTime',
         'allow_scheduled_send' => 'allowScheduledSend',
         'allowed_signature_types' => 'allowedSignatureTypes',
-        'group_signer_settings' => 'groupSignerSettings'
+        'group_signer_settings' => 'groupSignerSettings',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
     ];
 
     /**
@@ -410,7 +414,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => 'setScheduledSendTime',
         'allow_scheduled_send' => 'setAllowScheduledSend',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
-        'group_signer_settings' => 'setGroupSignerSettings'
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
     ];
 
     /**
@@ -466,7 +471,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'scheduled_send_time' => 'getScheduledSendTime',
         'allow_scheduled_send' => 'getAllowScheduledSend',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
-        'group_signer_settings' => 'getGroupSignerSettings'
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
     ];
 
     /**
@@ -691,6 +697,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         $this->setIfExists('allow_scheduled_send', $data ?? [], false);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
     }
 
     /**
@@ -2371,6 +2378,40 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
         }
         $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_allow_sign_everywhere');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_allow_sign_everywhere', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
 
         return $this;
     }
