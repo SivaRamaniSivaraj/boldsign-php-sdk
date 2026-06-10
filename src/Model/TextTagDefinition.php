@@ -88,7 +88,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => '\BoldSign\Model\FormulaFieldSettings',
         'resize_option' => 'string',
         'collaboration_settings' => '\BoldSign\Model\CollaborationSettings',
-        'is_masked' => 'bool'
+        'is_masked' => 'bool',
+        'conditional_rules' => '\BoldSign\Model\ConditionalRule[]'
     ];
 
     /**
@@ -130,7 +131,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => null,
         'resize_option' => null,
         'collaboration_settings' => null,
-        'is_masked' => null
+        'is_masked' => null,
+        'conditional_rules' => null
     ];
 
     /**
@@ -170,7 +172,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => false,
         'resize_option' => true,
         'collaboration_settings' => false,
-        'is_masked' => true
+        'is_masked' => true,
+        'conditional_rules' => true
     ];
 
     /**
@@ -290,7 +293,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => 'formulaFieldSettings',
         'resize_option' => 'resizeOption',
         'collaboration_settings' => 'collaborationSettings',
-        'is_masked' => 'isMasked'
+        'is_masked' => 'isMasked',
+        'conditional_rules' => 'conditionalRules'
     ];
 
     /**
@@ -330,7 +334,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => 'setFormulaFieldSettings',
         'resize_option' => 'setResizeOption',
         'collaboration_settings' => 'setCollaborationSettings',
-        'is_masked' => 'setIsMasked'
+        'is_masked' => 'setIsMasked',
+        'conditional_rules' => 'setConditionalRules'
     ];
 
     /**
@@ -370,7 +375,8 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         'formula_field_settings' => 'getFormulaFieldSettings',
         'resize_option' => 'getResizeOption',
         'collaboration_settings' => 'getCollaborationSettings',
-        'is_masked' => 'getIsMasked'
+        'is_masked' => 'getIsMasked',
+        'conditional_rules' => 'getConditionalRules'
     ];
 
     /**
@@ -558,6 +564,7 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('resize_option', $data ?? [], null);
         $this->setIfExists('collaboration_settings', $data ?? [], null);
         $this->setIfExists('is_masked', $data ?? [], false);
+        $this->setIfExists('conditional_rules', $data ?? [], null);
     }
 
     /**
@@ -1709,6 +1716,40 @@ class TextTagDefinition implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['is_masked'] = $is_masked;
+
+        return $this;
+    }
+
+    /**
+     * Gets conditional_rules
+     *
+     * @return \BoldSign\Model\ConditionalRule[]|null
+     */
+    public function getConditionalRules()
+    {
+        return $this->container['conditional_rules'];
+    }
+
+    /**
+     * Sets conditional_rules
+     *
+     * @param \BoldSign\Model\ConditionalRule[]|null $conditional_rules conditional_rules
+     *
+     * @return self
+     */
+    public function setConditionalRules($conditional_rules)
+    {
+        if (is_null($conditional_rules)) {
+            array_push($this->openAPINullablesSetToNull, 'conditional_rules');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('conditional_rules', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['conditional_rules'] = $conditional_rules;
 
         return $this;
     }

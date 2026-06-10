@@ -36,5 +36,6 @@ Name | Type | Description | Notes
 **resize_option** | **string** |  | [optional]
 **collaboration_settings** | [**\BoldSign\Model\CollaborationSettings**](CollaborationSettings.md) |  | [optional]
 **is_masked** | **bool** |  | [optional] [default to false]
+**conditional_rules** | [**\BoldSign\Model\ConditionalRule[]**](ConditionalRule.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
