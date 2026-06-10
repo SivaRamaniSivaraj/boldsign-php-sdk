@@ -93,6 +93,7 @@ docs/Model/EmbeddedTemplateEdited.md
 docs/Model/EmbeddedTemplatePreview.md
 docs/Model/EmbeddedTemplatePreviewJsonRequest.md
 docs/Model/Error.md
+docs/Model/ErrorResponse.md
 docs/Model/ErrorResult.md
 docs/Model/ExistingFormField.md
 docs/Model/ExtendExpiry.md
@@ -158,11 +159,14 @@ docs/Model/TemplateRecords.md
 docs/Model/TemplateRole.md
 docs/Model/TemplateSenderDetail.md
 docs/Model/TemplateSenderDetails.md
+docs/Model/TemplateShareErrorResponse.md
+docs/Model/TemplateShareRequest.md
 docs/Model/TemplateSharedTemplateDetail.md
 docs/Model/TemplateSharing.md
 docs/Model/TemplateSignerDetails.md
 docs/Model/TemplateTag.md
 docs/Model/TemplateTeamShare.md
+docs/Model/TemplateTeamShareRequest.md
 docs/Model/TextTagDefinition.md
 docs/Model/TextTagOffset.md
 docs/Model/UpdateGroupContact.md
@@ -271,6 +275,7 @@ src/Model/EmbeddedTemplateEdited.php
 src/Model/EmbeddedTemplatePreview.php
 src/Model/EmbeddedTemplatePreviewJsonRequest.php
 src/Model/Error.php
+src/Model/ErrorResponse.php
 src/Model/ErrorResult.php
 src/Model/ExistingFormField.php
 src/Model/ExtendExpiry.php
@@ -337,11 +342,14 @@ src/Model/TemplateRecords.php
 src/Model/TemplateRole.php
 src/Model/TemplateSenderDetail.php
 src/Model/TemplateSenderDetails.php
+src/Model/TemplateShareErrorResponse.php
+src/Model/TemplateShareRequest.php
 src/Model/TemplateSharedTemplateDetail.php
 src/Model/TemplateSharing.php
 src/Model/TemplateSignerDetails.php
 src/Model/TemplateTag.php
 src/Model/TemplateTeamShare.php
+src/Model/TemplateTeamShareRequest.php
 src/Model/TextTagDefinition.php
 src/Model/TextTagOffset.php
 src/Model/UpdateGroupContact.php

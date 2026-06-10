@@ -100,7 +100,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'in_editing_mode' => 'bool',
-        'display_status' => 'string'
+        'display_status' => 'string',
+        'enable_allow_sign_everywhere' => 'bool',
+        'is_combined_audit' => 'bool',
+        'is_combined_attachment' => 'bool'
     ];
 
     /**
@@ -154,7 +157,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
         'in_editing_mode' => null,
-        'display_status' => null
+        'display_status' => null,
+        'enable_allow_sign_everywhere' => null,
+        'is_combined_audit' => null,
+        'is_combined_attachment' => null
     ];
 
     /**
@@ -206,7 +212,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
         'in_editing_mode' => false,
-        'display_status' => true
+        'display_status' => true,
+        'enable_allow_sign_everywhere' => false,
+        'is_combined_audit' => false,
+        'is_combined_attachment' => false
     ];
 
     /**
@@ -338,7 +347,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
         'in_editing_mode' => 'inEditingMode',
-        'display_status' => 'displayStatus'
+        'display_status' => 'displayStatus',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
+        'is_combined_audit' => 'isCombinedAudit',
+        'is_combined_attachment' => 'isCombinedAttachment'
     ];
 
     /**
@@ -390,7 +402,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
         'in_editing_mode' => 'setInEditingMode',
-        'display_status' => 'setDisplayStatus'
+        'display_status' => 'setDisplayStatus',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
+        'is_combined_audit' => 'setIsCombinedAudit',
+        'is_combined_attachment' => 'setIsCombinedAttachment'
     ];
 
     /**
@@ -442,7 +457,10 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
         'in_editing_mode' => 'getInEditingMode',
-        'display_status' => 'getDisplayStatus'
+        'display_status' => 'getDisplayStatus',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
+        'is_combined_audit' => 'getIsCombinedAudit',
+        'is_combined_attachment' => 'getIsCombinedAttachment'
     ];
 
     /**
@@ -667,6 +685,9 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('in_editing_mode', $data ?? [], null);
         $this->setIfExists('display_status', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
+        $this->setIfExists('is_combined_audit', $data ?? [], null);
+        $this->setIfExists('is_combined_attachment', $data ?? [], null);
     }
 
     /**
@@ -2134,6 +2155,87 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['display_status'] = $display_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            throw new \InvalidArgumentException('non-nullable enable_allow_sign_everywhere cannot be null');
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_combined_audit
+     *
+     * @return bool|null
+     */
+    public function getIsCombinedAudit()
+    {
+        return $this->container['is_combined_audit'];
+    }
+
+    /**
+     * Sets is_combined_audit
+     *
+     * @param bool|null $is_combined_audit is_combined_audit
+     *
+     * @return self
+     */
+    public function setIsCombinedAudit($is_combined_audit)
+    {
+        if (is_null($is_combined_audit)) {
+            throw new \InvalidArgumentException('non-nullable is_combined_audit cannot be null');
+        }
+        $this->container['is_combined_audit'] = $is_combined_audit;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_combined_attachment
+     *
+     * @return bool|null
+     */
+    public function getIsCombinedAttachment()
+    {
+        return $this->container['is_combined_attachment'];
+    }
+
+    /**
+     * Sets is_combined_attachment
+     *
+     * @param bool|null $is_combined_attachment is_combined_attachment
+     *
+     * @return self
+     */
+    public function setIsCombinedAttachment($is_combined_attachment)
+    {
+        if (is_null($is_combined_attachment)) {
+            throw new \InvalidArgumentException('non-nullable is_combined_attachment cannot be null');
+        }
+        $this->container['is_combined_attachment'] = $is_combined_attachment;
 
         return $this;
     }
