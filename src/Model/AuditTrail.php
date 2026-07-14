@@ -392,6 +392,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ACTION_QES_WITHDRAWN = 'QESWithdrawn';
     public const ACTION_RESENT_FOR_APPROVAL = 'ResentForApproval';
     public const ACTION_DOCUMENT_FIELD_MARKUP = 'DocumentFieldMarkup';
+    public const ACTION_KBA_INITIATED = 'KBAInitiated';
+    public const ACTION_KBA_COMPLETED = 'KBACompleted';
+    public const ACTION_KBA_FAILED = 'KBAFailed';
+    public const ACTION_KBA_RESET = 'KBAReset';
+    public const ACTION_KBA_ADDED = 'KBAAdded';
+    public const ACTION_KBA_REMOVED = 'KBARemoved';
 
     /**
      * Gets allowable values of the enum
@@ -481,6 +487,12 @@ class AuditTrail implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ACTION_QES_WITHDRAWN,
             self::ACTION_RESENT_FOR_APPROVAL,
             self::ACTION_DOCUMENT_FIELD_MARKUP,
+            self::ACTION_KBA_INITIATED,
+            self::ACTION_KBA_COMPLETED,
+            self::ACTION_KBA_FAILED,
+            self::ACTION_KBA_RESET,
+            self::ACTION_KBA_ADDED,
+            self::ACTION_KBA_REMOVED,
         ];
     }
 

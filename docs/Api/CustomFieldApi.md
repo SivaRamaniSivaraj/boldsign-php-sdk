@@ -80,7 +80,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\CustomFieldApi($config);
-$brand_id = 'brand_id_example'; // string | The brand id.
+$brand_id = 'brand_id_example'; // string
 
 try {
     $result = $apiInstance->customFieldsList($brand_id);
@@ -94,7 +94,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brand_id** | **string**| The brand id. | |
+| **brand_id** | **string**|  | |
 
 ### Return type
 
@@ -131,7 +131,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\CustomFieldApi($config);
-$custom_field_id = 'custom_field_id_example'; // string | The custom field id.
+$custom_field_id = 'custom_field_id_example'; // string
 
 try {
     $result = $apiInstance->deleteCustomField($custom_field_id);
@@ -145,7 +145,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| The custom field id. | |
+| **custom_field_id** | **string**|  | |
 
 ### Return type
 
@@ -182,7 +182,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\CustomFieldApi($config);
-$custom_field_id = 'custom_field_id_example'; // string | The custom field id.
+$custom_field_id = 'custom_field_id_example'; // string
 $brand_custom_field_details = new \BoldSign\Model\BrandCustomFieldDetails(); // \BoldSign\Model\BrandCustomFieldDetails | The custom field details.
 
 try {
@@ -197,7 +197,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| The custom field id. | |
+| **custom_field_id** | **string**|  | |
 | **brand_custom_field_details** | [**\BoldSign\Model\BrandCustomFieldDetails**](../Model/BrandCustomFieldDetails.md)| The custom field details. | |
 
 ### Return type

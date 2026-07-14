@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **delivery_mode** | **string** |  | [optional]
 **authentication_code** | **string** |  | [optional]
 **identity_verification_settings** | [**\BoldSign\Model\IdentityVerificationSettings**](IdentityVerificationSettings.md) |  | [optional]
+**kba_settings** | [**\BoldSign\Model\KbaSettings**](KbaSettings.md) |  | [optional]
 **signer_order** | **int** |  | [optional]
 **enable_email_otp** | **bool** |  | [optional]
 **signer_type** | **string** |  | [optional]

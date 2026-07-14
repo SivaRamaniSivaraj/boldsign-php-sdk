@@ -7,6 +7,7 @@ All URIs are relative to https://api.boldsign.com, except if the operation defin
 | [**addTag()**](TemplateApi.md#addTag) | **PATCH** /v1/template/addTags | Add the Tags in Templates. |
 | [**createEmbeddedPreviewUrl()**](TemplateApi.md#createEmbeddedPreviewUrl) | **POST** /v1/template/createEmbeddedPreviewUrl | Generates a preview URL for a template to view it. |
 | [**createEmbeddedRequestUrlTemplate()**](TemplateApi.md#createEmbeddedRequestUrlTemplate) | **POST** /v1/template/createEmbeddedRequestUrl | Generates a send URL using a template which embeds document sending process into your application. |
+| [**createEmbeddedTemplateCloneUrl()**](TemplateApi.md#createEmbeddedTemplateCloneUrl) | **POST** /v1/template/createEmbeddedCloneUrl | Generates a URL to embeds Clone template process into your application. |
 | [**createEmbeddedTemplateUrl()**](TemplateApi.md#createEmbeddedTemplateUrl) | **POST** /v1/template/createEmbeddedTemplateUrl | Generates a create URL to embeds template create process into your application. |
 | [**createTemplate()**](TemplateApi.md#createTemplate) | **POST** /v1/template/create | Creates a new template. |
 | [**deleteTemplate()**](TemplateApi.md#deleteTemplate) | **DELETE** /v1/template/delete | Deletes a template. |
@@ -90,7 +91,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
+$template_id = 'template_id_example'; // string
 $embedded_template_preview_json_request = new \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest(); // \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest | The embedded template preview request body.
 
 try {
@@ -105,7 +106,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
+| **template_id** | **string**|  | |
 | **embedded_template_preview_json_request** | [**\BoldSign\Model\EmbeddedTemplatePreviewJsonRequest**](../Model/EmbeddedTemplatePreviewJsonRequest.md)| The embedded template preview request body. | [optional] |
 
 ### Return type
@@ -143,7 +144,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
+$template_id = 'template_id_example'; // string
 $embedded_send_template_form_request = new \BoldSign\Model\EmbeddedSendTemplateFormRequest(); // \BoldSign\Model\EmbeddedSendTemplateFormRequest | Embedded send template json request.
 
 try {
@@ -158,12 +159,65 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
+| **template_id** | **string**|  | |
 | **embedded_send_template_form_request** | [**\BoldSign\Model\EmbeddedSendTemplateFormRequest**](../Model/EmbeddedSendTemplateFormRequest.md)| Embedded send template json request. | [optional] |
 
 ### Return type
 
 [**\BoldSign\Model\EmbeddedSendCreated**](../Model/EmbeddedSendCreated.md)
+
+### Authorization
+
+[X-API-KEY](../../README.md#X-API-KEY), [Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createEmbeddedTemplateCloneUrl()`
+
+```php
+createEmbeddedTemplateCloneUrl($template_id, $embedded_clone_template_json_request): \BoldSign\Model\EmbeddedClonedTemplate
+```
+
+Generates a URL to embeds Clone template process into your application.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$config = new BoldSign\Configuration();
+$config->setApiKey('YOUR_API_KEY');
+
+$apiInstance = new BoldSign\Api\TemplateApi($config);
+$template_id = 'template_id_example'; // string
+$embedded_clone_template_json_request = new \BoldSign\Model\EmbeddedCloneTemplateJsonRequest(); // \BoldSign\Model\EmbeddedCloneTemplateJsonRequest | The embedded clone template request body.
+
+try {
+    $result = $apiInstance->createEmbeddedTemplateCloneUrl($template_id, $embedded_clone_template_json_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TemplateApi->createEmbeddedTemplateCloneUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **template_id** | **string**|  | |
+| **embedded_clone_template_json_request** | [**\BoldSign\Model\EmbeddedCloneTemplateJsonRequest**](../Model/EmbeddedCloneTemplateJsonRequest.md)| The embedded clone template request body. | [optional] |
+
+### Return type
+
+[**\BoldSign\Model\EmbeddedClonedTemplate**](../Model/EmbeddedClonedTemplate.md)
 
 ### Authorization
 
@@ -298,8 +352,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
-$on_behalf_of = 'on_behalf_of_example'; // string | The on behalfof email address.
+$template_id = 'template_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
 
 try {
     $apiInstance->deleteTemplate($template_id, $on_behalf_of);
@@ -312,8 +366,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
-| **on_behalf_of** | **string**| The on behalfof email address. | [optional] |
+| **template_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
 
 ### Return type
 
@@ -400,9 +454,9 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | Template Id.
-$on_behalf_of = 'on_behalf_of_example'; // string | The on behalfof email address.
-$include_form_field_values = false; // bool | Include form field data.
+$template_id = 'template_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
+$include_form_field_values = false; // bool
 
 try {
     $result = $apiInstance->download($template_id, $on_behalf_of, $include_form_field_values);
@@ -416,9 +470,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| Template Id. | |
-| **on_behalf_of** | **string**| The on behalfof email address. | [optional] |
-| **include_form_field_values** | **bool**| Include form field data. | [optional] [default to false] |
+| **template_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
+| **include_form_field_values** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 
@@ -455,7 +509,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
+$template_id = 'template_id_example'; // string
 $edit_template_request = new \BoldSign\Model\EditTemplateRequest(); // \BoldSign\Model\EditTemplateRequest | The edit template request body.
 
 try {
@@ -469,7 +523,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
+| **template_id** | **string**|  | |
 | **edit_template_request** | [**\BoldSign\Model\EditTemplateRequest**](../Model/EditTemplateRequest.md)| The edit template request body. | |
 
 ### Return type
@@ -507,7 +561,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
+$template_id = 'template_id_example'; // string
 $embedded_template_edit_request = new \BoldSign\Model\EmbeddedTemplateEditRequest(); // \BoldSign\Model\EmbeddedTemplateEditRequest | The embedded edit template request body.
 
 try {
@@ -522,7 +576,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
+| **template_id** | **string**|  | |
 | **embedded_template_edit_request** | [**\BoldSign\Model\EmbeddedTemplateEditRequest**](../Model/EmbeddedTemplateEditRequest.md)| The embedded edit template request body. | [optional] |
 
 ### Return type
@@ -560,7 +614,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | Template Id.
+$template_id = 'template_id_example'; // string
 
 try {
     $result = $apiInstance->getProperties($template_id);
@@ -574,7 +628,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| Template Id. | |
+| **template_id** | **string**|  | |
 
 ### Return type
 
@@ -784,7 +838,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | The template id.
+$template_id = 'template_id_example'; // string
 $send_for_sign_from_template_form = new \BoldSign\Model\SendForSignFromTemplateForm(); // \BoldSign\Model\SendForSignFromTemplateForm | The send template details as JSON.
 
 try {
@@ -799,7 +853,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| The template id. | |
+| **template_id** | **string**|  | |
 | **send_for_sign_from_template_form** | [**\BoldSign\Model\SendForSignFromTemplateForm**](../Model/SendForSignFromTemplateForm.md)| The send template details as JSON. | [optional] |
 
 ### Return type
@@ -837,7 +891,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TemplateApi($config);
-$template_id = 'template_id_example'; // string | Template Id.
+$template_id = 'template_id_example'; // string
 $template_share_request = new \BoldSign\Model\TemplateShareRequest(); // \BoldSign\Model\TemplateShareRequest | Permissions request.
 
 try {
@@ -851,7 +905,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **string**| Template Id. | |
+| **template_id** | **string**|  | |
 | **template_share_request** | [**\BoldSign\Model\TemplateShareRequest**](../Model/TemplateShareRequest.md)| Permissions request. | |
 
 ### Return type

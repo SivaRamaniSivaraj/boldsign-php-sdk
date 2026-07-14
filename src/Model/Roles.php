@@ -430,6 +430,7 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
     public const IMPOSE_AUTHENTICATION_ACCESS_CODE = 'AccessCode';
     public const IMPOSE_AUTHENTICATION_SMSOTP = 'SMSOTP';
     public const IMPOSE_AUTHENTICATION_ID_VERIFICATION = 'IdVerification';
+    public const IMPOSE_AUTHENTICATION_KBA = 'KBA';
     public const DELIVERY_MODE_EMAIL = 'Email';
     public const DELIVERY_MODE_SMS = 'SMS';
     public const DELIVERY_MODE_EMAIL_AND_SMS = 'EmailAndSMS';
@@ -539,6 +540,7 @@ class Roles implements ModelInterface, ArrayAccess, \JsonSerializable
             self::IMPOSE_AUTHENTICATION_ACCESS_CODE,
             self::IMPOSE_AUTHENTICATION_SMSOTP,
             self::IMPOSE_AUTHENTICATION_ID_VERIFICATION,
+            self::IMPOSE_AUTHENTICATION_KBA,
         ];
     }
 

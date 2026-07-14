@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional]
+**form_field_id** | **string** |  | [optional]
 **field_type** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 **value** | **string** |  | [optional]

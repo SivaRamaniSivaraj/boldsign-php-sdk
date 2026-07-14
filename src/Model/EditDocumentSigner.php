@@ -67,6 +67,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => 'string',
         'authentication_code' => 'string',
         'identity_verification_settings' => '\BoldSign\Model\IdentityVerificationSettings',
+        'kba_settings' => '\BoldSign\Model\KbaSettings',
         'signer_order' => 'int',
         'enable_email_otp' => 'bool',
         'signer_type' => 'string',
@@ -102,6 +103,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => null,
         'authentication_code' => null,
         'identity_verification_settings' => null,
+        'kba_settings' => null,
         'signer_order' => 'int32',
         'enable_email_otp' => null,
         'signer_type' => null,
@@ -135,6 +137,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => true,
         'authentication_code' => true,
         'identity_verification_settings' => false,
+        'kba_settings' => false,
         'signer_order' => true,
         'enable_email_otp' => true,
         'signer_type' => true,
@@ -248,6 +251,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => 'deliveryMode',
         'authentication_code' => 'authenticationCode',
         'identity_verification_settings' => 'identityVerificationSettings',
+        'kba_settings' => 'kbaSettings',
         'signer_order' => 'signerOrder',
         'enable_email_otp' => 'enableEmailOTP',
         'signer_type' => 'signerType',
@@ -281,6 +285,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => 'setDeliveryMode',
         'authentication_code' => 'setAuthenticationCode',
         'identity_verification_settings' => 'setIdentityVerificationSettings',
+        'kba_settings' => 'setKbaSettings',
         'signer_order' => 'setSignerOrder',
         'enable_email_otp' => 'setEnableEmailOtp',
         'signer_type' => 'setSignerType',
@@ -314,6 +319,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_mode' => 'getDeliveryMode',
         'authentication_code' => 'getAuthenticationCode',
         'identity_verification_settings' => 'getIdentityVerificationSettings',
+        'kba_settings' => 'getKbaSettings',
         'signer_order' => 'getSignerOrder',
         'enable_email_otp' => 'getEnableEmailOtp',
         'signer_type' => 'getSignerType',
@@ -380,6 +386,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
     public const AUTHENTICATION_TYPE_ACCESS_CODE = 'AccessCode';
     public const AUTHENTICATION_TYPE_SMSOTP = 'SMSOTP';
     public const AUTHENTICATION_TYPE_ID_VERIFICATION = 'IdVerification';
+    public const AUTHENTICATION_TYPE_KBA = 'KBA';
     public const DELIVERY_MODE_EMAIL = 'Email';
     public const DELIVERY_MODE_SMS = 'SMS';
     public const DELIVERY_MODE_EMAIL_AND_SMS = 'EmailAndSMS';
@@ -459,6 +466,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
             self::AUTHENTICATION_TYPE_ACCESS_CODE,
             self::AUTHENTICATION_TYPE_SMSOTP,
             self::AUTHENTICATION_TYPE_ID_VERIFICATION,
+            self::AUTHENTICATION_TYPE_KBA,
         ];
     }
 
@@ -593,6 +601,7 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_mode', $data ?? [], null);
         $this->setIfExists('authentication_code', $data ?? [], null);
         $this->setIfExists('identity_verification_settings', $data ?? [], null);
+        $this->setIfExists('kba_settings', $data ?? [], null);
         $this->setIfExists('signer_order', $data ?? [], null);
         $this->setIfExists('enable_email_otp', $data ?? [], null);
         $this->setIfExists('signer_type', $data ?? [], null);
@@ -1087,6 +1096,33 @@ class EditDocumentSigner implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable identity_verification_settings cannot be null');
         }
         $this->container['identity_verification_settings'] = $identity_verification_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets kba_settings
+     *
+     * @return \BoldSign\Model\KbaSettings|null
+     */
+    public function getKbaSettings()
+    {
+        return $this->container['kba_settings'];
+    }
+
+    /**
+     * Sets kba_settings
+     *
+     * @param \BoldSign\Model\KbaSettings|null $kba_settings kba_settings
+     *
+     * @return self
+     */
+    public function setKbaSettings($kba_settings)
+    {
+        if (is_null($kba_settings)) {
+            throw new \InvalidArgumentException('non-nullable kba_settings cannot be null');
+        }
+        $this->container['kba_settings'] = $kba_settings;
 
         return $this;
     }

@@ -27,7 +27,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\IdentityVerificationApi($config);
-$document_id = 'document_id_example'; // string | The document id.
+$document_id = 'document_id_example'; // string
 $embedded_file_details = new \BoldSign\Model\EmbeddedFileDetails(); // \BoldSign\Model\EmbeddedFileDetails | The embedded verification link request.
 
 try {
@@ -42,7 +42,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The document id. | |
+| **document_id** | **string**|  | |
 | **embedded_file_details** | [**\BoldSign\Model\EmbeddedFileDetails**](../Model/EmbeddedFileDetails.md)| The embedded verification link request. | [optional] |
 
 ### Return type
@@ -80,7 +80,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\IdentityVerificationApi($config);
-$document_id = 'document_id_example'; // string | The document id.
+$document_id = 'document_id_example'; // string
 $download_image_request = new \BoldSign\Model\DownloadImageRequest(); // \BoldSign\Model\DownloadImageRequest | The download image request.
 
 try {
@@ -95,7 +95,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The document id. | |
+| **document_id** | **string**|  | |
 | **download_image_request** | [**\BoldSign\Model\DownloadImageRequest**](../Model/DownloadImageRequest.md)| The download image request. | |
 
 ### Return type
@@ -133,7 +133,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\IdentityVerificationApi($config);
-$document_id = 'document_id_example'; // string | The document id.
+$document_id = 'document_id_example'; // string
 $verification_data_request = new \BoldSign\Model\VerificationDataRequest(); // \BoldSign\Model\VerificationDataRequest | The download image request.
 
 try {
@@ -148,7 +148,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The document id. | |
+| **document_id** | **string**|  | |
 | **verification_data_request** | [**\BoldSign\Model\VerificationDataRequest**](../Model/VerificationDataRequest.md)| The download image request. | |
 
 ### Return type
