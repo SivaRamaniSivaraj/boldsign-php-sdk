@@ -80,7 +80,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\GroupContactsApi($config);
-$group_id = 'group_id_example'; // string | The group contact id.
+$group_id = 'group_id_example'; // string
 
 try {
     $apiInstance->deleteGroupContact($group_id);
@@ -93,7 +93,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **group_id** | **string**| The group contact id. | |
+| **group_id** | **string**|  | |
 
 ### Return type
 
@@ -130,7 +130,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\GroupContactsApi($config);
-$group_id = 'group_id_example'; // string | Group Contact Id.
+$group_id = 'group_id_example'; // string
 
 try {
     $result = $apiInstance->getGroupContact($group_id);
@@ -144,7 +144,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **group_id** | **string**| Group Contact Id. | |
+| **group_id** | **string**|  | |
 
 ### Return type
 
@@ -240,7 +240,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\GroupContactsApi($config);
-$group_id = 'group_id_example'; // string | The group contact ID.
+$group_id = 'group_id_example'; // string
 $update_group_contact = new \BoldSign\Model\UpdateGroupContact(); // \BoldSign\Model\UpdateGroupContact | The group contact details.
 
 try {
@@ -254,7 +254,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **group_id** | **string**| The group contact ID. | |
+| **group_id** | **string**|  | |
 | **update_group_contact** | [**\BoldSign\Model\UpdateGroupContact**](../Model/UpdateGroupContact.md)| The group contact details. | |
 
 ### Return type

@@ -64,6 +64,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => 'string',
         'phone_number' => '\BoldSign\Model\PhoneNumber',
         'identity_verification_settings' => '\BoldSign\Model\IdentityVerificationSettings',
+        'kba_settings' => '\BoldSign\Model\KbaSettings',
         'authentication_retry_count' => 'int',
         'authentication_settings' => '\BoldSign\Model\AuthenticationSettings'
     ];
@@ -83,6 +84,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => null,
         'phone_number' => null,
         'identity_verification_settings' => null,
+        'kba_settings' => null,
         'authentication_retry_count' => 'int32',
         'authentication_settings' => null
     ];
@@ -100,6 +102,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => true,
         'phone_number' => false,
         'identity_verification_settings' => false,
+        'kba_settings' => false,
         'authentication_retry_count' => true,
         'authentication_settings' => false
     ];
@@ -197,6 +200,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => 'onBehalfOf',
         'phone_number' => 'phoneNumber',
         'identity_verification_settings' => 'identityVerificationSettings',
+        'kba_settings' => 'kbaSettings',
         'authentication_retry_count' => 'authenticationRetryCount',
         'authentication_settings' => 'authenticationSettings'
     ];
@@ -214,6 +218,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => 'setOnBehalfOf',
         'phone_number' => 'setPhoneNumber',
         'identity_verification_settings' => 'setIdentityVerificationSettings',
+        'kba_settings' => 'setKbaSettings',
         'authentication_retry_count' => 'setAuthenticationRetryCount',
         'authentication_settings' => 'setAuthenticationSettings'
     ];
@@ -231,6 +236,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'on_behalf_of' => 'getOnBehalfOf',
         'phone_number' => 'getPhoneNumber',
         'identity_verification_settings' => 'getIdentityVerificationSettings',
+        'kba_settings' => 'getKbaSettings',
         'authentication_retry_count' => 'getAuthenticationRetryCount',
         'authentication_settings' => 'getAuthenticationSettings'
     ];
@@ -281,6 +287,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public const AUTHENTICATION_TYPE_ACCESS_CODE = 'AccessCode';
     public const AUTHENTICATION_TYPE_SMSOTP = 'SMSOTP';
     public const AUTHENTICATION_TYPE_ID_VERIFICATION = 'IdVerification';
+    public const AUTHENTICATION_TYPE_KBA = 'KBA';
 
     /**
      * Gets allowable values of the enum
@@ -295,6 +302,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             self::AUTHENTICATION_TYPE_ACCESS_CODE,
             self::AUTHENTICATION_TYPE_SMSOTP,
             self::AUTHENTICATION_TYPE_ID_VERIFICATION,
+            self::AUTHENTICATION_TYPE_KBA,
         ];
     }
 
@@ -320,6 +328,7 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('on_behalf_of', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('identity_verification_settings', $data ?? [], null);
+        $this->setIfExists('kba_settings', $data ?? [], null);
         $this->setIfExists('authentication_retry_count', $data ?? [], null);
         $this->setIfExists('authentication_settings', $data ?? [], null);
     }
@@ -625,6 +634,33 @@ class AccessCodeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable identity_verification_settings cannot be null');
         }
         $this->container['identity_verification_settings'] = $identity_verification_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets kba_settings
+     *
+     * @return \BoldSign\Model\KbaSettings|null
+     */
+    public function getKbaSettings()
+    {
+        return $this->container['kba_settings'];
+    }
+
+    /**
+     * Sets kba_settings
+     *
+     * @param \BoldSign\Model\KbaSettings|null $kba_settings kba_settings
+     *
+     * @return self
+     */
+    public function setKbaSettings($kba_settings)
+    {
+        if (is_null($kba_settings)) {
+            throw new \InvalidArgumentException('non-nullable kba_settings cannot be null');
+        }
+        $this->container['kba_settings'] = $kba_settings;
 
         return $this;
     }

@@ -124,6 +124,11 @@ class TemplateApi
             'multipart/form-data',
             'application/x-www-form-urlencoded',
         ],
+        'createEmbeddedTemplateCloneUrl' => [
+            'application/json',
+            'multipart/form-data',
+            'application/x-www-form-urlencoded',
+        ],
         'createEmbeddedTemplateUrl' => [
             'application/json',
             'multipart/form-data',
@@ -624,7 +629,7 @@ class TemplateApi
      *
      * Generates a preview URL for a template to view it.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest $embedded_template_preview_json_request The embedded template preview request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedPreviewUrl'] to see the possible values for this operation
      *
@@ -643,7 +648,7 @@ class TemplateApi
      *
      * Generates a preview URL for a template to view it.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest $embedded_template_preview_json_request The embedded template preview request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedPreviewUrl'] to see the possible values for this operation
      *
@@ -803,7 +808,7 @@ class TemplateApi
      *
      * Generates a preview URL for a template to view it.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest $embedded_template_preview_json_request The embedded template preview request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedPreviewUrl'] to see the possible values for this operation
      *
@@ -825,7 +830,7 @@ class TemplateApi
      *
      * Generates a preview URL for a template to view it.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest $embedded_template_preview_json_request The embedded template preview request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedPreviewUrl'] to see the possible values for this operation
      *
@@ -876,7 +881,7 @@ class TemplateApi
     /**
      * Create request for operation 'createEmbeddedPreviewUrl'
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplatePreviewJsonRequest $embedded_template_preview_json_request The embedded template preview request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedPreviewUrl'] to see the possible values for this operation
      *
@@ -1018,7 +1023,7 @@ class TemplateApi
      *
      * Generates a send URL using a template which embeds document sending process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\EmbeddedSendTemplateFormRequest $embedded_send_template_form_request Embedded send template json request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedRequestUrlTemplate'] to see the possible values for this operation
      *
@@ -1037,7 +1042,7 @@ class TemplateApi
      *
      * Generates a send URL using a template which embeds document sending process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedSendTemplateFormRequest $embedded_send_template_form_request Embedded send template json request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedRequestUrlTemplate'] to see the possible values for this operation
      *
@@ -1232,7 +1237,7 @@ class TemplateApi
      *
      * Generates a send URL using a template which embeds document sending process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedSendTemplateFormRequest $embedded_send_template_form_request Embedded send template json request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedRequestUrlTemplate'] to see the possible values for this operation
      *
@@ -1254,7 +1259,7 @@ class TemplateApi
      *
      * Generates a send URL using a template which embeds document sending process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedSendTemplateFormRequest $embedded_send_template_form_request Embedded send template json request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedRequestUrlTemplate'] to see the possible values for this operation
      *
@@ -1305,7 +1310,7 @@ class TemplateApi
     /**
      * Create request for operation 'createEmbeddedRequestUrlTemplate'
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedSendTemplateFormRequest $embedded_send_template_form_request Embedded send template json request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedRequestUrlTemplate'] to see the possible values for this operation
      *
@@ -1393,6 +1398,435 @@ class TemplateApi
 
                 if ($payloadHook = $this->config->getPayloadHook()) {
                     $payloadHook('multipart', $multipartContents, $embedded_send_template_form_request);
+                }
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
+        if ($apiKey !== null) {
+            $headers['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEmbeddedTemplateCloneUrl
+     *
+     * Generates a URL to embeds Clone template process into your application.
+     *
+     * @param  string $template_id template_id (required)
+     * @param  \BoldSign\Model\EmbeddedCloneTemplateJsonRequest $embedded_clone_template_json_request The embedded clone template request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedTemplateCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \BoldSign\Model\EmbeddedClonedTemplate|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
+     */
+    public function createEmbeddedTemplateCloneUrl($template_id, $embedded_clone_template_json_request = null, string $contentType = self::contentTypes['createEmbeddedTemplateCloneUrl'][0])
+    {
+        list($response) = $this->createEmbeddedTemplateCloneUrlWithHttpInfo($template_id, $embedded_clone_template_json_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createEmbeddedTemplateCloneUrlWithHttpInfo
+     *
+     * Generates a URL to embeds Clone template process into your application.
+     *
+     * @param  string $template_id (required)
+     * @param  \BoldSign\Model\EmbeddedCloneTemplateJsonRequest $embedded_clone_template_json_request The embedded clone template request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedTemplateCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \BoldSign\Model\EmbeddedClonedTemplate|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEmbeddedTemplateCloneUrlWithHttpInfo($template_id, $embedded_clone_template_json_request = null, string $contentType = self::contentTypes['createEmbeddedTemplateCloneUrl'][0])
+    {
+        $request = $this->createEmbeddedTemplateCloneUrlRequest($template_id, $embedded_clone_template_json_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\BoldSign\Model\EmbeddedClonedTemplate' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\EmbeddedClonedTemplate' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\EmbeddedClonedTemplate', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\BoldSign\Model\EmbeddedClonedTemplate';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\EmbeddedClonedTemplate',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createEmbeddedTemplateCloneUrlAsync
+     *
+     * Generates a URL to embeds Clone template process into your application.
+     *
+     * @param  string $template_id (required)
+     * @param  \BoldSign\Model\EmbeddedCloneTemplateJsonRequest $embedded_clone_template_json_request The embedded clone template request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedTemplateCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedTemplateCloneUrlAsync($template_id, $embedded_clone_template_json_request = null, string $contentType = self::contentTypes['createEmbeddedTemplateCloneUrl'][0])
+    {
+        return $this->createEmbeddedTemplateCloneUrlAsyncWithHttpInfo($template_id, $embedded_clone_template_json_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEmbeddedTemplateCloneUrlAsyncWithHttpInfo
+     *
+     * Generates a URL to embeds Clone template process into your application.
+     *
+     * @param  string $template_id (required)
+     * @param  \BoldSign\Model\EmbeddedCloneTemplateJsonRequest $embedded_clone_template_json_request The embedded clone template request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedTemplateCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedTemplateCloneUrlAsyncWithHttpInfo($template_id, $embedded_clone_template_json_request = null, string $contentType = self::contentTypes['createEmbeddedTemplateCloneUrl'][0])
+    {
+        $returnType = '\BoldSign\Model\EmbeddedClonedTemplate';
+        $request = $this->createEmbeddedTemplateCloneUrlRequest($template_id, $embedded_clone_template_json_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEmbeddedTemplateCloneUrl'
+     *
+     * @param  string $template_id (required)
+     * @param  \BoldSign\Model\EmbeddedCloneTemplateJsonRequest $embedded_clone_template_json_request The embedded clone template request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedTemplateCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createEmbeddedTemplateCloneUrlRequest($template_id, $embedded_clone_template_json_request = null, string $contentType = self::contentTypes['createEmbeddedTemplateCloneUrl'][0])
+    {
+
+        // verify the required parameter 'template_id' is set
+        if ($template_id === null || (is_array($template_id) && count($template_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $template_id when calling createEmbeddedTemplateCloneUrl'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/template/createEmbeddedCloneUrl';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        if(!is_array($embedded_clone_template_json_request)) {
+            $formParams = ObjectSerializer::getFormParams(
+                $embedded_clone_template_json_request
+            );
+        }
+        else {
+            foreach($embedded_clone_template_json_request as $param){
+                $formParams = ObjectSerializer::getFormParams(
+                $param);
+            }
+        }
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $template_id,
+            'templateId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+        $multipart = !empty($formParams);
+
+        $headers = $this->headerSelector->selectHeaders(
+            $multipart ? ['multipart/form-data'] : ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) === 0) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($embedded_clone_template_json_request));
+            } else {
+                $httpBody = $embedded_clone_template_json_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                if (!empty($body)) {
+                    $multipartContents[] = [
+                        'name'     => 'body',
+                        'contents' => $body,
+                        'headers'  => ['Content-Type' => 'application/json'],
+                    ];
+                }
+
+                if ($payloadHook = $this->config->getPayloadHook()) {
+                    $payloadHook('multipart', $multipartContents, $embedded_clone_template_json_request);
                 }
                 $httpBody = new MultipartStream($multipartContents);
 
@@ -2298,8 +2732,8 @@ class TemplateApi
      *
      * Deletes a template.
      *
-     * @param  string $template_id The template id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $template_id template_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplate'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2316,8 +2750,8 @@ class TemplateApi
      *
      * Deletes a template.
      *
-     * @param  string $template_id The template id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplate'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2393,8 +2827,8 @@ class TemplateApi
      *
      * Deletes a template.
      *
-     * @param  string $template_id The template id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2415,8 +2849,8 @@ class TemplateApi
      *
      * Deletes a template.
      *
-     * @param  string $template_id The template id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2453,8 +2887,8 @@ class TemplateApi
     /**
      * Create request for operation 'deleteTemplate'
      *
-     * @param  string $template_id The template id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2859,9 +3293,9 @@ class TemplateApi
      *
      * Download the template.
      *
-     * @param  string $template_id Template Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
-     * @param  bool $include_form_field_values Include form field data. (optional, default to false)
+     * @param  string $template_id template_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
+     * @param  bool $include_form_field_values include_form_field_values (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2879,9 +3313,9 @@ class TemplateApi
      *
      * Download the template.
      *
-     * @param  string $template_id Template Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
-     * @param  bool $include_form_field_values Include form field data. (optional, default to false)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
+     * @param  bool $include_form_field_values (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3075,9 +3509,9 @@ class TemplateApi
      *
      * Download the template.
      *
-     * @param  string $template_id Template Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
-     * @param  bool $include_form_field_values Include form field data. (optional, default to false)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
+     * @param  bool $include_form_field_values (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3098,9 +3532,9 @@ class TemplateApi
      *
      * Download the template.
      *
-     * @param  string $template_id Template Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
-     * @param  bool $include_form_field_values Include form field data. (optional, default to false)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
+     * @param  bool $include_form_field_values (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3150,9 +3584,9 @@ class TemplateApi
     /**
      * Create request for operation 'download'
      *
-     * @param  string $template_id Template Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
-     * @param  bool $include_form_field_values Include form field data. (optional, default to false)
+     * @param  string $template_id (required)
+     * @param  string $on_behalf_of (optional)
+     * @param  bool $include_form_field_values (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3291,7 +3725,7 @@ class TemplateApi
      *
      * Edit and updates an existing template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\EditTemplateRequest $edit_template_request The edit template request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editTemplate'] to see the possible values for this operation
      *
@@ -3309,7 +3743,7 @@ class TemplateApi
      *
      * Edit and updates an existing template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EditTemplateRequest $edit_template_request The edit template request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editTemplate'] to see the possible values for this operation
      *
@@ -3394,7 +3828,7 @@ class TemplateApi
      *
      * Edit and updates an existing template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EditTemplateRequest $edit_template_request The edit template request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editTemplate'] to see the possible values for this operation
      *
@@ -3416,7 +3850,7 @@ class TemplateApi
      *
      * Edit and updates an existing template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EditTemplateRequest $edit_template_request The edit template request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editTemplate'] to see the possible values for this operation
      *
@@ -3454,7 +3888,7 @@ class TemplateApi
     /**
      * Create request for operation 'editTemplate'
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EditTemplateRequest $edit_template_request The edit template request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editTemplate'] to see the possible values for this operation
      *
@@ -3602,7 +4036,7 @@ class TemplateApi
      *
      * Generates a edit URL to embeds template edit process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplateEditRequest $embedded_template_edit_request The embedded edit template request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmbeddedTemplateEditUrl'] to see the possible values for this operation
      *
@@ -3621,7 +4055,7 @@ class TemplateApi
      *
      * Generates a edit URL to embeds template edit process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplateEditRequest $embedded_template_edit_request The embedded edit template request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmbeddedTemplateEditUrl'] to see the possible values for this operation
      *
@@ -3816,7 +4250,7 @@ class TemplateApi
      *
      * Generates a edit URL to embeds template edit process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplateEditRequest $embedded_template_edit_request The embedded edit template request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmbeddedTemplateEditUrl'] to see the possible values for this operation
      *
@@ -3838,7 +4272,7 @@ class TemplateApi
      *
      * Generates a edit URL to embeds template edit process into your application.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplateEditRequest $embedded_template_edit_request The embedded edit template request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmbeddedTemplateEditUrl'] to see the possible values for this operation
      *
@@ -3889,7 +4323,7 @@ class TemplateApi
     /**
      * Create request for operation 'getEmbeddedTemplateEditUrl'
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\EmbeddedTemplateEditRequest $embedded_template_edit_request The embedded edit template request body. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmbeddedTemplateEditUrl'] to see the possible values for this operation
      *
@@ -4031,7 +4465,7 @@ class TemplateApi
      *
      * Get summary of the template.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id template_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4049,7 +4483,7 @@ class TemplateApi
      *
      * Get summary of the template.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4243,7 +4677,7 @@ class TemplateApi
      *
      * Get summary of the template.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4264,7 +4698,7 @@ class TemplateApi
      *
      * Get summary of the template.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4314,7 +4748,7 @@ class TemplateApi
     /**
      * Create request for operation 'getProperties'
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5766,7 +6200,7 @@ class TemplateApi
      *
      * Send a document for signature using a Template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\SendForSignFromTemplateForm $send_for_sign_from_template_form The send template details as JSON. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendUsingTemplate'] to see the possible values for this operation
      *
@@ -5785,7 +6219,7 @@ class TemplateApi
      *
      * Send a document for signature using a Template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\SendForSignFromTemplateForm $send_for_sign_from_template_form The send template details as JSON. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendUsingTemplate'] to see the possible values for this operation
      *
@@ -5980,7 +6414,7 @@ class TemplateApi
      *
      * Send a document for signature using a Template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\SendForSignFromTemplateForm $send_for_sign_from_template_form The send template details as JSON. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendUsingTemplate'] to see the possible values for this operation
      *
@@ -6002,7 +6436,7 @@ class TemplateApi
      *
      * Send a document for signature using a Template.
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\SendForSignFromTemplateForm $send_for_sign_from_template_form The send template details as JSON. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendUsingTemplate'] to see the possible values for this operation
      *
@@ -6053,7 +6487,7 @@ class TemplateApi
     /**
      * Create request for operation 'sendUsingTemplate'
      *
-     * @param  string $template_id The template id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\SendForSignFromTemplateForm $send_for_sign_from_template_form The send template details as JSON. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendUsingTemplate'] to see the possible values for this operation
      *
@@ -6195,7 +6629,7 @@ class TemplateApi
      *
      * Share a template with teams and manage permissions.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id template_id (required)
      * @param  \BoldSign\Model\TemplateShareRequest $template_share_request Permissions request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['shareTemplate'] to see the possible values for this operation
      *
@@ -6213,7 +6647,7 @@ class TemplateApi
      *
      * Share a template with teams and manage permissions.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\TemplateShareRequest $template_share_request Permissions request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['shareTemplate'] to see the possible values for this operation
      *
@@ -6306,7 +6740,7 @@ class TemplateApi
      *
      * Share a template with teams and manage permissions.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\TemplateShareRequest $template_share_request Permissions request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['shareTemplate'] to see the possible values for this operation
      *
@@ -6328,7 +6762,7 @@ class TemplateApi
      *
      * Share a template with teams and manage permissions.
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\TemplateShareRequest $template_share_request Permissions request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['shareTemplate'] to see the possible values for this operation
      *
@@ -6366,7 +6800,7 @@ class TemplateApi
     /**
      * Create request for operation 'shareTemplate'
      *
-     * @param  string $template_id Template Id. (required)
+     * @param  string $template_id (required)
      * @param  \BoldSign\Model\TemplateShareRequest $template_share_request Permissions request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['shareTemplate'] to see the possible values for this operation
      *

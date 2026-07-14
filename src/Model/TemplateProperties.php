@@ -88,7 +88,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'sharing' => '\BoldSign\Model\TemplateSharing',
-        'enable_allow_sign_everywhere' => 'bool'
+        'enable_allow_sign_everywhere' => 'bool',
+        'document_time_zone' => 'string'
     ];
 
     /**
@@ -130,7 +131,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
         'sharing' => null,
-        'enable_allow_sign_everywhere' => null
+        'enable_allow_sign_everywhere' => null,
+        'document_time_zone' => null
     ];
 
     /**
@@ -170,7 +172,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
         'sharing' => false,
-        'enable_allow_sign_everywhere' => false
+        'enable_allow_sign_everywhere' => false,
+        'document_time_zone' => true
     ];
 
     /**
@@ -290,7 +293,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
         'sharing' => 'sharing',
-        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
+        'document_time_zone' => 'documentTimeZone'
     ];
 
     /**
@@ -330,7 +334,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
         'sharing' => 'setSharing',
-        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
+        'document_time_zone' => 'setDocumentTimeZone'
     ];
 
     /**
@@ -370,7 +375,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
         'sharing' => 'getSharing',
-        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
+        'document_time_zone' => 'getDocumentTimeZone'
     ];
 
     /**
@@ -494,6 +500,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('sharing', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
+        $this->setIfExists('document_time_zone', $data ?? [], null);
     }
 
     /**
@@ -1540,6 +1547,40 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable enable_allow_sign_everywhere cannot be null');
         }
         $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_time_zone
+     *
+     * @return string|null
+     */
+    public function getDocumentTimeZone()
+    {
+        return $this->container['document_time_zone'];
+    }
+
+    /**
+     * Sets document_time_zone
+     *
+     * @param string|null $document_time_zone document_time_zone
+     *
+     * @return self
+     */
+    public function setDocumentTimeZone($document_time_zone)
+    {
+        if (is_null($document_time_zone)) {
+            array_push($this->openAPINullablesSetToNull, 'document_time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('document_time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['document_time_zone'] = $document_time_zone;
 
         return $this;
     }

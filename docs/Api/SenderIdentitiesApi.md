@@ -82,7 +82,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\SenderIdentitiesApi($config);
-$email = 'email_example'; // string | The email address.
+$email = 'email_example'; // string
 
 try {
     $apiInstance->deleteSenderIdentities($email);
@@ -95,7 +95,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
@@ -132,8 +132,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\SenderIdentitiesApi($config);
-$id = 'id_example'; // string | The sender identity id.
-$email = 'email_example'; // string | The sender identity email.
+$id = 'id_example'; // string
+$email = 'email_example'; // string
 
 try {
     $result = $apiInstance->getSenderIdentityProperties($id, $email);
@@ -147,8 +147,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The sender identity id. | [optional] |
-| **email** | **string**| The sender identity email. | [optional] |
+| **id** | **string**|  | [optional] |
+| **email** | **string**|  | [optional] |
 
 ### Return type
 
@@ -242,7 +242,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\SenderIdentitiesApi($config);
-$email = 'email_example'; // string | The email address.
+$email = 'email_example'; // string
 
 try {
     $apiInstance->reRequestSenderIdentities($email);
@@ -255,7 +255,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
@@ -292,7 +292,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\SenderIdentitiesApi($config);
-$email = 'email_example'; // string | The email address.
+$email = 'email_example'; // string
 
 try {
     $apiInstance->resendInvitationSenderIdentities($email);
@@ -305,7 +305,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
@@ -342,7 +342,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\SenderIdentitiesApi($config);
-$email = 'email_example'; // string | The email address.
+$email = 'email_example'; // string
 $edit_sender_identity_request = new \BoldSign\Model\EditSenderIdentityRequest(); // \BoldSign\Model\EditSenderIdentityRequest | The create sender identity request.
 
 try {
@@ -356,7 +356,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 | **edit_sender_identity_request** | [**\BoldSign\Model\EditSenderIdentityRequest**](../Model/EditSenderIdentityRequest.md)| The create sender identity request. | |
 
 ### Return type

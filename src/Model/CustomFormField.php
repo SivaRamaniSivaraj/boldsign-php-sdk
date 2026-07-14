@@ -65,6 +65,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'string',
         'font_size' => 'float',
         'font' => 'string',
+        'group_options' => '\BoldSign\Model\GroupOption[]',
+        'checkbox_validation_settings' => '\BoldSign\Model\CheckboxValidationSettings',
         'font_hex_color' => 'string',
         'is_bold_font' => 'bool',
         'is_italic_font' => 'bool',
@@ -109,6 +111,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => null,
         'font_size' => 'float',
         'font' => null,
+        'group_options' => null,
+        'checkbox_validation_settings' => null,
         'font_hex_color' => null,
         'is_bold_font' => null,
         'is_italic_font' => null,
@@ -151,6 +155,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => true,
         'font_size' => false,
         'font' => false,
+        'group_options' => true,
+        'checkbox_validation_settings' => false,
         'font_hex_color' => true,
         'is_bold_font' => false,
         'is_italic_font' => false,
@@ -273,6 +279,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'value',
         'font_size' => 'fontSize',
         'font' => 'font',
+        'group_options' => 'groupOptions',
+        'checkbox_validation_settings' => 'checkboxValidationSettings',
         'font_hex_color' => 'fontHexColor',
         'is_bold_font' => 'isBoldFont',
         'is_italic_font' => 'isItalicFont',
@@ -315,6 +323,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'setValue',
         'font_size' => 'setFontSize',
         'font' => 'setFont',
+        'group_options' => 'setGroupOptions',
+        'checkbox_validation_settings' => 'setCheckboxValidationSettings',
         'font_hex_color' => 'setFontHexColor',
         'is_bold_font' => 'setIsBoldFont',
         'is_italic_font' => 'setIsItalicFont',
@@ -357,6 +367,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'getValue',
         'font_size' => 'getFontSize',
         'font' => 'getFont',
+        'group_options' => 'getGroupOptions',
+        'checkbox_validation_settings' => 'getCheckboxValidationSettings',
         'font_hex_color' => 'getFontHexColor',
         'is_bold_font' => 'getIsBoldFont',
         'is_italic_font' => 'getIsItalicFont',
@@ -588,6 +600,8 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('font_size', $data ?? [], 13);
         $this->setIfExists('font', $data ?? [], null);
+        $this->setIfExists('group_options', $data ?? [], null);
+        $this->setIfExists('checkbox_validation_settings', $data ?? [], null);
         $this->setIfExists('font_hex_color', $data ?? [], null);
         $this->setIfExists('is_bold_font', $data ?? [], null);
         $this->setIfExists('is_italic_font', $data ?? [], null);
@@ -979,6 +993,67 @@ class CustomFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['font'] = $font;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_options
+     *
+     * @return \BoldSign\Model\GroupOption[]|null
+     */
+    public function getGroupOptions()
+    {
+        return $this->container['group_options'];
+    }
+
+    /**
+     * Sets group_options
+     *
+     * @param \BoldSign\Model\GroupOption[]|null $group_options group_options
+     *
+     * @return self
+     */
+    public function setGroupOptions($group_options)
+    {
+        if (is_null($group_options)) {
+            array_push($this->openAPINullablesSetToNull, 'group_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_options', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_options'] = $group_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkbox_validation_settings
+     *
+     * @return \BoldSign\Model\CheckboxValidationSettings|null
+     */
+    public function getCheckboxValidationSettings()
+    {
+        return $this->container['checkbox_validation_settings'];
+    }
+
+    /**
+     * Sets checkbox_validation_settings
+     *
+     * @param \BoldSign\Model\CheckboxValidationSettings|null $checkbox_validation_settings checkbox_validation_settings
+     *
+     * @return self
+     */
+    public function setCheckboxValidationSettings($checkbox_validation_settings)
+    {
+        if (is_null($checkbox_validation_settings)) {
+            throw new \InvalidArgumentException('non-nullable checkbox_validation_settings cannot be null');
+        }
+        $this->container['checkbox_validation_settings'] = $checkbox_validation_settings;
 
         return $this;
     }

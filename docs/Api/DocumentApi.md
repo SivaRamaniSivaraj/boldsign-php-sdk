@@ -10,6 +10,7 @@ All URIs are relative to https://api.boldsign.com, except if the operation defin
 | [**cancelEditing()**](DocumentApi.md#cancelEditing) | **POST** /v1/document/cancelEditing | Cancels editing for a document that is currently in edit-mode. |
 | [**changeAccessCode()**](DocumentApi.md#changeAccessCode) | **PATCH** /v1/document/changeAccessCode | Changes the access code for the given document signer. |
 | [**changeRecipient()**](DocumentApi.md#changeRecipient) | **PATCH** /v1/document/changeRecipient | Change recipient details of a document. |
+| [**createEmbeddedDocumentCloneUrl()**](DocumentApi.md#createEmbeddedDocumentCloneUrl) | **POST** /v1/document/createEmbeddedCloneUrl | Generates a URL to embeds Clone document process into your application. |
 | [**createEmbeddedEditUrl()**](DocumentApi.md#createEmbeddedEditUrl) | **POST** /v1/document/createEmbeddedEditUrl | Generates an embedded edit URL that allows the document editing process to be integrated into your application. |
 | [**createEmbeddedRequestUrlDocument()**](DocumentApi.md#createEmbeddedRequestUrlDocument) | **POST** /v1/document/createEmbeddedRequestUrl | Generates a send URL which embeds document sending process into your application. |
 | [**deleteDocument()**](DocumentApi.md#deleteDocument) | **DELETE** /v1/document/delete | Delete the document. |
@@ -49,7 +50,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The DocumentId.
+$document_id = 'document_id_example'; // string
 $access_code_detail = new \BoldSign\Model\AccessCodeDetail(); // \BoldSign\Model\AccessCodeDetail | Access code details.
 
 try {
@@ -63,7 +64,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The DocumentId. | |
+| **document_id** | **string**|  | |
 | **access_code_detail** | [**\BoldSign\Model\AccessCodeDetail**](../Model/AccessCodeDetail.md)| Access code details. | [optional] |
 
 ### Return type
@@ -224,8 +225,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The document id.
-$on_behalf_of = 'on_behalf_of_example'; // string | The onbehalfof email id.
+$document_id = 'document_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
 
 try {
     $apiInstance->cancelEditing($document_id, $on_behalf_of);
@@ -238,8 +239,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The document id. | |
-| **on_behalf_of** | **string**| The onbehalfof email id. | [optional] |
+| **document_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
 
 ### Return type
 
@@ -332,7 +333,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The documentID details.
+$document_id = 'document_id_example'; // string
 $change_recipient = new \BoldSign\Model\ChangeRecipient(); // \BoldSign\Model\ChangeRecipient | The new recipient details.
 
 try {
@@ -346,7 +347,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The documentID details. | |
+| **document_id** | **string**|  | |
 | **change_recipient** | [**\BoldSign\Model\ChangeRecipient**](../Model/ChangeRecipient.md)| The new recipient details. | |
 
 ### Return type
@@ -361,6 +362,59 @@ void (empty response body)
 
 - **Content-Type**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/json-patch+json`, `text/json`, `application/*+json`
 - **Accept**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/octet-stream`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createEmbeddedDocumentCloneUrl()`
+
+```php
+createEmbeddedDocumentCloneUrl($document_id, $embedded_clone_document_json_request): \BoldSign\Model\EmbeddedClonedDocument
+```
+
+Generates a URL to embeds Clone document process into your application.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$config = new BoldSign\Configuration();
+$config->setApiKey('YOUR_API_KEY');
+
+$apiInstance = new BoldSign\Api\DocumentApi($config);
+$document_id = 'document_id_example'; // string
+$embedded_clone_document_json_request = new \BoldSign\Model\EmbeddedCloneDocumentJsonRequest(); // \BoldSign\Model\EmbeddedCloneDocumentJsonRequest | The embedded clone document request body.
+
+try {
+    $result = $apiInstance->createEmbeddedDocumentCloneUrl($document_id, $embedded_clone_document_json_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentApi->createEmbeddedDocumentCloneUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **document_id** | **string**|  | |
+| **embedded_clone_document_json_request** | [**\BoldSign\Model\EmbeddedCloneDocumentJsonRequest**](../Model/EmbeddedCloneDocumentJsonRequest.md)| The embedded clone document request body. | [optional] |
+
+### Return type
+
+[**\BoldSign\Model\EmbeddedClonedDocument**](../Model/EmbeddedClonedDocument.md)
+
+### Authorization
+
+[X-API-KEY](../../README.md#X-API-KEY), [Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -384,7 +438,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The document id.
+$document_id = 'document_id_example'; // string
 $embedded_document_edit_json_request = new \BoldSign\Model\EmbeddedDocumentEditJsonRequest(); // \BoldSign\Model\EmbeddedDocumentEditJsonRequest | The embedded edit document request body.
 
 try {
@@ -399,7 +453,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The document id. | |
+| **document_id** | **string**|  | |
 | **embedded_document_edit_json_request** | [**\BoldSign\Model\EmbeddedDocumentEditJsonRequest**](../Model/EmbeddedDocumentEditJsonRequest.md)| The embedded edit document request body. | [optional] |
 
 ### Return type
@@ -488,8 +542,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
-$delete_permanently = false; // bool | Delete Permanently.
+$document_id = 'document_id_example'; // string
+$delete_permanently = false; // bool
 
 try {
     $apiInstance->deleteDocument($document_id, $delete_permanently);
@@ -502,8 +556,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
-| **delete_permanently** | **bool**| Delete Permanently. | [optional] [default to false] |
+| **document_id** | **string**|  | |
+| **delete_permanently** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 
@@ -590,9 +644,9 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
-$attachment_id = 'attachment_id_example'; // string | Attachment Id(Get attachment ID from Properties API).
-$on_behalf_of = 'on_behalf_of_example'; // string | The on behalfof email address.
+$document_id = 'document_id_example'; // string
+$attachment_id = 'attachment_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
 
 try {
     $result = $apiInstance->downloadAttachment($document_id, $attachment_id, $on_behalf_of);
@@ -606,9 +660,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
-| **attachment_id** | **string**| Attachment Id(Get attachment ID from Properties API). | |
-| **on_behalf_of** | **string**| The on behalfof email address. | [optional] |
+| **document_id** | **string**|  | |
+| **attachment_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
 
 ### Return type
 
@@ -645,8 +699,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
-$on_behalf_of = 'on_behalf_of_example'; // string | The on behalfof email address.
+$document_id = 'document_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
 
 try {
     $result = $apiInstance->downloadAuditLog($document_id, $on_behalf_of);
@@ -660,8 +714,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
-| **on_behalf_of** | **string**| The on behalfof email address. | [optional] |
+| **document_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
 
 ### Return type
 
@@ -698,8 +752,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
-$on_behalf_of = 'on_behalf_of_example'; // string | The on behalfof email address.
+$document_id = 'document_id_example'; // string
+$on_behalf_of = 'on_behalf_of_example'; // string
 
 try {
     $result = $apiInstance->downloadDocument($document_id, $on_behalf_of);
@@ -713,8 +767,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
-| **on_behalf_of** | **string**| The on behalfof email address. | [optional] |
+| **document_id** | **string**|  | |
+| **on_behalf_of** | **string**|  | [optional] |
 
 ### Return type
 
@@ -751,7 +805,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The ID of the document to be sent.
+$document_id = 'document_id_example'; // string
 
 try {
     $apiInstance->draftSend($document_id);
@@ -764,7 +818,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The ID of the document to be sent. | |
+| **document_id** | **string**|  | |
 
 ### Return type
 
@@ -801,7 +855,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
+$document_id = 'document_id_example'; // string
 $edit_document_request = new \BoldSign\Model\EditDocumentRequest(); // \BoldSign\Model\EditDocumentRequest | Edit document JSON request.
 
 try {
@@ -816,7 +870,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
+| **document_id** | **string**|  | |
 | **edit_document_request** | [**\BoldSign\Model\EditDocumentRequest**](../Model/EditDocumentRequest.md)| Edit document JSON request. | [optional] |
 
 ### Return type
@@ -854,7 +908,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
+$document_id = 'document_id_example'; // string
 $extend_expiry = new \BoldSign\Model\ExtendExpiry(); // \BoldSign\Model\ExtendExpiry | The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type.
 
 try {
@@ -868,7 +922,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
+| **document_id** | **string**|  | |
 | **extend_expiry** | [**\BoldSign\Model\ExtendExpiry**](../Model/ExtendExpiry.md)| The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. | [optional] |
 
 ### Return type
@@ -906,7 +960,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
+$document_id = 'document_id_example'; // string
 
 try {
     $result = $apiInstance->getProperties($document_id);
@@ -920,7 +974,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
+| **document_id** | **string**|  | |
 
 ### Return type
 
@@ -1093,7 +1147,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | The DocumentId.
+$document_id = 'document_id_example'; // string
 $prefill_field_request = new \BoldSign\Model\PrefillFieldRequest(); // \BoldSign\Model\PrefillFieldRequest | The prefill field request.
 
 try {
@@ -1107,7 +1161,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| The DocumentId. | |
+| **document_id** | **string**|  | |
 | **prefill_field_request** | [**\BoldSign\Model\PrefillFieldRequest**](../Model/PrefillFieldRequest.md)| The prefill field request. | |
 
 ### Return type
@@ -1145,8 +1199,8 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
-$receiver_emails = array('receiver_emails_example'); // string[] | Signer emails.
+$document_id = 'document_id_example'; // string
+$receiver_emails = array('receiver_emails_example'); // string[]
 $reminder_message = new \BoldSign\Model\ReminderMessage(); // \BoldSign\Model\ReminderMessage | Reminder Message for signers.
 
 try {
@@ -1160,8 +1214,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
-| **receiver_emails** | [**string[]**](../Model/string.md)| Signer emails. | [optional] |
+| **document_id** | **string**|  | |
+| **receiver_emails** | [**string[]**](../Model/string.md)|  | [optional] |
 | **reminder_message** | [**\BoldSign\Model\ReminderMessage**](../Model/ReminderMessage.md)| Reminder Message for signers. | [optional] |
 
 ### Return type
@@ -1251,7 +1305,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\DocumentApi($config);
-$document_id = 'document_id_example'; // string | Document Id.
+$document_id = 'document_id_example'; // string
 $revoke_document = new \BoldSign\Model\RevokeDocument(); // \BoldSign\Model\RevokeDocument | RevokeDetails.
 
 try {
@@ -1265,7 +1319,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **document_id** | **string**| Document Id. | |
+| **document_id** | **string**|  | |
 | **revoke_document** | [**\BoldSign\Model\RevokeDocument**](../Model/RevokeDocument.md)| RevokeDetails. | |
 
 ### Return type

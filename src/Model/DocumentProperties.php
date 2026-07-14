@@ -103,7 +103,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => 'string',
         'enable_allow_sign_everywhere' => 'bool',
         'is_combined_audit' => 'bool',
-        'is_combined_attachment' => 'bool'
+        'is_combined_attachment' => 'bool',
+        'document_time_zone' => 'string'
     ];
 
     /**
@@ -160,7 +161,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => null,
         'enable_allow_sign_everywhere' => null,
         'is_combined_audit' => null,
-        'is_combined_attachment' => null
+        'is_combined_attachment' => null,
+        'document_time_zone' => null
     ];
 
     /**
@@ -215,7 +217,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => true,
         'enable_allow_sign_everywhere' => false,
         'is_combined_audit' => false,
-        'is_combined_attachment' => false
+        'is_combined_attachment' => false,
+        'document_time_zone' => true
     ];
 
     /**
@@ -350,7 +353,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => 'displayStatus',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
         'is_combined_audit' => 'isCombinedAudit',
-        'is_combined_attachment' => 'isCombinedAttachment'
+        'is_combined_attachment' => 'isCombinedAttachment',
+        'document_time_zone' => 'documentTimeZone'
     ];
 
     /**
@@ -405,7 +409,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => 'setDisplayStatus',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
         'is_combined_audit' => 'setIsCombinedAudit',
-        'is_combined_attachment' => 'setIsCombinedAttachment'
+        'is_combined_attachment' => 'setIsCombinedAttachment',
+        'document_time_zone' => 'setDocumentTimeZone'
     ];
 
     /**
@@ -460,7 +465,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'display_status' => 'getDisplayStatus',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
         'is_combined_audit' => 'getIsCombinedAudit',
-        'is_combined_attachment' => 'getIsCombinedAttachment'
+        'is_combined_attachment' => 'getIsCombinedAttachment',
+        'document_time_zone' => 'getDocumentTimeZone'
     ];
 
     /**
@@ -688,6 +694,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('is_combined_audit', $data ?? [], null);
         $this->setIfExists('is_combined_attachment', $data ?? [], null);
+        $this->setIfExists('document_time_zone', $data ?? [], null);
     }
 
     /**
@@ -2236,6 +2243,40 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable is_combined_attachment cannot be null');
         }
         $this->container['is_combined_attachment'] = $is_combined_attachment;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_time_zone
+     *
+     * @return string|null
+     */
+    public function getDocumentTimeZone()
+    {
+        return $this->container['document_time_zone'];
+    }
+
+    /**
+     * Sets document_time_zone
+     *
+     * @param string|null $document_time_zone document_time_zone
+     *
+     * @return self
+     */
+    public function setDocumentTimeZone($document_time_zone)
+    {
+        if (is_null($document_time_zone)) {
+            array_push($this->openAPINullablesSetToNull, 'document_time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('document_time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['document_time_zone'] = $document_time_zone;
 
         return $this;
     }

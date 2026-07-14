@@ -253,7 +253,7 @@ class IdentityVerificationApi
      *
      * Generate a URL that embeds manual ID verification for the specified document signer into your application.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\EmbeddedFileDetails $embedded_file_details The embedded verification link request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedVerificationUrl'] to see the possible values for this operation
      *
@@ -272,7 +272,7 @@ class IdentityVerificationApi
      *
      * Generate a URL that embeds manual ID verification for the specified document signer into your application.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EmbeddedFileDetails $embedded_file_details The embedded verification link request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedVerificationUrl'] to see the possible values for this operation
      *
@@ -467,7 +467,7 @@ class IdentityVerificationApi
      *
      * Generate a URL that embeds manual ID verification for the specified document signer into your application.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EmbeddedFileDetails $embedded_file_details The embedded verification link request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedVerificationUrl'] to see the possible values for this operation
      *
@@ -489,7 +489,7 @@ class IdentityVerificationApi
      *
      * Generate a URL that embeds manual ID verification for the specified document signer into your application.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EmbeddedFileDetails $embedded_file_details The embedded verification link request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedVerificationUrl'] to see the possible values for this operation
      *
@@ -540,7 +540,7 @@ class IdentityVerificationApi
     /**
      * Create request for operation 'createEmbeddedVerificationUrl'
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EmbeddedFileDetails $embedded_file_details The embedded verification link request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedVerificationUrl'] to see the possible values for this operation
      *
@@ -682,7 +682,7 @@ class IdentityVerificationApi
      *
      * Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\DownloadImageRequest $download_image_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['image'] to see the possible values for this operation
      *
@@ -701,7 +701,7 @@ class IdentityVerificationApi
      *
      * Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\DownloadImageRequest $download_image_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['image'] to see the possible values for this operation
      *
@@ -931,7 +931,7 @@ class IdentityVerificationApi
      *
      * Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\DownloadImageRequest $download_image_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['image'] to see the possible values for this operation
      *
@@ -953,7 +953,7 @@ class IdentityVerificationApi
      *
      * Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\DownloadImageRequest $download_image_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['image'] to see the possible values for this operation
      *
@@ -1004,7 +1004,7 @@ class IdentityVerificationApi
     /**
      * Create request for operation 'image'
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\DownloadImageRequest $download_image_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['image'] to see the possible values for this operation
      *
@@ -1152,7 +1152,7 @@ class IdentityVerificationApi
      *
      * Retrieve the ID verification report for the specified document signer.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\VerificationDataRequest $verification_data_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['report'] to see the possible values for this operation
      *
@@ -1171,7 +1171,7 @@ class IdentityVerificationApi
      *
      * Retrieve the ID verification report for the specified document signer.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\VerificationDataRequest $verification_data_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['report'] to see the possible values for this operation
      *
@@ -1401,7 +1401,7 @@ class IdentityVerificationApi
      *
      * Retrieve the ID verification report for the specified document signer.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\VerificationDataRequest $verification_data_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['report'] to see the possible values for this operation
      *
@@ -1423,7 +1423,7 @@ class IdentityVerificationApi
      *
      * Retrieve the ID verification report for the specified document signer.
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\VerificationDataRequest $verification_data_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['report'] to see the possible values for this operation
      *
@@ -1474,7 +1474,7 @@ class IdentityVerificationApi
     /**
      * Create request for operation 'report'
      *
-     * @param  string $document_id The document id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\VerificationDataRequest $verification_data_request The download image request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['report'] to see the possible values for this operation
      *

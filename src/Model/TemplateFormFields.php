@@ -58,6 +58,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'form_field_id' => 'string',
         'field_type' => 'string',
         'type' => 'string',
         'value' => 'string',
@@ -111,6 +112,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'form_field_id' => null,
         'field_type' => null,
         'type' => null,
         'value' => null,
@@ -162,6 +164,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'id' => true,
+        'form_field_id' => true,
         'field_type' => true,
         'type' => true,
         'value' => true,
@@ -293,6 +296,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'form_field_id' => 'formFieldId',
         'field_type' => 'fieldType',
         'type' => 'type',
         'value' => 'value',
@@ -344,6 +348,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'id' => 'setId',
+        'form_field_id' => 'setFormFieldId',
         'field_type' => 'setFieldType',
         'type' => 'setType',
         'value' => 'setValue',
@@ -395,6 +400,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'id' => 'getId',
+        'form_field_id' => 'getFormFieldId',
         'field_type' => 'getFieldType',
         'type' => 'getType',
         'value' => 'getValue',
@@ -571,6 +577,7 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('form_field_id', $data ?? [], null);
         $this->setIfExists('field_type', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
@@ -723,6 +730,40 @@ class TemplateFormFields implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_field_id
+     *
+     * @return string|null
+     */
+    public function getFormFieldId()
+    {
+        return $this->container['form_field_id'];
+    }
+
+    /**
+     * Sets form_field_id
+     *
+     * @param string|null $form_field_id form_field_id
+     *
+     * @return self
+     */
+    public function setFormFieldId($form_field_id)
+    {
+        if (is_null($form_field_id)) {
+            array_push($this->openAPINullablesSetToNull, 'form_field_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('form_field_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['form_field_id'] = $form_field_id;
 
         return $this;
     }

@@ -74,6 +74,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => '\BoldSign\Model\FormField[]',
         'existing_form_fields' => '\BoldSign\Model\ExistingFormField[]',
         'identity_verification_settings' => '\BoldSign\Model\IdentityVerificationSettings',
+        'kba_settings' => '\BoldSign\Model\KbaSettings',
         'language' => 'int',
         'locale' => 'string',
         'sign_type' => 'string',
@@ -109,6 +110,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => null,
         'existing_form_fields' => null,
         'identity_verification_settings' => null,
+        'kba_settings' => null,
         'language' => 'int32',
         'locale' => null,
         'sign_type' => null,
@@ -142,6 +144,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => true,
         'existing_form_fields' => true,
         'identity_verification_settings' => false,
+        'kba_settings' => false,
         'language' => false,
         'locale' => false,
         'sign_type' => true,
@@ -255,6 +258,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'formFields',
         'existing_form_fields' => 'existingFormFields',
         'identity_verification_settings' => 'identityVerificationSettings',
+        'kba_settings' => 'kbaSettings',
         'language' => 'language',
         'locale' => 'locale',
         'sign_type' => 'signType',
@@ -288,6 +292,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'setFormFields',
         'existing_form_fields' => 'setExistingFormFields',
         'identity_verification_settings' => 'setIdentityVerificationSettings',
+        'kba_settings' => 'setKbaSettings',
         'language' => 'setLanguage',
         'locale' => 'setLocale',
         'sign_type' => 'setSignType',
@@ -321,6 +326,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_fields' => 'getFormFields',
         'existing_form_fields' => 'getExistingFormFields',
         'identity_verification_settings' => 'getIdentityVerificationSettings',
+        'kba_settings' => 'getKbaSettings',
         'language' => 'getLanguage',
         'locale' => 'getLocale',
         'sign_type' => 'getSignType',
@@ -377,6 +383,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
     public const AUTHENTICATION_TYPE_ACCESS_CODE = 'AccessCode';
     public const AUTHENTICATION_TYPE_SMSOTP = 'SMSOTP';
     public const AUTHENTICATION_TYPE_ID_VERIFICATION = 'IdVerification';
+    public const AUTHENTICATION_TYPE_KBA = 'KBA';
     public const DELIVERY_MODE_EMAIL = 'Email';
     public const DELIVERY_MODE_SMS = 'SMS';
     public const DELIVERY_MODE_EMAIL_AND_SMS = 'EmailAndSMS';
@@ -442,6 +449,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
             self::AUTHENTICATION_TYPE_ACCESS_CODE,
             self::AUTHENTICATION_TYPE_SMSOTP,
             self::AUTHENTICATION_TYPE_ID_VERIFICATION,
+            self::AUTHENTICATION_TYPE_KBA,
         ];
     }
 
@@ -583,6 +591,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('form_fields', $data ?? [], null);
         $this->setIfExists('existing_form_fields', $data ?? [], null);
         $this->setIfExists('identity_verification_settings', $data ?? [], null);
+        $this->setIfExists('kba_settings', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
         $this->setIfExists('sign_type', $data ?? [], null);
@@ -1291,6 +1300,33 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable identity_verification_settings cannot be null');
         }
         $this->container['identity_verification_settings'] = $identity_verification_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets kba_settings
+     *
+     * @return \BoldSign\Model\KbaSettings|null
+     */
+    public function getKbaSettings()
+    {
+        return $this->container['kba_settings'];
+    }
+
+    /**
+     * Sets kba_settings
+     *
+     * @param \BoldSign\Model\KbaSettings|null $kba_settings kba_settings
+     *
+     * @return self
+     */
+    public function setKbaSettings($kba_settings)
+    {
+        if (is_null($kba_settings)) {
+            throw new \InvalidArgumentException('non-nullable kba_settings cannot be null');
+        }
+        $this->container['kba_settings'] = $kba_settings;
 
         return $this;
     }

@@ -542,14 +542,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline hide_decline (optional)
-     * @param  bool $hide_save hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -592,14 +592,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -853,14 +853,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -906,14 +906,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -988,14 +988,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -1294,7 +1294,7 @@ class BrandingApi
      *
      * Delete the brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1312,7 +1312,7 @@ class BrandingApi
      *
      * Delete the brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1506,7 +1506,7 @@ class BrandingApi
      *
      * Delete the brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1527,7 +1527,7 @@ class BrandingApi
      *
      * Delete the brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1577,7 +1577,7 @@ class BrandingApi
     /**
      * Create request for operation 'deleteBrand'
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1696,7 +1696,7 @@ class BrandingApi
      *
      * Edit the brand.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id brand_id (required)
      * @param  string $brand_name brand_name (optional)
      * @param  \SplFileObject $brand_logo brand_logo (optional)
      * @param  string $background_color background_color (optional)
@@ -1716,14 +1716,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline hide_decline (optional)
-     * @param  bool $hide_save hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -1747,7 +1747,7 @@ class BrandingApi
      *
      * Edit the brand.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $brand_name (optional)
      * @param  \SplFileObject $brand_logo (optional)
      * @param  string $background_color (optional)
@@ -1767,14 +1767,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -2009,7 +2009,7 @@ class BrandingApi
      *
      * Edit the brand.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $brand_name (optional)
      * @param  \SplFileObject $brand_logo (optional)
      * @param  string $background_color (optional)
@@ -2029,14 +2029,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -2063,7 +2063,7 @@ class BrandingApi
      *
      * Edit the brand.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $brand_name (optional)
      * @param  \SplFileObject $brand_logo (optional)
      * @param  string $background_color (optional)
@@ -2083,14 +2083,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -2146,7 +2146,7 @@ class BrandingApi
     /**
      * Create request for operation 'editBrand'
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $brand_name (optional)
      * @param  \SplFileObject $brand_logo (optional)
      * @param  string $background_color (optional)
@@ -2166,14 +2166,14 @@ class BrandingApi
      * @param  bool $show_built_in_form_fields (optional, default to true)
      * @param  bool $allow_custom_field_creation (optional, default to false)
      * @param  bool $show_shared_custom_fields (optional, default to false)
-     * @param  bool $hide_decline (optional)
-     * @param  bool $hide_save (optional)
-     * @param  string $document_expiry_settings_expiry_date_type (optional)
-     * @param  int $document_expiry_settings_expiry_value (optional)
-     * @param  bool $document_expiry_settings_enable_default_expiry_alert (optional)
-     * @param  bool $document_expiry_settings_enable_auto_reminder (optional)
-     * @param  int $document_expiry_settings_reminder_days (optional)
-     * @param  int $document_expiry_settings_reminder_count (optional)
+     * @param  bool $hide_decline This option prevents signers to decline the document during the signing process. (optional)
+     * @param  bool $hide_save This option prevents signers to save their changes during the signing process and continue signing later. (optional)
+     * @param  string $document_expiry_settings_expiry_date_type This property represents the type for the expiry date (optional)
+     * @param  int $document_expiry_settings_expiry_value This property is used to set the expiry value based on the expiry type (optional)
+     * @param  bool $document_expiry_settings_enable_default_expiry_alert This property will send the expiry alert email before the day of expiry for the pending signers. (optional)
+     * @param  bool $document_expiry_settings_enable_auto_reminder When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. (optional)
+     * @param  int $document_expiry_settings_reminder_days Remind in terms of days. (optional)
+     * @param  int $document_expiry_settings_reminder_count Number of reminder count. (optional)
      * @param  string $custom_domain_settings_domain_name (optional)
      * @param  string $custom_domain_settings_from_name (optional)
      * @param  bool $signature_frame_settings_enable_signature_frame (optional, default to false)
@@ -2476,7 +2476,7 @@ class BrandingApi
      *
      * Get the specific brand details.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2494,7 +2494,7 @@ class BrandingApi
      *
      * Get the specific brand details.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2723,7 +2723,7 @@ class BrandingApi
      *
      * Get the specific brand details.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2744,7 +2744,7 @@ class BrandingApi
      *
      * Get the specific brand details.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2794,7 +2794,7 @@ class BrandingApi
     /**
      * Create request for operation 'getBrand'
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2913,7 +2913,7 @@ class BrandingApi
      *
      * Reset default brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDefaultBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2931,7 +2931,7 @@ class BrandingApi
      *
      * Reset default brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDefaultBrand'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3125,7 +3125,7 @@ class BrandingApi
      *
      * Reset default brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDefaultBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3146,7 +3146,7 @@ class BrandingApi
      *
      * Reset default brand.
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDefaultBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3196,7 +3196,7 @@ class BrandingApi
     /**
      * Create request for operation 'resetDefaultBrand'
      *
-     * @param  string $brand_id brand Id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDefaultBrand'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

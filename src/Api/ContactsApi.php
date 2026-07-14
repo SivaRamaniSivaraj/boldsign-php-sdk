@@ -1074,7 +1074,7 @@ class ContactsApi
      *
      * Deletes a contact.
      *
-     * @param  string $id The contact id. (required)
+     * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContacts'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1091,7 +1091,7 @@ class ContactsApi
      *
      * Deletes a contact.
      *
-     * @param  string $id The contact id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContacts'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1167,7 +1167,7 @@ class ContactsApi
      *
      * Deletes a contact.
      *
-     * @param  string $id The contact id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1188,7 +1188,7 @@ class ContactsApi
      *
      * Deletes a contact.
      *
-     * @param  string $id The contact id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1225,7 +1225,7 @@ class ContactsApi
     /**
      * Create request for operation 'deleteContacts'
      *
-     * @param  string $id The contact id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1344,7 +1344,7 @@ class ContactsApi
      *
      * Get summary of the contact.
      *
-     * @param  string $id Contact Id. (required)
+     * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1362,7 +1362,7 @@ class ContactsApi
      *
      * Get summary of the contact.
      *
-     * @param  string $id Contact Id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1556,7 +1556,7 @@ class ContactsApi
      *
      * Get summary of the contact.
      *
-     * @param  string $id Contact Id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1577,7 +1577,7 @@ class ContactsApi
      *
      * Get summary of the contact.
      *
-     * @param  string $id Contact Id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1627,7 +1627,7 @@ class ContactsApi
     /**
      * Create request for operation 'getContact'
      *
-     * @param  string $id Contact Id. (required)
+     * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1746,7 +1746,7 @@ class ContactsApi
      *
      * Update the contact.
      *
-     * @param  string $id The contactId. (optional)
+     * @param  string $id id (optional)
      * @param  \BoldSign\Model\ContactDetails $contact_details The contact details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
@@ -1764,7 +1764,7 @@ class ContactsApi
      *
      * Update the contact.
      *
-     * @param  string $id The contactId. (optional)
+     * @param  string $id (optional)
      * @param  \BoldSign\Model\ContactDetails $contact_details The contact details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
@@ -1841,7 +1841,7 @@ class ContactsApi
      *
      * Update the contact.
      *
-     * @param  string $id The contactId. (optional)
+     * @param  string $id (optional)
      * @param  \BoldSign\Model\ContactDetails $contact_details The contact details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
@@ -1863,7 +1863,7 @@ class ContactsApi
      *
      * Update the contact.
      *
-     * @param  string $id The contactId. (optional)
+     * @param  string $id (optional)
      * @param  \BoldSign\Model\ContactDetails $contact_details The contact details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
@@ -1901,7 +1901,7 @@ class ContactsApi
     /**
      * Create request for operation 'updateContact'
      *
-     * @param  string $id The contactId. (optional)
+     * @param  string $id (optional)
      * @param  \BoldSign\Model\ContactDetails $contact_details The contact details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *

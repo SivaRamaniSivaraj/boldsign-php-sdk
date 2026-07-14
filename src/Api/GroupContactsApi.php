@@ -282,14 +282,17 @@ class GroupContactsApi
                     (string) $response->getBody()
                 );
             }
+            printf("Status code: %d\n", $statusCode);
 
             switch($statusCode) {
                 case 201:
                     if ('\BoldSign\Model\CreateGroupContactResponse' === '\SplFileObject') {
+                        printf("case if 201: %s\n", '\BoldSign\Model\CreateGroupContactResponse');
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\BoldSign\Model\CreateGroupContactResponse' !== 'string') {
+                            printf("case else 201: %s\n", '\BoldSign\Model\CreateGroupContactResponse');
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -627,7 +630,7 @@ class GroupContactsApi
      *
      * Deletes a Group Contact.
      *
-     * @param  string $group_id The group contact id. (required)
+     * @param  string $group_id group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroupContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -644,7 +647,7 @@ class GroupContactsApi
      *
      * Deletes a Group Contact.
      *
-     * @param  string $group_id The group contact id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroupContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -720,7 +723,7 @@ class GroupContactsApi
      *
      * Deletes a Group Contact.
      *
-     * @param  string $group_id The group contact id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -741,7 +744,7 @@ class GroupContactsApi
      *
      * Deletes a Group Contact.
      *
-     * @param  string $group_id The group contact id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -778,7 +781,7 @@ class GroupContactsApi
     /**
      * Create request for operation 'deleteGroupContact'
      *
-     * @param  string $group_id The group contact id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -897,7 +900,7 @@ class GroupContactsApi
      *
      * Get Summary of the Group Contact.
      *
-     * @param  string $group_id Group Contact Id. (required)
+     * @param  string $group_id group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -915,7 +918,7 @@ class GroupContactsApi
      *
      * Get Summary of the Group Contact.
      *
-     * @param  string $group_id Group Contact Id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupContact'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1109,7 +1112,7 @@ class GroupContactsApi
      *
      * Get Summary of the Group Contact.
      *
-     * @param  string $group_id Group Contact Id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1130,7 +1133,7 @@ class GroupContactsApi
      *
      * Get Summary of the Group Contact.
      *
-     * @param  string $group_id Group Contact Id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1180,7 +1183,7 @@ class GroupContactsApi
     /**
      * Create request for operation 'getGroupContact'
      *
-     * @param  string $group_id Group Contact Id. (required)
+     * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1726,7 +1729,7 @@ class GroupContactsApi
      *
      * Update the Group Contact.
      *
-     * @param  string $group_id The group contact ID. (required)
+     * @param  string $group_id group_id (required)
      * @param  \BoldSign\Model\UpdateGroupContact $update_group_contact The group contact details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroupContact'] to see the possible values for this operation
      *
@@ -1744,7 +1747,7 @@ class GroupContactsApi
      *
      * Update the Group Contact.
      *
-     * @param  string $group_id The group contact ID. (required)
+     * @param  string $group_id (required)
      * @param  \BoldSign\Model\UpdateGroupContact $update_group_contact The group contact details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroupContact'] to see the possible values for this operation
      *
@@ -1821,7 +1824,7 @@ class GroupContactsApi
      *
      * Update the Group Contact.
      *
-     * @param  string $group_id The group contact ID. (required)
+     * @param  string $group_id (required)
      * @param  \BoldSign\Model\UpdateGroupContact $update_group_contact The group contact details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroupContact'] to see the possible values for this operation
      *
@@ -1843,7 +1846,7 @@ class GroupContactsApi
      *
      * Update the Group Contact.
      *
-     * @param  string $group_id The group contact ID. (required)
+     * @param  string $group_id (required)
      * @param  \BoldSign\Model\UpdateGroupContact $update_group_contact The group contact details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroupContact'] to see the possible values for this operation
      *
@@ -1881,7 +1884,7 @@ class GroupContactsApi
     /**
      * Create request for operation 'updateGroupContact'
      *
-     * @param  string $group_id The group contact ID. (required)
+     * @param  string $group_id (required)
      * @param  \BoldSign\Model\UpdateGroupContact $update_group_contact The group contact details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroupContact'] to see the possible values for this operation
      *
