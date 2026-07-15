@@ -79,6 +79,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => '\DateTime',
         'authentication_type' => 'string',
         'id_verification' => '\BoldSign\Model\IdVerificationSignerWebhookModel',
+        'kba' => '\BoldSign\Model\KbaSignerWebhookModel',
         'allow_field_configuration' => 'bool',
         'last_reminder_sent_on' => '\DateTime',
         'authentication_retry_count' => 'int',
@@ -115,6 +116,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => 'date-time',
         'authentication_type' => null,
         'id_verification' => null,
+        'kba' => null,
         'allow_field_configuration' => null,
         'last_reminder_sent_on' => 'date-time',
         'authentication_retry_count' => 'int32',
@@ -149,6 +151,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => true,
         'authentication_type' => true,
         'id_verification' => false,
+        'kba' => false,
         'allow_field_configuration' => false,
         'last_reminder_sent_on' => true,
         'authentication_retry_count' => true,
@@ -263,6 +266,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => 'lastActivityDate',
         'authentication_type' => 'authenticationType',
         'id_verification' => 'idVerification',
+        'kba' => 'kba',
         'allow_field_configuration' => 'allowFieldConfiguration',
         'last_reminder_sent_on' => 'lastReminderSentOn',
         'authentication_retry_count' => 'authenticationRetryCount',
@@ -297,6 +301,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => 'setLastActivityDate',
         'authentication_type' => 'setAuthenticationType',
         'id_verification' => 'setIdVerification',
+        'kba' => 'setKba',
         'allow_field_configuration' => 'setAllowFieldConfiguration',
         'last_reminder_sent_on' => 'setLastReminderSentOn',
         'authentication_retry_count' => 'setAuthenticationRetryCount',
@@ -331,6 +336,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         'last_activity_date' => 'getLastActivityDate',
         'authentication_type' => 'getAuthenticationType',
         'id_verification' => 'getIdVerification',
+        'kba' => 'getKba',
         'allow_field_configuration' => 'getAllowFieldConfiguration',
         'last_reminder_sent_on' => 'getLastReminderSentOn',
         'authentication_retry_count' => 'getAuthenticationRetryCount',
@@ -439,6 +445,7 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('last_activity_date', $data ?? [], null);
         $this->setIfExists('authentication_type', $data ?? [], null);
         $this->setIfExists('id_verification', $data ?? [], null);
+        $this->setIfExists('kba', $data ?? [], null);
         $this->setIfExists('allow_field_configuration', $data ?? [], null);
         $this->setIfExists('last_reminder_sent_on', $data ?? [], null);
         $this->setIfExists('authentication_retry_count', $data ?? [], null);
@@ -1187,6 +1194,33 @@ class DocumentSignerWebhookModel implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable id_verification cannot be null');
         }
         $this->container['id_verification'] = $id_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets kba
+     *
+     * @return \BoldSign\Model\KbaSignerWebhookModel|null
+     */
+    public function getKba()
+    {
+        return $this->container['kba'];
+    }
+
+    /**
+     * Sets kba
+     *
+     * @param \BoldSign\Model\KbaSignerWebhookModel|null $kba kba
+     *
+     * @return self
+     */
+    public function setKba($kba)
+    {
+        if (is_null($kba)) {
+            throw new \InvalidArgumentException('non-nullable kba cannot be null');
+        }
+        $this->container['kba'] = $kba;
 
         return $this;
     }

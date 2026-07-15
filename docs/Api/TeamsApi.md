@@ -79,7 +79,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\TeamsApi($config);
-$team_id = 'team_id_example'; // string | Team Id.
+$team_id = 'team_id_example'; // string
 
 try {
     $result = $apiInstance->getTeam($team_id);
@@ -93,7 +93,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **team_id** | **string**| Team Id. | |
+| **team_id** | **string**|  | |
 
 ### Return type
 

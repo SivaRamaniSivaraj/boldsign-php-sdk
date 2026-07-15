@@ -39,5 +39,7 @@ Name | Type | Description | Notes
 **allow_scheduled_send** | **bool** |  | [optional] [default to false]
 **allowed_signature_types** | **string[]** |  | [optional]
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
+**enable_allow_sign_everywhere** | **bool** |  | [optional]
+**document_time_zone** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

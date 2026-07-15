@@ -46,5 +46,11 @@ Name | Type | Description | Notes
 **scheduled_send_time** | **int** |  | [optional]
 **allowed_signature_types** | **string[]** |  | [optional]
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
+**in_editing_mode** | **bool** |  | [optional]
+**display_status** | **string** |  | [optional]
+**enable_allow_sign_everywhere** | **bool** |  | [optional]
+**is_combined_audit** | **bool** |  | [optional]
+**is_combined_attachment** | **bool** |  | [optional]
+**document_time_zone** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

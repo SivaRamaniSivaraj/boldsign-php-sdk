@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **on_behalf_of** | **string** |  | [optional]
 **phone_number** | [**\BoldSign\Model\PhoneNumber**](PhoneNumber.md) |  | [optional]
 **identity_verification_settings** | [**\BoldSign\Model\IdentityVerificationSettings**](IdentityVerificationSettings.md) |  | [optional]
+**kba_settings** | [**\BoldSign\Model\KbaSettings**](KbaSettings.md) |  | [optional]
 **authentication_retry_count** | **int** |  | [optional]
 **authentication_settings** | [**\BoldSign\Model\AuthenticationSettings**](AuthenticationSettings.md) |  | [optional]
 

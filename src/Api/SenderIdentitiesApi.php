@@ -675,7 +675,7 @@ class SenderIdentitiesApi
      *
      * Deletes sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -692,7 +692,7 @@ class SenderIdentitiesApi
      *
      * Deletes sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -768,7 +768,7 @@ class SenderIdentitiesApi
      *
      * Deletes sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -789,7 +789,7 @@ class SenderIdentitiesApi
      *
      * Deletes sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -826,7 +826,7 @@ class SenderIdentitiesApi
     /**
      * Create request for operation 'deleteSenderIdentities'
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -944,8 +944,8 @@ class SenderIdentitiesApi
      *
      * Gets sender identity by ID or email.
      *
-     * @param  string $id The sender identity id. (optional)
-     * @param  string $email The sender identity email. (optional)
+     * @param  string $id id (optional)
+     * @param  string $email email (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSenderIdentityProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -963,8 +963,8 @@ class SenderIdentitiesApi
      *
      * Gets sender identity by ID or email.
      *
-     * @param  string $id The sender identity id. (optional)
-     * @param  string $email The sender identity email. (optional)
+     * @param  string $id (optional)
+     * @param  string $email (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSenderIdentityProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1158,8 +1158,8 @@ class SenderIdentitiesApi
      *
      * Gets sender identity by ID or email.
      *
-     * @param  string $id The sender identity id. (optional)
-     * @param  string $email The sender identity email. (optional)
+     * @param  string $id (optional)
+     * @param  string $email (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSenderIdentityProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1180,8 +1180,8 @@ class SenderIdentitiesApi
      *
      * Gets sender identity by ID or email.
      *
-     * @param  string $id The sender identity id. (optional)
-     * @param  string $email The sender identity email. (optional)
+     * @param  string $id (optional)
+     * @param  string $email (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSenderIdentityProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1231,8 +1231,8 @@ class SenderIdentitiesApi
     /**
      * Create request for operation 'getSenderIdentityProperties'
      *
-     * @param  string $id The sender identity id. (optional)
-     * @param  string $email The sender identity email. (optional)
+     * @param  string $id (optional)
+     * @param  string $email (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSenderIdentityProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1800,7 +1800,7 @@ class SenderIdentitiesApi
      *
      * Rerequests denied sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reRequestSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1817,7 +1817,7 @@ class SenderIdentitiesApi
      *
      * Rerequests denied sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reRequestSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1893,7 +1893,7 @@ class SenderIdentitiesApi
      *
      * Rerequests denied sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reRequestSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1914,7 +1914,7 @@ class SenderIdentitiesApi
      *
      * Rerequests denied sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reRequestSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1951,7 +1951,7 @@ class SenderIdentitiesApi
     /**
      * Create request for operation 'reRequestSenderIdentities'
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reRequestSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2069,7 +2069,7 @@ class SenderIdentitiesApi
      *
      * Resends sender identity invitation.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendInvitationSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2086,7 +2086,7 @@ class SenderIdentitiesApi
      *
      * Resends sender identity invitation.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendInvitationSenderIdentities'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2162,7 +2162,7 @@ class SenderIdentitiesApi
      *
      * Resends sender identity invitation.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendInvitationSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2183,7 +2183,7 @@ class SenderIdentitiesApi
      *
      * Resends sender identity invitation.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendInvitationSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2220,7 +2220,7 @@ class SenderIdentitiesApi
     /**
      * Create request for operation 'resendInvitationSenderIdentities'
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendInvitationSenderIdentities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2338,7 +2338,7 @@ class SenderIdentitiesApi
      *
      * Updates sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email email (required)
      * @param  \BoldSign\Model\EditSenderIdentityRequest $edit_sender_identity_request The create sender identity request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSenderIdentities'] to see the possible values for this operation
      *
@@ -2356,7 +2356,7 @@ class SenderIdentitiesApi
      *
      * Updates sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  \BoldSign\Model\EditSenderIdentityRequest $edit_sender_identity_request The create sender identity request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSenderIdentities'] to see the possible values for this operation
      *
@@ -2433,7 +2433,7 @@ class SenderIdentitiesApi
      *
      * Updates sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  \BoldSign\Model\EditSenderIdentityRequest $edit_sender_identity_request The create sender identity request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSenderIdentities'] to see the possible values for this operation
      *
@@ -2455,7 +2455,7 @@ class SenderIdentitiesApi
      *
      * Updates sender identity.
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  \BoldSign\Model\EditSenderIdentityRequest $edit_sender_identity_request The create sender identity request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSenderIdentities'] to see the possible values for this operation
      *
@@ -2493,7 +2493,7 @@ class SenderIdentitiesApi
     /**
      * Create request for operation 'updateSenderIdentities'
      *
-     * @param  string $email The email address. (required)
+     * @param  string $email (required)
      * @param  \BoldSign\Model\EditSenderIdentityRequest $edit_sender_identity_request The create sender identity request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSenderIdentities'] to see the possible values for this operation
      *

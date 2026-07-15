@@ -669,7 +669,7 @@ class CustomFieldApi
      *
      * List the custom fields respective to the brand id.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customFieldsList'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -687,7 +687,7 @@ class CustomFieldApi
      *
      * List the custom fields respective to the brand id.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customFieldsList'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -881,7 +881,7 @@ class CustomFieldApi
      *
      * List the custom fields respective to the brand id.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customFieldsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -902,7 +902,7 @@ class CustomFieldApi
      *
      * List the custom fields respective to the brand id.
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customFieldsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -952,7 +952,7 @@ class CustomFieldApi
     /**
      * Create request for operation 'customFieldsList'
      *
-     * @param  string $brand_id The brand id. (required)
+     * @param  string $brand_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customFieldsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1070,7 +1070,7 @@ class CustomFieldApi
      *
      * Delete the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id custom_field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1088,7 +1088,7 @@ class CustomFieldApi
      *
      * Delete the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1317,7 +1317,7 @@ class CustomFieldApi
      *
      * Delete the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1338,7 +1338,7 @@ class CustomFieldApi
      *
      * Delete the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1388,7 +1388,7 @@ class CustomFieldApi
     /**
      * Create request for operation 'deleteCustomField'
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1506,7 +1506,7 @@ class CustomFieldApi
      *
      * Edit the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id custom_field_id (required)
      * @param  \BoldSign\Model\BrandCustomFieldDetails $brand_custom_field_details The custom field details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editCustomField'] to see the possible values for this operation
      *
@@ -1525,7 +1525,7 @@ class CustomFieldApi
      *
      * Edit the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  \BoldSign\Model\BrandCustomFieldDetails $brand_custom_field_details The custom field details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editCustomField'] to see the possible values for this operation
      *
@@ -1755,7 +1755,7 @@ class CustomFieldApi
      *
      * Edit the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  \BoldSign\Model\BrandCustomFieldDetails $brand_custom_field_details The custom field details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editCustomField'] to see the possible values for this operation
      *
@@ -1777,7 +1777,7 @@ class CustomFieldApi
      *
      * Edit the custom field.
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  \BoldSign\Model\BrandCustomFieldDetails $brand_custom_field_details The custom field details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editCustomField'] to see the possible values for this operation
      *
@@ -1828,7 +1828,7 @@ class CustomFieldApi
     /**
      * Create request for operation 'editCustomField'
      *
-     * @param  string $custom_field_id The custom field id. (required)
+     * @param  string $custom_field_id (required)
      * @param  \BoldSign\Model\BrandCustomFieldDetails $brand_custom_field_details The custom field details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editCustomField'] to see the possible values for this operation
      *

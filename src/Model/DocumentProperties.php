@@ -98,7 +98,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => 'string',
         'scheduled_send_time' => 'int',
         'allowed_signature_types' => 'string[]',
-        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings'
+        'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
+        'in_editing_mode' => 'bool',
+        'display_status' => 'string',
+        'enable_allow_sign_everywhere' => 'bool',
+        'is_combined_audit' => 'bool',
+        'is_combined_attachment' => 'bool',
+        'document_time_zone' => 'string'
     ];
 
     /**
@@ -150,7 +156,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => null,
         'scheduled_send_time' => 'int64',
         'allowed_signature_types' => null,
-        'group_signer_settings' => null
+        'group_signer_settings' => null,
+        'in_editing_mode' => null,
+        'display_status' => null,
+        'enable_allow_sign_everywhere' => null,
+        'is_combined_audit' => null,
+        'is_combined_attachment' => null,
+        'document_time_zone' => null
     ];
 
     /**
@@ -200,7 +212,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => true,
         'scheduled_send_time' => true,
         'allowed_signature_types' => true,
-        'group_signer_settings' => false
+        'group_signer_settings' => false,
+        'in_editing_mode' => false,
+        'display_status' => true,
+        'enable_allow_sign_everywhere' => false,
+        'is_combined_audit' => false,
+        'is_combined_attachment' => false,
+        'document_time_zone' => true
     ];
 
     /**
@@ -330,7 +348,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => 'downloadFileName',
         'scheduled_send_time' => 'scheduledSendTime',
         'allowed_signature_types' => 'allowedSignatureTypes',
-        'group_signer_settings' => 'groupSignerSettings'
+        'group_signer_settings' => 'groupSignerSettings',
+        'in_editing_mode' => 'inEditingMode',
+        'display_status' => 'displayStatus',
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
+        'is_combined_audit' => 'isCombinedAudit',
+        'is_combined_attachment' => 'isCombinedAttachment',
+        'document_time_zone' => 'documentTimeZone'
     ];
 
     /**
@@ -380,7 +404,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => 'setDownloadFileName',
         'scheduled_send_time' => 'setScheduledSendTime',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
-        'group_signer_settings' => 'setGroupSignerSettings'
+        'group_signer_settings' => 'setGroupSignerSettings',
+        'in_editing_mode' => 'setInEditingMode',
+        'display_status' => 'setDisplayStatus',
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
+        'is_combined_audit' => 'setIsCombinedAudit',
+        'is_combined_attachment' => 'setIsCombinedAttachment',
+        'document_time_zone' => 'setDocumentTimeZone'
     ];
 
     /**
@@ -430,7 +460,13 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'download_file_name' => 'getDownloadFileName',
         'scheduled_send_time' => 'getScheduledSendTime',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
-        'group_signer_settings' => 'getGroupSignerSettings'
+        'group_signer_settings' => 'getGroupSignerSettings',
+        'in_editing_mode' => 'getInEditingMode',
+        'display_status' => 'getDisplayStatus',
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
+        'is_combined_audit' => 'getIsCombinedAudit',
+        'is_combined_attachment' => 'getIsCombinedAttachment',
+        'document_time_zone' => 'getDocumentTimeZone'
     ];
 
     /**
@@ -653,6 +689,12 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
+        $this->setIfExists('in_editing_mode', $data ?? [], null);
+        $this->setIfExists('display_status', $data ?? [], null);
+        $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
+        $this->setIfExists('is_combined_audit', $data ?? [], null);
+        $this->setIfExists('is_combined_attachment', $data ?? [], null);
+        $this->setIfExists('document_time_zone', $data ?? [], null);
     }
 
     /**
@@ -2059,6 +2101,182 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable group_signer_settings cannot be null');
         }
         $this->container['group_signer_settings'] = $group_signer_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets in_editing_mode
+     *
+     * @return bool|null
+     */
+    public function getInEditingMode()
+    {
+        return $this->container['in_editing_mode'];
+    }
+
+    /**
+     * Sets in_editing_mode
+     *
+     * @param bool|null $in_editing_mode in_editing_mode
+     *
+     * @return self
+     */
+    public function setInEditingMode($in_editing_mode)
+    {
+        if (is_null($in_editing_mode)) {
+            throw new \InvalidArgumentException('non-nullable in_editing_mode cannot be null');
+        }
+        $this->container['in_editing_mode'] = $in_editing_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_status
+     *
+     * @return string|null
+     */
+    public function getDisplayStatus()
+    {
+        return $this->container['display_status'];
+    }
+
+    /**
+     * Sets display_status
+     *
+     * @param string|null $display_status display_status
+     *
+     * @return self
+     */
+    public function setDisplayStatus($display_status)
+    {
+        if (is_null($display_status)) {
+            array_push($this->openAPINullablesSetToNull, 'display_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['display_status'] = $display_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_allow_sign_everywhere
+     *
+     * @return bool|null
+     */
+    public function getEnableAllowSignEverywhere()
+    {
+        return $this->container['enable_allow_sign_everywhere'];
+    }
+
+    /**
+     * Sets enable_allow_sign_everywhere
+     *
+     * @param bool|null $enable_allow_sign_everywhere enable_allow_sign_everywhere
+     *
+     * @return self
+     */
+    public function setEnableAllowSignEverywhere($enable_allow_sign_everywhere)
+    {
+        if (is_null($enable_allow_sign_everywhere)) {
+            throw new \InvalidArgumentException('non-nullable enable_allow_sign_everywhere cannot be null');
+        }
+        $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_combined_audit
+     *
+     * @return bool|null
+     */
+    public function getIsCombinedAudit()
+    {
+        return $this->container['is_combined_audit'];
+    }
+
+    /**
+     * Sets is_combined_audit
+     *
+     * @param bool|null $is_combined_audit is_combined_audit
+     *
+     * @return self
+     */
+    public function setIsCombinedAudit($is_combined_audit)
+    {
+        if (is_null($is_combined_audit)) {
+            throw new \InvalidArgumentException('non-nullable is_combined_audit cannot be null');
+        }
+        $this->container['is_combined_audit'] = $is_combined_audit;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_combined_attachment
+     *
+     * @return bool|null
+     */
+    public function getIsCombinedAttachment()
+    {
+        return $this->container['is_combined_attachment'];
+    }
+
+    /**
+     * Sets is_combined_attachment
+     *
+     * @param bool|null $is_combined_attachment is_combined_attachment
+     *
+     * @return self
+     */
+    public function setIsCombinedAttachment($is_combined_attachment)
+    {
+        if (is_null($is_combined_attachment)) {
+            throw new \InvalidArgumentException('non-nullable is_combined_attachment cannot be null');
+        }
+        $this->container['is_combined_attachment'] = $is_combined_attachment;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_time_zone
+     *
+     * @return string|null
+     */
+    public function getDocumentTimeZone()
+    {
+        return $this->container['document_time_zone'];
+    }
+
+    /**
+     * Sets document_time_zone
+     *
+     * @param string|null $document_time_zone document_time_zone
+     *
+     * @return self
+     */
+    public function setDocumentTimeZone($document_time_zone)
+    {
+        if (is_null($document_time_zone)) {
+            array_push($this->openAPINullablesSetToNull, 'document_time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('document_time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['document_time_zone'] = $document_time_zone;
 
         return $this;
     }

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **value** | **string** |  | [optional]
 **font_size** | **float** |  | [optional] [default to 13]
 **font** | **string** |  | [optional]
+**group_options** | [**\BoldSign\Model\GroupOption[]**](GroupOption.md) |  | [optional]
+**checkbox_validation_settings** | [**\BoldSign\Model\CheckboxValidationSettings**](CheckboxValidationSettings.md) |  | [optional]
 **font_hex_color** | **string** |  | [optional]
 **is_bold_font** | **bool** |  | [optional]
 **is_italic_font** | **bool** |  | [optional]

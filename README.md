@@ -16,7 +16,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 ```json
 {
     "require": {
-        "boldsign/boldsign-php": "3.1.0-beta.2"
+        "boldsign/boldsign-php": "3.2.0-beta.2"
     },
     "minimum-stability": "dev"
 }
@@ -27,7 +27,7 @@ Then run `composer install`
 Alternatively, install directly with
 
 ```
-composer require boldsign/boldsign-php:3.1.0-beta.2
+composer require boldsign/boldsign-php:3.2.0-beta.2
 ```
 
 ## Getting Started
@@ -95,6 +95,7 @@ All URIs are relative to *https://api.boldsign.com*
 | *DocumentApi* | [**cancelEditing**](docs/Api/DocumentApi.md#cancelediting) | **POST** /v1-beta/document/cancelEditing | Cancels editing for a document that is currently in edit-mode. |
 | *DocumentApi* | [**changeAccessCode**](docs/Api/DocumentApi.md#changeaccesscode) | **PATCH** /v1/document/changeAccessCode | Changes the access code for the given document signer. |
 | *DocumentApi* | [**changeRecipient**](docs/Api/DocumentApi.md#changerecipient) | **PATCH** /v1/document/changeRecipient | Change recipient details of a document. |
+| *DocumentApi* | [**createEmbeddedDocumentCloneUrl**](docs/Api/DocumentApi.md#createembeddeddocumentcloneurl) | **POST** /v1-beta/document/createEmbeddedCloneUrl | Generates a URL to embeds Clone document process into your application. |
 | *DocumentApi* | [**createEmbeddedEditUrl**](docs/Api/DocumentApi.md#createembeddedediturl) | **POST** /v1-beta/document/createEmbeddedEditUrl | Generates an embedded edit URL that allows the document editing process to be integrated into your application. |
 | *DocumentApi* | [**createEmbeddedRequestUrlDocument**](docs/Api/DocumentApi.md#createembeddedrequesturldocument) | **POST** /v1/document/createEmbeddedRequestUrl | Generates a send URL which embeds document sending process into your application. |
 | *DocumentApi* | [**deleteDocument**](docs/Api/DocumentApi.md#deletedocument) | **DELETE** /v1/document/delete | Delete the document. |
@@ -137,6 +138,7 @@ All URIs are relative to *https://api.boldsign.com*
 | *TemplateApi* | [**addTag**](docs/Api/TemplateApi.md#addtag) | **PATCH** /v1/template/addTags | Add the Tags in Templates. |
 | *TemplateApi* | [**createEmbeddedPreviewUrl**](docs/Api/TemplateApi.md#createembeddedpreviewurl) | **POST** /v1/template/createEmbeddedPreviewUrl | Generates a preview URL for a template to view it. |
 | *TemplateApi* | [**createEmbeddedRequestUrlTemplate**](docs/Api/TemplateApi.md#createembeddedrequesturltemplate) | **POST** /v1/template/createEmbeddedRequestUrl | Generates a send URL using a template which embeds document sending process into your application. |
+| *TemplateApi* | [**createEmbeddedTemplateCloneUrl**](docs/Api/TemplateApi.md#createembeddedtemplatecloneurl) | **POST** /v1-beta/template/createEmbeddedCloneUrl | Generates a URL to embeds Clone template process into your application. |
 | *TemplateApi* | [**createEmbeddedTemplateUrl**](docs/Api/TemplateApi.md#createembeddedtemplateurl) | **POST** /v1/template/createEmbeddedTemplateUrl | Generates a create URL to embeds template create process into your application. |
 | *TemplateApi* | [**createTemplate**](docs/Api/TemplateApi.md#createtemplate) | **POST** /v1/template/create | Creates a new template. |
 | *TemplateApi* | [**deleteTemplate**](docs/Api/TemplateApi.md#deletetemplate) | **DELETE** /v1/template/delete | Deletes a template. |
@@ -181,6 +183,7 @@ All URIs are relative to *https://api.boldsign.com*
 - [BrandingRecords](docs/Model/BrandingRecords.md)
 - [ChangeRecipient](docs/Model/ChangeRecipient.md)
 - [ChangeTeamRequest](docs/Model/ChangeTeamRequest.md)
+- [CheckboxValidationSettings](docs/Model/CheckboxValidationSettings.md)
 - [CollaborationSettings](docs/Model/CollaborationSettings.md)
 - [ConditionalRule](docs/Model/ConditionalRule.md)
 - [ContactCreated](docs/Model/ContactCreated.md)
@@ -230,6 +233,10 @@ All URIs are relative to *https://api.boldsign.com*
 - [EditSenderIdentityRequest](docs/Model/EditSenderIdentityRequest.md)
 - [EditTemplateRequest](docs/Model/EditTemplateRequest.md)
 - [EditableDateFieldSettings](docs/Model/EditableDateFieldSettings.md)
+- [EmbeddedCloneDocumentJsonRequest](docs/Model/EmbeddedCloneDocumentJsonRequest.md)
+- [EmbeddedCloneTemplateJsonRequest](docs/Model/EmbeddedCloneTemplateJsonRequest.md)
+- [EmbeddedClonedDocument](docs/Model/EmbeddedClonedDocument.md)
+- [EmbeddedClonedTemplate](docs/Model/EmbeddedClonedTemplate.md)
 - [EmbeddedCreateTemplateRequest](docs/Model/EmbeddedCreateTemplateRequest.md)
 - [EmbeddedCustomFieldCreated](docs/Model/EmbeddedCustomFieldCreated.md)
 - [EmbeddedDocumentEditJsonRequest](docs/Model/EmbeddedDocumentEditJsonRequest.md)
@@ -262,6 +269,7 @@ All URIs are relative to *https://api.boldsign.com*
 - [GroupContact](docs/Model/GroupContact.md)
 - [GroupContactDetails](docs/Model/GroupContactDetails.md)
 - [GroupContactsList](docs/Model/GroupContactsList.md)
+- [GroupOption](docs/Model/GroupOption.md)
 - [GroupSigner](docs/Model/GroupSigner.md)
 - [GroupSignerSettings](docs/Model/GroupSignerSettings.md)
 - [GroupSignerSettingsWebhookModel](docs/Model/GroupSignerSettingsWebhookModel.md)
@@ -274,6 +282,10 @@ All URIs are relative to *https://api.boldsign.com*
 - [IdentityVerificationEvent](docs/Model/IdentityVerificationEvent.md)
 - [IdentityVerificationSettings](docs/Model/IdentityVerificationSettings.md)
 - [ImageInfo](docs/Model/ImageInfo.md)
+- [KbaAuthenticationEvent](docs/Model/KbaAuthenticationEvent.md)
+- [KbaDetails](docs/Model/KbaDetails.md)
+- [KbaSettings](docs/Model/KbaSettings.md)
+- [KbaSignerWebhookModel](docs/Model/KbaSignerWebhookModel.md)
 - [MergeAndSendForSignForm](docs/Model/MergeAndSendForSignForm.md)
 - [ModificationDetails](docs/Model/ModificationDetails.md)
 - [NotificationSettings](docs/Model/NotificationSettings.md)
@@ -299,6 +311,7 @@ All URIs are relative to *https://api.boldsign.com*
 - [SenderIdentityEvent](docs/Model/SenderIdentityEvent.md)
 - [SenderIdentityList](docs/Model/SenderIdentityList.md)
 - [SenderIdentityViewModel](docs/Model/SenderIdentityViewModel.md)
+- [SignatureFrameSettings](docs/Model/SignatureFrameSettings.md)
 - [SignerAuthenticationSettings](docs/Model/SignerAuthenticationSettings.md)
 - [SignerAuthenticationWebhookModel](docs/Model/SignerAuthenticationWebhookModel.md)
 - [Size](docs/Model/Size.md)
@@ -350,7 +363,6 @@ All URIs are relative to *https://api.boldsign.com*
 - [WebhookActorDetails](docs/Model/WebhookActorDetails.md)
 - [WebhookContext](docs/Model/WebhookContext.md)
 - [WebhookEvent](docs/Model/WebhookEvent.md)
-- [WebhookEventData](docs/Model/WebhookEventData.md)
 - [WebhookEventMetadata](docs/Model/WebhookEventMetadata.md)
 
 ## Authorization
@@ -389,6 +401,6 @@ vendor/bin/phpunit
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `1`
-    - Package version: `3.1.0-beta.2`
+    - Package version: `3.2.0-beta.2`
     - Generator version: `7.8.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

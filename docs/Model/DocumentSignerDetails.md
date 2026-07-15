@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **group_id** | **string** |  | [optional]
 **phone_number** | [**\BoldSign\Model\PhoneNumber**](PhoneNumber.md) |  | [optional]
 **id_verification** | [**\BoldSign\Model\IdVerificationDetails**](IdVerificationDetails.md) |  | [optional]
+**kba** | [**\BoldSign\Model\KbaDetails**](KbaDetails.md) |  | [optional]
 **recipient_notification_settings** | [**\BoldSign\Model\RecipientNotificationSettings**](RecipientNotificationSettings.md) |  | [optional]
 **authentication_retry_count** | **int** |  | [optional]
 **enable_qes** | **bool** |  | [optional]

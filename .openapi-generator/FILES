@@ -33,6 +33,7 @@ docs/Model/BrandingMessage.md
 docs/Model/BrandingRecords.md
 docs/Model/ChangeRecipient.md
 docs/Model/ChangeTeamRequest.md
+docs/Model/CheckboxValidationSettings.md
 docs/Model/CollaborationSettings.md
 docs/Model/ConditionalRule.md
 docs/Model/ContactCreated.md
@@ -82,6 +83,10 @@ docs/Model/EditFormField.md
 docs/Model/EditSenderIdentityRequest.md
 docs/Model/EditTemplateRequest.md
 docs/Model/EditableDateFieldSettings.md
+docs/Model/EmbeddedCloneDocumentJsonRequest.md
+docs/Model/EmbeddedCloneTemplateJsonRequest.md
+docs/Model/EmbeddedClonedDocument.md
+docs/Model/EmbeddedClonedTemplate.md
 docs/Model/EmbeddedCreateTemplateRequest.md
 docs/Model/EmbeddedCustomFieldCreated.md
 docs/Model/EmbeddedDocumentEditJsonRequest.md
@@ -114,6 +119,7 @@ docs/Model/GetGroupContactDetails.md
 docs/Model/GroupContact.md
 docs/Model/GroupContactDetails.md
 docs/Model/GroupContactsList.md
+docs/Model/GroupOption.md
 docs/Model/GroupSigner.md
 docs/Model/GroupSignerSettings.md
 docs/Model/GroupSignerSettingsWebhookModel.md
@@ -126,6 +132,10 @@ docs/Model/IdVerificationSignerWebhookModel.md
 docs/Model/IdentityVerificationEvent.md
 docs/Model/IdentityVerificationSettings.md
 docs/Model/ImageInfo.md
+docs/Model/KbaAuthenticationEvent.md
+docs/Model/KbaDetails.md
+docs/Model/KbaSettings.md
+docs/Model/KbaSignerWebhookModel.md
 docs/Model/MergeAndSendForSignForm.md
 docs/Model/ModificationDetails.md
 docs/Model/NotificationSettings.md
@@ -151,6 +161,7 @@ docs/Model/SenderIdentityCreator.md
 docs/Model/SenderIdentityEvent.md
 docs/Model/SenderIdentityList.md
 docs/Model/SenderIdentityViewModel.md
+docs/Model/SignatureFrameSettings.md
 docs/Model/SignerAuthenticationSettings.md
 docs/Model/SignerAuthenticationWebhookModel.md
 docs/Model/Size.md
@@ -202,7 +213,6 @@ docs/Model/ViewCustomFieldDetails.md
 docs/Model/WebhookActorDetails.md
 docs/Model/WebhookContext.md
 docs/Model/WebhookEvent.md
-docs/Model/WebhookEventData.md
 docs/Model/WebhookEventMetadata.md
 git_push.sh
 phpunit.xml.dist
@@ -239,6 +249,7 @@ src/Model/BrandingMessage.php
 src/Model/BrandingRecords.php
 src/Model/ChangeRecipient.php
 src/Model/ChangeTeamRequest.php
+src/Model/CheckboxValidationSettings.php
 src/Model/CollaborationSettings.php
 src/Model/ConditionalRule.php
 src/Model/ContactCreated.php
@@ -288,6 +299,10 @@ src/Model/EditFormField.php
 src/Model/EditSenderIdentityRequest.php
 src/Model/EditTemplateRequest.php
 src/Model/EditableDateFieldSettings.php
+src/Model/EmbeddedCloneDocumentJsonRequest.php
+src/Model/EmbeddedCloneTemplateJsonRequest.php
+src/Model/EmbeddedClonedDocument.php
+src/Model/EmbeddedClonedTemplate.php
 src/Model/EmbeddedCreateTemplateRequest.php
 src/Model/EmbeddedCustomFieldCreated.php
 src/Model/EmbeddedDocumentEditJsonRequest.php
@@ -320,6 +335,7 @@ src/Model/GetGroupContactDetails.php
 src/Model/GroupContact.php
 src/Model/GroupContactDetails.php
 src/Model/GroupContactsList.php
+src/Model/GroupOption.php
 src/Model/GroupSigner.php
 src/Model/GroupSignerSettings.php
 src/Model/GroupSignerSettingsWebhookModel.php
@@ -332,6 +348,10 @@ src/Model/IdVerificationSignerWebhookModel.php
 src/Model/IdentityVerificationEvent.php
 src/Model/IdentityVerificationSettings.php
 src/Model/ImageInfo.php
+src/Model/KbaAuthenticationEvent.php
+src/Model/KbaDetails.php
+src/Model/KbaSettings.php
+src/Model/KbaSignerWebhookModel.php
 src/Model/MergeAndSendForSignForm.php
 src/Model/ModelInterface.php
 src/Model/ModificationDetails.php
@@ -358,6 +378,7 @@ src/Model/SenderIdentityCreator.php
 src/Model/SenderIdentityEvent.php
 src/Model/SenderIdentityList.php
 src/Model/SenderIdentityViewModel.php
+src/Model/SignatureFrameSettings.php
 src/Model/SignerAuthenticationSettings.php
 src/Model/SignerAuthenticationWebhookModel.php
 src/Model/Size.php
@@ -409,6 +430,5 @@ src/Model/ViewCustomFieldDetails.php
 src/Model/WebhookActorDetails.php
 src/Model/WebhookContext.php
 src/Model/WebhookEvent.php
-src/Model/WebhookEventData.php
 src/Model/WebhookEventMetadata.php
 src/ObjectSerializer.php

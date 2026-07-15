@@ -631,7 +631,7 @@ class TeamsApi
      *
      * Get Team details.
      *
-     * @param  string $team_id Team Id. (required)
+     * @param  string $team_id team_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -649,7 +649,7 @@ class TeamsApi
      *
      * Get Team details.
      *
-     * @param  string $team_id Team Id. (required)
+     * @param  string $team_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -843,7 +843,7 @@ class TeamsApi
      *
      * Get Team details.
      *
-     * @param  string $team_id Team Id. (required)
+     * @param  string $team_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -864,7 +864,7 @@ class TeamsApi
      *
      * Get Team details.
      *
-     * @param  string $team_id Team Id. (required)
+     * @param  string $team_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -914,7 +914,7 @@ class TeamsApi
     /**
      * Create request for operation 'getTeam'
      *
-     * @param  string $team_id Team Id. (required)
+     * @param  string $team_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
