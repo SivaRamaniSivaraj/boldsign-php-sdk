@@ -43,9 +43,8 @@ Name | Type | Description | Notes
 **tab_index** | **int** |  | [optional] [readonly]
 **formula_field_settings** | [**\BoldSign\Model\FormulaFieldSettings**](FormulaFieldSettings.md) |  | [optional]
 **resize_option** | **string** |  | [optional]
-**is_masked** | **bool** |  | [optional]
-**show_masked_text_in_document** | **bool** |  | [optional]
 **allow_edit_form_field** | **bool** |  | [optional]
 **allow_delete_form_field** | **bool** |  | [optional]
+**is_masked** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

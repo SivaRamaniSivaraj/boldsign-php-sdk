@@ -137,7 +137,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\ContactsApi($config);
-$id = 'id_example'; // string | The contact id.
+$id = 'id_example'; // string
 
 try {
     $apiInstance->deleteContacts($id);
@@ -150,7 +150,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The contact id. | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -187,7 +187,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\ContactsApi($config);
-$id = 'id_example'; // string | Contact Id.
+$id = 'id_example'; // string
 
 try {
     $result = $apiInstance->getContact($id);
@@ -201,7 +201,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Contact Id. | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -238,7 +238,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\ContactsApi($config);
-$id = 'id_example'; // string | The contactId.
+$id = 'id_example'; // string
 $contact_details = new \BoldSign\Model\ContactDetails(); // \BoldSign\Model\ContactDetails | The contact details.
 
 try {
@@ -252,7 +252,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The contactId. | [optional] |
+| **id** | **string**|  | [optional] |
 | **contact_details** | [**\BoldSign\Model\ContactDetails**](../Model/ContactDetails.md)| The contact details. | [optional] |
 
 ### Return type

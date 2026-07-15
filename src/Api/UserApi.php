@@ -577,7 +577,7 @@ class UserApi
      *
      * Change users to other team.
      *
-     * @param  string $user_id user Id. (required)
+     * @param  string $user_id user_id (required)
      * @param  \BoldSign\Model\ChangeTeamRequest $change_team_request Change team request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeTeam'] to see the possible values for this operation
      *
@@ -595,7 +595,7 @@ class UserApi
      *
      * Change users to other team.
      *
-     * @param  string $user_id user Id. (required)
+     * @param  string $user_id (required)
      * @param  \BoldSign\Model\ChangeTeamRequest $change_team_request Change team request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeTeam'] to see the possible values for this operation
      *
@@ -672,7 +672,7 @@ class UserApi
      *
      * Change users to other team.
      *
-     * @param  string $user_id user Id. (required)
+     * @param  string $user_id (required)
      * @param  \BoldSign\Model\ChangeTeamRequest $change_team_request Change team request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeTeam'] to see the possible values for this operation
      *
@@ -694,7 +694,7 @@ class UserApi
      *
      * Change users to other team.
      *
-     * @param  string $user_id user Id. (required)
+     * @param  string $user_id (required)
      * @param  \BoldSign\Model\ChangeTeamRequest $change_team_request Change team request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeTeam'] to see the possible values for this operation
      *
@@ -732,7 +732,7 @@ class UserApi
     /**
      * Create request for operation 'changeTeam'
      *
-     * @param  string $user_id user Id. (required)
+     * @param  string $user_id (required)
      * @param  \BoldSign\Model\ChangeTeamRequest $change_team_request Change team request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeTeam'] to see the possible values for this operation
      *
@@ -1152,7 +1152,7 @@ class UserApi
      *
      * Get summary of the user.
      *
-     * @param  string $user_id User Id. (required)
+     * @param  string $user_id user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1170,7 +1170,7 @@ class UserApi
      *
      * Get summary of the user.
      *
-     * @param  string $user_id User Id. (required)
+     * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1364,7 +1364,7 @@ class UserApi
      *
      * Get summary of the user.
      *
-     * @param  string $user_id User Id. (required)
+     * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1385,7 +1385,7 @@ class UserApi
      *
      * Get summary of the user.
      *
-     * @param  string $user_id User Id. (required)
+     * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1435,7 +1435,7 @@ class UserApi
     /**
      * Create request for operation 'getUser'
      *
-     * @param  string $user_id User Id. (required)
+     * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

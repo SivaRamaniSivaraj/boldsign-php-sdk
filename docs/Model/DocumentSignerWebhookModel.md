@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **last_activity_date** | **\DateTime** |  | [optional]
 **authentication_type** | **string** |  | [optional]
 **id_verification** | [**\BoldSign\Model\IdVerificationSignerWebhookModel**](IdVerificationSignerWebhookModel.md) |  | [optional]
+**kba** | [**\BoldSign\Model\KbaSignerWebhookModel**](KbaSignerWebhookModel.md) |  | [optional]
 **allow_field_configuration** | **bool** |  | [optional]
 **last_reminder_sent_on** | **\DateTime** |  | [optional]
 **authentication_retry_count** | **int** |  | [optional]

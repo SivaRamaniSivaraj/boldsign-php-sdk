@@ -29,5 +29,6 @@ Name | Type | Description | Notes
 **document_expiry_settings** | [**\BoldSign\Model\DocumentExpirySettings**](DocumentExpirySettings.md) |  | [optional]
 **custom_domain_settings** | [**\BoldSign\Model\CustomDomainSettings**](CustomDomainSettings.md) |  | [optional]
 **is_domain_verified** | **bool** |  | [optional]
+**signature_frame_settings** | [**\BoldSign\Model\SignatureFrameSettings**](SignatureFrameSettings.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

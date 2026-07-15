@@ -82,7 +82,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\UserApi($config);
-$user_id = 'user_id_example'; // string | user Id.
+$user_id = 'user_id_example'; // string
 $change_team_request = new \BoldSign\Model\ChangeTeamRequest(); // \BoldSign\Model\ChangeTeamRequest | Change team request.
 
 try {
@@ -96,7 +96,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **user_id** | **string**| user Id. | |
+| **user_id** | **string**|  | |
 | **change_team_request** | [**\BoldSign\Model\ChangeTeamRequest**](../Model/ChangeTeamRequest.md)| Change team request. | [optional] |
 
 ### Return type
@@ -184,7 +184,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\UserApi($config);
-$user_id = 'user_id_example'; // string | User Id.
+$user_id = 'user_id_example'; // string
 
 try {
     $result = $apiInstance->getUser($user_id);
@@ -198,7 +198,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **user_id** | **string**| User Id. | |
+| **user_id** | **string**|  | |
 
 ### Return type
 

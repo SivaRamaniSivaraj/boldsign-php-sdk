@@ -95,7 +95,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => 'bool',
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
-        'enable_allow_sign_everywhere' => 'bool'
+        'enable_allow_sign_everywhere' => 'bool',
+        'document_time_zone' => 'string'
     ];
 
     /**
@@ -144,7 +145,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => null,
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
-        'enable_allow_sign_everywhere' => null
+        'enable_allow_sign_everywhere' => null,
+        'document_time_zone' => null
     ];
 
     /**
@@ -191,7 +193,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => false,
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
-        'enable_allow_sign_everywhere' => true
+        'enable_allow_sign_everywhere' => true,
+        'document_time_zone' => true
     ];
 
     /**
@@ -318,7 +321,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => 'allowScheduledSend',
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
-        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
+        'document_time_zone' => 'documentTimeZone'
     ];
 
     /**
@@ -365,7 +369,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => 'setAllowScheduledSend',
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
-        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
+        'document_time_zone' => 'setDocumentTimeZone'
     ];
 
     /**
@@ -412,7 +417,8 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         'allow_scheduled_send' => 'getAllowScheduledSend',
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
-        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere'
+        'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
+        'document_time_zone' => 'getDocumentTimeZone'
     ];
 
     /**
@@ -560,6 +566,7 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('allowed_signature_types', $data ?? [], null);
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
+        $this->setIfExists('document_time_zone', $data ?? [], null);
     }
 
     /**
@@ -1952,6 +1959,40 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['enable_allow_sign_everywhere'] = $enable_allow_sign_everywhere;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_time_zone
+     *
+     * @return string|null
+     */
+    public function getDocumentTimeZone()
+    {
+        return $this->container['document_time_zone'];
+    }
+
+    /**
+     * Sets document_time_zone
+     *
+     * @param string|null $document_time_zone document_time_zone
+     *
+     * @return self
+     */
+    public function setDocumentTimeZone($document_time_zone)
+    {
+        if (is_null($document_time_zone)) {
+            array_push($this->openAPINullablesSetToNull, 'document_time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('document_time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['document_time_zone'] = $document_time_zone;
 
         return $this;
     }

@@ -73,7 +73,7 @@ class DocumentExpirySettings implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'expiry_date_type' => null,
+        'expiry_date_type' => 'Enumeration',
         'expiry_value' => 'int32',
         'enable_default_expiry_alert' => null,
         'enable_auto_reminder' => null,

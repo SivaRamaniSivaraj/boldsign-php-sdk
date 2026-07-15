@@ -73,7 +73,7 @@ class FormGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'group_names' => null,
-        'group_validation' => null,
+        'group_validation' => 'Enumeration',
         'minimum_count' => 'int32',
         'maximum_count' => 'int32',
         'data_sync_tag' => null

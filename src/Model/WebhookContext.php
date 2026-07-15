@@ -270,6 +270,10 @@ class WebhookContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENT_TYPE_EDITED = 'Edited';
     public const EVENT_TYPE_EDIT_FAILED = 'EditFailed';
     public const EVENT_TYPE_TEMPLATE_EDITED = 'TemplateEdited';
+    public const EVENT_TYPE_SIGNER_SAVED = 'SignerSaved';
+    public const EVENT_TYPE_KBA_INITIATED = 'KBAInitiated';
+    public const EVENT_TYPE_KBA_SUCCEEDED = 'KBASucceeded';
+    public const EVENT_TYPE_KBA_FAILED = 'KBAFailed';
 
     /**
      * Gets allowable values of the enum
@@ -309,6 +313,10 @@ class WebhookContext implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_TYPE_EDITED,
             self::EVENT_TYPE_EDIT_FAILED,
             self::EVENT_TYPE_TEMPLATE_EDITED,
+            self::EVENT_TYPE_SIGNER_SAVED,
+            self::EVENT_TYPE_KBA_INITIATED,
+            self::EVENT_TYPE_KBA_SUCCEEDED,
+            self::EVENT_TYPE_KBA_FAILED,
         ];
     }
 

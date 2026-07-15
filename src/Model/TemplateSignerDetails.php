@@ -74,7 +74,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => 'string',
         'host_user_id' => 'string',
         'sign_type' => 'string',
-        'group_id' => 'string'
+        'group_id' => 'string',
+        'group_signers' => '\BoldSign\Model\TemplateGroupSigner[]'
     ];
 
     /**
@@ -102,7 +103,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => null,
         'host_user_id' => null,
         'sign_type' => null,
-        'group_id' => null
+        'group_id' => null,
+        'group_signers' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => true,
         'host_user_id' => true,
         'sign_type' => false,
-        'group_id' => true
+        'group_id' => true,
+        'group_signers' => true
     ];
 
     /**
@@ -234,7 +237,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => 'hostName',
         'host_user_id' => 'hostUserId',
         'sign_type' => 'signType',
-        'group_id' => 'groupId'
+        'group_id' => 'groupId',
+        'group_signers' => 'groupSigners'
     ];
 
     /**
@@ -260,7 +264,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => 'setHostName',
         'host_user_id' => 'setHostUserId',
         'sign_type' => 'setSignType',
-        'group_id' => 'setGroupId'
+        'group_id' => 'setGroupId',
+        'group_signers' => 'setGroupSigners'
     ];
 
     /**
@@ -286,7 +291,8 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'host_name' => 'getHostName',
         'host_user_id' => 'getHostUserId',
         'sign_type' => 'getSignType',
-        'group_id' => 'getGroupId'
+        'group_id' => 'getGroupId',
+        'group_signers' => 'getGroupSigners'
     ];
 
     /**
@@ -341,6 +347,7 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public const IMPOSE_AUTHENTICATION_ACCESS_CODE = 'AccessCode';
     public const IMPOSE_AUTHENTICATION_SMSOTP = 'SMSOTP';
     public const IMPOSE_AUTHENTICATION_ID_VERIFICATION = 'IdVerification';
+    public const IMPOSE_AUTHENTICATION_KBA = 'KBA';
     public const DELIVERY_MODE_EMAIL = 'Email';
     public const DELIVERY_MODE_SMS = 'SMS';
     public const DELIVERY_MODE_EMAIL_AND_SMS = 'EmailAndSMS';
@@ -381,6 +388,7 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
             self::IMPOSE_AUTHENTICATION_ACCESS_CODE,
             self::IMPOSE_AUTHENTICATION_SMSOTP,
             self::IMPOSE_AUTHENTICATION_ID_VERIFICATION,
+            self::IMPOSE_AUTHENTICATION_KBA,
         ];
     }
 
@@ -459,6 +467,7 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('host_user_id', $data ?? [], null);
         $this->setIfExists('sign_type', $data ?? [], null);
         $this->setIfExists('group_id', $data ?? [], null);
+        $this->setIfExists('group_signers', $data ?? [], null);
     }
 
     /**
@@ -1136,6 +1145,40 @@ class TemplateSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['group_id'] = $group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_signers
+     *
+     * @return \BoldSign\Model\TemplateGroupSigner[]|null
+     */
+    public function getGroupSigners()
+    {
+        return $this->container['group_signers'];
+    }
+
+    /**
+     * Sets group_signers
+     *
+     * @param \BoldSign\Model\TemplateGroupSigner[]|null $group_signers group_signers
+     *
+     * @return self
+     */
+    public function setGroupSigners($group_signers)
+    {
+        if (is_null($group_signers)) {
+            array_push($this->openAPINullablesSetToNull, 'group_signers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_signers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['group_signers'] = $group_signers;
 
         return $this;
     }

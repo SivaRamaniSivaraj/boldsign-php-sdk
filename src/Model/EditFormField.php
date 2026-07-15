@@ -96,10 +96,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => 'int',
         'formula_field_settings' => '\BoldSign\Model\FormulaFieldSettings',
         'resize_option' => 'string',
-        'is_masked' => 'bool',
-        'show_masked_text_in_document' => 'bool',
         'allow_edit_form_field' => 'bool',
-        'allow_delete_form_field' => 'bool'
+        'allow_delete_form_field' => 'bool',
+        'is_masked' => 'bool'
     ];
 
     /**
@@ -149,10 +148,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => 'int32',
         'formula_field_settings' => null,
         'resize_option' => null,
-        'is_masked' => null,
-        'show_masked_text_in_document' => null,
         'allow_edit_form_field' => null,
-        'allow_delete_form_field' => null
+        'allow_delete_form_field' => null,
+        'is_masked' => null
     ];
 
     /**
@@ -200,10 +198,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => true,
         'formula_field_settings' => false,
         'resize_option' => true,
-        'is_masked' => true,
-        'show_masked_text_in_document' => true,
         'allow_edit_form_field' => true,
-        'allow_delete_form_field' => true
+        'allow_delete_form_field' => true,
+        'is_masked' => true
     ];
 
     /**
@@ -331,10 +328,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => 'tabIndex',
         'formula_field_settings' => 'formulaFieldSettings',
         'resize_option' => 'resizeOption',
-        'is_masked' => 'isMasked',
-        'show_masked_text_in_document' => 'showMaskedTextInDocument',
         'allow_edit_form_field' => 'allowEditFormField',
-        'allow_delete_form_field' => 'allowDeleteFormField'
+        'allow_delete_form_field' => 'allowDeleteFormField',
+        'is_masked' => 'isMasked'
     ];
 
     /**
@@ -382,10 +378,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => 'setTabIndex',
         'formula_field_settings' => 'setFormulaFieldSettings',
         'resize_option' => 'setResizeOption',
-        'is_masked' => 'setIsMasked',
-        'show_masked_text_in_document' => 'setShowMaskedTextInDocument',
         'allow_edit_form_field' => 'setAllowEditFormField',
-        'allow_delete_form_field' => 'setAllowDeleteFormField'
+        'allow_delete_form_field' => 'setAllowDeleteFormField',
+        'is_masked' => 'setIsMasked'
     ];
 
     /**
@@ -433,10 +428,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         'tab_index' => 'getTabIndex',
         'formula_field_settings' => 'getFormulaFieldSettings',
         'resize_option' => 'getResizeOption',
-        'is_masked' => 'getIsMasked',
-        'show_masked_text_in_document' => 'getShowMaskedTextInDocument',
         'allow_edit_form_field' => 'getAllowEditFormField',
-        'allow_delete_form_field' => 'getAllowDeleteFormField'
+        'allow_delete_form_field' => 'getAllowDeleteFormField',
+        'is_masked' => 'getIsMasked'
     ];
 
     /**
@@ -509,20 +503,16 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
     public const VALIDATION_TYPE_EMAIL_ADDRESS = 'EmailAddress';
     public const VALIDATION_TYPE_CURRENCY = 'Currency';
     public const VALIDATION_TYPE_CUSTOM_REGEX = 'CustomRegex';
-    public const VALIDATION_TYPE_NULL = 'null';
     public const TEXT_ALIGN_LEFT = 'Left';
     public const TEXT_ALIGN_CENTER = 'Center';
     public const TEXT_ALIGN_RIGHT = 'Right';
-    public const TEXT_ALIGN_NULL = 'null';
     public const TEXT_DIRECTION_LTR = 'LTR';
     public const TEXT_DIRECTION_RTL = 'RTL';
-    public const TEXT_DIRECTION_NULL = 'null';
     public const RESIZE_OPTION_GROW_VERTICALLY = 'GrowVertically';
     public const RESIZE_OPTION_GROW_HORIZONTALLY = 'GrowHorizontally';
     public const RESIZE_OPTION_GROW_BOTH = 'GrowBoth';
     public const RESIZE_OPTION_FIXED = 'Fixed';
     public const RESIZE_OPTION_AUTO_RESIZE_FONT = 'AutoResizeFont';
-    public const RESIZE_OPTION_NULL = 'null';
 
     /**
      * Gets allowable values of the enum
@@ -594,7 +584,6 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             self::VALIDATION_TYPE_EMAIL_ADDRESS,
             self::VALIDATION_TYPE_CURRENCY,
             self::VALIDATION_TYPE_CUSTOM_REGEX,
-            self::VALIDATION_TYPE_NULL,
         ];
     }
 
@@ -609,7 +598,6 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TEXT_ALIGN_LEFT,
             self::TEXT_ALIGN_CENTER,
             self::TEXT_ALIGN_RIGHT,
-            self::TEXT_ALIGN_NULL,
         ];
     }
 
@@ -623,7 +611,6 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::TEXT_DIRECTION_LTR,
             self::TEXT_DIRECTION_RTL,
-            self::TEXT_DIRECTION_NULL,
         ];
     }
 
@@ -640,7 +627,6 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             self::RESIZE_OPTION_GROW_BOTH,
             self::RESIZE_OPTION_FIXED,
             self::RESIZE_OPTION_AUTO_RESIZE_FONT,
-            self::RESIZE_OPTION_NULL,
         ];
     }
 
@@ -698,10 +684,9 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('tab_index', $data ?? [], null);
         $this->setIfExists('formula_field_settings', $data ?? [], null);
         $this->setIfExists('resize_option', $data ?? [], null);
-        $this->setIfExists('is_masked', $data ?? [], null);
-        $this->setIfExists('show_masked_text_in_document', $data ?? [], null);
         $this->setIfExists('allow_edit_form_field', $data ?? [], null);
         $this->setIfExists('allow_delete_form_field', $data ?? [], null);
+        $this->setIfExists('is_masked', $data ?? [], false);
     }
 
     /**
@@ -2224,74 +2209,6 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_masked
-     *
-     * @return bool|null
-     */
-    public function getIsMasked()
-    {
-        return $this->container['is_masked'];
-    }
-
-    /**
-     * Sets is_masked
-     *
-     * @param bool|null $is_masked is_masked
-     *
-     * @return self
-     */
-    public function setIsMasked($is_masked)
-    {
-        if (is_null($is_masked)) {
-            array_push($this->openAPINullablesSetToNull, 'is_masked');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_masked', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_masked'] = $is_masked;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_masked_text_in_document
-     *
-     * @return bool|null
-     */
-    public function getShowMaskedTextInDocument()
-    {
-        return $this->container['show_masked_text_in_document'];
-    }
-
-    /**
-     * Sets show_masked_text_in_document
-     *
-     * @param bool|null $show_masked_text_in_document show_masked_text_in_document
-     *
-     * @return self
-     */
-    public function setShowMaskedTextInDocument($show_masked_text_in_document)
-    {
-        if (is_null($show_masked_text_in_document)) {
-            array_push($this->openAPINullablesSetToNull, 'show_masked_text_in_document');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('show_masked_text_in_document', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['show_masked_text_in_document'] = $show_masked_text_in_document;
-
-        return $this;
-    }
-
-    /**
      * Gets allow_edit_form_field
      *
      * @return bool|null
@@ -2355,6 +2272,40 @@ class EditFormField implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['allow_delete_form_field'] = $allow_delete_form_field;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_masked
+     *
+     * @return bool|null
+     */
+    public function getIsMasked()
+    {
+        return $this->container['is_masked'];
+    }
+
+    /**
+     * Sets is_masked
+     *
+     * @param bool|null $is_masked is_masked
+     *
+     * @return self
+     */
+    public function setIsMasked($is_masked)
+    {
+        if (is_null($is_masked)) {
+            array_push($this->openAPINullablesSetToNull, 'is_masked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_masked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_masked'] = $is_masked;
 
         return $this;
     }

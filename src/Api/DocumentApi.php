@@ -249,6 +249,11 @@ class DocumentApi
             'text/json',
             'application/*+json',
         ],
+        'createEmbeddedDocumentCloneUrl' => [
+            'application/json',
+            'multipart/form-data',
+            'application/x-www-form-urlencoded',
+        ],
         'createEmbeddedEditUrl' => [
             'application/json',
             'multipart/form-data',
@@ -607,7 +612,7 @@ class DocumentApi
      *
      * The add authentication to recipient.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\AccessCodeDetail $access_code_detail Access code details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAuthentication'] to see the possible values for this operation
      *
@@ -625,7 +630,7 @@ class DocumentApi
      *
      * The add authentication to recipient.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\AccessCodeDetail $access_code_detail Access code details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAuthentication'] to see the possible values for this operation
      *
@@ -702,7 +707,7 @@ class DocumentApi
      *
      * The add authentication to recipient.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\AccessCodeDetail $access_code_detail Access code details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAuthentication'] to see the possible values for this operation
      *
@@ -724,7 +729,7 @@ class DocumentApi
      *
      * The add authentication to recipient.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\AccessCodeDetail $access_code_detail Access code details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAuthentication'] to see the possible values for this operation
      *
@@ -762,7 +767,7 @@ class DocumentApi
     /**
      * Create request for operation 'addAuthentication'
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\AccessCodeDetail $access_code_detail Access code details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAuthentication'] to see the possible values for this operation
      *
@@ -1748,8 +1753,8 @@ class DocumentApi
      *
      * Cancels editing for a document that is currently in edit-mode.
      *
-     * @param  string $document_id The document id. (required)
-     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $document_id document_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1766,8 +1771,8 @@ class DocumentApi
      *
      * Cancels editing for a document that is currently in edit-mode.
      *
-     * @param  string $document_id The document id. (required)
-     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1843,8 +1848,8 @@ class DocumentApi
      *
      * Cancels editing for a document that is currently in edit-mode.
      *
-     * @param  string $document_id The document id. (required)
-     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1865,8 +1870,8 @@ class DocumentApi
      *
      * Cancels editing for a document that is currently in edit-mode.
      *
-     * @param  string $document_id The document id. (required)
-     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1903,8 +1908,8 @@ class DocumentApi
     /**
      * Create request for operation 'cancelEditing'
      *
-     * @param  string $document_id The document id. (required)
-     * @param  string $on_behalf_of The onbehalfof email id. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelEditing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2366,7 +2371,7 @@ class DocumentApi
      *
      * Change recipient details of a document.
      *
-     * @param  string $document_id The documentID details. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\ChangeRecipient $change_recipient The new recipient details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRecipient'] to see the possible values for this operation
      *
@@ -2384,7 +2389,7 @@ class DocumentApi
      *
      * Change recipient details of a document.
      *
-     * @param  string $document_id The documentID details. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ChangeRecipient $change_recipient The new recipient details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRecipient'] to see the possible values for this operation
      *
@@ -2461,7 +2466,7 @@ class DocumentApi
      *
      * Change recipient details of a document.
      *
-     * @param  string $document_id The documentID details. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ChangeRecipient $change_recipient The new recipient details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRecipient'] to see the possible values for this operation
      *
@@ -2483,7 +2488,7 @@ class DocumentApi
      *
      * Change recipient details of a document.
      *
-     * @param  string $document_id The documentID details. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ChangeRecipient $change_recipient The new recipient details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRecipient'] to see the possible values for this operation
      *
@@ -2521,7 +2526,7 @@ class DocumentApi
     /**
      * Create request for operation 'changeRecipient'
      *
-     * @param  string $document_id The documentID details. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ChangeRecipient $change_recipient The new recipient details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRecipient'] to see the possible values for this operation
      *
@@ -2659,6 +2664,436 @@ class DocumentApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEmbeddedDocumentCloneUrl
+     *
+     * Generates a URL to embeds Clone document process into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedCloneDocumentJsonRequest $embedded_clone_document_json_request The embedded clone document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedDocumentCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \BoldSign\Model\EmbeddedClonedDocument|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
+     */
+    public function createEmbeddedDocumentCloneUrl($document_id, $embedded_clone_document_json_request = null, string $contentType = self::contentTypes['createEmbeddedDocumentCloneUrl'][0])
+    {
+        list($response) = $this->createEmbeddedDocumentCloneUrlWithHttpInfo($document_id, $embedded_clone_document_json_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createEmbeddedDocumentCloneUrlWithHttpInfo
+     *
+     * Generates a URL to embeds Clone document process into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedCloneDocumentJsonRequest $embedded_clone_document_json_request The embedded clone document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedDocumentCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \BoldSign\Model\EmbeddedClonedDocument|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEmbeddedDocumentCloneUrlWithHttpInfo($document_id, $embedded_clone_document_json_request = null, string $contentType = self::contentTypes['createEmbeddedDocumentCloneUrl'][0])
+    {
+        $request = $this->createEmbeddedDocumentCloneUrlRequest($document_id, $embedded_clone_document_json_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\BoldSign\Model\EmbeddedClonedDocument' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\EmbeddedClonedDocument' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\EmbeddedClonedDocument', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\BoldSign\Model\EmbeddedClonedDocument';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\EmbeddedClonedDocument',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createEmbeddedDocumentCloneUrlAsync
+     *
+     * Generates a URL to embeds Clone document process into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedCloneDocumentJsonRequest $embedded_clone_document_json_request The embedded clone document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedDocumentCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedDocumentCloneUrlAsync($document_id, $embedded_clone_document_json_request = null, string $contentType = self::contentTypes['createEmbeddedDocumentCloneUrl'][0])
+    {
+        return $this->createEmbeddedDocumentCloneUrlAsyncWithHttpInfo($document_id, $embedded_clone_document_json_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEmbeddedDocumentCloneUrlAsyncWithHttpInfo
+     *
+     * Generates a URL to embeds Clone document process into your application.
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedCloneDocumentJsonRequest $embedded_clone_document_json_request The embedded clone document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedDocumentCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbeddedDocumentCloneUrlAsyncWithHttpInfo($document_id, $embedded_clone_document_json_request = null, string $contentType = self::contentTypes['createEmbeddedDocumentCloneUrl'][0])
+    {
+        $returnType = '\BoldSign\Model\EmbeddedClonedDocument';
+        $request = $this->createEmbeddedDocumentCloneUrlRequest($document_id, $embedded_clone_document_json_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEmbeddedDocumentCloneUrl'
+     *
+     * @param  string $document_id The document id. (required)
+     * @param  \BoldSign\Model\EmbeddedCloneDocumentJsonRequest $embedded_clone_document_json_request The embedded clone document request body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmbeddedDocumentCloneUrl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createEmbeddedDocumentCloneUrlRequest($document_id, $embedded_clone_document_json_request = null, string $contentType = self::contentTypes['createEmbeddedDocumentCloneUrl'][0])
+    {
+
+        // verify the required parameter 'document_id' is set
+        if ($document_id === null || (is_array($document_id) && count($document_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $document_id when calling createEmbeddedDocumentCloneUrl'
+            );
+        }
+
+
+
+        $resourcePath = '/v1-beta/document/createEmbeddedCloneUrl';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        if(!is_array($embedded_clone_document_json_request)) {
+            $formParams = ObjectSerializer::getFormParams(
+                $embedded_clone_document_json_request
+            );
+        }
+        else {
+            foreach($embedded_clone_document_json_request as $param){
+                $formParams = ObjectSerializer::getFormParams(
+                $param);
+            }
+        }
+
+        $multipart = !empty($formParams);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $document_id,
+            'documentId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            $multipart ? ['multipart/form-data'] : ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) === 0) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($embedded_clone_document_json_request));
+            } else {
+                $httpBody = $embedded_clone_document_json_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                if (!empty($body)) {
+                    $multipartContents[] = [
+                        'name'     => 'body',
+                        'contents' => $body,
+                        'headers'  => ['Content-Type' => 'application/json'],
+                    ];
+                }
+
+                if ($payloadHook = $this->config->getPayloadHook()) {
+                    $payloadHook('multipart', $multipartContents, $embedded_clone_document_json_request);
+                }
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
+        if ($apiKey !== null) {
+            $headers['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -3649,8 +4084,8 @@ class DocumentApi
      *
      * Delete the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  bool $delete_permanently Delete Permanently. (optional, default to false)
+     * @param  string $document_id document_id (required)
+     * @param  bool $delete_permanently delete_permanently (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3667,8 +4102,8 @@ class DocumentApi
      *
      * Delete the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  bool $delete_permanently Delete Permanently. (optional, default to false)
+     * @param  string $document_id (required)
+     * @param  bool $delete_permanently (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3744,8 +4179,8 @@ class DocumentApi
      *
      * Delete the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  bool $delete_permanently Delete Permanently. (optional, default to false)
+     * @param  string $document_id (required)
+     * @param  bool $delete_permanently (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3766,8 +4201,8 @@ class DocumentApi
      *
      * Delete the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  bool $delete_permanently Delete Permanently. (optional, default to false)
+     * @param  string $document_id (required)
+     * @param  bool $delete_permanently (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3804,8 +4239,8 @@ class DocumentApi
     /**
      * Create request for operation 'deleteDocument'
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  bool $delete_permanently Delete Permanently. (optional, default to false)
+     * @param  string $document_id (required)
+     * @param  bool $delete_permanently (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4210,9 +4645,9 @@ class DocumentApi
      *
      * Download the Attachment.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $attachment_id Attachment Id(Get attachment ID from Properties API). (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id document_id (required)
+     * @param  string $attachment_id attachment_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAttachment'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4230,9 +4665,9 @@ class DocumentApi
      *
      * Download the Attachment.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $attachment_id Attachment Id(Get attachment ID from Properties API). (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $attachment_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAttachment'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4426,9 +4861,9 @@ class DocumentApi
      *
      * Download the Attachment.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $attachment_id Attachment Id(Get attachment ID from Properties API). (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $attachment_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAttachment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4449,9 +4884,9 @@ class DocumentApi
      *
      * Download the Attachment.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $attachment_id Attachment Id(Get attachment ID from Properties API). (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $attachment_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAttachment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4501,9 +4936,9 @@ class DocumentApi
     /**
      * Create request for operation 'downloadAttachment'
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $attachment_id Attachment Id(Get attachment ID from Properties API). (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $attachment_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAttachment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4647,8 +5082,8 @@ class DocumentApi
      *
      * Download the audit trail document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id document_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAuditLog'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4666,8 +5101,8 @@ class DocumentApi
      *
      * Download the audit trail document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAuditLog'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4861,8 +5296,8 @@ class DocumentApi
      *
      * Download the audit trail document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAuditLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4883,8 +5318,8 @@ class DocumentApi
      *
      * Download the audit trail document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAuditLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4934,8 +5369,8 @@ class DocumentApi
     /**
      * Create request for operation 'downloadAuditLog'
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadAuditLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5063,8 +5498,8 @@ class DocumentApi
      *
      * Download the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id document_id (required)
+     * @param  string $on_behalf_of on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5082,8 +5517,8 @@ class DocumentApi
      *
      * Download the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5277,8 +5712,8 @@ class DocumentApi
      *
      * Download the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5299,8 +5734,8 @@ class DocumentApi
      *
      * Download the document.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5350,8 +5785,8 @@ class DocumentApi
     /**
      * Create request for operation 'downloadDocument'
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string $on_behalf_of The on behalfof email address. (optional)
+     * @param  string $document_id (required)
+     * @param  string $on_behalf_of (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5479,7 +5914,7 @@ class DocumentApi
      *
      * Sends a draft-status document out for signature.
      *
-     * @param  string $document_id The ID of the document to be sent. (required)
+     * @param  string $document_id document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['draftSend'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5496,7 +5931,7 @@ class DocumentApi
      *
      * Sends a draft-status document out for signature.
      *
-     * @param  string $document_id The ID of the document to be sent. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['draftSend'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5572,7 +6007,7 @@ class DocumentApi
      *
      * Sends a draft-status document out for signature.
      *
-     * @param  string $document_id The ID of the document to be sent. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['draftSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5593,7 +6028,7 @@ class DocumentApi
      *
      * Sends a draft-status document out for signature.
      *
-     * @param  string $document_id The ID of the document to be sent. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['draftSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5630,7 +6065,7 @@ class DocumentApi
     /**
      * Create request for operation 'draftSend'
      *
-     * @param  string $document_id The ID of the document to be sent. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['draftSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5748,7 +6183,7 @@ class DocumentApi
      *
      * Edit and updates an existing document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\EditDocumentRequest $edit_document_request Edit document JSON request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDocument'] to see the possible values for this operation
      *
@@ -5767,7 +6202,7 @@ class DocumentApi
      *
      * Edit and updates an existing document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EditDocumentRequest $edit_document_request Edit document JSON request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDocument'] to see the possible values for this operation
      *
@@ -6032,7 +6467,7 @@ class DocumentApi
      *
      * Edit and updates an existing document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EditDocumentRequest $edit_document_request Edit document JSON request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDocument'] to see the possible values for this operation
      *
@@ -6054,7 +6489,7 @@ class DocumentApi
      *
      * Edit and updates an existing document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EditDocumentRequest $edit_document_request Edit document JSON request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDocument'] to see the possible values for this operation
      *
@@ -6105,7 +6540,7 @@ class DocumentApi
     /**
      * Create request for operation 'editDocument'
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\EditDocumentRequest $edit_document_request Edit document JSON request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDocument'] to see the possible values for this operation
      *
@@ -6248,7 +6683,7 @@ class DocumentApi
      *
      * Extends the expiration date of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\ExtendExpiry $extend_expiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extendExpiry'] to see the possible values for this operation
      *
@@ -6266,7 +6701,7 @@ class DocumentApi
      *
      * Extends the expiration date of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ExtendExpiry $extend_expiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extendExpiry'] to see the possible values for this operation
      *
@@ -6343,7 +6778,7 @@ class DocumentApi
      *
      * Extends the expiration date of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ExtendExpiry $extend_expiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extendExpiry'] to see the possible values for this operation
      *
@@ -6365,7 +6800,7 @@ class DocumentApi
      *
      * Extends the expiration date of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ExtendExpiry $extend_expiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extendExpiry'] to see the possible values for this operation
      *
@@ -6403,7 +6838,7 @@ class DocumentApi
     /**
      * Create request for operation 'extendExpiry'
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\ExtendExpiry $extend_expiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extendExpiry'] to see the possible values for this operation
      *
@@ -6546,7 +6981,7 @@ class DocumentApi
      *
      * Get summary of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6564,7 +6999,7 @@ class DocumentApi
      *
      * Get summary of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6758,7 +7193,7 @@ class DocumentApi
      *
      * Get summary of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6779,7 +7214,7 @@ class DocumentApi
      *
      * Get summary of the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6829,7 +7264,7 @@ class DocumentApi
     /**
      * Create request for operation 'getProperties'
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProperties'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7969,7 +8404,7 @@ class DocumentApi
      *
      * Updates the value (prefill) of the fields in the document.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\PrefillFieldRequest $prefill_field_request The prefill field request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['prefillFields'] to see the possible values for this operation
      *
@@ -7987,7 +8422,7 @@ class DocumentApi
      *
      * Updates the value (prefill) of the fields in the document.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\PrefillFieldRequest $prefill_field_request The prefill field request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['prefillFields'] to see the possible values for this operation
      *
@@ -8064,7 +8499,7 @@ class DocumentApi
      *
      * Updates the value (prefill) of the fields in the document.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\PrefillFieldRequest $prefill_field_request The prefill field request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['prefillFields'] to see the possible values for this operation
      *
@@ -8086,7 +8521,7 @@ class DocumentApi
      *
      * Updates the value (prefill) of the fields in the document.
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\PrefillFieldRequest $prefill_field_request The prefill field request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['prefillFields'] to see the possible values for this operation
      *
@@ -8124,7 +8559,7 @@ class DocumentApi
     /**
      * Create request for operation 'prefillFields'
      *
-     * @param  string $document_id The DocumentId. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\PrefillFieldRequest $prefill_field_request The prefill field request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['prefillFields'] to see the possible values for this operation
      *
@@ -8273,8 +8708,8 @@ class DocumentApi
      *
      * Send reminder to pending signers.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string[] $receiver_emails Signer emails. (optional)
+     * @param  string $document_id document_id (required)
+     * @param  string[] $receiver_emails receiver_emails (optional)
      * @param  \BoldSign\Model\ReminderMessage $reminder_message Reminder Message for signers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remindDocument'] to see the possible values for this operation
      *
@@ -8292,8 +8727,8 @@ class DocumentApi
      *
      * Send reminder to pending signers.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string[] $receiver_emails Signer emails. (optional)
+     * @param  string $document_id (required)
+     * @param  string[] $receiver_emails (optional)
      * @param  \BoldSign\Model\ReminderMessage $reminder_message Reminder Message for signers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remindDocument'] to see the possible values for this operation
      *
@@ -8370,8 +8805,8 @@ class DocumentApi
      *
      * Send reminder to pending signers.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string[] $receiver_emails Signer emails. (optional)
+     * @param  string $document_id (required)
+     * @param  string[] $receiver_emails (optional)
      * @param  \BoldSign\Model\ReminderMessage $reminder_message Reminder Message for signers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remindDocument'] to see the possible values for this operation
      *
@@ -8393,8 +8828,8 @@ class DocumentApi
      *
      * Send reminder to pending signers.
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string[] $receiver_emails Signer emails. (optional)
+     * @param  string $document_id (required)
+     * @param  string[] $receiver_emails (optional)
      * @param  \BoldSign\Model\ReminderMessage $reminder_message Reminder Message for signers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remindDocument'] to see the possible values for this operation
      *
@@ -8432,8 +8867,8 @@ class DocumentApi
     /**
      * Create request for operation 'remindDocument'
      *
-     * @param  string $document_id Document Id. (required)
-     * @param  string[] $receiver_emails Signer emails. (optional)
+     * @param  string $document_id (required)
+     * @param  string[] $receiver_emails (optional)
      * @param  \BoldSign\Model\ReminderMessage $reminder_message Reminder Message for signers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remindDocument'] to see the possible values for this operation
      *
@@ -8884,7 +9319,7 @@ class DocumentApi
      *
      * Revoke the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id document_id (required)
      * @param  \BoldSign\Model\RevokeDocument $revoke_document RevokeDetails. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revokeDocument'] to see the possible values for this operation
      *
@@ -8902,7 +9337,7 @@ class DocumentApi
      *
      * Revoke the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\RevokeDocument $revoke_document RevokeDetails. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revokeDocument'] to see the possible values for this operation
      *
@@ -8979,7 +9414,7 @@ class DocumentApi
      *
      * Revoke the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\RevokeDocument $revoke_document RevokeDetails. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revokeDocument'] to see the possible values for this operation
      *
@@ -9001,7 +9436,7 @@ class DocumentApi
      *
      * Revoke the document.
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\RevokeDocument $revoke_document RevokeDetails. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revokeDocument'] to see the possible values for this operation
      *
@@ -9039,7 +9474,7 @@ class DocumentApi
     /**
      * Create request for operation 'revokeDocument'
      *
-     * @param  string $document_id Document Id. (required)
+     * @param  string $document_id (required)
      * @param  \BoldSign\Model\RevokeDocument $revoke_document RevokeDetails. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['revokeDocument'] to see the possible values for this operation
      *

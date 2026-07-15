@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 ## `createBrand()`
 
 ```php
-createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name): \BoldSign\Model\BrandCreated
+createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp): \BoldSign\Model\BrandCreated
 ```
 
 Create the brand.
@@ -97,19 +97,23 @@ $document_time_zone = 'document_time_zone_example'; // string
 $show_built_in_form_fields = true; // bool
 $allow_custom_field_creation = false; // bool
 $show_shared_custom_fields = false; // bool
-$hide_decline = True; // bool
-$hide_save = True; // bool
-$document_expiry_settings_expiry_date_type = 'document_expiry_settings_expiry_date_type_example'; // string
-$document_expiry_settings_expiry_value = 56; // int
-$document_expiry_settings_enable_default_expiry_alert = True; // bool
-$document_expiry_settings_enable_auto_reminder = True; // bool
-$document_expiry_settings_reminder_days = 56; // int
-$document_expiry_settings_reminder_count = 56; // int
+$hide_decline = True; // bool | This option prevents signers to decline the document during the signing process.
+$hide_save = True; // bool | This option prevents signers to save their changes during the signing process and continue signing later.
+$document_expiry_settings_expiry_date_type = 'document_expiry_settings_expiry_date_type_example'; // string | This property represents the type for the expiry date
+$document_expiry_settings_expiry_value = 56; // int | This property is used to set the expiry value based on the expiry type
+$document_expiry_settings_enable_default_expiry_alert = True; // bool | This property will send the expiry alert email before the day of expiry for the pending signers.
+$document_expiry_settings_enable_auto_reminder = True; // bool | When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders.
+$document_expiry_settings_reminder_days = 56; // int | Remind in terms of days.
+$document_expiry_settings_reminder_count = 56; // int | Number of reminder count.
 $custom_domain_settings_domain_name = 'custom_domain_settings_domain_name_example'; // string
 $custom_domain_settings_from_name = 'custom_domain_settings_from_name_example'; // string
+$signature_frame_settings_enable_signature_frame = false; // bool
+$signature_frame_settings_show_recipient_name = false; // bool
+$signature_frame_settings_show_recipient_email = false; // bool
+$signature_frame_settings_show_time_stamp = false; // bool
 
 try {
-    $result = $apiInstance->createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name);
+    $result = $apiInstance->createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandingApi->createBrand: ', $e->getMessage(), PHP_EOL;
@@ -139,16 +143,20 @@ try {
 | **show_built_in_form_fields** | **bool**|  | [optional] [default to true] |
 | **allow_custom_field_creation** | **bool**|  | [optional] [default to false] |
 | **show_shared_custom_fields** | **bool**|  | [optional] [default to false] |
-| **hide_decline** | **bool**|  | [optional] |
-| **hide_save** | **bool**|  | [optional] |
-| **document_expiry_settings_expiry_date_type** | **string**|  | [optional] |
-| **document_expiry_settings_expiry_value** | **int**|  | [optional] |
-| **document_expiry_settings_enable_default_expiry_alert** | **bool**|  | [optional] |
-| **document_expiry_settings_enable_auto_reminder** | **bool**|  | [optional] |
-| **document_expiry_settings_reminder_days** | **int**|  | [optional] |
-| **document_expiry_settings_reminder_count** | **int**|  | [optional] |
+| **hide_decline** | **bool**| This option prevents signers to decline the document during the signing process. | [optional] |
+| **hide_save** | **bool**| This option prevents signers to save their changes during the signing process and continue signing later. | [optional] |
+| **document_expiry_settings_expiry_date_type** | **string**| This property represents the type for the expiry date | [optional] |
+| **document_expiry_settings_expiry_value** | **int**| This property is used to set the expiry value based on the expiry type | [optional] |
+| **document_expiry_settings_enable_default_expiry_alert** | **bool**| This property will send the expiry alert email before the day of expiry for the pending signers. | [optional] |
+| **document_expiry_settings_enable_auto_reminder** | **bool**| When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. | [optional] |
+| **document_expiry_settings_reminder_days** | **int**| Remind in terms of days. | [optional] |
+| **document_expiry_settings_reminder_count** | **int**| Number of reminder count. | [optional] |
 | **custom_domain_settings_domain_name** | **string**|  | [optional] |
 | **custom_domain_settings_from_name** | **string**|  | [optional] |
+| **signature_frame_settings_enable_signature_frame** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_recipient_name** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_recipient_email** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_time_stamp** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 
@@ -185,7 +193,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\BrandingApi($config);
-$brand_id = 'brand_id_example'; // string | brand Id.
+$brand_id = 'brand_id_example'; // string
 
 try {
     $result = $apiInstance->deleteBrand($brand_id);
@@ -199,7 +207,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brand_id** | **string**| brand Id. | |
+| **brand_id** | **string**|  | |
 
 ### Return type
 
@@ -221,7 +229,7 @@ try {
 ## `editBrand()`
 
 ```php
-editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name): \BoldSign\Model\BrandCreated
+editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp): \BoldSign\Model\BrandCreated
 ```
 
 Edit the brand.
@@ -236,7 +244,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\BrandingApi($config);
-$brand_id = 'brand_id_example'; // string | The brand id.
+$brand_id = 'brand_id_example'; // string
 $brand_name = 'brand_name_example'; // string
 $brand_logo = "/path/to/file.txt"; // \SplFileObject
 $background_color = 'background_color_example'; // string
@@ -256,19 +264,23 @@ $document_time_zone = 'document_time_zone_example'; // string
 $show_built_in_form_fields = true; // bool
 $allow_custom_field_creation = false; // bool
 $show_shared_custom_fields = false; // bool
-$hide_decline = True; // bool
-$hide_save = True; // bool
-$document_expiry_settings_expiry_date_type = 'document_expiry_settings_expiry_date_type_example'; // string
-$document_expiry_settings_expiry_value = 56; // int
-$document_expiry_settings_enable_default_expiry_alert = True; // bool
-$document_expiry_settings_enable_auto_reminder = True; // bool
-$document_expiry_settings_reminder_days = 56; // int
-$document_expiry_settings_reminder_count = 56; // int
+$hide_decline = True; // bool | This option prevents signers to decline the document during the signing process.
+$hide_save = True; // bool | This option prevents signers to save their changes during the signing process and continue signing later.
+$document_expiry_settings_expiry_date_type = 'document_expiry_settings_expiry_date_type_example'; // string | This property represents the type for the expiry date
+$document_expiry_settings_expiry_value = 56; // int | This property is used to set the expiry value based on the expiry type
+$document_expiry_settings_enable_default_expiry_alert = True; // bool | This property will send the expiry alert email before the day of expiry for the pending signers.
+$document_expiry_settings_enable_auto_reminder = True; // bool | When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders.
+$document_expiry_settings_reminder_days = 56; // int | Remind in terms of days.
+$document_expiry_settings_reminder_count = 56; // int | Number of reminder count.
 $custom_domain_settings_domain_name = 'custom_domain_settings_domain_name_example'; // string
 $custom_domain_settings_from_name = 'custom_domain_settings_from_name_example'; // string
+$signature_frame_settings_enable_signature_frame = false; // bool
+$signature_frame_settings_show_recipient_name = false; // bool
+$signature_frame_settings_show_recipient_email = false; // bool
+$signature_frame_settings_show_time_stamp = false; // bool
 
 try {
-    $result = $apiInstance->editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name);
+    $result = $apiInstance->editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandingApi->editBrand: ', $e->getMessage(), PHP_EOL;
@@ -279,7 +291,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brand_id** | **string**| The brand id. | |
+| **brand_id** | **string**|  | |
 | **brand_name** | **string**|  | [optional] |
 | **brand_logo** | **\SplFileObject****\SplFileObject**|  | [optional] |
 | **background_color** | **string**|  | [optional] |
@@ -299,16 +311,20 @@ try {
 | **show_built_in_form_fields** | **bool**|  | [optional] [default to true] |
 | **allow_custom_field_creation** | **bool**|  | [optional] [default to false] |
 | **show_shared_custom_fields** | **bool**|  | [optional] [default to false] |
-| **hide_decline** | **bool**|  | [optional] |
-| **hide_save** | **bool**|  | [optional] |
-| **document_expiry_settings_expiry_date_type** | **string**|  | [optional] |
-| **document_expiry_settings_expiry_value** | **int**|  | [optional] |
-| **document_expiry_settings_enable_default_expiry_alert** | **bool**|  | [optional] |
-| **document_expiry_settings_enable_auto_reminder** | **bool**|  | [optional] |
-| **document_expiry_settings_reminder_days** | **int**|  | [optional] |
-| **document_expiry_settings_reminder_count** | **int**|  | [optional] |
+| **hide_decline** | **bool**| This option prevents signers to decline the document during the signing process. | [optional] |
+| **hide_save** | **bool**| This option prevents signers to save their changes during the signing process and continue signing later. | [optional] |
+| **document_expiry_settings_expiry_date_type** | **string**| This property represents the type for the expiry date | [optional] |
+| **document_expiry_settings_expiry_value** | **int**| This property is used to set the expiry value based on the expiry type | [optional] |
+| **document_expiry_settings_enable_default_expiry_alert** | **bool**| This property will send the expiry alert email before the day of expiry for the pending signers. | [optional] |
+| **document_expiry_settings_enable_auto_reminder** | **bool**| When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. | [optional] |
+| **document_expiry_settings_reminder_days** | **int**| Remind in terms of days. | [optional] |
+| **document_expiry_settings_reminder_count** | **int**| Number of reminder count. | [optional] |
 | **custom_domain_settings_domain_name** | **string**|  | [optional] |
 | **custom_domain_settings_from_name** | **string**|  | [optional] |
+| **signature_frame_settings_enable_signature_frame** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_recipient_name** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_recipient_email** | **bool**|  | [optional] [default to false] |
+| **signature_frame_settings_show_time_stamp** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 
@@ -345,7 +361,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\BrandingApi($config);
-$brand_id = 'brand_id_example'; // string | The brand id.
+$brand_id = 'brand_id_example'; // string
 
 try {
     $result = $apiInstance->getBrand($brand_id);
@@ -359,7 +375,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brand_id** | **string**| The brand id. | |
+| **brand_id** | **string**|  | |
 
 ### Return type
 
@@ -396,7 +412,7 @@ $config = new BoldSign\Configuration();
 $config->setApiKey('YOUR_API_KEY');
 
 $apiInstance = new BoldSign\Api\BrandingApi($config);
-$brand_id = 'brand_id_example'; // string | brand Id.
+$brand_id = 'brand_id_example'; // string
 
 try {
     $result = $apiInstance->resetDefaultBrand($brand_id);
@@ -410,7 +426,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brand_id** | **string**| brand Id. | |
+| **brand_id** | **string**|  | |
 
 ### Return type
 

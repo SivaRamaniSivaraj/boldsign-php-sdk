@@ -82,6 +82,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => 'string',
         'phone_number' => '\BoldSign\Model\PhoneNumber',
         'id_verification' => '\BoldSign\Model\IdVerificationDetails',
+        'kba' => '\BoldSign\Model\KbaDetails',
         'recipient_notification_settings' => '\BoldSign\Model\RecipientNotificationSettings',
         'authentication_retry_count' => 'int',
         'enable_qes' => 'bool',
@@ -123,6 +124,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => null,
         'phone_number' => null,
         'id_verification' => null,
+        'kba' => null,
         'recipient_notification_settings' => null,
         'authentication_retry_count' => 'int32',
         'enable_qes' => null,
@@ -162,6 +164,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => true,
         'phone_number' => false,
         'id_verification' => false,
+        'kba' => false,
         'recipient_notification_settings' => false,
         'authentication_retry_count' => true,
         'enable_qes' => true,
@@ -281,6 +284,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => 'groupId',
         'phone_number' => 'phoneNumber',
         'id_verification' => 'idVerification',
+        'kba' => 'kba',
         'recipient_notification_settings' => 'recipientNotificationSettings',
         'authentication_retry_count' => 'authenticationRetryCount',
         'enable_qes' => 'enableQes',
@@ -320,6 +324,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => 'setGroupId',
         'phone_number' => 'setPhoneNumber',
         'id_verification' => 'setIdVerification',
+        'kba' => 'setKba',
         'recipient_notification_settings' => 'setRecipientNotificationSettings',
         'authentication_retry_count' => 'setAuthenticationRetryCount',
         'enable_qes' => 'setEnableQes',
@@ -359,6 +364,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         'group_id' => 'getGroupId',
         'phone_number' => 'getPhoneNumber',
         'id_verification' => 'getIdVerification',
+        'kba' => 'getKba',
         'recipient_notification_settings' => 'getRecipientNotificationSettings',
         'authentication_retry_count' => 'getAuthenticationRetryCount',
         'enable_qes' => 'getEnableQes',
@@ -419,6 +425,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public const AUTHENTICATION_TYPE_ACCESS_CODE = 'AccessCode';
     public const AUTHENTICATION_TYPE_SMSOTP = 'SMSOTP';
     public const AUTHENTICATION_TYPE_ID_VERIFICATION = 'IdVerification';
+    public const AUTHENTICATION_TYPE_KBA = 'KBA';
     public const SIGNER_TYPE_SIGNER = 'Signer';
     public const SIGNER_TYPE_REVIEWER = 'Reviewer';
     public const SIGNER_TYPE_IN_PERSON_SIGNER = 'InPersonSigner';
@@ -501,6 +508,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
             self::AUTHENTICATION_TYPE_ACCESS_CODE,
             self::AUTHENTICATION_TYPE_SMSOTP,
             self::AUTHENTICATION_TYPE_ID_VERIFICATION,
+            self::AUTHENTICATION_TYPE_KBA,
         ];
     }
 
@@ -650,6 +658,7 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('group_id', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('id_verification', $data ?? [], null);
+        $this->setIfExists('kba', $data ?? [], null);
         $this->setIfExists('recipient_notification_settings', $data ?? [], null);
         $this->setIfExists('authentication_retry_count', $data ?? [], null);
         $this->setIfExists('enable_qes', $data ?? [], null);
@@ -1564,6 +1573,33 @@ class DocumentSignerDetails implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable id_verification cannot be null');
         }
         $this->container['id_verification'] = $id_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets kba
+     *
+     * @return \BoldSign\Model\KbaDetails|null
+     */
+    public function getKba()
+    {
+        return $this->container['kba'];
+    }
+
+    /**
+     * Sets kba
+     *
+     * @param \BoldSign\Model\KbaDetails|null $kba kba
+     *
+     * @return self
+     */
+    public function setKba($kba)
+    {
+        if (is_null($kba)) {
+            throw new \InvalidArgumentException('non-nullable kba cannot be null');
+        }
+        $this->container['kba'] = $kba;
 
         return $this;
     }

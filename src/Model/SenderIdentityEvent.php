@@ -84,7 +84,7 @@ class SenderIdentityEvent implements ModelInterface, ArrayAccess, \JsonSerializa
         'id' => 'uuid',
         'name' => null,
         'email' => null,
-        'status' => null,
+        'status' => 'Enumeration',
         'created_date' => 'date-time',
         'modified_date' => 'date-time',
         'approved_date_time' => 'date-time',
