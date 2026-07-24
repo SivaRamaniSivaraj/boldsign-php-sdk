@@ -467,6 +467,7 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
     public const EXPIRY_DATE_TYPE_SPECIFIC_DATE_TIME = 'SpecificDateTime';
     public const DOCUMENT_DOWNLOAD_OPTION_COMBINED = 'Combined';
     public const DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY = 'Individually';
+    public const DOCUMENT_DOWNLOAD_OPTION_USER_PREFERENCE = 'UserPreference';
     public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
     public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
     public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
@@ -495,6 +496,7 @@ class MergeAndSendForSignForm implements ModelInterface, ArrayAccess, \JsonSeria
         return [
             self::DOCUMENT_DOWNLOAD_OPTION_COMBINED,
             self::DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY,
+            self::DOCUMENT_DOWNLOAD_OPTION_USER_PREFERENCE,
         ];
     }
 

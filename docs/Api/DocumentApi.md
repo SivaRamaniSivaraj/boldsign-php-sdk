@@ -737,7 +737,7 @@ try {
 ## `downloadDocument()`
 
 ```php
-downloadDocument($document_id, $on_behalf_of): \SplFileObject
+downloadDocument($document_id, $on_behalf_of, $format): \SplFileObject
 ```
 
 Download the document.
@@ -754,9 +754,10 @@ $config->setApiKey('YOUR_API_KEY');
 $apiInstance = new BoldSign\Api\DocumentApi($config);
 $document_id = 'document_id_example'; // string
 $on_behalf_of = 'on_behalf_of_example'; // string
+$format = 'format_example'; // string
 
 try {
-    $result = $apiInstance->downloadDocument($document_id, $on_behalf_of);
+    $result = $apiInstance->downloadDocument($document_id, $on_behalf_of, $format);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->downloadDocument: ', $e->getMessage(), PHP_EOL;
@@ -769,6 +770,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **document_id** | **string**|  | |
 | **on_behalf_of** | **string**|  | [optional] |
+| **format** | **string**|  | [optional] |
 
 ### Return type
 
