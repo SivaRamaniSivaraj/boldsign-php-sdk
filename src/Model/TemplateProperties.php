@@ -422,6 +422,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
 
     public const DOCUMENT_DOWNLOAD_OPTION_COMBINED = 'Combined';
     public const DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY = 'Individually';
+    public const DOCUMENT_DOWNLOAD_OPTION_USER_PREFERENCE = 'UserPreference';
     public const ALLOWED_SIGNATURE_TYPES_TEXT = 'Text';
     public const ALLOWED_SIGNATURE_TYPES_DRAW = 'Draw';
     public const ALLOWED_SIGNATURE_TYPES_IMAGE = 'Image';
@@ -436,6 +437,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::DOCUMENT_DOWNLOAD_OPTION_COMBINED,
             self::DOCUMENT_DOWNLOAD_OPTION_INDIVIDUALLY,
+            self::DOCUMENT_DOWNLOAD_OPTION_USER_PREFERENCE,
         ];
     }
 
