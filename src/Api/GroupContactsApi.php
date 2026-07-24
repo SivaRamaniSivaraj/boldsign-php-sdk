@@ -224,7 +224,7 @@ class GroupContactsApi
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \BoldSign\Model\CreateGroupContactResponse|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
+     * @return \BoldSign\Model\CreateGroupContactResponse|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
      */
     public function createGroupContact($group_contact_details = null, string $contentType = self::contentTypes['createGroupContact'][0])
     {
@@ -242,7 +242,7 @@ class GroupContactsApi
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \BoldSign\Model\CreateGroupContactResponse|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BoldSign\Model\CreateGroupContactResponse|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function createGroupContactWithHttpInfo($group_contact_details = null, string $contentType = self::contentTypes['createGroupContact'][0])
     {
@@ -282,17 +282,14 @@ class GroupContactsApi
                     (string) $response->getBody()
                 );
             }
-            printf("Status code: %d\n", $statusCode);
 
             switch($statusCode) {
                 case 201:
                     if ('\BoldSign\Model\CreateGroupContactResponse' === '\SplFileObject') {
-                        printf("case if 201: %s\n", '\BoldSign\Model\CreateGroupContactResponse');
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\BoldSign\Model\CreateGroupContactResponse' !== 'string') {
-                            printf("case else 201: %s\n", '\BoldSign\Model\CreateGroupContactResponse');
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -315,6 +312,33 @@ class GroupContactsApi
                         $response->getHeaders()
                     ];
                 case 401:
+                    if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\BoldSign\Model\ErrorResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\BoldSign\Model\ErrorResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
                     if ('\BoldSign\Model\ErrorResult' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -409,6 +433,14 @@ class GroupContactsApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BoldSign\Model\ErrorResult',
@@ -1799,6 +1831,14 @@ class GroupContactsApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BoldSign\Model\ErrorResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BoldSign\Model\ErrorResult',

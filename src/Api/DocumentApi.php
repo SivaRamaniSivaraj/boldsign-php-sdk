@@ -5497,15 +5497,16 @@ class DocumentApi
      *
      * @param  string $document_id document_id (required)
      * @param  string $on_behalf_of on_behalf_of (optional)
+     * @param  string $format format (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult
      */
-    public function downloadDocument($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['downloadDocument'][0])
+    public function downloadDocument($document_id, $on_behalf_of = null, $format = null, string $contentType = self::contentTypes['downloadDocument'][0])
     {
-        list($response) = $this->downloadDocumentWithHttpInfo($document_id, $on_behalf_of, $contentType);
+        list($response) = $this->downloadDocumentWithHttpInfo($document_id, $on_behalf_of, $format, $contentType);
         return $response;
     }
 
@@ -5516,15 +5517,16 @@ class DocumentApi
      *
      * @param  string $document_id (required)
      * @param  string $on_behalf_of (optional)
+     * @param  string $format (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\BoldSign\Model\ErrorResult|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function downloadDocumentWithHttpInfo($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['downloadDocument'][0])
+    public function downloadDocumentWithHttpInfo($document_id, $on_behalf_of = null, $format = null, string $contentType = self::contentTypes['downloadDocument'][0])
     {
-        $request = $this->downloadDocumentRequest($document_id, $on_behalf_of, $contentType);
+        $request = $this->downloadDocumentRequest($document_id, $on_behalf_of, $format, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5711,14 +5713,15 @@ class DocumentApi
      *
      * @param  string $document_id (required)
      * @param  string $on_behalf_of (optional)
+     * @param  string $format (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function downloadDocumentAsync($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['downloadDocument'][0])
+    public function downloadDocumentAsync($document_id, $on_behalf_of = null, $format = null, string $contentType = self::contentTypes['downloadDocument'][0])
     {
-        return $this->downloadDocumentAsyncWithHttpInfo($document_id, $on_behalf_of, $contentType)
+        return $this->downloadDocumentAsyncWithHttpInfo($document_id, $on_behalf_of, $format, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5733,15 +5736,16 @@ class DocumentApi
      *
      * @param  string $document_id (required)
      * @param  string $on_behalf_of (optional)
+     * @param  string $format (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function downloadDocumentAsyncWithHttpInfo($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['downloadDocument'][0])
+    public function downloadDocumentAsyncWithHttpInfo($document_id, $on_behalf_of = null, $format = null, string $contentType = self::contentTypes['downloadDocument'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->downloadDocumentRequest($document_id, $on_behalf_of, $contentType);
+        $request = $this->downloadDocumentRequest($document_id, $on_behalf_of, $format, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5784,12 +5788,13 @@ class DocumentApi
      *
      * @param  string $document_id (required)
      * @param  string $on_behalf_of (optional)
+     * @param  string $format (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function downloadDocumentRequest($document_id, $on_behalf_of = null, string $contentType = self::contentTypes['downloadDocument'][0])
+    public function downloadDocumentRequest($document_id, $on_behalf_of = null, $format = null, string $contentType = self::contentTypes['downloadDocument'][0])
     {
 
         // verify the required parameter 'document_id' is set
@@ -5798,6 +5803,7 @@ class DocumentApi
                 'Missing the required parameter $document_id when calling downloadDocument'
             );
         }
+
 
 
 
@@ -5821,6 +5827,15 @@ class DocumentApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $on_behalf_of,
             'onBehalfOf', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $format,
+            'format', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
