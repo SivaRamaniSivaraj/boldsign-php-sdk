@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 ## `createBrand()`
 
 ```php
-createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp): \BoldSign\Model\BrandCreated
+createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $hide_reassign): \BoldSign\Model\BrandCreated
 ```
 
 Create the brand.
@@ -111,9 +111,10 @@ $signature_frame_settings_enable_signature_frame = false; // bool
 $signature_frame_settings_show_recipient_name = false; // bool
 $signature_frame_settings_show_recipient_email = false; // bool
 $signature_frame_settings_show_time_stamp = false; // bool
+$hide_reassign = false; // bool | Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation.
 
 try {
-    $result = $apiInstance->createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp);
+    $result = $apiInstance->createBrand($brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $hide_reassign);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandingApi->createBrand: ', $e->getMessage(), PHP_EOL;
@@ -157,6 +158,7 @@ try {
 | **signature_frame_settings_show_recipient_name** | **bool**|  | [optional] [default to false] |
 | **signature_frame_settings_show_recipient_email** | **bool**|  | [optional] [default to false] |
 | **signature_frame_settings_show_time_stamp** | **bool**|  | [optional] [default to false] |
+| **hide_reassign** | **bool**| Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation. | [optional] [default to false] |
 
 ### Return type
 
@@ -229,7 +231,7 @@ try {
 ## `editBrand()`
 
 ```php
-editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp): \BoldSign\Model\BrandCreated
+editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $hide_reassign): \BoldSign\Model\BrandCreated
 ```
 
 Edit the brand.
@@ -278,9 +280,10 @@ $signature_frame_settings_enable_signature_frame = false; // bool
 $signature_frame_settings_show_recipient_name = false; // bool
 $signature_frame_settings_show_recipient_email = false; // bool
 $signature_frame_settings_show_time_stamp = false; // bool
+$hide_reassign = false; // bool | Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation.
 
 try {
-    $result = $apiInstance->editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp);
+    $result = $apiInstance->editBrand($brand_id, $brand_name, $brand_logo, $background_color, $button_color, $button_text_color, $email_display_name, $disclaimer_description, $disclaimer_title, $redirect_url, $is_default, $can_hide_tag_line, $combine_audit_trail, $combine_attachments, $exclude_audit_trail_from_email, $email_signed_document, $document_time_zone, $show_built_in_form_fields, $allow_custom_field_creation, $show_shared_custom_fields, $hide_decline, $hide_save, $document_expiry_settings_expiry_date_type, $document_expiry_settings_expiry_value, $document_expiry_settings_enable_default_expiry_alert, $document_expiry_settings_enable_auto_reminder, $document_expiry_settings_reminder_days, $document_expiry_settings_reminder_count, $custom_domain_settings_domain_name, $custom_domain_settings_from_name, $signature_frame_settings_enable_signature_frame, $signature_frame_settings_show_recipient_name, $signature_frame_settings_show_recipient_email, $signature_frame_settings_show_time_stamp, $hide_reassign);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandingApi->editBrand: ', $e->getMessage(), PHP_EOL;
@@ -325,6 +328,7 @@ try {
 | **signature_frame_settings_show_recipient_name** | **bool**|  | [optional] [default to false] |
 | **signature_frame_settings_show_recipient_email** | **bool**|  | [optional] [default to false] |
 | **signature_frame_settings_show_time_stamp** | **bool**|  | [optional] [default to false] |
+| **hide_reassign** | **bool**| Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation. | [optional] [default to false] |
 
 ### Return type
 
