@@ -30,5 +30,6 @@ Name | Type | Description | Notes
 **custom_domain_settings** | [**\BoldSign\Model\CustomDomainSettings**](CustomDomainSettings.md) |  | [optional]
 **is_domain_verified** | **bool** |  | [optional]
 **signature_frame_settings** | [**\BoldSign\Model\SignatureFrameSettings**](SignatureFrameSettings.md) |  | [optional]
+**hide_reassign** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
