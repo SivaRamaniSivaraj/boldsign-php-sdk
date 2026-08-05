@@ -82,7 +82,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => '\BoldSign\Model\DocumentExpirySettings',
         'custom_domain_settings' => '\BoldSign\Model\CustomDomainSettings',
         'is_domain_verified' => 'bool',
-        'signature_frame_settings' => '\BoldSign\Model\SignatureFrameSettings'
+        'signature_frame_settings' => '\BoldSign\Model\SignatureFrameSettings',
+        'hide_reassign' => 'bool'
     ];
 
     /**
@@ -118,7 +119,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => null,
         'custom_domain_settings' => null,
         'is_domain_verified' => null,
-        'signature_frame_settings' => null
+        'signature_frame_settings' => null,
+        'hide_reassign' => null
     ];
 
     /**
@@ -152,7 +154,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => false,
         'custom_domain_settings' => false,
         'is_domain_verified' => false,
-        'signature_frame_settings' => false
+        'signature_frame_settings' => false,
+        'hide_reassign' => false
     ];
 
     /**
@@ -266,7 +269,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => 'documentExpirySettings',
         'custom_domain_settings' => 'customDomainSettings',
         'is_domain_verified' => 'isDomainVerified',
-        'signature_frame_settings' => 'signatureFrameSettings'
+        'signature_frame_settings' => 'signatureFrameSettings',
+        'hide_reassign' => 'hideReassign'
     ];
 
     /**
@@ -300,7 +304,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => 'setDocumentExpirySettings',
         'custom_domain_settings' => 'setCustomDomainSettings',
         'is_domain_verified' => 'setIsDomainVerified',
-        'signature_frame_settings' => 'setSignatureFrameSettings'
+        'signature_frame_settings' => 'setSignatureFrameSettings',
+        'hide_reassign' => 'setHideReassign'
     ];
 
     /**
@@ -334,7 +339,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'document_expiry_settings' => 'getDocumentExpirySettings',
         'custom_domain_settings' => 'getCustomDomainSettings',
         'is_domain_verified' => 'getIsDomainVerified',
-        'signature_frame_settings' => 'getSignatureFrameSettings'
+        'signature_frame_settings' => 'getSignatureFrameSettings',
+        'hide_reassign' => 'getHideReassign'
     ];
 
     /**
@@ -435,6 +441,7 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('custom_domain_settings', $data ?? [], null);
         $this->setIfExists('is_domain_verified', $data ?? [], null);
         $this->setIfExists('signature_frame_settings', $data ?? [], null);
+        $this->setIfExists('hide_reassign', $data ?? [], false);
     }
 
     /**
@@ -1273,6 +1280,33 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable signature_frame_settings cannot be null');
         }
         $this->container['signature_frame_settings'] = $signature_frame_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets hide_reassign
+     *
+     * @return bool|null
+     */
+    public function getHideReassign()
+    {
+        return $this->container['hide_reassign'];
+    }
+
+    /**
+     * Sets hide_reassign
+     *
+     * @param bool|null $hide_reassign hide_reassign
+     *
+     * @return self
+     */
+    public function setHideReassign($hide_reassign)
+    {
+        if (is_null($hide_reassign)) {
+            throw new \InvalidArgumentException('non-nullable hide_reassign cannot be null');
+        }
+        $this->container['hide_reassign'] = $hide_reassign;
 
         return $this;
     }

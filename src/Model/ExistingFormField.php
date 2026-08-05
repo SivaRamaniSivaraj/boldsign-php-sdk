@@ -61,7 +61,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'string',
         'id' => 'string',
         'value' => 'string',
-        'is_read_only' => 'bool'
+        'is_read_only' => 'bool',
+        'template_order' => 'int'
     ];
 
     /**
@@ -76,7 +77,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => null,
         'id' => null,
         'value' => null,
-        'is_read_only' => null
+        'is_read_only' => null,
+        'template_order' => 'int32'
     ];
 
     /**
@@ -89,7 +91,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => true,
         'id' => true,
         'value' => true,
-        'is_read_only' => true
+        'is_read_only' => true,
+        'template_order' => true
     ];
 
     /**
@@ -182,7 +185,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'name',
         'id' => 'id',
         'value' => 'value',
-        'is_read_only' => 'isReadOnly'
+        'is_read_only' => 'isReadOnly',
+        'template_order' => 'templateOrder'
     ];
 
     /**
@@ -195,7 +199,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'setName',
         'id' => 'setId',
         'value' => 'setValue',
-        'is_read_only' => 'setIsReadOnly'
+        'is_read_only' => 'setIsReadOnly',
+        'template_order' => 'setTemplateOrder'
     ];
 
     /**
@@ -208,7 +213,8 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'getName',
         'id' => 'getId',
         'value' => 'getValue',
-        'is_read_only' => 'getIsReadOnly'
+        'is_read_only' => 'getIsReadOnly',
+        'template_order' => 'getTemplateOrder'
     ];
 
     /**
@@ -273,6 +279,7 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('is_read_only', $data ?? [], null);
+        $this->setIfExists('template_order', $data ?? [], null);
     }
 
     /**
@@ -478,6 +485,40 @@ class ExistingFormField implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['is_read_only'] = $is_read_only;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_order
+     *
+     * @return int|null
+     */
+    public function getTemplateOrder()
+    {
+        return $this->container['template_order'];
+    }
+
+    /**
+     * Sets template_order
+     *
+     * @param int|null $template_order Used to apply a prefilled form field value to a specific occurrence of a template when the same template is included multiple times. Values start at 1. Supported only by the Merge and Send API.
+     *
+     * @return self
+     */
+    public function setTemplateOrder($template_order)
+    {
+        if (is_null($template_order)) {
+            array_push($this->openAPINullablesSetToNull, 'template_order');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('template_order', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['template_order'] = $template_order;
 
         return $this;
     }
