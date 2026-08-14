@@ -134,7 +134,7 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
         'host_email' => true,
         'private_message' => true,
         'authentication_code' => true,
-        'enable_email_otp' => false,
+        'enable_email_otp' => true,
         'authentication_type' => false,
         'phone_number' => false,
         'delivery_mode' => false,
@@ -989,7 +989,14 @@ class Role implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEnableEmailOtp($enable_email_otp)
     {
         if (is_null($enable_email_otp)) {
-            throw new \InvalidArgumentException('non-nullable enable_email_otp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'enable_email_otp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_email_otp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['enable_email_otp'] = $enable_email_otp;
 

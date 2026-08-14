@@ -85,6 +85,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => 'string',
         'labels' => 'string[]',
         'disable_emails' => 'bool',
+        'disable_sms' => 'bool',
         'enable_print_and_sign' => 'bool',
         'enable_reassign' => 'bool',
         'disable_expiry_alert' => 'bool',
@@ -143,6 +144,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => null,
         'labels' => null,
         'disable_emails' => null,
+        'disable_sms' => null,
         'enable_print_and_sign' => null,
         'enable_reassign' => null,
         'disable_expiry_alert' => null,
@@ -199,6 +201,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => true,
         'labels' => true,
         'disable_emails' => false,
+        'disable_sms' => false,
         'enable_print_and_sign' => false,
         'enable_reassign' => false,
         'disable_expiry_alert' => false,
@@ -335,6 +338,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => 'applicationId',
         'labels' => 'labels',
         'disable_emails' => 'disableEmails',
+        'disable_sms' => 'disableSMS',
         'enable_print_and_sign' => 'enablePrintAndSign',
         'enable_reassign' => 'enableReassign',
         'disable_expiry_alert' => 'disableExpiryAlert',
@@ -391,6 +395,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => 'setApplicationId',
         'labels' => 'setLabels',
         'disable_emails' => 'setDisableEmails',
+        'disable_sms' => 'setDisableSms',
         'enable_print_and_sign' => 'setEnablePrintAndSign',
         'enable_reassign' => 'setEnableReassign',
         'disable_expiry_alert' => 'setDisableExpiryAlert',
@@ -447,6 +452,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'application_id' => 'getApplicationId',
         'labels' => 'getLabels',
         'disable_emails' => 'getDisableEmails',
+        'disable_sms' => 'getDisableSms',
         'enable_print_and_sign' => 'getEnablePrintAndSign',
         'enable_reassign' => 'getEnableReassign',
         'disable_expiry_alert' => 'getDisableExpiryAlert',
@@ -677,6 +683,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('application_id', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
         $this->setIfExists('disable_emails', $data ?? [], null);
+        $this->setIfExists('disable_sms', $data ?? [], null);
         $this->setIfExists('enable_print_and_sign', $data ?? [], null);
         $this->setIfExists('enable_reassign', $data ?? [], null);
         $this->setIfExists('disable_expiry_alert', $data ?? [], null);
@@ -1668,6 +1675,33 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable disable_emails cannot be null');
         }
         $this->container['disable_emails'] = $disable_emails;
+
+        return $this;
+    }
+
+    /**
+     * Gets disable_sms
+     *
+     * @return bool|null
+     */
+    public function getDisableSms()
+    {
+        return $this->container['disable_sms'];
+    }
+
+    /**
+     * Sets disable_sms
+     *
+     * @param bool|null $disable_sms disable_sms
+     *
+     * @return self
+     */
+    public function setDisableSms($disable_sms)
+    {
+        if (is_null($disable_sms)) {
+            throw new \InvalidArgumentException('non-nullable disable_sms cannot be null');
+        }
+        $this->container['disable_sms'] = $disable_sms;
 
         return $this;
     }
