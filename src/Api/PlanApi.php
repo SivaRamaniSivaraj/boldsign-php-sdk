@@ -132,6 +132,7 @@ class PlanApi
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \BoldSign\Model\BillingViewModel|\BoldSign\Model\ErrorResult
+     * @deprecated
      */
     public function apiCreditsCount(string $contentType = self::contentTypes['apiCreditsCount'][0])
     {
@@ -149,6 +150,7 @@ class PlanApi
      * @throws \BoldSign\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \BoldSign\Model\BillingViewModel|\BoldSign\Model\ErrorResult, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function apiCreditsCountWithHttpInfo(string $contentType = self::contentTypes['apiCreditsCount'][0])
     {
@@ -306,6 +308,7 @@ class PlanApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function apiCreditsCountAsync(string $contentType = self::contentTypes['apiCreditsCount'][0])
     {
@@ -326,6 +329,7 @@ class PlanApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function apiCreditsCountAsyncWithHttpInfo(string $contentType = self::contentTypes['apiCreditsCount'][0])
     {
@@ -375,6 +379,7 @@ class PlanApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function apiCreditsCountRequest(string $contentType = self::contentTypes['apiCreditsCount'][0])
     {

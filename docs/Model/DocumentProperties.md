@@ -53,5 +53,6 @@ Name | Type | Description | Notes
 **is_combined_audit** | **bool** |  | [optional]
 **is_combined_attachment** | **bool** |  | [optional]
 **document_time_zone** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

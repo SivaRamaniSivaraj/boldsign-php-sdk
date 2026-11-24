@@ -75,7 +75,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'string',
         'scheduled_send_time' => 'int',
         'in_editing_mode' => 'bool',
-        'display_status' => 'string'
+        'display_status' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -104,7 +105,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => null,
         'scheduled_send_time' => 'int64',
         'in_editing_mode' => null,
-        'display_status' => null
+        'display_status' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => true,
         'scheduled_send_time' => true,
         'in_editing_mode' => false,
-        'display_status' => true
+        'display_status' => true,
+        'allow_commenting' => false
     ];
 
     /**
@@ -238,7 +241,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'brandId',
         'scheduled_send_time' => 'scheduledSendTime',
         'in_editing_mode' => 'inEditingMode',
-        'display_status' => 'displayStatus'
+        'display_status' => 'displayStatus',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -265,7 +269,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'setBrandId',
         'scheduled_send_time' => 'setScheduledSendTime',
         'in_editing_mode' => 'setInEditingMode',
-        'display_status' => 'setDisplayStatus'
+        'display_status' => 'setDisplayStatus',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -292,7 +297,8 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => 'getBrandId',
         'scheduled_send_time' => 'getScheduledSendTime',
         'in_editing_mode' => 'getInEditingMode',
-        'display_status' => 'getDisplayStatus'
+        'display_status' => 'getDisplayStatus',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -396,6 +402,7 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('scheduled_send_time', $data ?? [], null);
         $this->setIfExists('in_editing_mode', $data ?? [], null);
         $this->setIfExists('display_status', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -1031,6 +1038,33 @@ class BehalfDocument implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['display_status'] = $display_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            throw new \InvalidArgumentException('non-nullable allow_commenting cannot be null');
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

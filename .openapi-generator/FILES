@@ -179,6 +179,9 @@ docs/Model/TemplateCC.md
 docs/Model/TemplateCcWebhookModel.md
 docs/Model/TemplateCreated.md
 docs/Model/TemplateEvent.md
+docs/Model/TemplateFileChange.md
+docs/Model/TemplateFileChangeForm.md
+docs/Model/TemplateFileChangeJson.md
 docs/Model/TemplateFiles.md
 docs/Model/TemplateFormFields.md
 docs/Model/TemplateGroupSigner.md
@@ -397,6 +400,9 @@ src/Model/TemplateCC.php
 src/Model/TemplateCcWebhookModel.php
 src/Model/TemplateCreated.php
 src/Model/TemplateEvent.php
+src/Model/TemplateFileChange.php
+src/Model/TemplateFileChangeForm.php
+src/Model/TemplateFileChangeJson.php
 src/Model/TemplateFiles.php
 src/Model/TemplateFormFields.php
 src/Model/TemplateGroupSigner.php

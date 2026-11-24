@@ -291,6 +291,10 @@ class UpdateUserMetaData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['meta_data'] === null) {
             $invalidProperties[] = "'meta_data' can't be null";
         }
+        if ((count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -361,7 +365,9 @@ class UpdateUserMetaData implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable meta_data cannot be null');
         }
 
-
+        if ((count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling UpdateUserMetaData., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;

@@ -89,7 +89,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'sharing' => '\BoldSign\Model\TemplateSharing',
         'enable_allow_sign_everywhere' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -132,7 +133,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => null,
         'sharing' => null,
         'enable_allow_sign_everywhere' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -173,7 +175,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => false,
         'sharing' => false,
         'enable_allow_sign_everywhere' => false,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => false
     ];
 
     /**
@@ -294,7 +297,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => 'groupSignerSettings',
         'sharing' => 'sharing',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -335,7 +339,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => 'setGroupSignerSettings',
         'sharing' => 'setSharing',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -376,7 +381,8 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'group_signer_settings' => 'getGroupSignerSettings',
         'sharing' => 'getSharing',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -503,6 +509,7 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('sharing', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -1583,6 +1590,33 @@ class TemplateProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            throw new \InvalidArgumentException('non-nullable allow_commenting cannot be null');
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

@@ -105,7 +105,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => 'bool',
         'is_combined_audit' => 'bool',
         'is_combined_attachment' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -164,7 +165,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => null,
         'is_combined_audit' => null,
         'is_combined_attachment' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -221,7 +223,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => false,
         'is_combined_audit' => false,
         'is_combined_attachment' => false,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => false
     ];
 
     /**
@@ -358,7 +361,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
         'is_combined_audit' => 'isCombinedAudit',
         'is_combined_attachment' => 'isCombinedAttachment',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -415,7 +419,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
         'is_combined_audit' => 'setIsCombinedAudit',
         'is_combined_attachment' => 'setIsCombinedAttachment',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -472,7 +477,8 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
         'is_combined_audit' => 'getIsCombinedAudit',
         'is_combined_attachment' => 'getIsCombinedAttachment',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -541,6 +547,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
     public const ACTIVITY_ACTION_EDITING_CANCELLED = 'EditingCancelled';
     public const ACTIVITY_ACTION_EDITING_COMPLETED = 'EditingCompleted';
     public const ACTIVITY_ACTION_DOCUMENT_SCHEDULED = 'DocumentScheduled';
+    public const ACTIVITY_ACTION_COMMENT_ADDED = 'CommentAdded';
     public const EXPIRY_DATE_TYPE_DAYS = 'Days';
     public const EXPIRY_DATE_TYPE_HOURS = 'Hours';
     public const EXPIRY_DATE_TYPE_SPECIFIC_DATE_TIME = 'SpecificDateTime';
@@ -595,6 +602,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             self::ACTIVITY_ACTION_EDITING_CANCELLED,
             self::ACTIVITY_ACTION_EDITING_COMPLETED,
             self::ACTIVITY_ACTION_DOCUMENT_SCHEDULED,
+            self::ACTIVITY_ACTION_COMMENT_ADDED,
         ];
     }
 
@@ -704,6 +712,7 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('is_combined_audit', $data ?? [], null);
         $this->setIfExists('is_combined_attachment', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -2313,6 +2322,33 @@ class DocumentProperties implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            throw new \InvalidArgumentException('non-nullable allow_commenting cannot be null');
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

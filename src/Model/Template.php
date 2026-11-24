@@ -75,7 +75,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => '\BoldSign\Model\BehalfOf',
         'template_labels' => 'string[]',
         'labels' => 'string[]',
-        'brand_id' => 'string'
+        'brand_id' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -104,7 +105,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => null,
         'template_labels' => null,
         'labels' => null,
-        'brand_id' => null
+        'brand_id' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => false,
         'template_labels' => true,
         'labels' => true,
-        'brand_id' => true
+        'brand_id' => true,
+        'allow_commenting' => false
     ];
 
     /**
@@ -238,7 +241,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'behalfOf',
         'template_labels' => 'templateLabels',
         'labels' => 'labels',
-        'brand_id' => 'brandId'
+        'brand_id' => 'brandId',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -265,7 +269,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'setBehalfOf',
         'template_labels' => 'setTemplateLabels',
         'labels' => 'setLabels',
-        'brand_id' => 'setBrandId'
+        'brand_id' => 'setBrandId',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -292,7 +297,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'behalf_of' => 'getBehalfOf',
         'template_labels' => 'getTemplateLabels',
         'labels' => 'getLabels',
-        'brand_id' => 'getBrandId'
+        'brand_id' => 'getBrandId',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -413,6 +419,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('template_labels', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -1081,6 +1088,33 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            throw new \InvalidArgumentException('non-nullable allow_commenting cannot be null');
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

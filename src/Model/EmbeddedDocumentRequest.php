@@ -105,7 +105,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'enable_allow_sign_everywhere' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -164,7 +165,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
         'enable_allow_sign_everywhere' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -221,7 +223,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
         'enable_allow_sign_everywhere' => true,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => true
     ];
 
     /**
@@ -358,7 +361,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -415,7 +419,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -472,7 +477,8 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -700,6 +706,7 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -779,6 +786,10 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->container['document_download_option'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['meta_data']) && (count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
         }
 
         if (!is_null($this->container['download_file_name']) && (mb_strlen($this->container['download_file_name']) > 250)) {
@@ -2051,7 +2062,9 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
 
-
+        if (!is_null($meta_data) && (count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling EmbeddedDocumentRequest., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;
@@ -2388,6 +2401,40 @@ class EmbeddedDocumentRequest implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            array_push($this->openAPINullablesSetToNull, 'allow_commenting');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allow_commenting', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

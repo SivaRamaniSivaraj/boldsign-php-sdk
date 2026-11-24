@@ -68,7 +68,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => 'bool',
         'edit_recipient' => 'bool',
         'edit_document' => 'bool',
-        'viewed' => 'bool'
+        'viewed' => 'bool',
+        'comment_on_document' => 'bool'
     ];
 
     /**
@@ -90,7 +91,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => null,
         'edit_recipient' => null,
         'edit_document' => null,
-        'viewed' => null
+        'viewed' => null,
+        'comment_on_document' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => false,
         'edit_recipient' => false,
         'edit_document' => false,
-        'viewed' => false
+        'viewed' => false,
+        'comment_on_document' => false
     ];
 
     /**
@@ -210,7 +213,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => 'reminders',
         'edit_recipient' => 'editRecipient',
         'edit_document' => 'editDocument',
-        'viewed' => 'viewed'
+        'viewed' => 'viewed',
+        'comment_on_document' => 'commentOnDocument'
     ];
 
     /**
@@ -230,7 +234,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => 'setReminders',
         'edit_recipient' => 'setEditRecipient',
         'edit_document' => 'setEditDocument',
-        'viewed' => 'setViewed'
+        'viewed' => 'setViewed',
+        'comment_on_document' => 'setCommentOnDocument'
     ];
 
     /**
@@ -250,7 +255,8 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         'reminders' => 'getReminders',
         'edit_recipient' => 'getEditRecipient',
         'edit_document' => 'getEditDocument',
-        'viewed' => 'getViewed'
+        'viewed' => 'getViewed',
+        'comment_on_document' => 'getCommentOnDocument'
     ];
 
     /**
@@ -322,6 +328,7 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('edit_recipient', $data ?? [], true);
         $this->setIfExists('edit_document', $data ?? [], true);
         $this->setIfExists('viewed', $data ?? [], null);
+        $this->setIfExists('comment_on_document', $data ?? [], true);
     }
 
     /**
@@ -686,6 +693,33 @@ class RecipientNotificationSettings implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable viewed cannot be null');
         }
         $this->container['viewed'] = $viewed;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_on_document
+     *
+     * @return bool|null
+     */
+    public function getCommentOnDocument()
+    {
+        return $this->container['comment_on_document'];
+    }
+
+    /**
+     * Sets comment_on_document
+     *
+     * @param bool|null $comment_on_document comment_on_document
+     *
+     * @return self
+     */
+    public function setCommentOnDocument($comment_on_document)
+    {
+        if (is_null($comment_on_document)) {
+            throw new \InvalidArgumentException('non-nullable comment_on_document cannot be null');
+        }
+        $this->container['comment_on_document'] = $comment_on_document;
 
         return $this;
     }

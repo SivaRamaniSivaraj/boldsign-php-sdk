@@ -31,5 +31,6 @@ Name | Type | Description | Notes
 **is_domain_verified** | **bool** |  | [optional]
 **signature_frame_settings** | [**\BoldSign\Model\SignatureFrameSettings**](SignatureFrameSettings.md) |  | [optional]
 **hide_reassign** | **bool** |  | [optional] [default to false]
+**hide_commenting** | **bool** |  | [optional] [default to true]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
