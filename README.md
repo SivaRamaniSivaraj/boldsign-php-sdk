@@ -16,7 +16,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 ```json
 {
     "require": {
-        "boldsign/boldsign-php": "3.2.0-beta.6"
+        "boldsign/boldsign-php": "4.0.0-beta.0"
     },
     "minimum-stability": "dev"
 }
@@ -27,7 +27,7 @@ Then run `composer install`
 Alternatively, install directly with
 
 ```
-composer require boldsign/boldsign-php:3.2.0-beta.6
+composer require boldsign/boldsign-php:4.0.0-beta.0
 ```
 
 ## Getting Started
@@ -102,6 +102,7 @@ All URIs are relative to *https://api.boldsign.com*
 | *DocumentApi* | [**deleteTag**](docs/Api/DocumentApi.md#deletetag) | **DELETE** /v1/document/deleteTags | Delete the Tags in Documents. |
 | *DocumentApi* | [**downloadAttachment**](docs/Api/DocumentApi.md#downloadattachment) | **GET** /v1/document/downloadAttachment | Download the Attachment. |
 | *DocumentApi* | [**downloadAuditLog**](docs/Api/DocumentApi.md#downloadauditlog) | **GET** /v1/document/downloadAuditLog | Download the audit trail document. |
+| *DocumentApi* | [**downloadComments**](docs/Api/DocumentApi.md#downloadcomments) | **GET** /v1-beta/document/downloadComments | Download the comment history of the document. |
 | *DocumentApi* | [**downloadDocument**](docs/Api/DocumentApi.md#downloaddocument) | **GET** /v1/document/download | Download the document. |
 | *DocumentApi* | [**draftSend**](docs/Api/DocumentApi.md#draftsend) | **POST** /v1-beta/document/draftSend | Sends a draft-status document out for signature. |
 | *DocumentApi* | [**editDocument**](docs/Api/DocumentApi.md#editdocument) | **PUT** /v1-beta/document/edit | Edit and updates an existing document. |
@@ -124,6 +125,7 @@ All URIs are relative to *https://api.boldsign.com*
 | *IdentityVerificationApi* | [**image**](docs/Api/IdentityVerificationApi.md#image) | **POST** /v1/identityVerification/image | Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID. |
 | *IdentityVerificationApi* | [**report**](docs/Api/IdentityVerificationApi.md#report) | **POST** /v1/identityVerification/report | Retrieve the ID verification report for the specified document signer. |
 | *PlanApi* | [**apiCreditsCount**](docs/Api/PlanApi.md#apicreditscount) | **GET** /v1/plan/apiCreditsCount | Gets the Api credits details. |
+| *PlanApi* | [**subscriptionCredits**](docs/Api/PlanApi.md#subscriptioncredits) | **GET** /v1-beta/plan/credits | Gets the subscription credit details of the authenticated caller&#39;s subscription across all features and credit sources. Only the account admin can read the subscription credits, and not through an OAuth app that bills its creator. |
 | *SenderIdentitiesApi* | [**createSenderIdentities**](docs/Api/SenderIdentitiesApi.md#createsenderidentities) | **POST** /v1/senderIdentities/create | Creates sender identity. |
 | *SenderIdentitiesApi* | [**deleteSenderIdentities**](docs/Api/SenderIdentitiesApi.md#deletesenderidentities) | **DELETE** /v1/senderIdentities/delete | Deletes sender identity. |
 | *SenderIdentitiesApi* | [**getSenderIdentityProperties**](docs/Api/SenderIdentitiesApi.md#getsenderidentityproperties) | **GET** /v1/senderIdentities/properties | Gets sender identity by ID or email. |
@@ -198,6 +200,8 @@ All URIs are relative to *https://api.boldsign.com*
 - [CreateTemplateRequest](docs/Model/CreateTemplateRequest.md)
 - [CreateUser](docs/Model/CreateUser.md)
 - [Creators](docs/Model/Creators.md)
+- [CreditBalance](docs/Model/CreditBalance.md)
+- [CreditPeriod](docs/Model/CreditPeriod.md)
 - [CustomDomainSettings](docs/Model/CustomDomainSettings.md)
 - [CustomFieldCollection](docs/Model/CustomFieldCollection.md)
 - [CustomFieldMessage](docs/Model/CustomFieldMessage.md)
@@ -294,6 +298,7 @@ All URIs are relative to *https://api.boldsign.com*
 - [PhoneNumberWebhookModel](docs/Model/PhoneNumberWebhookModel.md)
 - [PrefillField](docs/Model/PrefillField.md)
 - [PrefillFieldRequest](docs/Model/PrefillFieldRequest.md)
+- [ProblemDetails](docs/Model/ProblemDetails.md)
 - [RecipientChangeLog](docs/Model/RecipientChangeLog.md)
 - [RecipientNotificationSettings](docs/Model/RecipientNotificationSettings.md)
 - [Rectangle](docs/Model/Rectangle.md)
@@ -315,6 +320,7 @@ All URIs are relative to *https://api.boldsign.com*
 - [SignerAuthenticationSettings](docs/Model/SignerAuthenticationSettings.md)
 - [SignerAuthenticationWebhookModel](docs/Model/SignerAuthenticationWebhookModel.md)
 - [Size](docs/Model/Size.md)
+- [SubscriptionCreditsResponse](docs/Model/SubscriptionCreditsResponse.md)
 - [TeamCreated](docs/Model/TeamCreated.md)
 - [TeamDocumentRecords](docs/Model/TeamDocumentRecords.md)
 - [TeamListResponse](docs/Model/TeamListResponse.md)
@@ -328,6 +334,9 @@ All URIs are relative to *https://api.boldsign.com*
 - [TemplateCcWebhookModel](docs/Model/TemplateCcWebhookModel.md)
 - [TemplateCreated](docs/Model/TemplateCreated.md)
 - [TemplateEvent](docs/Model/TemplateEvent.md)
+- [TemplateFileChange](docs/Model/TemplateFileChange.md)
+- [TemplateFileChangeForm](docs/Model/TemplateFileChangeForm.md)
+- [TemplateFileChangeJson](docs/Model/TemplateFileChangeJson.md)
 - [TemplateFiles](docs/Model/TemplateFiles.md)
 - [TemplateFormFields](docs/Model/TemplateFormFields.md)
 - [TemplateGroupSigner](docs/Model/TemplateGroupSigner.md)
@@ -401,6 +410,6 @@ vendor/bin/phpunit
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `1`
-    - Package version: `3.2.0-beta.6`
+    - Package version: `4.0.0-beta.0`
     - Generator version: `7.8.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

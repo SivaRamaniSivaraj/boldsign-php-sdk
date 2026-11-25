@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **scheduled_send_time** | **int** |  | [optional]
 **in_editing_mode** | **bool** |  | [optional]
 **display_status** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

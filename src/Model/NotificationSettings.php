@@ -68,7 +68,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => 'bool',
         'authentication_failed' => 'bool',
         'reminders' => 'bool',
-        'attach_signed_document' => 'bool'
+        'attach_signed_document' => 'bool',
+        'comment_on_document' => 'bool'
     ];
 
     /**
@@ -90,7 +91,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => null,
         'authentication_failed' => null,
         'reminders' => null,
-        'attach_signed_document' => null
+        'attach_signed_document' => null,
+        'comment_on_document' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => false,
         'authentication_failed' => false,
         'reminders' => false,
-        'attach_signed_document' => false
+        'attach_signed_document' => false,
+        'comment_on_document' => false
     ];
 
     /**
@@ -210,7 +213,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => 'expired',
         'authentication_failed' => 'authenticationFailed',
         'reminders' => 'reminders',
-        'attach_signed_document' => 'attachSignedDocument'
+        'attach_signed_document' => 'attachSignedDocument',
+        'comment_on_document' => 'commentOnDocument'
     ];
 
     /**
@@ -230,7 +234,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => 'setExpired',
         'authentication_failed' => 'setAuthenticationFailed',
         'reminders' => 'setReminders',
-        'attach_signed_document' => 'setAttachSignedDocument'
+        'attach_signed_document' => 'setAttachSignedDocument',
+        'comment_on_document' => 'setCommentOnDocument'
     ];
 
     /**
@@ -250,7 +255,8 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         'expired' => 'getExpired',
         'authentication_failed' => 'getAuthenticationFailed',
         'reminders' => 'getReminders',
-        'attach_signed_document' => 'getAttachSignedDocument'
+        'attach_signed_document' => 'getAttachSignedDocument',
+        'comment_on_document' => 'getCommentOnDocument'
     ];
 
     /**
@@ -322,6 +328,7 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('authentication_failed', $data ?? [], true);
         $this->setIfExists('reminders', $data ?? [], true);
         $this->setIfExists('attach_signed_document', $data ?? [], false);
+        $this->setIfExists('comment_on_document', $data ?? [], true);
     }
 
     /**
@@ -686,6 +693,33 @@ class NotificationSettings implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable attach_signed_document cannot be null');
         }
         $this->container['attach_signed_document'] = $attach_signed_document;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_on_document
+     *
+     * @return bool|null
+     */
+    public function getCommentOnDocument()
+    {
+        return $this->container['comment_on_document'];
+    }
+
+    /**
+     * Sets comment_on_document
+     *
+     * @param bool|null $comment_on_document comment_on_document
+     *
+     * @return self
+     */
+    public function setCommentOnDocument($comment_on_document)
+    {
+        if (is_null($comment_on_document)) {
+            throw new \InvalidArgumentException('non-nullable comment_on_document cannot be null');
+        }
+        $this->container['comment_on_document'] = $comment_on_document;
 
         return $this;
     }

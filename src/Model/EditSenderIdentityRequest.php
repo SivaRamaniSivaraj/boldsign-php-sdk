@@ -363,6 +363,10 @@ class EditSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
+        if (!is_null($this->container['meta_data']) && (count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
+        }
+
         $allowedValues = $this->getLocaleAllowableValues();
         if (!is_null($this->container['locale']) && !in_array($this->container['locale'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -519,7 +523,9 @@ class EditSenderIdentityRequest implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
 
-
+        if (!is_null($meta_data) && (count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling EditSenderIdentityRequest., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;

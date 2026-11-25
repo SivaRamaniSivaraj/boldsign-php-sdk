@@ -328,6 +328,10 @@ class CreateUser implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if (!is_null($this->container['meta_data']) && (count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -476,7 +480,9 @@ class CreateUser implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
 
-
+        if (!is_null($meta_data) && (count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling CreateUser., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;

@@ -31,7 +31,6 @@ namespace BoldSign;
 use GuzzleHttp\Psr7\Utils;
 use BoldSign\Model\ModelInterface;
 use GuzzleHttp;
-use BoldSign\Model\EditDocumentFile;
 
 /**
  * ObjectSerializer Class Doc Comment
@@ -73,6 +72,10 @@ class ObjectSerializer
 
         if ($data instanceof \DateTime) {
             return ($format === 'date') ? $data->format('Y-m-d') : $data->format(self::$dateTimeFormat);
+        }
+        
+        if ($data instanceof \SplFileObject) {
+            return $data->getRealPath();
         }
 
         if (is_array($data)) {
@@ -674,22 +677,29 @@ class ObjectSerializer
                 continue;
             }
 
-            if (is_array($value) && isset($value[0]) && $value[0] instanceof EditDocumentFile) {
-                $hasFile = true;
-                foreach ($value as $index => $fileObject) {
-                    $formValues = ObjectSerializer::sanitizeForSerialization($fileObject);
-                    foreach ($formValues as $property => $formValue) {
-                        $paramKey = "Files[$index].$property";
-                        if ($property === 'file') {
-                            $formParams[$paramKey] = Utils::tryFopen($formValue, 'rb');
-                        } else {
-                            $formParams[$paramKey] = $formValue;
+            if (is_array($value) && isset($value[0]) && is_object($value[0])) {
+                $firstItem = $value[0];
+
+                if (method_exists($firstItem, 'openAPITypes')) {
+                    foreach ($firstItem::openAPITypes() as $type) {
+                        if (stripos($type, 'SplFileObject') !== false) {
+
+                            $hasFile = true;
+
+                            foreach ($value as $index => $modelObject) {
+                                foreach (ObjectSerializer::sanitizeForSerialization($modelObject) as $property => $formValue) {
+                                    $formParams["{$true_key}[$index].{$property}"] = $property === 'file'
+                                        ? Utils::tryFopen($formValue, 'rb')
+                                        : $formValue;
+                                }
+                            }
+
+                            continue 2;
                         }
                     }
                 }
-                continue;
             }
-            
+
             // Handle generic array cases
             if (strpos($apiTypes[$key], 'array') !== false || is_array($value)) {
                 if (!array_key_exists($key, $keyCount)) {

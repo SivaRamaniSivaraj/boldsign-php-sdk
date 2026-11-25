@@ -579,10 +579,9 @@ class SenderIdentitiesApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -862,6 +861,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1272,6 +1272,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1718,6 +1719,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1987,6 +1989,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -2256,6 +2259,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -2536,8 +2540,6 @@ class SenderIdentitiesApi
                 $param);
             }
         }
-
-        $multipart = !empty($formParams);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $email,
@@ -2550,6 +2552,7 @@ class SenderIdentitiesApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],

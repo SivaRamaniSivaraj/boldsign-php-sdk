@@ -83,7 +83,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => '\BoldSign\Model\CustomDomainSettings',
         'is_domain_verified' => 'bool',
         'signature_frame_settings' => '\BoldSign\Model\SignatureFrameSettings',
-        'hide_reassign' => 'bool'
+        'hide_reassign' => 'bool',
+        'hide_commenting' => 'bool'
     ];
 
     /**
@@ -120,7 +121,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => null,
         'is_domain_verified' => null,
         'signature_frame_settings' => null,
-        'hide_reassign' => null
+        'hide_reassign' => null,
+        'hide_commenting' => null
     ];
 
     /**
@@ -155,7 +157,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => false,
         'is_domain_verified' => false,
         'signature_frame_settings' => false,
-        'hide_reassign' => false
+        'hide_reassign' => false,
+        'hide_commenting' => false
     ];
 
     /**
@@ -270,7 +273,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => 'customDomainSettings',
         'is_domain_verified' => 'isDomainVerified',
         'signature_frame_settings' => 'signatureFrameSettings',
-        'hide_reassign' => 'hideReassign'
+        'hide_reassign' => 'hideReassign',
+        'hide_commenting' => 'hideCommenting'
     ];
 
     /**
@@ -305,7 +309,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => 'setCustomDomainSettings',
         'is_domain_verified' => 'setIsDomainVerified',
         'signature_frame_settings' => 'setSignatureFrameSettings',
-        'hide_reassign' => 'setHideReassign'
+        'hide_reassign' => 'setHideReassign',
+        'hide_commenting' => 'setHideCommenting'
     ];
 
     /**
@@ -340,7 +345,8 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_domain_settings' => 'getCustomDomainSettings',
         'is_domain_verified' => 'getIsDomainVerified',
         'signature_frame_settings' => 'getSignatureFrameSettings',
-        'hide_reassign' => 'getHideReassign'
+        'hide_reassign' => 'getHideReassign',
+        'hide_commenting' => 'getHideCommenting'
     ];
 
     /**
@@ -442,6 +448,7 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_domain_verified', $data ?? [], null);
         $this->setIfExists('signature_frame_settings', $data ?? [], null);
         $this->setIfExists('hide_reassign', $data ?? [], false);
+        $this->setIfExists('hide_commenting', $data ?? [], true);
     }
 
     /**
@@ -1307,6 +1314,33 @@ class ViewBrandDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable hide_reassign cannot be null');
         }
         $this->container['hide_reassign'] = $hide_reassign;
+
+        return $this;
+    }
+
+    /**
+     * Gets hide_commenting
+     *
+     * @return bool|null
+     */
+    public function getHideCommenting()
+    {
+        return $this->container['hide_commenting'];
+    }
+
+    /**
+     * Sets hide_commenting
+     *
+     * @param bool|null $hide_commenting hide_commenting
+     *
+     * @return self
+     */
+    public function setHideCommenting($hide_commenting)
+    {
+        if (is_null($hide_commenting)) {
+            throw new \InvalidArgumentException('non-nullable hide_commenting cannot be null');
+        }
+        $this->container['hide_commenting'] = $hide_commenting;
 
         return $this;
     }

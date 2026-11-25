@@ -72,6 +72,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => 'string[]',
         'use_text_tags' => 'bool',
         'text_tag_definitions' => '\BoldSign\Model\TextTagDefinition[]',
+        'file_changes' => '\BoldSign\Model\TemplateFileChange[]',
         'document_id' => 'string',
         'title' => 'string',
         'message' => 'string',
@@ -106,7 +107,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'enable_allow_sign_everywhere' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -132,6 +134,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => null,
         'use_text_tags' => null,
         'text_tag_definitions' => null,
+        'file_changes' => null,
         'document_id' => null,
         'title' => null,
         'message' => null,
@@ -166,7 +169,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
         'enable_allow_sign_everywhere' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -190,6 +194,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => true,
         'use_text_tags' => false,
         'text_tag_definitions' => true,
+        'file_changes' => true,
         'document_id' => true,
         'title' => true,
         'message' => true,
@@ -224,7 +229,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
         'enable_allow_sign_everywhere' => true,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => true
     ];
 
     /**
@@ -328,6 +334,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => 'templateIds',
         'use_text_tags' => 'useTextTags',
         'text_tag_definitions' => 'textTagDefinitions',
+        'file_changes' => 'fileChanges',
         'document_id' => 'documentId',
         'title' => 'title',
         'message' => 'message',
@@ -362,7 +369,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -386,6 +394,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => 'setTemplateIds',
         'use_text_tags' => 'setUseTextTags',
         'text_tag_definitions' => 'setTextTagDefinitions',
+        'file_changes' => 'setFileChanges',
         'document_id' => 'setDocumentId',
         'title' => 'setTitle',
         'message' => 'setMessage',
@@ -420,7 +429,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -444,6 +454,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'template_ids' => 'getTemplateIds',
         'use_text_tags' => 'getUseTextTags',
         'text_tag_definitions' => 'getTextTagDefinitions',
+        'file_changes' => 'getFileChanges',
         'document_id' => 'getDocumentId',
         'title' => 'getTitle',
         'message' => 'getMessage',
@@ -478,7 +489,8 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -672,6 +684,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         $this->setIfExists('template_ids', $data ?? [], null);
         $this->setIfExists('use_text_tags', $data ?? [], null);
         $this->setIfExists('text_tag_definitions', $data ?? [], null);
+        $this->setIfExists('file_changes', $data ?? [], null);
         $this->setIfExists('document_id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
@@ -707,6 +720,7 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -786,6 +800,10 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
                 $this->container['document_download_option'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['meta_data']) && (count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
         }
 
         if (!is_null($this->container['download_file_name']) && (mb_strlen($this->container['download_file_name']) > 250)) {
@@ -1274,6 +1292,40 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['text_tag_definitions'] = $text_tag_definitions;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_changes
+     *
+     * @return \BoldSign\Model\TemplateFileChange[]|null
+     */
+    public function getFileChanges()
+    {
+        return $this->container['file_changes'];
+    }
+
+    /**
+     * Sets file_changes
+     *
+     * @param \BoldSign\Model\TemplateFileChange[]|null $file_changes file_changes
+     *
+     * @return self
+     */
+    public function setFileChanges($file_changes)
+    {
+        if (is_null($file_changes)) {
+            array_push($this->openAPINullablesSetToNull, 'file_changes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_changes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['file_changes'] = $file_changes;
 
         return $this;
     }
@@ -2084,7 +2136,9 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
             }
         }
 
-
+        if (!is_null($meta_data) && (count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling EmbeddedMergeTemplateFormRequest., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;
@@ -2455,6 +2509,40 @@ class EmbeddedMergeTemplateFormRequest implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            array_push($this->openAPINullablesSetToNull, 'allow_commenting');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allow_commenting', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

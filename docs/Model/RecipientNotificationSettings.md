@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **edit_recipient** | **bool** |  | [optional] [default to true]
 **edit_document** | **bool** |  | [optional] [default to true]
 **viewed** | **bool** |  | [optional]
+**comment_on_document** | **bool** |  | [optional] [default to true]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

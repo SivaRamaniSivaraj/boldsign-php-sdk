@@ -58,6 +58,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'document_id' => 'string',
+        'id' => 'string',
         'document_name' => 'string',
         'order' => 'int',
         'page_count' => 'int'
@@ -72,6 +73,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'document_id' => null,
+        'id' => null,
         'document_name' => null,
         'order' => 'int32',
         'page_count' => 'int32'
@@ -84,6 +86,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'document_id' => true,
+        'id' => true,
         'document_name' => true,
         'order' => false,
         'page_count' => false
@@ -176,6 +179,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'document_id' => 'documentId',
+        'id' => 'id',
         'document_name' => 'documentName',
         'order' => 'order',
         'page_count' => 'pageCount'
@@ -188,6 +192,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'document_id' => 'setDocumentId',
+        'id' => 'setId',
         'document_name' => 'setDocumentName',
         'order' => 'setOrder',
         'page_count' => 'setPageCount'
@@ -200,6 +205,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'document_id' => 'getDocumentId',
+        'id' => 'getId',
         'document_name' => 'getDocumentName',
         'order' => 'getOrder',
         'page_count' => 'getPageCount'
@@ -263,6 +269,7 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('document_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('document_name', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('page_count', $data ?? [], null);
@@ -340,6 +347,40 @@ class TemplateFiles implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['document_id'] = $document_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

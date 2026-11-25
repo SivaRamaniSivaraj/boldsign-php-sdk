@@ -495,6 +495,7 @@ class UserApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -769,8 +770,6 @@ class UserApi
                 $param);
             }
         }
-
-        $multipart = !empty($formParams);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $user_id,
@@ -783,6 +782,7 @@ class UserApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1056,10 +1056,9 @@ class UserApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1471,6 +1470,7 @@ class UserApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1882,6 +1882,7 @@ class UserApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -2151,6 +2152,7 @@ class UserApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -2414,10 +2416,9 @@ class UserApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -2691,10 +2692,9 @@ class UserApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],

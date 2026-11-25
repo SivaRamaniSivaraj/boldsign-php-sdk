@@ -37,5 +37,6 @@ Name | Type | Description | Notes
 **sharing** | [**\BoldSign\Model\TemplateSharing**](TemplateSharing.md) |  | [optional]
 **enable_allow_sign_everywhere** | **bool** |  | [optional]
 **document_time_zone** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

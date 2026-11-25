@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettingsWebhookModel**](GroupSignerSettingsWebhookModel.md) |  | [optional]
 **enable_allow_sign_everywhere** | **bool** |  | [optional]
 **document_time_zone** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 **id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **email** | **string** |  | [optional]

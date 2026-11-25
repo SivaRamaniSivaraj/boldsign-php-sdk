@@ -97,7 +97,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => '\BoldSign\Model\FormFieldPermission',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'enable_allow_sign_everywhere' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -148,7 +149,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => null,
         'group_signer_settings' => null,
         'enable_allow_sign_everywhere' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -197,7 +199,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => false,
         'group_signer_settings' => false,
         'enable_allow_sign_everywhere' => true,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => true
     ];
 
     /**
@@ -326,7 +329,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => 'formFieldPermission',
         'group_signer_settings' => 'groupSignerSettings',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -375,7 +379,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => 'setFormFieldPermission',
         'group_signer_settings' => 'setGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -424,7 +429,8 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'form_field_permission' => 'getFormFieldPermission',
         'group_signer_settings' => 'getGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -610,6 +616,7 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -2009,6 +2016,40 @@ class EmbeddedCreateTemplateRequest implements ModelInterface, ArrayAccess, \Jso
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            array_push($this->openAPINullablesSetToNull, 'allow_commenting');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allow_commenting', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

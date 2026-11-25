@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **template_ids** | **string[]** |  | [optional]
 **use_text_tags** | **bool** |  | [optional]
 **text_tag_definitions** | [**\BoldSign\Model\TextTagDefinition[]**](TextTagDefinition.md) |  | [optional]
+**file_changes** | [**\BoldSign\Model\TemplateFileChange[]**](TemplateFileChange.md) |  | [optional]
 **document_id** | **string** |  | [optional]
 **title** | **string** |  | [optional]
 **message** | **string** |  | [optional]
@@ -44,5 +45,6 @@ Name | Type | Description | Notes
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
 **enable_allow_sign_everywhere** | **bool** |  | [optional]
 **document_time_zone** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

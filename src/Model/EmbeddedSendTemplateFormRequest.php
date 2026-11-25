@@ -57,6 +57,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
+        'file_changes' => '\BoldSign\Model\TemplateFileChangeForm[]',
         'files' => '\SplFileObject[]',
         'file_urls' => 'string[]',
         'redirect_url' => 'string',
@@ -103,7 +104,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => 'string[]',
         'group_signer_settings' => '\BoldSign\Model\GroupSignerSettings',
         'enable_allow_sign_everywhere' => 'bool',
-        'document_time_zone' => 'string'
+        'document_time_zone' => 'string',
+        'allow_commenting' => 'bool'
     ];
 
     /**
@@ -114,6 +116,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'file_changes' => null,
         'files' => 'binary',
         'file_urls' => 'uri',
         'redirect_url' => 'uri',
@@ -160,7 +163,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => null,
         'group_signer_settings' => null,
         'enable_allow_sign_everywhere' => null,
-        'document_time_zone' => null
+        'document_time_zone' => null,
+        'allow_commenting' => null
     ];
 
     /**
@@ -169,6 +173,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'file_changes' => true,
         'files' => true,
         'file_urls' => true,
         'redirect_url' => true,
@@ -215,7 +220,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => true,
         'group_signer_settings' => false,
         'enable_allow_sign_everywhere' => true,
-        'document_time_zone' => true
+        'document_time_zone' => true,
+        'allow_commenting' => true
     ];
 
     /**
@@ -304,6 +310,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
+        'file_changes' => 'fileChanges',
         'files' => 'files',
         'file_urls' => 'fileUrls',
         'redirect_url' => 'redirectUrl',
@@ -350,7 +357,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => 'allowedSignatureTypes',
         'group_signer_settings' => 'groupSignerSettings',
         'enable_allow_sign_everywhere' => 'enableAllowSignEverywhere',
-        'document_time_zone' => 'documentTimeZone'
+        'document_time_zone' => 'documentTimeZone',
+        'allow_commenting' => 'allowCommenting'
     ];
 
     /**
@@ -359,6 +367,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
+        'file_changes' => 'setFileChanges',
         'files' => 'setFiles',
         'file_urls' => 'setFileUrls',
         'redirect_url' => 'setRedirectUrl',
@@ -405,7 +414,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => 'setAllowedSignatureTypes',
         'group_signer_settings' => 'setGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'setEnableAllowSignEverywhere',
-        'document_time_zone' => 'setDocumentTimeZone'
+        'document_time_zone' => 'setDocumentTimeZone',
+        'allow_commenting' => 'setAllowCommenting'
     ];
 
     /**
@@ -414,6 +424,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
+        'file_changes' => 'getFileChanges',
         'files' => 'getFiles',
         'file_urls' => 'getFileUrls',
         'redirect_url' => 'getRedirectUrl',
@@ -460,7 +471,8 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         'allowed_signature_types' => 'getAllowedSignatureTypes',
         'group_signer_settings' => 'getGroupSignerSettings',
         'enable_allow_sign_everywhere' => 'getEnableAllowSignEverywhere',
-        'document_time_zone' => 'getDocumentTimeZone'
+        'document_time_zone' => 'getDocumentTimeZone',
+        'allow_commenting' => 'getAllowCommenting'
     ];
 
     /**
@@ -639,6 +651,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('file_changes', $data ?? [], null);
         $this->setIfExists('files', $data ?? [], null);
         $this->setIfExists('file_urls', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
@@ -686,6 +699,7 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('group_signer_settings', $data ?? [], null);
         $this->setIfExists('enable_allow_sign_everywhere', $data ?? [], null);
         $this->setIfExists('document_time_zone', $data ?? [], null);
+        $this->setIfExists('allow_commenting', $data ?? [], null);
     }
 
     /**
@@ -767,6 +781,10 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
             );
         }
 
+        if (!is_null($this->container['meta_data']) && (count($this->container['meta_data']) > 50)) {
+            $invalidProperties[] = "invalid value for 'meta_data', number of items must be less than or equal to 50.";
+        }
+
         if (!is_null($this->container['download_file_name']) && (mb_strlen($this->container['download_file_name']) > 250)) {
             $invalidProperties[] = "invalid value for 'download_file_name', the character length must be smaller than or equal to 250.";
         }
@@ -789,6 +807,40 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets file_changes
+     *
+     * @return \BoldSign\Model\TemplateFileChangeForm[]|null
+     */
+    public function getFileChanges()
+    {
+        return $this->container['file_changes'];
+    }
+
+    /**
+     * Sets file_changes
+     *
+     * @param \BoldSign\Model\TemplateFileChangeForm[]|null $file_changes file_changes
+     *
+     * @return self
+     */
+    public function setFileChanges($file_changes)
+    {
+        if (is_null($file_changes)) {
+            array_push($this->openAPINullablesSetToNull, 'file_changes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_changes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['file_changes'] = $file_changes;
+
+        return $this;
+    }
 
     /**
      * Gets files
@@ -1968,7 +2020,9 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
             }
         }
 
-
+        if (!is_null($meta_data) && (count($meta_data) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $meta_data when calling EmbeddedSendTemplateFormRequest., number of items must be less than or equal to 50.');
+        }
         $this->container['meta_data'] = $meta_data;
 
         return $this;
@@ -2339,6 +2393,40 @@ class EmbeddedSendTemplateFormRequest implements ModelInterface, ArrayAccess, \J
             }
         }
         $this->container['document_time_zone'] = $document_time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_commenting
+     *
+     * @return bool|null
+     */
+    public function getAllowCommenting()
+    {
+        return $this->container['allow_commenting'];
+    }
+
+    /**
+     * Sets allow_commenting
+     *
+     * @param bool|null $allow_commenting allow_commenting
+     *
+     * @return self
+     */
+    public function setAllowCommenting($allow_commenting)
+    {
+        if (is_null($allow_commenting)) {
+            array_push($this->openAPINullablesSetToNull, 'allow_commenting');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allow_commenting', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allow_commenting'] = $allow_commenting;
 
         return $this;
     }

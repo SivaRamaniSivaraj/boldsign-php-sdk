@@ -48,6 +48,8 @@ docs/Model/CreateTeamRequest.md
 docs/Model/CreateTemplateRequest.md
 docs/Model/CreateUser.md
 docs/Model/Creators.md
+docs/Model/CreditBalance.md
+docs/Model/CreditPeriod.md
 docs/Model/CustomDomainSettings.md
 docs/Model/CustomFieldCollection.md
 docs/Model/CustomFieldMessage.md
@@ -144,6 +146,7 @@ docs/Model/PhoneNumber.md
 docs/Model/PhoneNumberWebhookModel.md
 docs/Model/PrefillField.md
 docs/Model/PrefillFieldRequest.md
+docs/Model/ProblemDetails.md
 docs/Model/RecipientChangeLog.md
 docs/Model/RecipientNotificationSettings.md
 docs/Model/Rectangle.md
@@ -165,6 +168,7 @@ docs/Model/SignatureFrameSettings.md
 docs/Model/SignerAuthenticationSettings.md
 docs/Model/SignerAuthenticationWebhookModel.md
 docs/Model/Size.md
+docs/Model/SubscriptionCreditsResponse.md
 docs/Model/TeamCreated.md
 docs/Model/TeamDocumentRecords.md
 docs/Model/TeamListResponse.md
@@ -178,6 +182,9 @@ docs/Model/TemplateCC.md
 docs/Model/TemplateCcWebhookModel.md
 docs/Model/TemplateCreated.md
 docs/Model/TemplateEvent.md
+docs/Model/TemplateFileChange.md
+docs/Model/TemplateFileChangeForm.md
+docs/Model/TemplateFileChangeJson.md
 docs/Model/TemplateFiles.md
 docs/Model/TemplateFormFields.md
 docs/Model/TemplateGroupSigner.md
@@ -264,6 +271,8 @@ src/Model/CreateTeamRequest.php
 src/Model/CreateTemplateRequest.php
 src/Model/CreateUser.php
 src/Model/Creators.php
+src/Model/CreditBalance.php
+src/Model/CreditPeriod.php
 src/Model/CustomDomainSettings.php
 src/Model/CustomFieldCollection.php
 src/Model/CustomFieldMessage.php
@@ -361,6 +370,7 @@ src/Model/PhoneNumber.php
 src/Model/PhoneNumberWebhookModel.php
 src/Model/PrefillField.php
 src/Model/PrefillFieldRequest.php
+src/Model/ProblemDetails.php
 src/Model/RecipientChangeLog.php
 src/Model/RecipientNotificationSettings.php
 src/Model/Rectangle.php
@@ -382,6 +392,7 @@ src/Model/SignatureFrameSettings.php
 src/Model/SignerAuthenticationSettings.php
 src/Model/SignerAuthenticationWebhookModel.php
 src/Model/Size.php
+src/Model/SubscriptionCreditsResponse.php
 src/Model/TeamCreated.php
 src/Model/TeamDocumentRecords.php
 src/Model/TeamListResponse.php
@@ -395,6 +406,9 @@ src/Model/TemplateCC.php
 src/Model/TemplateCcWebhookModel.php
 src/Model/TemplateCreated.php
 src/Model/TemplateEvent.php
+src/Model/TemplateFileChange.php
+src/Model/TemplateFileChangeForm.php
+src/Model/TemplateFileChangeJson.php
 src/Model/TemplateFiles.php
 src/Model/TemplateFormFields.php
 src/Model/TemplateGroupSigner.php

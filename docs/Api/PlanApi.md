@@ -5,6 +5,7 @@ All URIs are relative to https://api.boldsign.com, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**apiCreditsCount()**](PlanApi.md#apiCreditsCount) | **GET** /v1/plan/apiCreditsCount | Gets the Api credits details. |
+| [**subscriptionCredits()**](PlanApi.md#subscriptionCredits) | **GET** /v1-beta/plan/credits | Gets the subscription credit details of the authenticated caller&#39;s subscription across all features and credit sources. Only the account admin can read the subscription credits, and not through an OAuth app that bills its creator. |
 
 
 ## `apiCreditsCount()`
@@ -14,6 +15,8 @@ apiCreditsCount(): \BoldSign\Model\BillingViewModel
 ```
 
 Gets the Api credits details.
+
+Deprecated: use /v1-beta/plan/credits instead. The response and behaviour of this operation are unchanged and will be removed in a future version.
 
 ### Example
 
@@ -41,6 +44,56 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\BoldSign\Model\BillingViewModel**](../Model/BillingViewModel.md)
+
+### Authorization
+
+[X-API-KEY](../../README.md#X-API-KEY), [Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `subscriptionCredits()`
+
+```php
+subscriptionCredits(): \BoldSign\Model\SubscriptionCreditsResponse
+```
+
+Gets the subscription credit details of the authenticated caller's subscription across all features and credit sources. Only the account admin can read the subscription credits, and not through an OAuth app that bills its creator.
+
+Credit balances are refreshed every 2 minutes, so the most recent usage may not appear yet.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$config = new BoldSign\Configuration();
+$config->setApiKey('YOUR_API_KEY');
+
+$apiInstance = new BoldSign\Api\PlanApi($config);
+
+try {
+    $result = $apiInstance->subscriptionCredits();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PlanApi->subscriptionCredits: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\BoldSign\Model\SubscriptionCreditsResponse**](../Model/SubscriptionCreditsResponse.md)
 
 ### Authorization
 

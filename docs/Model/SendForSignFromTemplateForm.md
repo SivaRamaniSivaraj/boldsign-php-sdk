@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**file_changes** | [**\BoldSign\Model\TemplateFileChangeForm[]**](TemplateFileChangeForm.md) |  | [optional]
 **files** | **\SplFileObject[]** |  | [optional]
 **file_urls** | **string[]** |  | [optional]
 **document_id** | **string** |  | [optional]
@@ -41,5 +42,6 @@ Name | Type | Description | Notes
 **group_signer_settings** | [**\BoldSign\Model\GroupSignerSettings**](GroupSignerSettings.md) |  | [optional]
 **enable_allow_sign_everywhere** | **bool** |  | [optional]
 **document_time_zone** | **string** |  | [optional]
+**allow_commenting** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

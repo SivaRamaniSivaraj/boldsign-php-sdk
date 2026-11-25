@@ -583,6 +583,7 @@ class ContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -978,10 +979,9 @@ class ContactsApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1261,6 +1261,7 @@ class ContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1662,6 +1663,7 @@ class ContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1930,8 +1932,6 @@ class ContactsApi
                 $param);
             }
         }
-
-        $multipart = !empty($formParams);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $id,
@@ -1944,6 +1944,7 @@ class ContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],

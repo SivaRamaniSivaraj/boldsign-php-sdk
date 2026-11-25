@@ -567,10 +567,9 @@ class GroupContactsApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -850,6 +849,7 @@ class GroupContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1251,6 +1251,7 @@ class GroupContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1677,6 +1678,7 @@ class GroupContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1965,8 +1967,6 @@ class GroupContactsApi
                 $param);
             }
         }
-
-        $multipart = !empty($formParams);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $group_id,
@@ -1979,6 +1979,7 @@ class GroupContactsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],

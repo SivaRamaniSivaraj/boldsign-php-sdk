@@ -535,10 +535,9 @@ class TeamsApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -950,6 +949,7 @@ class TeamsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1381,6 +1381,7 @@ class TeamsApi
 
 
 
+        $multipart = !empty($formParams);
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
@@ -1650,10 +1651,9 @@ class TeamsApi
             }
         }
 
+
+
         $multipart = !empty($formParams);
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             $multipart ? ['multipart/form-data'] : ['application/json', ],
